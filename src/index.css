@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-surface: #f8f9fa;
+    --text-primary: #181e29;
+  }
+
+  .dark {
+    --bg-surface: #0c1017;
+    --text-primary: #f1f5f9;
+  }
+
+  body {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

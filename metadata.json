@@ -1,0 +1,6 @@
+{
+  "name": "AdvokatQuiz - Simulator UPA Indonesia",
+  "description": "Simulator Ujian Profesi Advokat (UPA) PERADI Indonesia dengan 500 bank soal otentik tanpa pengulangan, multiplayer realtime, dan analisis yuridis komprehensif.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

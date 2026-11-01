@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="50%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background with safe zone border -->
+  <rect width="512" height="512" rx="100" fill="url(#bgGrad)" />
+  <rect x="16" y="16" width="480" height="480" rx="84" fill="none" stroke="url(#goldGrad)" stroke-width="6" opacity="0.4" />
+  
+  <!-- Central Scales of Justice Pillar -->
+  <g transform="translate(256, 256)">
+    <!-- Base -->
+    <path d="M-80 150 L80 150 L60 120 L-60 120 Z" fill="url(#goldGrad)" />
+    <!-- Pillar -->
+    <rect x="-10" y="-120" width="20" height="240" rx="6" fill="url(#goldGrad)" />
+    <!-- Top Finial -->
+    <circle cx="0" cy="-135" r="18" fill="url(#goldGrad)" />
+    <!-- Beam -->
+    <path d="M-140 -100 Q 0 -115 140 -100 L135 -85 Q 0 -100 -135 -85 Z" fill="url(#goldGrad)" />
+    
+    <!-- Left Pan -->
+    <line x1="-135" y1="-85" x2="-180" y2="0" stroke="url(#goldGrad)" stroke-width="4" />
+    <line x1="-135" y1="-85" x2="-90" y2="0" stroke="url(#goldGrad)" stroke-width="4" />
+    <path d="M-190 0 C-190 35 -80 35 -80 0 Z" fill="url(#goldGrad)" />
+
+    <!-- Right Pan -->
+    <line x1="135" y1="-85" x2="90" y2="0" stroke="url(#goldGrad)" stroke-width="4" />
+    <line x1="135" y1="-85" x2="180" y2="0" stroke="url(#goldGrad)" stroke-width="4" />
+    <path d="M80 0 C80 35 190 35 190 0 Z" fill="url(#goldGrad)" />
+  </g>
+</svg>
