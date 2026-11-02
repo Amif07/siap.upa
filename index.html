@@ -9,6 +9,19 @@
     <meta property="og:description" content="Simulator Ujian Profesi Advokat (UPA) PERADI Indonesia dengan 500 bank soal otentik tanpa pengulangan, multiplayer realtime, dan analisis yuridis komprehensif." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Gracefully ignore Vite HMR WebSocket disconnect events in AI Studio sandboxed iframe
+      window.addEventListener('error', function (e) {
+        if (e && e.message && (e.message.indexOf('WebSocket') !== -1 || e.message.indexOf('vite') !== -1)) {
+          e.stopImmediatePropagation();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function (e) {
+        if (e && e.reason && String(e.reason).indexOf('WebSocket') !== -1) {
+          e.stopImmediatePropagation();
+        }
+      }, true);
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">

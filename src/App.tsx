@@ -1052,7 +1052,7 @@ export default function App() {
           <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
             <span>AdvokatQuiz &copy; 2026 · Simulator UPA Standar PERADI</span>
             <span className="hidden sm:inline text-slate-300 dark:text-slate-700">·</span>
-            <span className="text-slate-700 dark:text-slate-300 font-medium">Aplikasi dikembangkan oleh <strong className="text-amber-700 dark:text-amber-400 font-semibold">Ahmad Miftahul Fauzi,S.H.</strong></span>
+            <span className="text-slate-700 dark:text-slate-300 font-medium">Web Developed by <strong className="text-amber-700 dark:text-amber-400 font-semibold">Ahmad Miftahul Fauzi, S.H.</strong></span>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
             <span>Pasal HIR/RBg</span>

@@ -213,7 +213,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Kitab Undang-Undang Hukum Acara Pidana (KUHAP) diundangkan dalam UU No. 8 Tahun 1981.",
-      "legalBasis": "Undang-Undang No. 8 Tahun 1981.",
+      "legalBasis": "Pasal 1 angka 1 jo. Pasal 284 ayat (1) dan Pasal 285 Undang-Undang No. 8 Tahun 1981 tentang KUHAP.",
       "analysis": "KUHAP disahkan dan diundangkan pada tanggal 31 Desember 1981 sebagai Undang-Undang Republik Indonesia Nomor 8 Tahun 1981 tentang Hukum Acara Pidana."
     },
     "difficulty": "Mudah"
@@ -458,11 +458,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Menunggu keputusan Jaksa Penuntut Umum"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "B",
     "explanation": {
-      "summary": "Barang bukti",
-      "legalBasis": "Undang-Undang No. 8 Tahun 1981 (KUHAP).",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Penyidik menyerahkan tanggung jawab atas tersangka dan barang bukti kepada penuntut umum (Tahap II).",
+      "legalBasis": "Pasal 8 ayat (3) huruf b jo. Pasal 110 ayat (4) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "analysis": "Pasal 8 ayat (3) huruf b KUHAP menegaskan setelah penyidikan selesai (Tahap I dinyatakan lengkap/P-21), penyidik menyerahkan tanggung jawab atas tersangka dan barang bukti kepada penuntut umum (Tahap II)."
     },
     "difficulty": "Sedang"
   },
@@ -644,11 +644,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Pengakuan"
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Kesaksian",
-      "legalBasis": "Undang-Undang No. 8 Tahun 1981 (KUHAP).",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B."
+      "summary": "Pemberitahuan karena hak atau kewajiban undang-undang tentang peristiwa pidana disebut Laporan.",
+      "legalBasis": "Pasal 1 angka 24 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "analysis": "Pasal 1 angka 24 KUHAP merumuskan Laporan sebagai pemberitahuan yang disampaikan seseorang karena hak atau kewajiban berdasarkan UU kepada pejabat berwenang tentang terjadinya dugaan peristiwa pidana."
     },
     "difficulty": "Sedang"
   },
@@ -675,11 +675,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Terdapat upaya tersangka untuk menghilangkan barang bukti"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Terdapat upaya tersangka untuk menghilangkan barang bukti",
-      "legalBasis": "Undang-Undang No. 8 Tahun 1981 (KUHAP).",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
+      "summary": "Penangkapan tanpa surat perintah hanya sah dilakukan dalam hal tertangkap tangan.",
+      "legalBasis": "Pasal 18 ayat (2) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "analysis": "Pasal 18 ayat (2) KUHAP secara tegas menentukan: \"Dalam hal tertangkap tangan penangkapan dilakukan tanpa surat perintah, dengan ketentuan bahwa penangkap harus segera menyerahkan tertangkap beserta barang bukti kepada penyidik.\""
     },
     "difficulty": "Sedang"
   },
@@ -706,11 +706,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Tersangka atau terdakwa diduga akan mengulangi tindak pidana"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Tersangka atau terdakwa diduga akan melarikan diri",
-      "legalBasis": "Undang-Undang No. 8 Tahun 1981 (KUHAP).",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A."
+      "summary": "Penahanan hanya dapat dikenakan pada tindak pidana berancaman 5 tahun atau lebih, atau delik tertentu yang diatur dalam Pasal 21 ayat (4) huruf b KUHAP.",
+      "legalBasis": "Pasal 21 ayat (1) dan ayat (4) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "analysis": "Pasal 21 ayat (4) huruf a KUHAP mensyaratkan penahanan hanya terhadap tindak pidana yang diancam dengan pidana penjara 5 tahun atau lebih. Opsi C (kurang dari 5 tahun) adalah pengecualian yang bukan alasan penahanan."
     },
     "difficulty": "Sedang"
   },
@@ -737,11 +737,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Saksi Mahkota"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Saksi Testimoniumde auditu",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Saksi yang memberatkan terdakwa yang diajukan oleh Penuntut Umum disebut saksi a charge.",
+      "legalBasis": "Pasal 160 ayat (1) huruf c UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "analysis": "Dalam hukum acara pidana, saksi a charge adalah saksi yang memberatkan yang diajukan penuntut umum, sedangkan saksi a de charge adalah saksi meringankan yang diajukan pihak terdakwa (Pasal 65 jo. Pasal 116 ayat 3 KUHAP)."
     },
     "difficulty": "Sedang"
   },
@@ -768,11 +768,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Jawaban A dan B salah 6"
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Tertangkapnya seseorang beberapa saat sesudah ia melakukan kejahatan",
-      "legalBasis": "Undang-Undang No. 8 Tahun 1981 (KUHAP).",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B."
+      "summary": "Tertangkap tangan adalah tertangkap saat sedang melakukan atau segera beberapa saat sesudah melakukan tindak pidana.",
+      "legalBasis": "Pasal 1 angka 19 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "analysis": "Pasal 1 angka 19 KUHAP mendefinisikan tertangkap tangan mencakup: sedang melakukan tindak pidana, dengan segera sesudah dilakukan, atau sesaat sesudah diserukan oleh khalayak ramai."
     },
     "difficulty": "Sedang"
   },
@@ -799,11 +799,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Jawaban a dan b salah HUKUM ACARA PERDATA"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "B",
     "explanation": {
-      "summary": "Putusan onslag dijatuhkan apabila perbuatan terbukti tetapi bukan merupakan tindak pidana.",
-      "legalBasis": "Pasal 191 ayat (2) KUHAP.",
-      "analysis": "Pasal 191 ayat (2) KUHAP: \"Jika pengadilan berpendapat bahwa perbuatan yang didakwakan kepada terdakwa terbukti, tetapi perbuatan itu tidak merupakan suatu tindak pidana, maka terdakwa diputus lepas dari segala tuntutan hukum.\""
+      "summary": "Putusan lepas dari segala tuntutan hukum (onslag van rechtvervolging) dijatuhkan bila perbuatan terbukti namun bukan tindak pidana.",
+      "legalBasis": "Pasal 191 ayat (2) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "analysis": "Pasal 191 ayat (2) KUHAP menyatakan: \"Jika pengadilan berpendapat bahwa perbuatan yang didakwakan kepada terdakwa terbukti, tetapi perbuatan itu tidak merupakan suatu tindak pidana, maka terdakwa diputus lepas dari segala tuntutan hukum.\""
     },
     "difficulty": "Mudah"
   },
@@ -823,18 +823,18 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "C",
-        "text": "Pengadilan Negeri dimana benda bergerak itu berada/terletak"
+        "text": "Pengadilan Negeri di mana benda tidak bergerak itu terletak (forum rei sitae)"
       },
       {
         "key": "D",
         "text": "Pengadilan Negeri yang berwenang"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Pengadilan Negeri yang berwenang",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
+      "summary": "Gugatan atas benda tidak bergerak diajukan di Pengadilan Negeri tempat benda itu terletak (forum rei sitae).",
+      "legalBasis": "Pasal 118 ayat (3) HIR / Pasal 142 ayat (3) RBg.",
+      "analysis": "Pasal 118 ayat (3) HIR menetapkan: apabila objek sengketa adalah barang tidak bergerak, maka gugatan diajukan kepada Pengadilan Negeri yang daerah hukumnya meliputi tempat letak barang tidak bergerak tersebut (asas forum rei sitae)."
     },
     "difficulty": "Sedang"
   },
@@ -863,9 +863,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Penggugat tidak hadir",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Gugatan dinyatakan gugur apabila Penggugat tidak hadir pada hari sidang pertama setelah dipanggil patut.",
+      "legalBasis": "Pasal 124 HIR / Pasal 148 RBg.",
+      "analysis": "Pasal 124 HIR menentukan jika penggugat tidak datang pada hari sidang pertama meskipun telah dipanggil secara patut, maka surat gugatannya dinyatakan gugur dan penggugat dihukum membayar biaya perkara."
     },
     "difficulty": "Sedang"
   },
@@ -892,11 +892,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Pihak-pihak hadir"
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Para pihak tidak hadir",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B."
+      "summary": "Gugatan diputus verstek apabila Tergugat tidak hadir pada hari sidang pertama tanpa alasan yang sah.",
+      "legalBasis": "Pasal 125 ayat (1) HIR / Pasal 149 ayat (1) RBg.",
+      "analysis": "Pasal 125 ayat (1) HIR menegaskan jika tergugat tidak datang pada hari sidang pertama dan tidak menyuruh wakilnya yang sah meskipun telah dipanggil dengan patut, gugatan diputus dengan verstek (tanpa hadirnya Tergugat)."
     },
     "difficulty": "Sedang"
   },
@@ -925,9 +925,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Tussenkomst",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Tussenkomst adalah campur tangan pihak ketiga yang masuk membela haknya sendiri tanpa memihak.",
+      "legalBasis": "Pasal 279-282 Reglement op de Rechtsvordering (Rv) jo. Doktrin Hukum Acara Perdata.",
+      "analysis": "Tussenkomst adalah intervensi pihak ketiga yang berdiri sendiri untuk mempertahankan hak miliknya melawan Penggugat dan Tergugat sekaligus tanpa memihak salah satu."
     },
     "difficulty": "Sedang"
   },
@@ -956,9 +956,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Verzet",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Upaya hukum terhadap putusan verstek adalah Verzet (perlawanan).",
+      "legalBasis": "Pasal 129 ayat (1) dan (2) HIR / Pasal 153 ayat (1) dan (2) RBg.",
+      "analysis": "Berdasarkan Pasal 129 HIR, pihak Tergugat yang dijatuhi putusan verstek berhak mengajukan upaya hukum perlawanan (verzet) dalam tenggang waktu 14 hari."
     },
     "difficulty": "Sedang"
   },
@@ -985,11 +985,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Actio des aveu"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "B",
     "explanation": {
-      "summary": "Actio in personam",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A."
+      "summary": "Gugatan atas cacat tersembunyi dapat berupa actio quanti minoris (tuntutan pengurangan harga) atau actio redhibitoria.",
+      "legalBasis": "Pasal 1504 sampai Pasal 1507 Kitab Undang-Undang Hukum Perdata (KUHPerdata).",
+      "analysis": "Pasal 1504 KUHPerdata mengatur kewajiban penjual menanggung cacat tersembunyi, di mana pembeli dapat memilih membatalkan pembelian atau menuntut pengurangan harga melalui actio quanti minoris (Pasal 1507 KUHPerdata)."
     },
     "difficulty": "Sedang"
   },
@@ -1016,11 +1016,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Kebenaran semu"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Kebenaran semu",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
+      "summary": "Kebenaran formil adalah kebenaran yang bersandarkan pada alat bukti sah yang diajukan para pihak di persidangan.",
+      "legalBasis": "Pasal 163 jo. Pasal 164 HIR / Pasal 283 jo. Pasal 284 RBg jo. Pasal 1865 KUHPerdata.",
+      "analysis": "Hukum acara perdata mencari kebenaran formil (formeel waarheid), yaitu hakim terikat pada dalil dan bukti-bukti sah yang diajukan para pihak tanpa mencari kebenaran materiil di luar persidangan."
     },
     "difficulty": "Sedang"
   },
@@ -1049,9 +1049,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "B",
     "explanation": {
-      "summary": "Terhadap gugatan yang tidak menyangkut pokok perkara",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B."
+      "summary": "Eksepsi adalah bantahan yang ditujukan terhadap gugatan yang tidak menyangkut pokok perkara.",
+      "legalBasis": "Pasal 125 ayat (2) dan Pasal 136 HIR / Pasal 162 RBg.",
+      "analysis": "Eksepsi merupakan tangkisan formal Tergugat mengenai formalitas gugatan (kompetensi, keabsahan kuasa, obscuur libel) yang tidak langsung membantah materi pokok perkara."
     },
     "difficulty": "Sedang"
   },
@@ -1078,11 +1078,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Objectiefrechtelijke theorie"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Objectiefrechtelijke theorie",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
+      "summary": "Substantieringstheorie mewajibkan gugatan menyebut peristiwa konkret yang menjadi dasar timbulnya hubungan hukum.",
+      "legalBasis": "Pasal 8 angka 3 Reglement op de Rechtsvordering (Rv) jo. Putusan Mahkamah Agung RI No. 547 K/Sip/1972.",
+      "analysis": "Substantieringstheorie mewajibkan Penggugat menguraikan fakta konkret peristiwa hukum dalam posita, sedangkan individualiseringstheorie cukup menyebutkan hubungan hukumnya saja."
     },
     "difficulty": "Sedang"
   },
@@ -1109,11 +1109,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Gugatan"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "B",
     "explanation": {
-      "summary": "Gugatan",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
+      "summary": "Eksepsi kewenangan relatif wajib diajukan bersama-sama dalam jawaban pertama terhadap gugatan.",
+      "legalBasis": "Pasal 125 ayat (2) dan Pasal 133 HIR / Pasal 159 RBg.",
+      "analysis": "Pasal 133 HIR menentukan eksepsi kompetensi relatif harus diajukan pada permulaan sidang dalam jawaban pertama sebelum Tergugat menjawab pokok perkara."
     },
     "difficulty": "Sedang"
   },
@@ -1140,17 +1140,17 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Telah lewat waktu"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Kabur",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A."
+      "summary": "Gugatan ditolak apabila dalil gugatan tidak terbukti atau tidak berdasar hukum (afgewezen).",
+      "legalBasis": "Pasal 163 HIR (Staatsblad 1941 No. 44) / Pasal 283 RBg jo. Pasal 1865 KUHPerdata jo. Putusan MA RI No. 556 K/Sip/1971.",
+      "analysis": "Bila gugatan kabur atau kurang pihak, putusannya adalah tidak dapat diterima (NO). Gugatan ditolak (afgewezen) apabila telah diperiksa pokok perkaranya dan ternyata dalil penggugat tidak terbukti menurut hukum."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 238,
-    "category": "Hukum Acara Peradilan Agama",
+    "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Peradilan Agama & KHI",
     "question": "Putusan insidentiil adalah :",
     "options": [
@@ -1171,11 +1171,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Putusan deklatoir 8"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "B",
     "explanation": {
-      "summary": "Putusan akhir",
-      "legalBasis": "UU No. 7 Tahun 1989 jo. UU No. 50 Tahun 2009 jo. KHI.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Peradilan Agama, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A."
+      "summary": "Putusan insidentil adalah putusan sela yang dijatuhkan hakim mendahului putusan akhir.",
+      "legalBasis": "Pasal 185 ayat (1) HIR / Pasal 196 ayat (1) RBg.",
+      "analysis": "Pasal 185 ayat (1) HIR mengatur putusan sela/insidentil yang bukan putusan akhir dijatuhkan untuk memperlancar jalannya pemeriksaan perkara (seperti putusan sela eksepsi kompetensi atau sita jaminan)."
     },
     "difficulty": "Sedang"
   },
@@ -1204,9 +1204,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "D",
     "explanation": {
-      "summary": "Jawaban a, b dan c benar",
-      "legalBasis": "Regulasi Terkait Hukum Acara UPA PERADI.",
-      "analysis": "Pilihan D merupakan jawaban yang paling tepat dan lengkap menurut kaidah perundang-undangan hukum formil Indonesia."
+      "summary": "Sidang pertama perkara perdata yang dihadiri kedua belah pihak diwajibkan menempuh proses mediasi.",
+      "legalBasis": "Pasal 130 HIR / Pasal 154 RBg jo. Pasal 17 PERMA No. 1 Tahun 2016 tentang Prosedur Mediasi di Pengadilan.",
+      "analysis": "Pasal 17 PERMA 1/2016 mewajibkan majelis hakim pada hari sidang pertama menjelaskan prosedur mediasi dan mewajibkan para pihak menempuh mediasi sebelum pemeriksaan perkara dilanjutkan."
     },
     "difficulty": "Mudah"
   },
@@ -1233,11 +1233,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Jawaban a, b dan c adalah benar"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Jawaban a, b dan c adalah benar",
-      "legalBasis": "Regulasi Terkait Hukum Acara UPA PERADI.",
-      "analysis": "Pilihan D merupakan jawaban yang paling tepat dan lengkap menurut kaidah perundang-undangan hukum formil Indonesia."
+      "summary": "Gugatan rekonvensi (gugatan balik) wajib diajukan bersama-sama dengan jawaban Tergugat.",
+      "legalBasis": "Pasal 132b ayat (1) HIR / Pasal 158 ayat (1) RBg.",
+      "analysis": "Pasal 132b ayat (1) HIR mengatur secara imperatif: \"Tergugat wajib mengajukan gugatan balasan (rekonvensi) bersama-sama dengan jawabannya baik dengan surat maupun dengan lisan.\""
     },
     "difficulty": "Mudah"
   },
@@ -1264,11 +1264,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Notaris-Jaksa"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Notaris-Jaksa",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
+      "summary": "KUHPerdata mengatur hubungan hukum privat antar individu atau badan hukum perdata.",
+      "legalBasis": "Pasal 1 jo. Buku I sampai Buku IV Kitab Undang-Undang Hukum Perdata (Burgerlijk Wetboek).",
+      "analysis": "Hukum perdata substantif (KUHPerdata) mengatur hak dan kewajiban hubungan privat-privat antar sesama anggota masyarakat dan subjek hukum perdata."
     },
     "difficulty": "Sedang"
   },
@@ -1295,11 +1295,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Semua Jawaban salah"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Orang atau badan hukum yang menururt hukum diduga melakukan pelanggaran terhadap ketentuan undang-undang saja",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Tergugat adalah subjek hukum yang ditarik ke pengadilan karena diduga melanggar hak orang lain atau ketentuan undang-undang.",
+      "legalBasis": "Pasal 118 ayat (1) HIR / Pasal 142 ayat (1) RBg jo. Doktrin Hukum Acara Perdata.",
+      "analysis": "Tergugat adalah pihak yang disengketakan dalam gugatan perdata karena adanya perbuatan melawan hukum atau ingkar janji (wanprestasi) yang merugikan penggugat."
     },
     "difficulty": "Sedang"
   },
@@ -1326,11 +1326,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Eksepsi peremptoir 9"
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Eksepsi dilatoir",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B."
+      "summary": "Tangkisan mengenai wilayah kekuasaan pengadilan disebut eksepsi kompetensi relatif.",
+      "legalBasis": "Pasal 118 ayat (1) jo. Pasal 133 HIR / Pasal 159 RBg.",
+      "analysis": "Kompetensi relatif menyangkut batas wilayah hukum Pengadilan Negeri mana yang berwenang mengadili perkara perdata tersebut berdasarkan tempat tinggal tergugat (actor sequitur forum rei)."
     },
     "difficulty": "Sedang"
   },
@@ -1357,11 +1357,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Barang bergerak milik pihak ketiga yang dikuasai Tergugat"
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Barang tidak bergerak milik Penggugat yang dikuasai oleh Tergugat",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B."
+      "summary": "Sita revindikasi hanya dapat dimintakan atas barang bergerak milik Penggugat yang berada di tangan Tergugat.",
+      "legalBasis": "Pasal 226 ayat (1) HIR / Pasal 260 ayat (1) RBg.",
+      "analysis": "Pasal 226 HIR secara limitatif mengatur bahwa sita revindikasi (revindicatoir beslag) hanya berlaku bagi penuntutan kembali barang bergerak milik penggugat."
     },
     "difficulty": "Sedang"
   },
@@ -1391,7 +1391,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Derden Verzet",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
+      "legalBasis": "Pasal 195 ayat (6) HIR (Staatsblad 1941 No. 44) jo. Pasal 206 ayat (6) RBg jo. Pasal 378 - 384 Rv.",
       "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
     },
     "difficulty": "Sedang"
@@ -1419,11 +1419,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Ketiganya salah"
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Diterima",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B."
+      "summary": "Surat kuasa khusus yang tidak sempurna atau cacat formil berakibat gugatan dinyatakan tidak dapat diterima (NO).",
+      "legalBasis": "Pasal 123 HIR jo. Surat Edaran Mahkamah Agung (SEMA) No. 1 Tahun 1971 dan SEMA No. 6 Tahun 1994.",
+      "analysis": "SEMA No. 1/1971 menegaskan bahwa surat kuasa khusus yang tidak menyebutkan secara spesifik pihak lawan, objek perkara, dan pengadilan berakibat gugatan dinilai cacat formil dan diputus tidak dapat diterima (Niet Ontvankelijke Verklaard)."
     },
     "difficulty": "Sedang"
   },
@@ -1450,11 +1450,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Semua benar"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Semua benar",
-      "legalBasis": "Regulasi Terkait Hukum Acara UPA PERADI.",
-      "analysis": "Pilihan D merupakan jawaban yang paling tepat dan lengkap menurut kaidah perundang-undangan hukum formil Indonesia."
+      "summary": "Mewakili pihak beracara di sidang pengadilan secara mutlak mensyaratkan Surat Kuasa Khusus.",
+      "legalBasis": "Pasal 123 ayat (1) HIR / Pasal 147 ayat (1) RBg jo. SEMA No. 1 Tahun 1971.",
+      "analysis": "Kuasa umum tidak berlaku untuk mewakili di persidangan. Pasal 123 ayat (1) HIR mewajibkan pemberian kuasa khusus yang tertuang dalam surat kuasa khusus."
     },
     "difficulty": "Mudah"
   },
@@ -1481,17 +1481,17 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Gugatan harus diajukan kepengadilan yang yurisdiksinya melingkupi tempat tinggal Penggugat dan Turut Tergugat"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Gugatan harus diajukan kepengadilan yang yurisdiksinya melingkupi tempat tinggal saksi dan barang bukti",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Actor sequitur forum rei berarti gugatan diajukan ke Pengadilan Negeri tempat tinggal Tergugat.",
+      "legalBasis": "Pasal 118 ayat (1) HIR / Pasal 142 ayat (1) RBg.",
+      "analysis": "Asas dasar hukum acara perdata Indonesia menentukan bahwa pihak yang digugat berhak diadili di pengadilan tempat domisilinya (actor sequitur forum rei)."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 249,
-    "category": "Hukum Acara Pidana",
+    "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
     "question": "Unsur-unsur surat gugatan adalah :",
     "options": [
@@ -1512,11 +1512,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Uraian lengkap posita dan petitum 10"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Uraian tentang gugatan dan tuntutan",
-      "legalBasis": "Undang-Undang No. 8 Tahun 1981 (KUHAP).",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Anatomi surat gugatan terdiri dari Identitas para pihak, Fundamentum Petendi (Posita), dan Petitum.",
+      "legalBasis": "Pasal 8 No. 3 Reglement op de Rechtsvordering (Rv) jo. Pasal 118 HIR.",
+      "analysis": "Syarat isi surat gugatan meliputi: 1. Identitas para pihak; 2. Fundamentum petendi (uraian fakta peristiwa dan dasar hukum); 3. Petitum (tuntutan yang dimohonkan dikabulkan hakim)."
     },
     "difficulty": "Sedang"
   },
@@ -1543,17 +1543,17 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Barang tidak bergerak milik Penggugat yang dikuasai Tergugat"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Barang bergerak milik Penggugat yang dikuasai Tergugat",
-      "legalBasis": "HIR (Het Herziene Inlandsch Reglement) / RBg.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Sita jaminan (conservatoir beslag) diletakkan atas barang bergerak atau barang tidak bergerak milik Tergugat.",
+      "legalBasis": "Pasal 227 ayat (1) HIR / Pasal 261 ayat (1) RBg.",
+      "analysis": "Pasal 227 ayat (1) HIR mengatur bahwa sita jaminan dimintakan terhadap barang bergerak maupun barang tidak bergerak kepunyaan Tergugat guna menjamin dipenuhinya tuntutan pembayaran ganti rugi penggugat."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 251,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Hukum Acara Perdata",
     "topicTag": "Etika & Profesi Advokat Indonesia",
     "question": "Permohonan peninjauan kembali putusan perkara perdata dapat diajukan berdasarkan alasan :",
     "options": [
@@ -1574,11 +1574,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Semua benar PERAN DAN FUNGSI ORGANISASI ADVOKAT"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Semua benar PERAN DAN FUNGSI ORGANISASI ADVOKAT",
-      "legalBasis": "Regulasi Terkait Hukum Acara UPA PERADI.",
-      "analysis": "Pilihan D merupakan jawaban yang paling tepat dan lengkap menurut kaidah perundang-undangan hukum formil Indonesia."
+      "summary": "Alasan peninjauan kembali perkara perdata adalah ditemukannya bukti surat baru yang menentukan (novum).",
+      "legalBasis": "Pasal 67 huruf b UU No. 14 Tahun 1985 jo. UU No. 5 Tahun 2004 jo. UU No. 3 Tahun 2009 tentang Mahkamah Agung.",
+      "analysis": "Pasal 67 huruf b UU Mahkamah Agung mengatur permohonan PK dapat diajukan apabila setelah perkara diputus ditemukan surat-surat bukti yang bersifat menentukan yang pada waktu perkara diperiksa tidak dapat ditemukan."
     },
     "difficulty": "Mudah"
   },
@@ -1605,11 +1605,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Undang-undang Nomor 18 Tahun 2003"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "D",
     "explanation": {
-      "summary": "Undang-undang Nomor 18 Tahun 2002",
-      "legalBasis": "UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Profesi Advokat diatur dalam Undang-Undang No. 18 Tahun 2003.",
+      "legalBasis": "Pasal 1 angka 1 jo. Pasal 36 Undang-Undang No. 18 Tahun 2003 tentang Advokat.",
+      "analysis": "UU No. 18 Tahun 2003 disahkan pada tanggal 5 April 2003 sebagai undang-undang yang mengatur profesi advokat di Indonesia."
     },
     "difficulty": "Sedang"
   },
@@ -1636,11 +1636,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Persatuan Advokat Indonesia (PERADIN)"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "D",
     "explanation": {
-      "summary": "Ikatan Advokat Indonesia (IKADIN)",
-      "legalBasis": "UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "PERADIN bukan merupakan salah satu dari 8 organisasi advokat pendiri PERADI dalam Pasal 32 ayat (3) UU Advokat.",
+      "legalBasis": "Pasal 32 ayat (3) UU No. 18 Tahun 2003 tentang Advokat.",
+      "analysis": "Delapan organisasi advokat pendiri PERADI adalah IKADIN, AAI, IPHI, HAPI, SPI, AKHI, HKHPM, dan APSI. PERADIN tidak termasuk dalam 8 organisasi tersebut."
     },
     "difficulty": "Sedang"
   },
@@ -1667,11 +1667,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Membela Kepentingan Hukum Klien"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Memberikan Konsultasi Hukum",
-      "legalBasis": "UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A."
+      "summary": "Memberikan pendidikan hukum formal bukan merupakan jasa hukum advokat dalam Pasal 1 angka 2 UU Advokat.",
+      "legalBasis": "Pasal 1 angka 2 UU No. 18 Tahun 2003 tentang Advokat.",
+      "analysis": "Jasa hukum advokat menurut UU adalah konsultasi hukum, bantuan hukum, menjalankan kuasa, mewakili, mendampingi, membela, dan tindakan hukum lain untuk klien. Menyelenggarakan pendidikan formal bukan kategori jasa hukum."
     },
     "difficulty": "Sedang"
   },
@@ -1698,11 +1698,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "PUSBADHI 11"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "B",
     "explanation": {
-      "summary": "PUSBADHI 11",
-      "legalBasis": "UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
+      "summary": "Induk organisasi advokat yang dibentuk oleh delapan organisasi profesi advokat adalah PERADI.",
+      "legalBasis": "Pasal 32 ayat (4) UU No. 18 Tahun 2003 tentang Advokat jo. Deklarasi Pendirian PERADI 21 Desember 2004.",
+      "analysis": "PERADI didirikan pada 21 Desember 2004 sebagai perwujudan satu-satunya wadah tunggal profesi advokat yang diamanatkan oleh UU No. 18 Tahun 2003."
     },
     "difficulty": "Sedang"
   },
@@ -1729,11 +1729,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Seluruh wilayah Republik Indonesia"
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "D",
     "explanation": {
       "summary": "Wilayah kerja Advokat meliputi seluruh wilayah Negara Republik Indonesia.",
       "legalBasis": "Pasal 5 ayat (2) UU No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "Pasal 5 ayat (2) UU No. 18 Tahun 2003 tentang Advokat menyatakan dengan tegas bahwa wilayah kerja advokat meliputi seluruh wilayah negara Republik Indonesia."
+      "analysis": "Pasal 5 ayat (2) UU Advokat menyatakan secara tegas: \"Wilayah kerja Advokat meliputi seluruh wilayah negara Republik Indonesia.\""
     },
     "difficulty": "Mudah"
   },
@@ -1760,11 +1760,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "KKAI (Komite Kerja Advokat Indonesia)"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "D",
     "explanation": {
-      "summary": "IPHI (Ikatan Pengacara Hukum Indonesia)",
-      "legalBasis": "UU No. 2 Tahun 2004 tentang PPHI.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A."
+      "summary": "Sebelum lahirnya PERADI, 8 organisasi berhimpun dalam KKAI (Komite Kerja Advokat Indonesia).",
+      "legalBasis": "Pasal 32 ayat (3) dan (4) UU No. 18 Tahun 2003 tentang Advokat.",
+      "analysis": "KKAI dibentuk untuk koordinasi bersama dalam menyusun kode etik bersama tahun 2002 dan verifikasi keanggotaan advokat menjelang berdirinya wadah tunggal PERADI."
     },
     "difficulty": "Sedang"
   },
@@ -1791,11 +1791,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Jawaban A, B, C, salah"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Jawaban A, B, C, salah",
-      "legalBasis": "Regulasi Terkait Hukum Acara UPA PERADI.",
-      "analysis": "Pilihan D merupakan jawaban yang paling tepat dan lengkap menurut kaidah perundang-undangan hukum formil Indonesia."
+      "summary": "Nama PERADI lahir dalam Deklarasi Advokat Indonesia pada tanggal 21 Desember 2004 di Jakarta.",
+      "legalBasis": "Pasal 32 ayat (1) Undang-Undang No. 18 Tahun 2003 tentang Advokat jo. Piagam Deklarasi PERADI tanggal 21 Desember 2004 di Jakarta.",
+      "analysis": "Nama PERADI tidak tertulis dalam teks UU No. 18/2003, melainkan disepakati dan dideklarasikan bersama oleh 8 organisasi pada 21 Desember 2004."
     },
     "difficulty": "Mudah"
   },
@@ -1822,11 +1822,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Pendekar Hukum"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "Pendekar Hukum",
-      "legalBasis": "UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
+      "summary": "Advokat berstatus sebagai penegak hukum, bebas dan mandiri.",
+      "legalBasis": "Pasal 5 ayat (1) UU No. 18 Tahun 2003 tentang Advokat.",
+      "analysis": "Pasal 5 ayat (1) UU Advokat: \"Advokat berstatus sebagai penegak hukum, bebas dan mandiri yang dijamin oleh hukum dan peraturan perundang-undangan.\""
     },
     "difficulty": "Sedang"
   },
@@ -1856,7 +1856,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "A",
     "explanation": {
       "summary": "Pasal 12 tentang pengawasan dan Pasal 31 tentang ketentuan pidana",
-      "legalBasis": "UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.",
+      "legalBasis": "Pasal 24C ayat (1) UUD 1945 jo. Pasal 10 ayat (1) Undang-Undang No. 24 Tahun 2003 tentang Mahkamah Konstitusi jo. Putusan MK No. 006/PUU-II/2004.",
       "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A."
     },
     "difficulty": "Sedang"
@@ -1884,11 +1884,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Jawaban A, B, C adalah benar"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Jawaban A, B, C adalah benar",
-      "legalBasis": "Regulasi Terkait Hukum Acara UPA PERADI.",
-      "analysis": "Pilihan D merupakan jawaban yang paling tepat dan lengkap menurut kaidah perundang-undangan hukum formil Indonesia."
+      "summary": "Pengertian advokat dirumuskan secara tegas dalam Pasal 1 angka 1 UU No. 18 Tahun 2003.",
+      "legalBasis": "Pasal 1 angka 1 UU No. 18 Tahun 2003 tentang Advokat.",
+      "analysis": "Pasal 1 angka 1 UU Advokat merumuskan: \"Advokat adalah orang yang berprofesi memberi jasa hukum, baik di dalam maupun di luar pengadilan yang memenuhi persyaratan berdasarkan ketentuan Undang-Undang ini.\""
     },
     "difficulty": "Mudah"
   },
@@ -1918,7 +1918,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Pimpinan Partai Politik",
-      "legalBasis": "UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.",
+      "legalBasis": "Pasal 28 ayat (3) Undang-Undang No. 18 Tahun 2003 tentang Advokat.",
       "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B."
     },
     "difficulty": "Sedang"
@@ -1949,7 +1949,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Hak Advokat untuk dilindungi dari tuntutan pidana atau perdata ketika ia menjalankan tugas profesinya dengan itikad baik untuk kepentingan pembelaan klien dalam sidang pengadilan",
-      "legalBasis": "UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.",
+      "legalBasis": "Pasal 16 Undang-Undang No. 18 Tahun 2003 tentang Advokat jo. Putusan Mahkamah Konstitusi No. 26/PUU-XI/2013.",
       "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
     },
     "difficulty": "Sedang"
@@ -1977,11 +1977,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Hakim, Jaksa, Kepolisian dan Advokat mewakili kepentingan penegakkan hukum, mendapat keadilan, kemanfaatan dan kepastian hukum KODE ETIK PROFESI ADVOKAT"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Hakim mewakili kepentingan negara, Jaksa, Kepolisian dan Advokat mewakili kepentingan masyarakat",
-      "legalBasis": "UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Hakim mewakili kepentingan kekuasaan negara, Jaksa/Polisi mewakili penuntutan pemerintah, Advokat mewakili kepentingan masyarakat/klien.",
+      "legalBasis": "Pasal 5 ayat (1) Undang-Undang No. 18 Tahun 2003 tentang Advokat jo. Penjelasan Umum UU No. 18 Tahun 2003.",
+      "analysis": "Dalam doktrin peradilan yang adil (fair trial), hakim menegakkan keadilan atas nama negara, jaksa/polisi mewakili kepentingan umum dan pemerintah, sedangkan advokat mewakili kepentingan hukum masyarakat pencari keadilan."
     },
     "difficulty": "Sedang"
   },
@@ -2011,7 +2011,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Profesi Advokat adalah officium nobile (profesi yang mulia dan terhormat).",
-      "legalBasis": "Penjelasan Umum UU No. 18 Tahun 2003 jo. Kode Etik Advokat Indonesia.",
+      "legalBasis": "Penjelasan Umum Alinea ke-1 Undang-Undang No. 18 Tahun 2003 tentang Advokat jo. Pasal 3 huruf g KEAI 2002.",
       "analysis": "Advokat sebagai profesi terhormat dan mulia (officium nobile) menjalankan fungsi penegakan hukum secara bebas dan mandiri serta terikat pada standar moral dan sumpah profesi."
     },
     "difficulty": "Mudah"
@@ -2135,7 +2135,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Kode Etik Advokat Indonesia disahkan di Jakarta pada tanggal 23 Mei 2002 oleh Komite Kerja Advokat Indonesia.",
-      "legalBasis": "Naskah Resmi Kode Etik Advokat Indonesia (KEAI) 2002.",
+      "legalBasis": "Pasal 33 Undang-Undang No. 18 Tahun 2003 tentang Advokat jo. Ketentuan Penutup Kode Etik Advokat Indonesia (KEAI) tanggal 23 Mei 2002.",
       "analysis": "KEAI disepakati dan ditandatangani oleh 7 organisasi profesi advokat (kemudian 8 organisasi) di Jakarta pada tanggal 23 Mei 2002 sebelum diundangkannya UU No. 18 Tahun 2003."
     },
     "difficulty": "Mudah"
@@ -2259,7 +2259,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Peradilan Tata Usaha Negara diatur dalam UU No. 5 Tahun 1986 yang telah diubah dengan UU No. 9 Tahun 2004 dan UU No. 51 Tahun 2009.",
-      "legalBasis": "UU No. 5 Tahun 1986 jo. UU No. 9 Tahun 2004 jo. UU No. 51 Tahun 2009 tentang Peradilan Tata Usaha Negara.",
+      "legalBasis": "Pasal 1 angka 1 jo. Pasal 144 UU No. 5 Tahun 1986 jo. UU No. 9 Tahun 2004 jo. UU No. 51 Tahun 2009 tentang PTUN.",
       "analysis": "UU No. 5 Tahun 1986 merupakan payung hukum pembentukan Peradilan TUN di Indonesia yang telah dua kali mengalami pembaruan, yaitu UU No. 9/2004 dan UU No. 51/2009."
     },
     "difficulty": "Mudah"
@@ -2631,7 +2631,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Peradilan Agama diatur dalam UU No. 7 Tahun 1989 yang telah diubah dengan UU No. 3 Tahun 2006 dan UU No. 50 Tahun 2009.",
-      "legalBasis": "UU No. 7 Tahun 1989 jo. UU No. 3 Tahun 2006 jo. UU No. 50 Tahun 2009 tentang Peradilan Agama.",
+      "legalBasis": "Pasal 1 angka 1 jo. Pasal 2 Undang-Undang No. 7 Tahun 1989 jo. UU No. 3 Tahun 2006 jo. UU No. 50 Tahun 2009 tentang Peradilan Agama.",
       "analysis": "Undang-Undang Nomor 7 Tahun 1989 merupakan undang-undang pokok peradilan agama yang kemudian mengalami dua kali perubahan, yaitu Perubahan Pertama melalui UU No. 3 Tahun 2006 dan Perubahan Kedua melalui UU No. 50 Tahun 2009."
     },
     "difficulty": "Mudah"
@@ -3065,7 +3065,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "UU No. 13 Tahun 2003 tentang Ketenagakerjaan",
-      "legalBasis": "UU No. 2 Tahun 2004 tentang PPHI.",
+      "legalBasis": "Pasal 1 angka 1 jo. Pasal 125 ayat (1) dan ayat (2) Undang-Undang No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
       "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
     },
     "difficulty": "Sedang"
@@ -3096,7 +3096,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "D",
     "explanation": {
       "summary": "P4D/P4P",
-      "legalBasis": "UU No. 2 Tahun 2004 tentang PPHI.",
+      "legalBasis": "Pasal 124 Undang-Undang No. 2 Tahun 2004 tentang PPHI jo. Undang-Undang No. 22 Tahun 1957.",
       "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
     },
     "difficulty": "Sedang"
@@ -3124,11 +3124,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Antar Serikat Pekerja atau Serikat Buruh"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "B",
     "explanation": {
-      "summary": "Kepentingan",
-      "legalBasis": "UU No. 2 Tahun 2004 tentang PPHI.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A."
+      "summary": "Perselisihan yang timbul karena tidak dipenuhinya hak disebut perselisihan hak.",
+      "legalBasis": "Pasal 1 angka 2 UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
+      "analysis": "Pasal 1 angka 2 UU 2/2004: \"Perselisihan hak adalah perselisihan yang timbul karena tidak dipenuhinya hak, akibat adanya perbedaan pelaksanaan atau penafsiran terhadap ketentuan peraturan perundang-undangan, perjanjian kerja, peraturan perusahaan, atau perjanjian kerja bersama.\""
     },
     "difficulty": "Sedang"
   },
@@ -3155,11 +3155,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "UU No. 14 Tahun 1969 tentang Ketentuan-ketentuan Pokok mengenai Tenaga Kerja"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "B",
     "explanation": {
-      "summary": "UU No. 13 Tahun 2003 tentang Ketenagakerjaan",
-      "legalBasis": "UU No. 2 Tahun 2004 tentang PPHI.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Sebelum berlakunya UU No. 2 Tahun 2004, perselisihan perburuhan diatur dalam UU No. 22 Tahun 1957.",
+      "legalBasis": "Pasal 125 ayat (1) huruf a UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
+      "analysis": "Sebelum diundangkannya UU 2/2004, penyelesaian sengketa buruh diselesaikan oleh P4D/P4P berdasarkan UU No. 22 Tahun 1957 tentang Penyelesaian Perselisihan Perburuhan."
     },
     "difficulty": "Sedang"
   },
@@ -3189,7 +3189,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Pengadilan Hubungan Industrial",
-      "legalBasis": "UU No. 2 Tahun 2004 tentang PPHI.",
+      "legalBasis": "Pasal 55 jo. Pasal 56 Undang-Undang No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial (PPHI).",
       "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
     },
     "difficulty": "Sedang"
@@ -3217,11 +3217,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "Antar Serikat Pekerja atau Serikat Buruh"
       }
     ],
-    "correctAnswer": "A",
+    "correctAnswer": "B",
     "explanation": {
-      "summary": "Kepentingan",
-      "legalBasis": "UU No. 2 Tahun 2004 tentang PPHI.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A."
+      "summary": "Perselisihan mengenai pengakhiran hubungan kerja adalah perselisihan pemutusan hubungan kerja (PHK).",
+      "legalBasis": "Pasal 1 angka 4 UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
+      "analysis": "Pasal 1 angka 4 UU 2/2004 menegaskan perselisihan PHK adalah perselisihan yang timbul karena tidak adanya kesesuaian pendapat mengenai pengakhiran hubungan kerja yang dilakukan oleh salah satu pihak."
     },
     "difficulty": "Sedang"
   },
@@ -3248,11 +3248,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
         "text": "UU No. 32 Tahun 2004"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "C",
     "explanation": {
-      "summary": "UU No. 32 Tahun 2004",
-      "legalBasis": "UU No. 2 Tahun 2004 tentang PPHI.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
+      "summary": "Hukum formil Pengadilan Hubungan Industrial saat ini diatur dalam UU No. 2 Tahun 2004.",
+      "legalBasis": "Pasal 57 jo. Pasal 1 angka 17 Undang-Undang No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial (PPHI).",
+      "analysis": "UU No. 2 Tahun 2004 merupakan hukum formil khusus (lex specialis) yang mengatur prosedur beracara dan pembentukan Pengadilan Hubungan Industrial."
     },
     "difficulty": "Sedang"
   },

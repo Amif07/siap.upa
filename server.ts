@@ -1,4 +1,5 @@
 import express from 'express';
+import http from 'http';
 import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -176,13 +177,18 @@ async function startServer() {
     }
   }, 60 * 60 * 1000);
 
+  const httpServer = http.createServer(app);
+
   if (isDev) {
-    // Mount Vite middlewares in development
+    // Mount Vite middlewares in development with HMR server bound to httpServer
     const vite = await createViteServer({
       server: {
         middlewareMode: true,
         host: '0.0.0.0',
         allowedHosts: true,
+        hmr: {
+          server: httpServer,
+        },
       },
       appType: 'spa',
     });
@@ -196,7 +202,7 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
+  httpServer.listen(PORT, '0.0.0.0', () => {
     console.log(`AdvokatQuiz Server running on http://0.0.0.0:${PORT}`);
   });
 }

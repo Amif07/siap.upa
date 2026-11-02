@@ -58,7 +58,7 @@ export const ADDITIONAL_UPA_BANK_PART1: UPAQuestion[] = [
     correctAnswer: 'B',
     explanation: {
       summary: 'Eksepsi plurium litis consortium menyatakan bahwa para pihak yang ditarik dalam gugatan tidak lengkap/kurang pihak.',
-      legalBasis: 'Yurisprudensi MA RI No. 582 K/Sip/1973 jo. Doktrin Hukum Acara Perdata.',
+      legalBasis: 'Pasal 125 ayat (2) jo. Pasal 136 HIR / Pasal 149 ayat (2) jo. Pasal 162 RBg jo. Yurisprudensi MA RI No. 582 K/Sip/1973.',
       analysis: 'Plurium litis consortium adalah eksepsi yang diajukan pihak tergugat dengan alasan orang-orang yang ditarik sebagai pihak dalam perkara tidak lengkap padahal kepentingannya terikat secara hukum, sehingga gugatan harus dinyatakan tidak dapat diterima (NO).'
     },
     difficulty: 'Sedang'

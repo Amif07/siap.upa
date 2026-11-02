@@ -1,0 +1,968 @@
+========================================================
+ID: 309 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Menurut KUHAP, yang dimaksud dengan Laporan :
+  [A] Pemberitahuan yang disampaikan oleh seorang karena hak dan kewajiban berdasarkan undang – undang kepada pejabat yang berwenang tentang telah atau sedang atau diduga akan terjadinya peristiwa pidana.
+  [B] Pemberitahuan dan permintaan oleh pihak yang berkepentingan kepada poisi tentang telah atau sedang atau diduga telah terjadi peristiwa pidana
+  [C] Pemeberitahuan disertai permintaan oleh pihak yang berkepentingan kepada pejabat yang berwenang untuk menindak menurut hukum seseorang yang telah melakukan tindak pidana aduan yang merugikannya.
+  [D] Tertangkapnya seseorang beberapa saat sesudah ia melakukan kejahatan.
+Current CorrectAnswer: B
+Summary: Pemberitahuan dan permintaan oleh pihak yang berkepentingan kepada poisi tentang telah atau sedang atau diduga telah terjadi peristiwa pidana
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 310 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Pasal 10 KUHP mengatur tentang jenis – jenis hukuman, yaitu hukuman pokok dan hukuman tambahan. Berikut ini adalah termasuk hukuman tambahan, kecuali
+  [A] Pencabutan hak – hak tertentu
+  [B] Perampasan / Penyitaan barang – barang tertentu
+  [C] Pengumuman putusan hakim
+  [D] Pidana denda
+Current CorrectAnswer: B
+Summary: Perampasan / Penyitaan barang – barang tertentu
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 311 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Undang – undang yang mengatur tentang Hukum Acara Pidana adalah :
+  [A] UU No. 18 Tahun 1981
+  [B] UU No. 15 Tahun 1991
+  [C] UU No. 8 Tahun 1981
+  [D] UU No. 5 Tahun 1985
+Current CorrectAnswer: B
+Summary: UU No. 15 Tahun 1991
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 312 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Penydik telah selesai menyidik suatu perkara, selanjutnya berkas perkara diserahkan kepada :
+  [A] Pengadilan Negeri
+  [B] Tersangka
+  [C] Kejaksaan / Penuntut Umum
+  [D] Menunggu keputusan pengadilan
+Current CorrectAnswer: C
+Summary: Berkas perkara penyidikan yang telah selesai diserahkan kepada Penuntut Umum (Kejaksaan).
+LegalBasis: Pasal 8 ayat (2) jo. Pasal 110 ayat (1) KUHAP.
+Analysis: Pasal 110 ayat (1) KUHAP menentukan bahwa dalam hal penyidik telah selesai melakukan penyidikan, penyidik wajib segera menyerahkan berkas perkara itu kepada penuntut umum (Tahap I).
+========================================================
+ID: 313 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Peran Penasihat Hukum dalam KUHAP dalam mendampingi tersangka pada pemeriksaan penyidik adalah :
+  [A] Ikut menentukan jalannya pemeriksaan
+  [B] Bekerjasama dengan penyidik
+  [C] Melihat dan mendengar pemeriksaan
+  [D] Memberikan jawaban kepada penyidik
+Current CorrectAnswer: A
+Summary: Ikut menentukan jalannya pemeriksaan
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 314 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Demi kepentingan hukum terhadap semua putusan yang telah memperoleh kekuatan hukum tetap dari pengadilan lain selain daripada Mahkamah Agung, permohonan kasasi dapat diajukan oleh :
+  [A] Jaksa Penuntut Umum
+  [B] Majelis Hakim
+  [C] Jaksa Agung
+  [D] Terdakwa
+Current CorrectAnswer: B
+Summary: Majelis Hakim
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 315 | Category: Hukum Acara Pidana | Topic: Upaya Hukum Luar Biasa (KUHAP)
+Question: Berikut ini adalah alas an – alas an yang dapat dijadikan dasar permintaan peninjauan kembali yang diatur dalam KUHAP, kecuali :
+  [A] Apabila ditemukan / terdapat keadaan hukum ( novum ) baru
+  [B] Apabila terdapat kekhilafan yang nyata dalam pemeriksaan
+  [C] Apabila dalam putusan tersebut terdapat saling bertentangan
+  [D] Apabila hukum pidana yang dijatuhkan kurang dari 2/3 dari ancaman maksimal dalam undang – undang.
+Current CorrectAnswer: A
+Summary: Apabila ditemukan / terdapat keadaan hukum ( novum ) baru
+LegalBasis: Pasal 263 ayat (2) UU No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Peradilan Agama, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 316 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Dalam pasal 22 ayat (1) KUHAP jenis penahanan yaitu
+  [A] Penahanan Rutan
+  [B] Penahanan rumah dan penahanan kota
+  [C] Penahanan badan
+  [D] Jawaban a dan b benar
+Current CorrectAnswer: D
+Summary: Jawaban a dan b benar
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D.
+========================================================
+ID: 317 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Yang disebut sebagai tersangka adalah :
+  [A] Seseorang yang karena perbuatannya patut diduga sebagai pelaku perbuatan pidana
+  [B] Seseorang yang karena keadaannya patut diduga sebagai pelaku tindak pidana
+  [C] Seseorang yang karena perbuatannya atau keadaannya patut diduga sebagai pelaku tindak pidana
+  [D] Seseorang yang karena perbuatannya atau keadaannya berdasarkan bukti permulaan patut diduga sebagai pelaku tindak pidana
+Current CorrectAnswer: D
+Summary: Seseorang yang karena perbuatannya atau keadaannya berdasarkan bukti permulaan patut diduga sebagai pelaku tindak pidana
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D.
+========================================================
+ID: 318 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Perkara pra peradilan adalah perkara yang pemeriksaannya termasuk cepat karena harus sudah diputuskan dalam waktu :
+  [A] 14 hari
+  [B] 17 hari
+  [C] 7 hari
+  [D] 4 hari
+Current CorrectAnswer: D
+Summary: 4 hari
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D.
+========================================================
+ID: 319 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Dibawah ini adalah alat bukti yang sah menurut KUHAP, kecuali
+  [A] Keterangan saksi
+  [B] Keterangan ahli
+  [C] Keterangan terdakwa
+  [D] Keterangan saksi ahli
+Current CorrectAnswer: B
+Summary: Keterangan ahli
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 320 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Yang diperiksa menurut acara pemeriksaan tindak pidana ringan adalah :
+  [A] Perkara kejahatan atau pelanggaran yang tidak termasuk ketentuan pasal 205 menurut penuntut umum pembuktian serta penerapan hukumnya mudah dan sifatnya sederhana
+  [B] Perkara yang diancam dengan pidana penjara atau kurungan paling lama 3 bulan dan / atau denda sebanyak – banyaknya Rp. 7.500,- dan penghinaan ringan.
+  [C] Perkara yang pembuktiannya serta penerapan hukumnya mudah
+  [D] Perkara kejahatan yang ancaman hukumnya lebih dari 5 tahun.
+Current CorrectAnswer: C
+Summary: Perkara yang pembuktiannya serta penerapan hukumnya mudah
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C.
+========================================================
+ID: 321 | Category: Hukum Acara Pidana | Topic: Pemeriksaan Saksi (KUHAP)
+Question: Jaksa penuntut umum dapat mengajukan saksi yang memberatkan, saksi ini disebut :
+  [A] Saksi a charge
+  [B] Saksi a de charge
+  [C] Saksi Testimonium de auditu
+  [D] Saksi Mahkota
+Current CorrectAnswer: A
+Summary: Saksi a charge
+LegalBasis: HIR (Het Herziene Inlandsch Reglement) / RBg.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 322 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Tenggang waktu mengajukan upaya hukum kasasi menurut KUHAP adalah :
+  [A] 7 hari sejak putusan dijatuhkan
+  [B] 14 hari setelah putusan diberikan kepada terdakwa
+  [C] 14 hari setelah putusan dikirim ke Pengadilan Negeri
+  [D] Tidak mengenal tenggang waktu
+Current CorrectAnswer: D
+Summary: Tidak mengenal tenggang waktu
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D.
+========================================================
+ID: 323 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Pemeriksaan tentang sah atau tidaknya suatu penangkapan atau penahanan dapat diajukan oleh :
+  [A] Tersangka, keluarga atau kuasanya
+  [B] Tersangka dan jaksa
+  [C] Tersangka dan keluarga korban dan jaksa
+  [D] Terdakwa
+Current CorrectAnswer: A
+Summary: Tersangka, keluarga atau kuasanya
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 324 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Berkas perkara yang dipelajari / diteliti olej penuntut umum ternyata belum lengkap. Untuk itu tindakan penuntut umum :
+  [A] Melimpahkan berkas perkara tersebut ke Pengadilan Negeri untuk disidangkan
+  [B] Membuat surat dakwaan
+  [C] Mengembalikan berkas perkara kepada penyidik, disertai petunjuk
+  [D] Menyidangkan perkara tersebut ke Pengadilan
+Current CorrectAnswer: C
+Summary: Penuntut umum mengembalikan berkas perkara belum lengkap kepada penyidik disertai petunjuk (P-19).
+LegalBasis: Pasal 110 ayat (2) jo. Pasal 138 ayat (2) KUHAP.
+Analysis: Pasal 138 ayat (2) KUHAP menegaskan jika penuntut umum berpendapat hasil penyidikan belum lengkap, penuntut umum segera mengembalikan berkas perkara kepada penyidik disertai petunjuk untuk dilengkapi.
+========================================================
+ID: 325 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Keterangan saksi ahli adalah apa yang saksi nyatakan di siding pengadilan mengenai hal :
+  [A] Yang dilihat sendiri oleh terdakwa
+  [B] Yang dialami sendiri oleh saksi
+  [C] Yang didengar sendiri oleh terdakwa
+  [D] Yang diketahui sendiri oleh penyidik
+Current CorrectAnswer: A
+Summary: Yang dilihat sendiri oleh terdakwa
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 326 | Category: Hukum Acara Pidana | Topic: Hukum Acara Pidana (KUHAP)
+Question: Berapa lama waktu yang diperlukan bagi penyidik untuk mnenentukan sikap apakah seseorang tersangka yang ditangkap, akan diteruskan dengan penahanan atau tidak?
+  [A] 2 hari
+  [B] 1 hari
+  [C] 1 minggu
+  [D] 2 minggu
+Current CorrectAnswer: D
+Summary: 2 minggu
+LegalBasis: Undang-Undang No. 8 Tahun 1981 (KUHAP).
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Pidana, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D.
+========================================================
+ID: 327 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Orang, badan hukum atau lembaga lain yang menerima jasa hukum dari Advokat dikenal dengan sebutan :
+  [A] Justisiabelen
+  [B] Pencari keadilan
+  [C] Klien
+  [D] Pasien
+Current CorrectAnswer: D
+Summary: Pasien
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D.
+========================================================
+ID: 328 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Sesuai dengan Pasal 72 KUHAP dan Pasal 17 UU advokat, maka advokat :
+  [A] Berhak mendampingi kliennya sejak ditangkap dan / atau ditahan
+  [B] Berhak mendapat berkas / dokumen untuk kepentingan pembelaan kliennya
+  [C] Berhak mendapatkan honorarium dari kliennya
+  [D] Berhak setiap saat menghubungi kliennya
+Current CorrectAnswer: A
+Summary: Berhak mendampingi kliennya sejak ditangkap dan / atau ditahan
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 329 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Dalam undang – undang Advokat diatur mengenai hak imunitas advokat yaitu :
+  [A] Hak advokat untuk memperoleh informasi atau data dari instansi pemerintah guna kepentingan suatu perkara
+  [B] Hak advokat untuk menolak suatu perkara jika diyakini tidak ada dasar hukumnya
+  [C] Hak advokat untuk dilindungi dari tuntutan pidana atau perdata ketika ia menjalankan tugas profesinya dengan itikad baik untuk kepentingan pembelaan klien dalam sidang pengadilan
+  [D] Jawaban a dan b benar.
+Current CorrectAnswer: C
+Summary: Hak advokat untuk dilindungi dari tuntutan pidana atau perdata ketika ia menjalankan tugas profesinya dengan itikad baik untuk kepentingan pembelaan klien dalam sidang pengadilan
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C.
+========================================================
+ID: 330 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Menurut Undang – undang No. 18 Tahun 2003, satu – satunya profesi yang memberikan jasa hukum adalah advokat :
+  [A] Pernyataan tersebut tidak benar
+  [B] Pernyataan tersebut benar
+  [C] Pernyataan tersebut bertentangan dengan kepentingan umum
+  [D] Pernyataan a, b, dan c adalah salah
+Current CorrectAnswer: B
+Summary: Pernyataan tersebut benar
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 331 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Profesi Advokat adalah profesi terhormat. Dikenal dengan istilah “profesi terhormat” tersebut :
+  [A] Honour profession
+  [B] Officium Juris
+  [C] Officium Nobile
+  [D] Respected Profession
+Current CorrectAnswer: C
+Summary: Profesi Advokat adalah officium nobile (profesi yang mulia dan terhormat).
+LegalBasis: Penjelasan Umum UU No. 18 Tahun 2003 jo. Kode Etik Advokat Indonesia.
+Analysis: Advokat sebagai profesi terhormat dan mulia (officium nobile) menjalankan fungsi penegakan hukum secara bebas dan mandiri serta terikat pada standar moral dan sumpah profesi.
+========================================================
+ID: 332 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Peran dan fungsi advokat ditingkay penyidikan menurut KUHAP bersifat :
+  [A] Pasif
+  [B] Aktif namun terbatas
+  [C] Terbatas dengan syarat
+  [D] Luas dan bebas
+Current CorrectAnswer: C
+Summary: Terbatas dengan syarat
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C.
+========================================================
+ID: 333 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Undang – undang yang mengatur tentang Profesi Advokat adalah :
+  [A] UU No. 14 Tahun 1985
+  [B] UU No. 18 Tahun 2004
+  [C] UU No. 18 Tahun 2003
+  [D] UU No. 20 Tahun 2003
+Current CorrectAnswer: C
+Summary: UU No. 18 Tahun 2003
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C.
+========================================================
+ID: 334 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Perhimpunan Advokat Indonesia ( PERADI ) lahir pada :
+  [A] 21 Desember 2004
+  [B] 18 Nopember 2004
+  [C] 5 April 2004
+  [D] 5 April 2004
+Current CorrectAnswer: B
+Summary: 18 Nopember 2004
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 335 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Anggota komisi Pengawasan Advokat terdiri dari unsur :
+  [A] Advokat senior, Para Ahli Akademik, dan Masyarakat
+  [B] Advokat, Para pensiunan hakim, dan LSM
+  [C] Advokat, tokoh – tokoh Masyarakat, dan LSM
+  [D] Advokat Senior, Para Ahli Akademin dan LSM
+Current CorrectAnswer: C
+Summary: Advokat, tokoh – tokoh Masyarakat, dan LSM
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C.
+========================================================
+ID: 336 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Wilayah hukum kerja praktek seorang advokat berdasarkan undang – undang No. 18 Tahun 2003 adalah :
+  [A] Semua wilayah hukum pengadilan di seluruh Indonesia
+  [B] Terbatas pada wilayah hukum Pengadilan Tinggi Setempat
+  [C] Terbatas hanya di wilayah hukum Pengadilan Negeri setempat
+  [D] Advokat sendiri bebas memilih wilayah tertentu suatu pengadilan Tinggi / pengadilan negeri.
+Current CorrectAnswer: C
+Summary: Terbatas hanya di wilayah hukum Pengadilan Negeri setempat
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C.
+========================================================
+ID: 337 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Tidak termasuk pengertian jasa hukum adalah :
+  [A] Memberikan konsultasi hukum, bantuan hukum, menjalankan kuasa dan keamanan klien.
+  [B] Mewakili dan mendampingi serta membela klien
+  [C] Melakukan tindakan lain untuk kepentingan klien
+  [D] Memberikan konsultasi hukum, bantuan hukum dan menjalankan kuasa
+Current CorrectAnswer: B
+Summary: Mewakili dan mendampingi serta membela klien
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 338 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Seorang advokat dapat dikenakan tindakan karena :
+  [A] Mengabaikan atau menelantarkan kepentingan kliennya
+  [B] Berbuat atay bertingkah laku tidak patut terhadap lawan atau rekan seprofesi
+  [C] Melakukan pelanggaran terhadap peraturan perundang – undangan atau perbuatan tercela
+  [D] Jawaban semua benar
+Current CorrectAnswer: D
+Summary: Jawaban semua benar
+LegalBasis: Regulasi Terkait Hukum Acara UPA PERADI.
+Analysis: Pilihan D merupakan jawaban yang paling tepat dan lengkap menurut kaidah perundang-undangan hukum formil Indonesia.
+========================================================
+ID: 339 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Jenis tindakan yang dikenakan advokat dapat berupa :
+  [A] Teguran lisan dan tertulis
+  [B] Teguran lisan dan tertulis serta pemberhentian sementara selama 3-12 tahun
+  [C] Teguran lisan, tertulis, dan pemberhentian sementara selama 3-12 tahun dan pemberhentian tetap.
+  [D] Jawaban semua salah.
+Current CorrectAnswer: A
+Summary: Teguran lisan dan tertulis
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 340 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Seorang advokat diberhentikan secara tetap karena :
+  [A] Permohonan diri
+  [B] Dijatuhi pidana karena melakukan tindak pidana yang diancam dengan hukuman 4 tahun penjara atau lebih.
+  [C] Keputusan organisasi advokat
+  [D] Jawaban semua benar.
+Current CorrectAnswer: D
+Summary: Jawaban semua benar.
+LegalBasis: Regulasi Terkait Hukum Acara UPA PERADI.
+Analysis: Pilihan D merupakan jawaban yang paling tepat dan lengkap menurut kaidah perundang-undangan hukum formil Indonesia.
+========================================================
+ID: 341 | Category: Kode Etik Profesi Advokat | Topic: Hak Imunitas Advokat
+Question: Pasal 16 UU Advokat jo Pasal 7 huruf g kode etik mengatur ketentuan hak Imunitas bagi seorang advokat dalam lingkup :
+  [A] Pidana
+  [B] Perdata
+  [C] Perdata dan Pidana
+  [D] Tata Usaha Negara
+Current CorrectAnswer: A
+Summary: Pidana
+LegalBasis: UU No. 5 Tahun 1986 jo. UU No. 51 Tahun 2009 tentang PTUN.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PTUN, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 342 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Profesi Advokat adalah profesi yang mulia dan terhormat dan karenanya dalam menjalankan profesi selaku penegak hukum di pengadilan sejajar dengan :
+  [A] Polisi
+  [B] Pemerintah
+  [C] Jaksa dan Hakim
+  [D] Semua Benar
+Current CorrectAnswer: D
+Summary: Semua Benar
+LegalBasis: Regulasi Terkait Hukum Acara UPA PERADI.
+Analysis: Pilihan D merupakan jawaban yang paling tepat dan lengkap menurut kaidah perundang-undangan hukum formil Indonesia.
+========================================================
+ID: 343 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Bolehkah seorang Advokat mencari publisitas bagi dirinya di media massa :
+  [A] Boleh, asalkan menggunakan uangnya sendiri
+  [B] Boleh, asalkan untuk menegakkan prinsip – prinsip hokum
+  [C] Boleh, agar masyarakat umum mengetahui bahwa kita seorang Advokat
+  [D] Tidak boleh, karena akan merugikan advokat yang lain.
+Current CorrectAnswer: B
+Summary: Boleh, asalkan untuk menegakkan prinsip – prinsip hokum
+LegalBasis: UU No. 18 Tahun 2003 tentang Advokat jo. KEAI 2002.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 344 | Category: Kode Etik Profesi Advokat | Topic: Rahasia Jabatan Advokat
+Question: Sampai kapankah kewajiban memegang rahasia jabatan profesi Advokat wajib untuk dijaga?
+  [A] Sampai dengan klien meninggal dunia
+  [B] Selama berlangsungnya proses hukum klien tersebut
+  [C] Selama rahasia tersebut belum dicantumkan dalam putusan pengadilan
+  [D] Selamanya, bahkan setelah berakhirnya hubungan dengan klien
+Current CorrectAnswer: D
+Summary: Kewajiban menjaga rahasia jabatan advokat berlaku selamanya, bahkan setelah hubungan dengan klien berakhir.
+LegalBasis: Pasal 19 ayat (2) UU No. 18 Tahun 2003 tentang Advokat jo. Pasal 4 huruf h Kode Etik Advokat Indonesia (KEAI).
+Analysis: Pasal 19 ayat (2) UU No. 18 Tahun 2003 dan Pasal 4 huruf h KEAI secara mutlak mewajibkan Advokat merahasiakan segala sesuatu yang diketahui atau diperoleh dari kliennya karena hubungan profesinya, dan kewajiban tersebut tetap berlaku walaupun hubungan hukum antara Advokat dan klien telah berakhir.
+========================================================
+ID: 345 | Category: Kode Etik Profesi Advokat | Topic: Hak Menolak Perkara
+Question: Bolehkah seorang advokat menolak calon kliennya yang meminta bantuan hukum?
+  [A] Boleh, dengan pertimbangan tidak sesuai dengan keahliannya dan bertentangan dengan hati nuraninya
+  [B] Tidak boleh, karena agama atau partai calon klien berbeda dengan yang dimiliki oleh advokat tersebut
+  [C] Tidak boleh, karena advokat wajib menerima setiap orang tanpa kecuali
+  [D] Boleh ditolak hanya apabila calon klien tidak mampu membayar honorarium di muka
+Current CorrectAnswer: A
+Summary: Advokat berhak menolak perkara jika tidak sesuai keahlian atau bertentangan dengan hati nuraninya.
+LegalBasis: Pasal 3 huruf a Kode Etik Advokat Indonesia (KEAI) jo. Pasal 18 UU No. 18 Tahun 2003.
+Analysis: Pasal 3 huruf a KEAI menegaskan: 'Advokat dapat menolak untuk memberi nasihat dan bantuan hukum kepada setiap orang yang memerlukan jasa dan atau bantuan hukum dengan pertimbangan oleh karena tidak sesuai dengan keahliannya dan bertentangan dengan hati nuraninya.' Penolakan tidak boleh didasarkan pada SARA atau pandangan politik.
+========================================================
+ID: 346 | Category: Kode Etik Profesi Advokat | Topic: Sanksi Pelanggaran Kode Etik
+Question: Jika seorang advokat dijatuhi sanksi berupa pemberhentian sementara untuk waktu tertentu oleh Dewan Kehormatan, maka akibat hukumnya adalah:
+  [A] Advokat tersebut hanya dapat menjalankan profesinya di luar sidang pengadilan
+  [B] Advokat tersebut hanya dapat memberikan konsultasi hukum tertulis
+  [C] Advokat tersebut masih dapat beracara bila didampingi advokat senior
+  [D] Advokat tersebut tidak dapat menjalankan profesinya, baik di dalam maupun di luar sidang pengadilan
+Current CorrectAnswer: D
+Summary: Pemberhentian sementara melarang advokat berpraktek baik di dalam maupun di luar pengadilan selama masa sanksi.
+LegalBasis: Pasal 7 ayat (1) huruf c Kode Etik Advokat Indonesia jo. Pasal 26 UU No. 18 Tahun 2003.
+Analysis: Sanksi pemberhentian sementara (skorsing) berakibat advokat dilarang total menjalankan profesinya, baik di dalam pengadilan (litigasi) maupun di luar pengadilan (non-litigasi/konsultasi) selama jangka waktu berlakunya putusan skorsing tersebut.
+========================================================
+ID: 347 | Category: Kode Etik Profesi Advokat | Topic: Hubungan Antar Teman Sejawat
+Question: Bagaimanakah hubungan advokat dengan teman sejawatnya dalam menjalankan profesinya di masyarakat?
+  [A] Advokat harus saling menjatuhkan reputasi rekan agar mendapatkan klien terbanyak
+  [B] Advokat harus menjunjung tinggi nilai-nilai profesinya dengan dilandasi sikap saling menghormati, saling menghargai, dan saling mempercayai sesama rekan seprofesi
+  [C] Advokat harus mampu bersaing bebas tanpa perlu memikirkan kode etik antar rekan
+  [D] Teman sejawat advokat semata-mata adalah kompetitor bisnis di pasar jasa hukum
+Current CorrectAnswer: B
+Summary: Hubungan antar teman sejawat advokat dilandasi sikap saling menghormati, menghargai, dan mempercayai.
+LegalBasis: Pasal 5 huruf a Kode Etik Advokat Indonesia (KEAI).
+Analysis: Pasal 5 huruf a KEAI menegaskan: 'Hubungan antara teman sejawat Advokat berdasarkan atas sikap saling menghormati, saling menghargai dan saling mempercayai.' Sikap menjatuhkan teman sejawat dilarang keras sebagai pelanggaran etik.
+========================================================
+ID: 348 | Category: Kode Etik Profesi Advokat | Topic: Bantuan Hukum Cuma-Cuma (Pro Bono)
+Question: Jasa hukum yang diberikan oleh advokat secara cuma-cuma (tanpa imbalan) kepada klien yang tidak mampu disebut:
+  [A] Honorarium Kontinjensi
+  [B] Bantuan hukum (Pro bono publico)
+  [C] Sumbangan sosial sukarela
+  [D] Retainer fee
+Current CorrectAnswer: B
+Summary: Jasa hukum cuma-cuma bagi masyarakat tidak mampu adalah bantuan hukum (pro bono publico).
+LegalBasis: Pasal 22 ayat (1) UU No. 18 Tahun 2003 tentang Advokat jo. PP No. 83 Tahun 2008.
+Analysis: Pasal 22 ayat (1) UU No. 18 Tahun 2003 mewajibkan Advokat memberikan bantuan hukum secara cuma-cuma (pro bono publico) kepada pencari keadilan yang tidak mampu.
+========================================================
+ID: 349 | Category: Kode Etik Profesi Advokat | Topic: Pengangkatan & Sumpah Advokat
+Question: Sebelum menjalankan profesinya, advokat wajib bersumpah menurut agamanya atau berjanji dengan sungguh-sungguh dalam sidang terbuka di:
+  [A] Pengadilan Negeri di wilayah domisili hukumnya
+  [B] Pengadilan Tinggi di wilayah domisili hukumnya
+  [C] Kementerian Hukum dan Hak Asasi Manusia Republik Indonesia
+  [D] Gedung Mahkamah Agung Republik Indonesia
+Current CorrectAnswer: B
+Summary: Sumpah/janji advokat dilaksanakan dalam sidang terbuka Pengadilan Tinggi di wilayah domisili hukum advokat.
+LegalBasis: Pasal 4 ayat (1) UU No. 18 Tahun 2003 tentang Advokat.
+Analysis: Pasal 4 ayat (1) UU No. 18 Tahun 2003 menyatakan: 'Sebelum menjalankan profesinya, Advokat wajib bersumpah menurut agamanya atau berjanji dengan sungguh-sungguh di sidang terbuka Pengadilan Tinggi di wilayah domisili hukumnya.'
+========================================================
+ID: 350 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Pengangkatan seorang advokat menurut Undang-Undang No. 18 Tahun 2003 dilakukan oleh:
+  [A] Mahkamah Agung
+  [B] Departemen Hukum dan HAM
+  [C] Kejaksaan Agung
+  [D] Organisasi Advokat
+Current CorrectAnswer: D
+Summary: Pengangkatan advokat dilakukan oleh Organisasi Advokat.
+LegalBasis: Pasal 2 ayat (2) UU No. 18 Tahun 2003 tentang Advokat.
+Analysis: Pasal 2 ayat (2) UU No. 18 Tahun 2003 menegaskan: 'Pengangkatan Advokat dilakukan oleh Organisasi Advokat.' Salinan surat keputusan pengangkatan tersebut disampaikan kepada Mahkamah Agung dan Menteri Hukum.
+========================================================
+ID: 351 | Category: Kode Etik Profesi Advokat | Topic: Etika & Profesi Advokat Indonesia
+Question: Undang-Undang Advokat memberikan kewenangan yang cukup besar kepada Organisasi Advokat, antara lain kewenangan untuk:
+  [A] Mengadakan ujian bagi calon advokat
+  [B] Melakukan pengangkatan advokat
+  [C] Melakukan tindakan pengawasan dan pemberhentian advokat
+  [D] Semua jawaban benar (Ujian, pengangkatan, pengawasan, dan pemberhentian advokat)
+Current CorrectAnswer: D
+Summary: Organisasi Advokat berwenang menyelenggarakan ujian, mengangkat, mengawasi, dan memberhentikan advokat.
+LegalBasis: Pasal 2, 3, 9, 12, dan 26 UU No. 18 Tahun 2003 tentang Advokat.
+Analysis: Undang-Undang No. 18 Tahun 2003 memberikan mandat mandiri (self-regulating organization) kepada Organisasi Advokat untuk menguji, mengangkat, mengawasi, serta menindak/memberhentikan anggotanya melalui Dewan Kehormatan.
+========================================================
+ID: 352 | Category: Kode Etik Profesi Advokat | Topic: Larangan Rangkap Jabatan
+Question: Berdasarkan Pasal 28 ayat (3) UU No. 18 Tahun 2003, pimpinan Organisasi Advokat dilarang merangkap jabatan sebagai:
+  [A] Dosen atau akademisi di perguruan tinggi
+  [B] Pimpinan Partai Politik, baik di tingkat Pusat maupun Daerah
+  [C] Ketua yayasan sosial atau keagamaan
+  [D] Pengurus organisasi bantuan hukum pro bono
+Current CorrectAnswer: B
+Summary: Pimpinan Organisasi Advokat tidak dapat merangkap sebagai pimpinan partai politik.
+LegalBasis: Pasal 28 ayat (3) UU No. 18 Tahun 2003 tentang Advokat.
+Analysis: Pasal 28 ayat (3) UU Advokat secara tegas menentukan: 'Pimpinan Organisasi Advokat tidak dapat merangkap sebagai pimpinan partai politik, baik di tingkat Pusat maupun di tingkat Daerah.' Tujuannya menjaga independensi dan kemandirian wadah advokat dari kepentingan politik partisan.
+========================================================
+ID: 353 | Category: Kode Etik Profesi Advokat | Topic: Kelengkapan Beracara Advokat
+Question: Kelengkapan yuridis apa yang wajib ditunjukkan oleh advokat dalam persidangan di pengadilan agar sah mendampingi atau mewakili kliennya?
+  [A] Kartu Tanda Penduduk (KTP) dan Ijazah Sarjana Hukum
+  [B] Surat Keterangan Catatan Kepolisian (SKCK) dan Pasfoto
+  [C] Kartu Tanda Pengenal Advokat (KTPA) yang masih berlaku dan Surat Kuasa Khusus
+  [D] Surat Rekomendasi dari Kejaksaan Negeri setempat
+Current CorrectAnswer: C
+Summary: Advokat wajib menunjukkan KTPA yang masih berlaku serta Surat Kuasa Khusus yang sah saat sidang pengadilan.
+LegalBasis: Pasal 5 jo. Pasal 30 UU No. 18 Tahun 2003 jo. Surat Edaran Mahkamah Agung RI.
+Analysis: Dalam setiap persidangan perkara, Majelis Hakim melakukan pemeriksaan identitas kuasa hukum berupa Kartu Tanda Pengenal Advokat (KTPA)/Berita Acara Sumpah dan Surat Kuasa Khusus yang memenuhi syarat Pasal 123 HIR / Pasal 147 RBg.
+========================================================
+ID: 354 | Category: Hukum Acara PTUN | Topic: Hukum Acara Tata Usaha Negara
+Question: Putusan Pengadilan Tata Usaha Negara dapat berupa :
+  [A] Gugatan tidak diterima atau gugur
+  [B] Guagatan ditolak atau dikabulkan
+  [C] Gugatan ditolak atau dikabulkan atau tidak diterima
+  [D] Jawaban a dan b benar
+Current CorrectAnswer: D
+Summary: Jawaban a dan b benar
+LegalBasis: UU No. 5 Tahun 1986 jo. UU No. 51 Tahun 2009 tentang PTUN.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PTUN, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D.
+========================================================
+ID: 355 | Category: Hukum Acara Perdata | Topic: Hukum Acara Perdata (HIR/RBg)
+Question: Dalam acara pemeriksaan persiapan kepada penggugat diberikan waktu 30 hari untuk memperbaiki gugatan / melengkapinya dengan data yang diperlukan. Apabila dalam jangka waktu itu Penggugat tidak memperbaiki / melengkapinya maka hakim akan mengeluarkan putusan bahwa gugatan tidak dapat diterima. Terhadap putusan tersebut maka penggugat :
+  [A] Dapat mengajukan gugatan baru
+  [B] Dapat mengajukan banding
+  [C] Dapat mengajukan perlawanan
+  [D] Jawaban b dan c benar
+Current CorrectAnswer: A
+Summary: Dapat mengajukan gugatan baru
+LegalBasis: HIR (Het Herziene Inlandsch Reglement) / RBg.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 356 | Category: Hukum Acara Perdata | Topic: Hukum Acara Perdata (HIR/RBg)
+Question: Tidak termasuk unsure keputusan adalah :
+  [A] Penetapan tertulis
+  [B] Bersifat konkrit, individual dan final
+  [C] Peraturan bersifat umum
+  [D] Menimbulkan akibat hukum bagi seorang atau badan hukum perdata.
+Current CorrectAnswer: A
+Summary: Penetapan tertulis
+LegalBasis: HIR (Het Herziene Inlandsch Reglement) / RBg.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 357 | Category: Hukum Acara PTUN | Topic: Hukum Acara Tata Usaha Negara
+Question: Setelah putusan pengadilan tata usaha Negara sudah mempunyai kekuatan hukum tetap, namun tergugat tidak bersedia melaksanakan putusan pengadilan maka terhadap pejabat yang bersangkutan dapat dikenakan :
+  [A] Sanksi pidana penjara dan administrative
+  [B] Diumumkan pada media massa setempat oleh panitera pengadilan tata usaha Negara
+  [C] Upaya paksa berupa pembayaran sejumlah uang paksa dan atau sankisi administrative serta diumumkan di media massa cetak setempat oleh panitera pengadilan tata usaha Negara
+  [D] Saksi administrative dan dikeluarkan dari instansi dimana ia bekerja
+Current CorrectAnswer: C
+Summary: Upaya paksa berupa pembayaran sejumlah uang paksa dan atau sankisi administrative serta diumumkan di media massa cetak setempat oleh panitera pengadilan tata usaha Negara
+LegalBasis: UU No. 5 Tahun 1986 jo. UU No. 51 Tahun 2009 tentang PTUN.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PTUN, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C.
+========================================================
+ID: 358 | Category: Hukum Acara PTUN | Topic: Hukum Acara Tata Usaha Negara
+Question: Dalam hal gugatan dikabulkan, maka dalam putusan pengadilan tersebut dapat ditempatkan kewajiban yang harus dilakukan oleh Badan atau Pejabat Tata Usaha Negara yang mengeluarkan Keputusan Tata Usaha Negara berupa :
+  [A] Kewajiban pencabutan Keputusan Tata Usaha Negara yang bersangkutan
+  [B] Pencabutan Keputusan Tata Usaha Negara yang bersangkutan dan menerbitkan keputusan tata usaha Negara yang baru
+  [C] Penerbitan keputusan tata usaha Negara
+  [D] Ketiga – tiganya benar
+Current CorrectAnswer: C
+Summary: Penerbitan keputusan tata usaha Negara
+LegalBasis: UU No. 5 Tahun 1986 jo. UU No. 51 Tahun 2009 tentang PTUN.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PTUN, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C.
+========================================================
+ID: 359 | Category: Hukum Acara PTUN | Topic: Hukum Acara Tata Usaha Negara
+Question: Masuknya pihak ketiga dalam PTUN terjadi karena :
+  [A] Permintaan pihak penggugat
+  [B] Permintaan pihak tergugat
+  [C] Prakarsa hakim
+  [D] Jawaban semua benar
+Current CorrectAnswer: D
+Summary: Jawaban semua benar
+LegalBasis: Regulasi Terkait Hukum Acara UPA PERADI.
+Analysis: Pilihan D merupakan jawaban yang paling tepat dan lengkap menurut kaidah perundang-undangan hukum formil Indonesia.
+========================================================
+ID: 360 | Category: Hukum Acara PTUN | Topic: Hukum Acara Tata Usaha Negara
+Question: Objek sengketa pada peradilan tata usaha Negara ( PTUN ) adalah :
+  [A] Bezhikking
+  [B] Regeling
+  [C] Hak uji materiil
+  [D] Materialledaad
+Current CorrectAnswer: B
+Summary: Regeling
+LegalBasis: UU No. 5 Tahun 1986 jo. UU No. 51 Tahun 2009 tentang PTUN.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PTUN, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 361 | Category: Hukum Acara PTUN | Topic: Hukum Acara Tata Usaha Negara
+Question: Undang – undang tentang Peradilan tata Usaha Negara telah dua kali mengalami perubahan / penyempurnaan ke dalam undang – undang :
+  [A] UU No. 5/1960 direvisi dengan UU no. 8/2004
+  [B] UU No. 5/1986 direvisi dengan UU No. 9/2004
+  [C] UU No. 9/2004 direvisi dengan UU No. 51/2009
+  [D] UU No. 15/1986 direvisi dengan UU no. 9/2004
+Current CorrectAnswer: B
+Summary: UU No. 5/1986 direvisi dengan UU No. 9/2004
+LegalBasis: UU No. 5 Tahun 1986 jo. UU No. 51 Tahun 2009 tentang PTUN.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PTUN, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 362 | Category: Hukum Acara PTUN | Topic: Hukum Acara Tata Usaha Negara
+Question: Berwenang memeriksa, memutus dan menyelesaikan sengketa kepegawaian adalah menjadi kewenangan :
+  [A] Pengadilan umum
+  [B] Pengadilan Kepegawaian
+  [C] Pengadilan tata usaha Negara
+  [D] Pengadilan negeri
+Current CorrectAnswer: D
+Summary: Pengadilan negeri
+LegalBasis: UU No. 5 Tahun 1986 jo. UU No. 51 Tahun 2009 tentang PTUN.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PTUN, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D.
+========================================================
+ID: 363 | Category: Hukum Acara PTUN | Topic: Hukum Acara Tata Usaha Negara
+Question: Di bawah ini adalah alat bukti dalam Tata Usaha Negara kecuali :
+  [A] Surat atau tulisan
+  [B] Keterangan ahli
+  [C] Pengakuan terdakwa
+  [D] Pengetahuan hakim
+Current CorrectAnswer: A
+Summary: Surat atau tulisan
+LegalBasis: UU No. 5 Tahun 1986 jo. UU No. 51 Tahun 2009 tentang PTUN.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PTUN, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 364 | Category: Hukum Acara PTUN | Topic: Hukum Acara Tata Usaha Negara
+Question: PTUN berkedudukan di :
+  [A] Di Kotamadya atau di Ibukota Kabupaten
+  [B] Di Ibukota Kabupaten dan Pemerintah Kota
+  [C] Di Ibukota Propinsi dan Pemerintahan
+  [D] Semuanya benar
+Current CorrectAnswer: C
+Summary: Di Ibukota Propinsi dan Pemerintahan
+LegalBasis: UU No. 5 Tahun 1986 jo. UU No. 51 Tahun 2009 tentang PTUN.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PTUN, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C.
+========================================================
+ID: 365 | Category: Hukum Acara Perdata | Topic: Sita Revindikasi (Revindicatoir Beslag)
+Question: Sita Revindikasi (Revindicatoir Beslaag) berdasarkan Pasal 226 HIR / 260 RBg dapat dimintakan terhadap:
+  [A] Barang tidak bergerak milik pihak ketiga yang dikuasai tergugat
+  [B] Barang tidak bergerak milik penggugat yang dikuasai oleh tergugat
+  [C] Barang bergerak milik penggugat yang berada di bawah penguasaan tergugat
+  [D] Barang bergerak milik pihak ketiga yang disengketakan
+Current CorrectAnswer: C
+Summary: Sita revindikasi diajukan oleh pemilik barang bergerak untuk menuntut kembali barang bergeraknya yang dikuasai tergugat.
+LegalBasis: Pasal 226 HIR / Pasal 260 RBg.
+Analysis: Revindicatoir beslag adalah penyitaan atas barang bergerak milik Penggugat sendiri yang berada di tangan Tergugat tanpa hak, guna menuntut pengembalian hak milik tersebut secara utuh.
+========================================================
+ID: 366 | Category: Hukum Acara Perdata | Topic: Kompetensi Relatif (Forum Rei Sitae)
+Question: Pada asasnya gugatan perdata diajukan ke Pengadilan Negeri tempat tinggal Tergugat. Namun terhadap gugatan yang objek perkaranya berupa benda tidak bergerak, gugatan diajukan ke:
+  [A] Pengadilan Negeri tempat tinggal Penggugat
+  [B] Pengadilan Negeri tempat terjadinya perjanjian utang-piutang
+  [C] Pengadilan Negeri di mana benda tidak bergerak itu terletak (forum rei sitae)
+  [D] Pengadilan Negeri Jakarta Pusat sebagai peradilan umum pusat
+Current CorrectAnswer: C
+Summary: Gugatan atas benda tidak bergerak diajukan di Pengadilan Negeri tempat benda itu terletak (forum rei sitae).
+LegalBasis: Pasal 118 ayat (3) HIR / Pasal 142 ayat (3) RBg.
+Analysis: Pasal 118 ayat (3) HIR mengatur pengecualian asas actor sequitur forum rei: bilamana gugatan mengenai barang tidak bergerak (tanah/bangunan), gugatan diajukan kepada Pengadilan Negeri yang daerah hukumnya meliputi tempat letak barang tidak bergerak tersebut (forum rei sitae).
+========================================================
+ID: 367 | Category: Hukum Acara Perdata | Topic: Intervensi dalam Perkara Perdata
+Question: Suatu aksi hukum oleh pihak ketiga yang berkepentingan dengan jalan masuk ke dalam perkara perdata yang sedang berlangsung antara penggugat dan tergugat untuk memihak salah satu pihak (misalnya bersama tergugat) disebut:
+  [A] Rekonvensi
+  [B] Voeging (Menyertai)
+  [C] Tussenkomst (Menengahi)
+  [D] Vrijwaring (Penjaminan)
+Current CorrectAnswer: B
+Summary: Pihak ketiga yang masuk bergabung untuk membela atau memihak salah satu pihak disebut Voeging.
+LegalBasis: Pasal 279-282 Reglement op de Rechtsvordering (Rv).
+Analysis: Voeging adalah campur tangan pihak ketiga yang berkepentingan untuk bergabung dengan salah satu pihak (Penggugat atau Tergugat). Sedangkan bila pihak ketiga menuntut hak miliknya sendiri melawan Penggugat dan Tergugat sekaligus disebut Tussenkomst.
+========================================================
+ID: 368 | Category: Hukum Acara Perdata | Topic: Upaya Hukum Putusan Verstek
+Question: Upaya hukum biasa yang dapat diajukan oleh pihak Tergugat terhadap putusan verstek (putusan tanpa hadirnya Tergugat) adalah:
+  [A] Banding langsung ke Pengadilan Tinggi
+  [B] Kasasi ke Mahkamah Agung
+  [C] Verzet (Perlawanan) kepada Pengadilan Negeri yang memutus
+  [D] Peninjauan Kembali (PK)
+Current CorrectAnswer: C
+Summary: Upaya hukum terhadap putusan verstek adalah Verzet (perlawanan).
+LegalBasis: Pasal 129 HIR / Pasal 153 RBg.
+Analysis: Berdasarkan Pasal 129 HIR, Tergugat yang dijatuhi putusan verstek dapat mengajukan verzet (perlawanan) dalam tenggang waktu 14 hari setelah putusan diberitahukan kepadanya secara langsung.
+========================================================
+ID: 369 | Category: Hukum Acara Perdata | Topic: Putusan Verstek
+Question: Putusan yang dijatuhkan oleh Majelis Hakim pada sidang pertama karena pihak Tergugat tidak hadir tanpa alasan yang sah meskipun telah dipanggil secara resmi dan patut disebut:
+  [A] Putusan In Absentia
+  [B] Putusan Sela
+  [C] Putusan Verstek
+  [D] Derden Verzet
+Current CorrectAnswer: C
+Summary: Putusan di luar hadirnya Tergugat dalam perkara perdata adalah putusan verstek.
+LegalBasis: Pasal 125 ayat (1) HIR / Pasal 149 ayat (1) RBg.
+Analysis: Putusan verstek dijatuhkan apabila tergugat tidak datang pada hari sidang yang ditentukan dan tidak menyuruh wakilnya yang sah meskipun telah dipanggil dengan patut, serta tidak mengajukan eksepsi kompetensi.
+========================================================
+ID: 370 | Category: Hukum Acara Perdata | Topic: Pembuktian Surat
+Question: Kekuatan pembuktian surat akta di muka sidang pengadilan terutama terletak pada:
+  [A] Keaslian dan kebenaran tanda tangan serta isi yang tertuang di dalamnya
+  [B] Panjangnya tulisan
+  [C] Fotokopi yang dilegalisasi lurah
+  [D] Cap jempol tanpa verifikasi
+Current CorrectAnswer: A
+Summary: Nilai pembuktian akta bertumpu pada keaslian tanda tangan dan kebenaran isi aktanya.
+LegalBasis: Pasal 1868-1875 KUHPerdata jo. Pasal 165 HIR.
+Analysis: Kekuatan pembuktian akta (formal dan materiil) melekat pada keaslian tanda tangan para penandatangan serta kepastian tanggal dan substansi peristiwa hukum yang dituangkan.
+========================================================
+ID: 371 | Category: Kode Etik Profesi Advokat | Topic: Surat Kuasa Khusus
+Question: Untuk mewakili klien beracara di muka persidangan pengadilan, disyaratkan secara tegas menggunakan surat kuasa yang bersifat:
+  [A] Kuasa lisan saja
+  [B] Kuasa Umum
+  [C] Surat Kuasa Khusus
+  [D] Kuasa Insidentil dari RT setempat
+Current CorrectAnswer: C
+Summary: Mewakili di pengadilan wajib menggunakan Surat Kuasa Khusus.
+LegalBasis: Pasal 123 ayat (1) HIR jo. SEMA No. 1 Tahun 1971 jo. SEMA No. 6 Tahun 1994.
+Analysis: SEMA No. 1/1971 dan SEMA No. 6/1994 mewajibkan surat kuasa untuk beracara di pengadilan berbentuk surat kuasa khusus yang menyebutkan para pihak, objek perkara, dan pengadilan yang bersangkutan.
+========================================================
+ID: 372 | Category: Hukum Acara Arbitrase & APS | Topic: Definisi Mediasi (PERMA 1/2016)
+Question: Pengertian mediasi menurut Peraturan Mahkamah Agung (PERMA) No. 1 Tahun 2016 adalah:
+  [A] Penyelesaian sengketa melalui putusan sepihak hakim komisaris
+  [B] Cara penyelesaian sengketa melalui proses perundingan untuk memperoleh kesepakatan Para Pihak dengan dibantu oleh Mediator
+  [C] Proses banding perkara ke Pengadilan Tinggi
+  [D] Penyelesaian sengketa melalui eksekusi lelang paksa
+Current CorrectAnswer: B
+Summary: Mediasi adalah perundingan para pihak dengan bantuan mediator untuk mencapai kesepakatan perdamaian.
+LegalBasis: Pasal 1 angka 1 PERMA No. 1 Tahun 2016 tentang Prosedur Mediasi di Pengadilan.
+Analysis: Berdasarkan Pasal 1 angka 1 PERMA No. 1/2016: 'Mediasi adalah cara penyelesaian sengketa melalui proses perundingan untuk memperoleh kesepakatan Para Pihak dengan dibantu oleh Mediator.'
+========================================================
+ID: 373 | Category: Hukum Acara Perdata | Topic: Pencabutan Gugatan
+Question: Berdasarkan Pasal 271 dan 272 Rv (Reglement op de Rechtsvordering), pencabutan gugatan secara sepihak oleh Penggugat tanpa persetujuan Tergugat dapat dilakukan:
+  [A] Sewaktu-waktu sampai sebelum putusan kasasi dibacakan
+  [B] Setelah Tergugat menyampaikan jawaban pokok perkara
+  [C] Sebelum Tergugat memberikan jawaban atas gugatan
+  [D] Hanya saat tahap pembuktian surat selesai
+Current CorrectAnswer: C
+Summary: Pencabutan gugatan dapat dilakukan secara bebas sebelum Tergugat memberikan jawaban.
+LegalBasis: Pasal 271 dan Pasal 272 Reglement op de Rechtsvordering (Rv).
+Analysis: Penggugat berhak mencabut gugatannya secara sepihak sebelum Tergugat menyampaikan jawabannya. Apabila Tergugat telah menyampaikan jawaban (eksepsi/bantahan pokok perkara), pencabutan hanya sah jika disetujui oleh Tergugat.
+========================================================
+ID: 374 | Category: Hukum Acara Perdata | Topic: Anatomi Gugatan (Petitum)
+Question: Surat gugatan perdata terdiri atas bagian Identitas, Posita (Fundamentum Petendi), dan Petitum. Yang dimaksud dengan Petitum adalah:
+  [A] Bagian gugatan yang menguraikan identitas lengkap para pihak
+  [B] Bagian gugatan yang memaparkan kronologis fakta dan hubungan hukum peristiwa
+  [C] Bagian gugatan yang memuat hal-hal yang dimohonkan atau dituntut oleh Penggugat untuk diputus oleh hakim
+  [D] Bagian pertimbangan hukum majelis hakim sebelum vonis
+Current CorrectAnswer: C
+Summary: Petitum adalah tuntutan apa saja yang dimintakan oleh penggugat kepada hakim untuk dikabulkan.
+LegalBasis: Pasal 118 jo. Pasal 125 HIR jo. Yurisprudensi Mahkamah Agung RI.
+Analysis: Petitum berisi permohonan konkret dari penggugat kepada majelis hakim (misalnya menyatakan tergugat wanprestasi, menghukum ganti rugi, menyatakan sita jaminan sah dan berharga). Posita berisi uraian fakta dan dalil hukum.
+========================================================
+ID: 375 | Category: Hukum Acara Perdata | Topic: Alat Bukti Hukum Acara Perdata
+Question: Berdasarkan ketentuan Pasal 164 HIR / Pasal 284 RBg jo. Pasal 1866 KUHPerdata, alat-alat bukti yang sah dalam hukum acara perdata terdiri atas:
+  [A] Surat, Saksi, Pengetahuan Hakim, Keyakinan Hakim, dan Sumpah
+  [B] Surat, Saksi, Yurisprudensi, Keyakinan Hakim, dan Sumpah
+  [C] Surat, Keterangan Terdakwa, Petunjuk, dan Saksi Ahli
+  [D] Alat bukti Surat, Saksi, Persangkaan, Pengakuan, dan Sumpah
+Current CorrectAnswer: D
+Summary: Alat bukti perdata menurut Pasal 164 HIR adalah surat, saksi, persangkaan, pengakuan, dan sumpah.
+LegalBasis: Pasal 164 HIR / Pasal 284 RBg jo. Pasal 1866 KUHPerdata.
+Analysis: Pasal 164 HIR mengatur 5 alat bukti sah secara urut: 1. Bukti tulisan/surat; 2. Bukti saksi; 3. Persangkaan (vermoedens); 4. Pengakuan (bekentenis); 5. Sumpah (eed). Keyakinan hakim bukan alat bukti formil melainkan standar penilaian pembuktian pidana.
+========================================================
+ID: 376 | Category: Hukum Acara Perdata | Topic: Beban Pembuktian Perdata
+Question: Berdasarkan asas pembuktian perdata dalam Pasal 163 HIR jo. Pasal 1865 KUHPerdata, pihak yang berkewajiban membuktikan dalil dalam persidangan adalah:
+  [A] Hanya pihak Penggugat saja tanpa kecuali
+  [B] Hanya pihak Tergugat saja
+  [C] Penggugat dan Tergugat (barangsiapa mendalilkan mempunyai hak atau membantah hak orang lain wajib membuktikannya)
+  [D] Majelis Hakim secara ex-officio aktif mencari barang bukti
+Current CorrectAnswer: C
+Summary: Beban pembuktian dipikul oleh pihak yang mendalilkan hak atau membantah hak pihak lain.
+LegalBasis: Pasal 163 HIR / Pasal 283 RBg jo. Pasal 1865 KUHPerdata.
+Analysis: Asas 'Actori incumbit probatio' menegaskan bahwa penggugat wajib membuktikan dalil gugatannya, dan tergugat wajib membuktikan dalil bantahan atau sangkalannya.
+========================================================
+ID: 377 | Category: Hukum Acara Perdata | Topic: Tuntutan Hak (Gugatan vs Permohonan)
+Question: Tuntutan hak ke pengadilan perdata yang di dalamnya mengandung perselisihan atau sengketa antara dua pihak atau lebih disebut:
+  [A] Gugatan (Jurisdictio Contentiosa)
+  [B] Permohonan (Jurisdictio Voluntaria)
+  [C] Perdamaian di luar sidang
+  [D] Eksaminasi publik
+Current CorrectAnswer: A
+Summary: Tuntutan hak yang mengandung sengketa pihak-pihak disebut gugatan (contentiosa).
+LegalBasis: Pasal 118 HIR / Pasal 142 RBg.
+Analysis: Perkara perdata dibagi dua: Gugatan (contentiosa) yang mengandung konflik dua pihak (Penggugat vs Tergugat) dan menghasilkan Putusan (vonnis); serta Permohonan (voluntaria) yang bersifat sepihak tanpa sengketa dan menghasilkan Penetapan (beschikking).
+========================================================
+ID: 378 | Category: Hukum Acara Perdata | Topic: Bentuk Pengajuan Gugatan
+Question: Berdasarkan ketentuan Pasal 118 ayat (1) dan Pasal 120 HIR, pengajuan suatu gugatan perdata ke Pengadilan Negeri dapat disampaikan secara:
+  [A] Mutlak wajib tertulis dengan akta notariil
+  [B] Hanya boleh lisan
+  [C] Tertulis, atau secara lisan kepada Ketua Pengadilan Negeri bagi yang buta huruf
+  [D] Melalui siaran pers media elektronik
+Current CorrectAnswer: C
+Summary: Gugatan perdata pada dasarnya diajukan tertulis, namun bagi yang buta huruf diperkenankan secara lisan.
+LegalBasis: Pasal 118 ayat (1) jo. Pasal 120 HIR.
+Analysis: Pasal 120 HIR memberi kemudahan akses keadilan (access to justice) bagi pihak yang buta huruf untuk mengajukan gugatan secara lisan kepada Ketua Pengadilan Negeri, yang selanjutnya mencatat atau menyuruh mencatat gugatan tersebut.
+========================================================
+ID: 379 | Category: Hukum Acara Perdata | Topic: Sita Jaminan (Conservatoir Beslag)
+Question: Sita Jaminan (Conservatoir Beslaag) berdasarkan Pasal 227 HIR dapat dimintakan penyitaannya terhadap:
+  [A] Barang bergerak maupun barang tidak bergerak milik Tergugat
+  [B] Barang milik pihak ketiga yang tidak tersangkut perkara
+  [C] Harta warisan milik saksi persidangan
+  [D] Aset lembaga pemerintah yang dilindungi undang-undang keuangan negara
+Current CorrectAnswer: A
+Summary: Sita jaminan diletakkan atas barang bergerak atau tidak bergerak milik Tergugat guna menjamin pelaksanaan putusan.
+LegalBasis: Pasal 227 HIR / Pasal 261 RBg.
+Analysis: Sita jaminan (conservatoir beslag) bertujuan membekukan aset debitur/tergugat agar tidak dipindahtangankan, disembunyikan, atau dialihkan selama perkara berjalan, sehingga putusan pengadilan tidak menjadi hampa (illusoir).
+========================================================
+ID: 380 | Category: Hukum Acara PHI | Topic: Penyelesaian Perselisihan Hubungan Industrial
+Question: Tenggang waktu penyelesaian perselisihan hubungan industrial pada pengadilan hubungan industrial adalah :
+  [A] 50 hari sejak sidang pertama
+  [B] 30 hari sejak sidang pertama
+  [C] 50 hari sejak sidang pertama, bila belum selesai dapat diperpanjang tidak lebih dari 14 hari
+  [D] 30 hari sejak sidang pertama, bila belum selesai dapat diperpanjang tidak lebih dari 14 hari.
+Current CorrectAnswer: B
+Summary: 30 hari sejak sidang pertama
+LegalBasis: UU No. 2 Tahun 2004 tentang PPHI.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 381 | Category: Hukum Acara PHI | Topic: Penyelesaian Perselisihan Hubungan Industrial
+Question: Berdasarkan pengertian perselisihan, maka dikenal 4 objek perselisihan kecuali :
+  [A] Perselisihan hak
+  [B] Perselisihan kepentingan
+  [C] Perselisihan pemutusan hubungan kerja dan perselisihan antar serikat pekerja dlam satu perusahaan
+  [D] Pelaksanaan hak dan kewajiban
+Current CorrectAnswer: A
+Summary: Perselisihan hak
+LegalBasis: UU No. 2 Tahun 2004 tentang PPHI.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 382 | Category: Hukum Acara PHI | Topic: Penyelesaian Perselisihan Hubungan Industrial
+Question: Untuk mengajukan gugatan ke pengadilan hubungan industrial, surat gugatan harus dilampiri dengan :
+  [A] Bukti – bukti tentang adanya hak
+  [B] Keterangan / pernyataan yang mendukung adanya hak
+  [C] Risalah perundingan bipatrit
+  [D] Risalah perundingan dihadapat mediator / konsiliator
+Current CorrectAnswer: C
+Summary: Risalah perundingan bipatrit
+LegalBasis: UU No. 2 Tahun 2004 tentang PPHI.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C.
+========================================================
+ID: 383 | Category: Hukum Acara PHI | Topic: Penyelesaian Perselisihan Hubungan Industrial
+Question: Undang – undang No. 2 Tahun 2004 tentang penyelesaian perselisihan hubungan industrial merupakan hukum formil dari undang – undang :
+  [A] UU No. 12/1964 tentang Pemutusan Hubungan Kerja di Perusahaan Swasta
+  [B] UU no. 22/1957 tentang Penyelesaian Perselisihan Perburuhan
+  [C] UU No.13/2003 tentang Ketenagakerjaan
+  [D] UU No.14/1696 tentang ketentuan – ketentuan pokok mengenai tenaga kerja
+Current CorrectAnswer: A
+Summary: UU No. 12/1964 tentang Pemutusan Hubungan Kerja di Perusahaan Swasta
+LegalBasis: UU No. 2 Tahun 2004 tentang PPHI.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A.
+========================================================
+ID: 384 | Category: Hukum Acara PHI | Topic: Penyelesaian Perselisihan Hubungan Industrial
+Question: Apa istilahnya perundingan antara perkerja / buruh atau serikat pekerja / serikat buruh dengan pengusaha untuk menyelesaikan perselisihan hubungan industrial :
+  [A] Bipatrit
+  [B] Musyawarah mufakat
+  [C] Tripartrit
+  [D] musyawarah
+Current CorrectAnswer: D
+Summary: musyawarah
+LegalBasis: UU No. 2 Tahun 2004 tentang PPHI.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D.
+========================================================
+ID: 385 | Category: Hukum Acara PHI | Topic: Penyelesaian Perselisihan Hubungan Industrial
+Question: Gugatan perselisihan hubungan industrial di pengadilan hubungan industrial kepada penggugat :
+  [A] Tidak dikenakan beaya perkara
+  [B] Tidak dikenakan beaya termasuk eksekusi yang nilai gugatannya dibawah 150 juta rupiah
+  [C] Dikenakan beaya perkara termasuk eksekusi untuk nilai gugatannya sampai dengan 150 juta rupiah
+  [D] Tidak dikenakan beaya perkara untuk gugatan diatas 150 juta rupiah
+Current CorrectAnswer: B
+Summary: Tidak dikenakan beaya termasuk eksekusi yang nilai gugatannya dibawah 150 juta rupiah
+LegalBasis: UU No. 2 Tahun 2004 tentang PPHI.
+Analysis: Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B.
+========================================================
+ID: 386 | Category: Hukum Acara Peradilan Agama | Topic: Dasar Hukum Peradilan Agama
+Question: Peradilan Agama di Indonesia diatur dalam peraturan perundang-undangan:
+  [A] UU No. 7 Tahun 1989 jo. UU No. 8 Tahun 2006
+  [B] UU No. 7 Tahun 1989 jo. UU No. 3 Tahun 2006 jo. UU No. 50 Tahun 2009
+  [C] UU No. 2 Tahun 1989 jo. UU No. 3 Tahun 2006
+  [D] UU No. 5 Tahun 1986 jo. UU No. 5 Tahun 2004
+Current CorrectAnswer: B
+Summary: Peradilan Agama diatur dalam UU No. 7 Tahun 1989 jo. UU No. 3 Tahun 2006 jo. UU No. 50 Tahun 2009.
+LegalBasis: UU No. 7 Tahun 1989 jo. UU No. 3 Tahun 2006 jo. UU No. 50 Tahun 2009 tentang Peradilan Agama.
+Analysis: Ketentuan pokok mengenai Peradilan Agama diatur dalam Undang-Undang Nomor 7 Tahun 1989, yang kemudian diamandemen dengan UU No. 3 Tahun 2006 dan UU No. 50 Tahun 2009.
+========================================================
+ID: 387 | Category: Hukum Acara Peradilan Agama | Topic: Tenggang Waktu Ikrar Talak
+Question: Dalam putusan permohonan talak yang telah berkekuatan hukum tetap dan telah ditetapkan sidang penyaksian ikrar talak, maka tenggang waktu yang diberikan kepada pemohon untuk mengikrarkan talaknya adalah:
+  [A] 3 (tiga) bulan
+  [B] 1 (satu) bulan
+  [C] 6 (enam) bulan
+  [D] 12 (dua belas) bulan
+Current CorrectAnswer: C
+Summary: Tenggang waktu pengucapan ikrar talak adalah 6 (enam) bulan sejak hari sidang ditetapkan.
+LegalBasis: Pasal 70 ayat (6) UU No. 7 Tahun 1989 jo. Pasal 131 ayat (4) Kompilasi Hukum Islam (KHI).
+Analysis: Berdasarkan Pasal 70 ayat (6) UU No. 7 Tahun 1989, apabila suami tidak mengucapkan ikrar talak dalam tenggang waktu 6 bulan sejak hari sidang penyaksian ikrar talak ditetapkan, maka hak suami untuk mengikrarkan talak gugur dan perkawinan tetap utuh.
+========================================================
+ID: 388 | Category: Hukum Acara Peradilan Agama | Topic: Masa Iddah Karena Kematian (KHI)
+Question: Waktu tunggu (masa iddah) bagi seorang janda apabila perkawinan putus karena kematian suami ditetapkan selama:
+  [A] 120 (seratus dua puluh) hari
+  [B] 125 (seratus dua puluh lima) hari
+  [C] 130 (seratus tiga puluh) hari (4 bulan 10 hari)
+  [D] 135 (seratus tiga puluh lima) hari
+Current CorrectAnswer: C
+Summary: Waktu tunggu (iddah) janda yang ditinggal mati suami adalah 130 hari.
+LegalBasis: Pasal 39 ayat (1) huruf a PP No. 9 Tahun 1975 jo. Pasal 153 ayat (2) huruf a Kompilasi Hukum Islam (KHI).
+Analysis: Menurut Pasal 153 ayat (2) huruf a KHI: 'Apabila perkawinan putus karena kematian, walaupun qobla al dukhul, waktu tunggu ditetapkan 130 (seratus tiga puluh) hari.' Hal ini sejalan dengan Al-Qur'an Surah Al-Baqarah ayat 234.
+========================================================
+ID: 389 | Category: Hukum Acara Peradilan Agama | Topic: Taklik Talak (KHI)
+Question: Perjanjian yang diucapkan calon mempelai pria setelah akad nikah yang dicantumkan dalam Akta Nikah berupa janji talak yang digantungkan kepada suatu keadaan tertentu yang mungkin terjadi di masa yang akan datang disebut:
+  [A] Khuluk
+  [B] Talak Ba'in Kubraa
+  [C] Taklik talak
+  [D] Mut'ah
+Current CorrectAnswer: C
+Summary: Perjanjian janji talak yang digantungkan pada syarat tertentu dalam Akta Nikah adalah taklik-talak.
+LegalBasis: Pasal 1 huruf e jo. Pasal 45 Kompilasi Hukum Islam (KHI).
+Analysis: Pasal 1 huruf e KHI mendefinisikan taklik-talak sebagai perjanjian yang diucapkan calon mempelai pria setelah akad nikah yang dicantumkan dalam Akta Nikah berupa janji talak yang digantungkan kepada suatu keadaan tertentu yang mungkin terjadi di masa yang akan datang.
+========================================================
+ID: 390 | Category: Hukum Acara Peradilan Agama | Topic: Itsbat Nikah (KHI)
+Question: Dalam hal perkawinan tidak dapat dibuktikan dengan Akta Nikah maka pihak yang berkepentingan dapat mengajukan permohonan ke Pengadilan Agama yaitu perkara:
+  [A] Cerai talak
+  [B] Cerai gugat
+  [C] Itsbat nikah (Pengesahan nikah)
+  [D] Permohonan rujuk
+Current CorrectAnswer: C
+Summary: Perkawinan tanpa akta nikah dapat diajukan permohonan itsbat nikah ke Pengadilan Agama.
+LegalBasis: Pasal 7 ayat (2) dan (3) Kompilasi Hukum Islam (KHI).
+Analysis: Pasal 7 ayat (2) KHI menegaskan: 'Dalam hal perkawinan tidak dapat dibuktikan dengan Akta Nikah, dapat diajukan itsbat nikahnya ke Pengadilan Agama.' Tujuannya demi kepastian status hukum perkawinan dan perlindungan hak anak serta pasangan.
+========================================================
+ID: 391 | Category: Hukum Acara Peradilan Agama | Topic: Saat Terjadinya Perceraian
+Question: Dalam perkara Cerai Talak di Pengadilan Agama, ikatan perkawinan secara hukum dinyatakan putus beserta akibat-akibatnya terhitung sejak:
+  [A] Meninggalkan tempat kediaman bersama
+  [B] Putusan permohonan cerai talak dibacakan majelis hakim
+  [C] Ikrar Talak diucapkan oleh suami di depan sidang Pengadilan Agama
+  [D] Buku nikah diserahkan kembali kepada Kantor Urusan Agama (KUA)
+Current CorrectAnswer: C
+Summary: Perceraian talak terjadi terhitung sejak saat ikrar talak diucapkan di depan sidang Pengadilan Agama.
+LegalBasis: Pasal 34 ayat (2) PP No. 9 Tahun 1975 jo. Pasal 70 ayat (1) UU No. 7 Tahun 1989 jo. Pasal 131 KHI.
+Analysis: Berdasarkan hukum acara peradilan agama, perkawinan dalam permohonan cerai talak baru sah putus sejak diucapkannya ikrar talak di depan sidang terbuka Pengadilan Agama, bukan sejak putusan izin mengikrarkan talak dijatuhkan.
+========================================================
+ID: 392 | Category: Hukum Acara Peradilan Agama | Topic: Rukun dan Syarat Perkawinan (KHI)
+Question: Menurut Pasal 14 Kompilasi Hukum Islam (KHI), rukun perkawinan yang wajib dipenuhi dalam perkawinan Islam meliputi:
+  [A] Calon suami dan calon isteri
+  [B] Wali nikah
+  [C] Dua orang saksi dan ijab-kabul
+  [D] Semua benar (Calon suami, calon isteri, wali nikah, dua orang saksi, dan ijab kabul)
+Current CorrectAnswer: D
+Summary: Rukun nikah menurut Pasal 14 KHI terdiri dari calon suami, calon istri, wali nikah, dua orang saksi, dan ijab kabul.
+LegalBasis: Pasal 14 Kompilasi Hukum Islam (KHI).
+Analysis: Pasal 14 KHI menegaskan: 'Untuk melaksanakan perkawinan harus ada: a. Calon Suami; b. Calon Isteri; c. Wali nikah; d. Dua orang saksi; dan e. Ijab dan Kabul.' Ketiadaan salah satu rukun ini menyebabkan perkawinan batal atau tidak sah.
+========================================================
+ID: 393 | Category: Hukum Acara Peradilan Agama | Topic: Tujuan Perkawinan (KHI)
+Question: Tujuan perkawinan menurut Pasal 3 Kompilasi Hukum Islam (KHI) adalah:
+  [A] Untuk membentuk keluarga yang bahagia semata dengan memiliki keturunan yang sah
+  [B] Untuk mewujudkan silaturahmi yang kekal dan penyatuan harta kekayaan
+  [C] Untuk mewujudkan kehidupan rumah tangga yang sakinah, mawaddah, dan rahmah
+  [D] Untuk membentuk keluarga yang kekal dan mandiri secara ekonomi
+Current CorrectAnswer: C
+Summary: Perkawinan bertujuan untuk mewujudkan kehidupan rumah tangga yang sakinah, mawaddah, dan rahmah.
+LegalBasis: Pasal 3 Kompilasi Hukum Islam (KHI) (Inpres No. 1 Tahun 1991).
+Analysis: Pasal 3 KHI menyatakan: 'Perkawinan bertujuan untuk mewujudkan kehidupan rumah tangga yang sakinah, mawaddah, dan rahmah.' Sedangkan Pasal 1 UU No. 1/1974 menekankan tujuan membentuk keluarga yang bahagia dan kekal berdasarkan Ketuhanan Yang Maha Esa.
+========================================================
+ID: 394 | Category: Hukum Acara Peradilan Agama | Topic: Kompetensi Relatif Cerai Talak
+Question: Kepada Pengadilan Agama manakah seorang suami yang bermaksud menceraikan isterinya (Cerai Talak) harus mengajukan permohonan?
+  [A] Pengadilan Agama tempat perkawinan dahulu dilangsungkan
+  [B] Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Termohon (isteri)
+  [C] Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Pemohon (suami)
+  [D] Pengadilan Agama di mana harta bersama berada
+Current CorrectAnswer: B
+Summary: Permohonan cerai talak diajukan ke Pengadilan Agama tempat kediaman Termohon (isteri).
+LegalBasis: Pasal 66 ayat (2) UU No. 7 Tahun 1989 tentang Peradilan Agama jo. Pasal 129 KHI.
+Analysis: Pasal 66 ayat (2) UU No. 7 Tahun 1989 mengatur bahwa permohonan cerai talak diajukan kepada Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Termohon, kecuali apabila Termohon dengan sengaja meninggalkan tempat kediaman bersama tanpa izin Pemohon.
+========================================================
+ID: 395 | Category: Hukum Acara Peradilan Agama | Topic: Definisi Cerai Gugat
+Question: Dalam Hukum Acara Peradilan Agama, Cerai Gugat adalah gugatan perceraian yang diajukan oleh:
+  [A] Suami terhadap isteri untuk mendapatkan izin menjatuhkan talak
+  [B] Kedua orang tua atau wali pihak yang bersengketa
+  [C] Isteri atau kuasanya terhadap suami ke Pengadilan Agama
+  [D] Jaksa Penuntut Umum demi ketertiban umum
+Current CorrectAnswer: C
+Summary: Cerai Gugat diajukan oleh isteri atau kuasanya kepada Pengadilan Agama.
+LegalBasis: Pasal 73 ayat (1) UU No. 7 Tahun 1989 tentang Peradilan Agama jo. Pasal 132 ayat (1) KHI.
+Analysis: Gugatan perceraian yang diajukan oleh isteri atau kuasanya dinamakan 'Cerai Gugat', sedangkan permohonan perceraian yang diajukan oleh suami dinamakan 'Cerai Talak'. Keduanya memiliki perbedaan mendasar dalam prosedur formil dan hak-hak pasca perceraian.
+========================================================
+ID: 396 | Category: Hukum Acara Peradilan Agama | Topic: Kompetensi Relatif Cerai Gugat
+Question: Kepada Pengadilan Agama manakah seorang isteri mengajukan gugatan perceraian (Cerai Gugat) terhadap suaminya?
+  [A] Pengadilan Agama tempat mereka dahulu melangsungkan akad nikah
+  [B] Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Penggugat (isteri)
+  [C] Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Tergugat (suami)
+  [D] Pengadilan Agama tempat orang tua Penggugat bertempat tinggal
+Current CorrectAnswer: B
+Summary: Gugatan cerai oleh isteri diajukan ke Pengadilan Agama tempat kediaman Penggugat (isteri).
+LegalBasis: Pasal 73 ayat (1) UU No. 7 Tahun 1989 tentang Peradilan Agama jo. Pasal 132 ayat (1) KHI.
+Analysis: Berdasarkan Pasal 73 ayat (1) UU No. 7 Tahun 1989 jo. Pasal 132 ayat (1) KHI, gugatan perceraian diajukan oleh isteri atau kuasanya kepada Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Penggugat, kecuali apabila Penggugat dengan sengaja meninggalkan tempat kediaman bersama tanpa izin Tergugat.

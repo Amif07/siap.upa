@@ -120,7 +120,7 @@ export const ADVANCED_UPA_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Putusan Inkonstitusional Bersyarat menyatakan pasal bertentangan dengan UUD jika tidak dibaca sesuai tafsir MK.",
-      "legalBasis": "PMK No. 06/PMK/2005 jo. Yurisprudensi Mahkamah Konstitusi.",
+      "legalBasis": "Pasal 56 ayat (2) dan ayat (3) jo. Pasal 57 Undang-Undang No. 24 Tahun 2003 tentang Mahkamah Konstitusi jo. UU No. 7 Tahun 2020.",
       "analysis": "Conditionally Unconstitutional berarti norma pasal yang diuji bertentangan secara bersyarat dengan konstitusi dan tidak mengikat jika tidak ditafsirkan sebagaimana amar putusan Mahkamah Konstitusi."
     },
     "difficulty": "Sedang"
@@ -151,7 +151,7 @@ export const ADVANCED_UPA_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Tenggang waktu pengujian formil undang-undang ke MK adalah 45 hari sejak diundangkan dalam Lembaran Negara RI.",
-      "legalBasis": "Putusan MK No. 27/PUU-VII/2009 jo. PMK No. 2 Tahun 2021.",
+      "legalBasis": "Pasal 54 Undang-Undang No. 24 Tahun 2003 tentang Mahkamah Konstitusi jo. Pasal 42 PMK No. 2 Tahun 2021 tentang Tata Beracara PUU.",
       "analysis": "Mahkamah Konstitusi menetapkan bahwa permohonan pengujian formil harus diajukan dalam tenggang waktu 45 (empat puluh lima) hari sejak undang-undang tersebut diundangkan dalam Lembaran Negara Republik Indonesia."
     },
     "difficulty": "Sulit"
@@ -1639,7 +1639,7 @@ export const ADVANCED_UPA_BANK: UPAQuestion[] = [
     "correctAnswer": "A",
     "explanation": {
       "summary": "Pihak ketiga yang menyerahkan opini pertimbangan hukum independen disebut Amicus Curiae.",
-      "legalBasis": "PMK No. 2 Tahun 2021 jo. Praktik Peradilan Konstitusi.",
+      "legalBasis": "Pasal 14 ayat (1) jo. Pasal 27 Peraturan Mahkamah Konstitusi (PMK) No. 2 Tahun 2021 jo. Pasal 5 ayat (1) UU No. 48 Tahun 2009.",
       "analysis": "Amicus curiae adalah mekanisme di mana individu atau organisasi masyarakat menyampaikan pandangan hukum (amicus brief) sebagai bahan pertimbangan moral dan intelektual majelis hakim."
     },
     "difficulty": "Sedang"
@@ -1949,7 +1949,7 @@ export const ADVANCED_UPA_BANK: UPAQuestion[] = [
     "correctAnswer": "A",
     "explanation": {
       "summary": "BANI adalah lembaga arbitrase institusional tertua di Indonesia yang didirikan tahun 1977.",
-      "legalBasis": "Statuta BANI Arbitrase Indonesia 1977.",
+      "legalBasis": "Pasal 1 angka 1 jo. Pasal 34 ayat (1) Undang-Undang No. 30 Tahun 1999 tentang Arbitrase dan APS jo. Statuta Pendirian BANI 1977.",
       "analysis": "Badan Arbitrase Nasional Indonesia (BANI) didirikan pada tahun 1977 untuk memfasilitasi penyelesaian sengketa perdata bisnis dan perdagangan di luar pengadilan umum."
     },
     "difficulty": "Mudah"
@@ -3313,7 +3313,7 @@ export const ADVANCED_UPA_BANK: UPAQuestion[] = [
     "correctAnswer": "A",
     "explanation": {
       "summary": "Saksi mahkota adalah terdakwa yang dijadikan saksi bagi terdakwa lain dalam perkara penyertaan.",
-      "legalBasis": "Yurisprudensi MA No. 1986 K/Pid/1989.",
+      "legalBasis": "Pasal 168 huruf c jo. Pasal 184 ayat (1) KUHAP (UU No. 8 Tahun 1981) jo. Yurisprudensi MA RI No. 1986 K/Pid/1989.",
       "analysis": "Saksi mahkota diperbolehkan oleh Mahkamah Agung dalam hal kekurangan alat bukti dengan syarat perkara mereka dilakukan pemisahan berkas (splitsing)."
     },
     "difficulty": "Sedang"
@@ -3375,7 +3375,7 @@ export const ADVANCED_UPA_BANK: UPAQuestion[] = [
     "correctAnswer": "A",
     "explanation": {
       "summary": "Penyidik yang dipanggil menjadi saksi untuk mengklarifikasi BAP disebut saksi verbalisan.",
-      "legalBasis": "SEMA No. 1 Tahun 1984 jo. Praktik Peradilan Pidana.",
+      "legalBasis": "Pasal 163 jo. Pasal 184 ayat (1) KUHAP (UU No. 8 Tahun 1981) jo. Surat Edaran Mahkamah Agung (SEMA) No. 1 Tahun 1984.",
       "analysis": "Saksi verbalisan adalah penyidik yang memeriksa terdakwa pada tahap penyidikan yang dipanggil ke persidangan untuk memberikan keterangan sumpah mengenai kebenaran proses penyusunan BAP."
     },
     "difficulty": "Sedang"
@@ -3499,7 +3499,7 @@ export const ADVANCED_UPA_BANK: UPAQuestion[] = [
     "correctAnswer": "A",
     "explanation": {
       "summary": "MK menyatakan pengajuan PK dapat dilakukan lebih dari satu kali jika ditemukan novum baru yang valid.",
-      "legalBasis": "Putusan Mahkamah Konstitusi No. 34/PUU-XI/2013.",
+      "legalBasis": "Pasal 268 ayat (3) KUHAP (UU No. 8 Tahun 1981) jo. Putusan Mahkamah Konstitusi No. 34/PUU-XI/2013.",
       "analysis": "Mahkamah Konstitusi menyatakan Pasal 268 ayat (3) KUHAP yang membatasi PK hanya satu kali inkonstitusional bersyarat demi mewujudkan keadilan substantif apabila terpidana menemukan novum baru yang fundamental."
     },
     "difficulty": "Sedang"

@@ -480,7 +480,7 @@ export const CATEGORY_EXPANSION_BANK: UPAQuestion[] = [
     correctAnswer: 'B',
     explanation: {
       summary: 'Dalam Hukum Acara PTUN tidak dikenal lembaga gugatan rekonvensi.',
-      legalBasis: 'Doktrin Hukum Acara PTUN jo. UU No. 5 Tahun 1986.',
+      legalBasis: 'Pasal 107 jo. Pasal 100 Undang-Undang No. 5 Tahun 1986 tentang Peradilan Tata Usaha Negara.',
       analysis: 'Peradilan TUN menguji keabsahan KTUN (rechmatigheid) dari segi wewenang, prosedur, dan substansi. Tergugat (Badan/Pejabat TUN) tidak mempunyai hak mengajukan gugatan balik (rekonvensi) terhadap warga masyarakat Penggugat.'
     },
     difficulty: 'Sedang'

@@ -48,7 +48,7 @@ export const QuizSetup: React.FC<QuizSetupProps> = ({
         <div className="flex items-center gap-2">
           <Scale className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
           <span className="font-normal text-slate-700 dark:text-slate-300">
-            Aplikasi dikembangkan oleh <strong className="font-semibold text-amber-700 dark:text-amber-400">Ahmad Miftahul Fauzi,S.H.</strong>
+            Web Developed by <strong className="font-semibold text-amber-700 dark:text-amber-400">Ahmad Miftahul Fauzi, S.H.</strong>
           </span>
         </div>
         <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-mono text-amber-700/80 dark:text-amber-400/80">
@@ -334,7 +334,7 @@ export const QuizSetup: React.FC<QuizSetupProps> = ({
       {/* Developer Attribution Footer Note (Bottom) */}
       <div className="pt-2 pb-1 text-center">
         <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-          Aplikasi dikembangkan oleh <span className="font-semibold text-slate-800 dark:text-slate-200">Ahmad Miftahul Fauzi,S.H.</span>
+          Web Developed by <span className="font-semibold text-slate-800 dark:text-slate-200">Ahmad Miftahul Fauzi, S.H.</span>
         </p>
       </div>
     </div>

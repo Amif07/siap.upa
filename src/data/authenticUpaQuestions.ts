@@ -578,7 +578,7 @@ export const AUTHENTIC_PERADI_BANK_PART2: UPAQuestion[] = [
     correctAnswer: 'A',
     explanation: {
       summary: 'Substantierings theorie mewajibkan uraian peristiwa konkret sejarah timbulnya hubungan hukum.',
-      legalBasis: 'Doktrin Hukum Acara Perdata jo. Yurisprudensi Mahkamah Agung RI.',
+      legalBasis: 'Pasal 8 angka 3 Reglement op de Rechtsvordering (Rv) jo. Pasal 120 jo. Pasal 121 HIR (Staatsblad 1941 No. 44).',
       analysis: 'Dalam penyusunan posita dikenal dua teori: Substantierings theorie (mengharuskan penggugat menguraikan fakta konkret kronologis timbulnya hak) dan Individualiserings theorie (cukup menyebutkan hubungan hukumnya saja). Praktik peradilan Indonesia menganut Substantierings theorie.'
     },
     difficulty: 'Sedang'
@@ -597,7 +597,7 @@ export const AUTHENTIC_PERADI_BANK_PART2: UPAQuestion[] = [
     correctAnswer: 'C',
     explanation: {
       summary: 'Gugatan ditolak jika dalil pokok perkara tidak terbukti; tidak diterima (NO) jika cacat formil.',
-      legalBasis: 'Hukum Acara Perdata jo. Yurisprudensi Tetap MA RI.',
+      legalBasis: 'Pasal 178 ayat (1) HIR / Pasal 189 ayat (1) RBg jo. Pasal 163 HIR / Pasal 283 RBg / Pasal 1865 KUHPerdata.',
       analysis: 'Perbedaan mendasar: Gugatan Tidak Dapat Diterima (Niet Ontvankelijke Verklaard / NO) dijatuhkan bila ada cacat formil (kabur, kurang pihak, tidak berwenang). Sedangkan Gugatan Ditolak dijatuhkan bila gugatan telah diperiksa pokok perkaranya namun dalil penggugat tidak terbukti.'
     },
     difficulty: 'Mudah'

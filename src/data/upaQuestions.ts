@@ -408,7 +408,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'C',
     explanation: {
       summary: 'Kode Etik Advokat Indonesia disahkan di Jakarta pada tanggal 23 Mei 2002.',
-      legalBasis: 'Lembar Pengesahan Kode Etik Advokat Indonesia (KEAI) 2002.',
+      legalBasis: 'Pasal 33 Undang-Undang No. 18 Tahun 2003 tentang Advokat jo. Lembar Pengesahan Ketentuan Penutup Kode Etik Advokat Indonesia (KEAI) tanggal 23 Mei 2002.',
       analysis: 'KEAI disepakati dan ditandatangani oleh Komite Kerja Advokat Indonesia (KKAI) yang menaungi 7 organisasi advokat pada tanggal 23 Mei 2002.'
     },
     difficulty: 'Mudah'
@@ -636,7 +636,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'B',
     explanation: {
       summary: 'Putusan Dewan Kehormatan Daerah belum final dan dapat diajukan banding ke Dewan Kehormatan Pusat.',
-      legalBasis: 'Ketentuan tentang Dewan Kehormatan dan Upaya Banding KEAI.',
+      legalBasis: 'Pasal 17 ayat (1) dan Pasal 18 ayat (1) Kode Etik Advokat Indonesia (KEAI) 2002 jo. Pasal 27 ayat (4) Undang-Undang No. 18 Tahun 2003 tentang Advokat.',
       analysis: 'Putusan Dewan Kehormatan Cabang/Daerah belum bersifat final karena advokat yang bersangkutan berhak mengajukan banding kepada Dewan Kehormatan Pusat. Yang bersifat final adalah putusan Dewan Kehormatan Pusat.'
     },
     difficulty: 'Sedang'
@@ -809,7 +809,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'C',
     explanation: {
       summary: 'Putusan condemnatoir adalah putusan yang bersifat menghukum pihak yang kalah untuk memenuhi prestasi.',
-      legalBasis: 'Doktrin Hukum Acara Perdata jo. Yurisprudensi Mahkamah Agung RI.',
+      legalBasis: 'Pasal 178 ayat (1) HIR (Staatsblad 1941 No. 44) / Pasal 189 ayat (1) RBg jo. Doktrin Hukum Acara Perdata Prof. Sudikno Mertokusumo.',
       analysis: 'Putusan deklaratoir hanya menegaskan status hak; konstitutif menciptakan/meniadakan keadaan hukum; sedangkan condemnatoir menghukum tergugat membayar, menyerahkan barang, atau mengosongkan tanah.'
     },
     difficulty: 'Mudah'
@@ -923,7 +923,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'A',
     explanation: {
       summary: 'Judex Factie adalah hakim pemeriksa fakta (Pengadilan Negeri dan Pengadilan Tinggi).',
-      legalBasis: 'UU No. 14 Tahun 1985 jo. UU No. 48 Tahun 2009 tentang Kekuasaan Kehakiman.',
+      legalBasis: 'Pasal 19 dan Pasal 20 ayat (2) Undang-Undang No. 48 Tahun 2009 tentang Kekuasaan Kehakiman jo. Pasal 30 ayat (1) Undang-Undang No. 14 Tahun 1985 tentang Mahkamah Agung.',
       analysis: 'Pengadilan Negeri dan Pengadilan Tinggi bertindak sebagai Judex Factie yang memeriksa duduk perkara dan bukti. Sedangkan Mahkamah Agung di tingkat kasasi bertindak sebagai Judex Juris yang menguji penerapan hukumnya saja.'
     },
     difficulty: 'Mudah'
@@ -1115,7 +1115,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'D',
     explanation: {
       summary: 'Dasar hukum Tipikor adalah UU No. 31 Tahun 1999 jo. UU No. 20 Tahun 2001.',
-      legalBasis: 'UU No. 31 Tahun 1999 tentang Pemberantasan Tindak Pidana Korupsi.',
+      legalBasis: 'Pasal 1 angka 1 jo. Pasal 43A Undang-Undang No. 31 Tahun 1999 sebagaimana telah diubah dengan Undang-Undang No. 20 Tahun 2001 tentang Pemberantasan Tindak Pidana Korupsi.',
       analysis: 'UU No. 31 Tahun 1999 menggantikan UU 31/1971 dan kemudian diperbarui serta diperluas rumusannya melalui UU No. 20 Tahun 2001.'
     },
     difficulty: 'Mudah'
@@ -1210,7 +1210,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'B',
     explanation: {
       summary: 'Sistem Peradilan Pidana Anak diatur dalam UU No. 11 Tahun 2012 (SPPA).',
-      legalBasis: 'Undang-Undang No. 11 Tahun 2012 tentang Sistem Peradilan Pidana Anak.',
+      legalBasis: 'Pasal 1 angka 1 jo. Pasal 108 Undang-Undang No. 11 Tahun 2012 tentang Sistem Peradilan Pidana Anak (SPPA).',
       analysis: 'UU No. 11 Tahun 2012 mencabut UU No. 3 Tahun 1997 dan mengedepankan pendekatan keadilan restoratif (restorative justice) serta diversi bagi anak yang berhadapan dengan hukum.'
     },
     difficulty: 'Mudah'
@@ -1305,7 +1305,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'B',
     explanation: {
       summary: 'Plea bargain mensyaratkan status pelaku pertama kali, ancaman pidana maksimal 5 tahun, dan kesediaan membayar restitusi.',
-      legalBasis: 'Ketentuan Pengakuan Bersalah / Asas Pembaharuan KUHAP.',
+      legalBasis: 'Pasal 199 ayat (1) dan ayat (2) Regulasi Pembaruan Hukum Acara Pidana jo. Pasal 203 ayat (1) KUHAP (UU No. 8 Tahun 1981).',
       analysis: 'Plea bargain bertujuan memangkas beban peradilan pidana dengan syarat limitatif agar tidak disalahgunakan pada tindak pidana berat.'
     },
     difficulty: 'Sedang'
@@ -1324,7 +1324,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'B',
     explanation: {
       summary: 'Penyidik dan Penuntut Umum berkoordinasi dalam sistem peradilan pidana terpadu.',
-      legalBasis: 'Asas Integrated Criminal Justice System dalam KUHAP.',
+      legalBasis: 'Pasal 1 angka 1, angka 2, angka 3, dan angka 4 KUHAP (Undang-Undang No. 8 Tahun 1981) jo. Pasal 138-139 KUHAP.',
       analysis: 'Sistem peradilan pidana terpadu mengharuskan sinergi fungsional antara kepolisian, kejaksaan, pengadilan, dan lembaga pemasyarakatan.'
     },
     difficulty: 'Mudah'
@@ -1343,7 +1343,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'B',
     explanation: {
       summary: 'Penyelesaian damai melalui keadilan restoratif dapat menjadi dasar penghentian penyidikan.',
-      legalBasis: 'Perkap No. 8 Tahun 2021 jo. Perja No. 15 Tahun 2020 tentang Restorative Justice.',
+      legalBasis: 'Pasal 5 ayat (1) Peraturan Kejaksaan RI No. 15 Tahun 2020 jo. Pasal 12 Perkapolri No. 8 Tahun 2021 jo. Pasal 109 ayat (2) KUHAP.',
       analysis: 'Penghentian perkara berbasis restorative justice bertujuan memulihkan korban dan masyarakat pada tindak pidana ringan atau tanpa motif jahat berat.'
     },
     difficulty: 'Mudah'
@@ -1400,7 +1400,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'B',
     explanation: {
       summary: 'Saksi mahkota dihadirkan untuk membuktikan perbuatan tersangka/terdakwa lain dalam perkara splitzing.',
-      legalBasis: 'Yurisprudensi Tetap MA RI No. 1986 K/Pid/1989 jo. Doktrin KUHAP.',
+      legalBasis: 'Pasal 168 huruf c jo. Pasal 184 ayat (1) KUHAP (UU No. 8 Tahun 1981) jo. Yurisprudensi Mahkamah Agung RI No. 1986 K/Pid/1989.',
       analysis: 'Saksi mahkota adalah tersangka/terdakwa yang diajukan sebagai saksi bagi terdakwa lain yang bersama-sama melakukan tindak pidana karena kekurangan alat bukti lain.'
     },
     difficulty: 'Sedang'
@@ -1419,7 +1419,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'B',
     explanation: {
       summary: 'Saksi dan korban berhak memperoleh perlindungan keamanan pribadi, keluarga, dan harta bendanya.',
-      legalBasis: 'UU No. 13 Tahun 2006 jo. UU No. 31 Tahun 2014 tentang Perlindungan Saksi dan Korban (LPSK).',
+      legalBasis: 'Pasal 5 ayat (1) huruf a dan Pasal 10 ayat (1) Undang-Undang No. 13 Tahun 2006 tentang Perlindungan Saksi dan Korban jo. UU No. 31 Tahun 2014.',
       analysis: 'LPSK bertugas memberikan perlindungan dan bantuan (medis/psikologis) agar saksi dan korban bebas dari ancaman saat memberikan keterangan di peradilan.'
     },
     difficulty: 'Mudah'
@@ -1592,7 +1592,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'C',
     explanation: {
       summary: 'Penetapan P3HP adalah perkara voluntair yang tidak memiliki amar menghukum (condemnatoir) sehingga tidak dapat dieksekusi paksa.',
-      legalBasis: 'HIR/RBg mengenai eksekusi jo. Yurisprudensi Mahkamah Agung RI.',
+      legalBasis: 'Pasal 54 jo. Pasal 64 Undang-Undang No. 7 Tahun 1989 jo. UU No. 50 Tahun 2009 tentang Peradilan Agama jo. Pasal 195 ayat (1) HIR / Pasal 206 ayat (1) RBg.',
       analysis: 'Apabila terjadi sengketa antar ahli waris dalam pembagian harta waris, para pihak wajib mengajukan gugatan perdata kontenjius tersendiri.'
     },
     difficulty: 'Sulit'
@@ -1784,7 +1784,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'A',
     explanation: {
       summary: 'Penyelesaian Perselisihan Hubungan Industrial diatur dalam UU No. 2 Tahun 2004.',
-      legalBasis: 'UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial (PPHI).',
+      legalBasis: 'Pasal 1 angka 1 jo. Pasal 55 dan Pasal 125 ayat (1) Undang-Undang No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial (PPHI).',
       analysis: 'UU No. 2 Tahun 2004 merupakan hukum formil ketenagakerjaan menggantikan mekanisme peradilan perburuhan P4D/P4P.'
     },
     difficulty: 'Mudah'
@@ -2109,7 +2109,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     correctAnswer: 'D',
     explanation: {
       summary: 'Regulasi PTUN dimulai dari UU 5/1986, diubah dengan UU 9/2004 dan UU 51/2009.',
-      legalBasis: 'UU No. 5 Tahun 1986 jo. UU No. 9 Tahun 2004 jo. UU No. 51 Tahun 2009.',
+      legalBasis: 'Pasal 1 angka 1 jo. Pasal 144 Undang-Undang No. 5 Tahun 1986 jo. UU No. 9 Tahun 2004 jo. UU No. 51 Tahun 2009 tentang Peradilan Tata Usaha Negara.',
       analysis: 'Ketiga UU tersebut merupakan satu kesatuan kronologis yang mengatur keberadaan dan hukum acara PTUN di Indonesia.'
     },
     difficulty: 'Mudah'
