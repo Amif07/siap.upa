@@ -72,7 +72,7 @@ export const QuizSetup: React.FC<QuizSetupProps> = ({
           </h1>
 
           <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            Dilengkapi bank data 500 soal hukum acara komprehensif, analisis yuridis mendalam per butir soal, dasar hukum konkrit (Pasal HIR/RBg, KUHAP, UU PTUN, KEAI), serta mode latihan bersama (multiplayer).
+            Dilengkapi ratusan bank data soal hukum acara komprehensif, analisis yuridis mendalam per butir soal, dasar hukum konkrit (Pasal HIR/RBg, KUHAP, UU PTUN, KEAI), serta mode latihan bersama (multiplayer).
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -212,7 +212,7 @@ export const QuizSetup: React.FC<QuizSetupProps> = ({
             Jumlah Soal yang Dikerjakan
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-6 gap-2.5">
-            {[10, 20, 50, 100, 120, 500].map((count) => (
+            {[10, 20, 50, 100, 120, MASTER_UPA_DATABASE.length].map((count) => (
               <button
                 key={count}
                 type="button"
@@ -228,7 +228,7 @@ export const QuizSetup: React.FC<QuizSetupProps> = ({
               >
                 <span className="font-mono text-sm block">{count} Soal</span>
                 <span className="text-[10px] text-slate-400 block mt-0.5 truncate">
-                  {count === 10 ? 'Latihan Cepat' : count === 20 ? 'Standar' : count === 50 ? 'Komprehensif' : count === 100 ? 'Tryout Lengkap' : count === 120 ? 'Naskah Tryout PDF' : 'Master Bank 500'}
+                  {count === 10 ? 'Latihan Cepat' : count === 20 ? 'Standar' : count === 50 ? 'Komprehensif' : count === 100 ? 'Tryout Lengkap' : count === 120 ? 'Naskah Tryout PDF' : 'Semua Bank Soal'}
                 </span>
               </button>
             ))}

@@ -42,7 +42,7 @@ export const PermanentSaveModal: React.FC<PermanentSaveModalProps> = ({
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `advokatquiz_500_soal_upa_lengkap_${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `advokatquiz_ratusan_soal_upa_lengkap_${new Date().toISOString().slice(0, 10)}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -152,7 +152,7 @@ export const PermanentSaveModal: React.FC<PermanentSaveModalProps> = ({
             </div>
           </div>
 
-          {/* Method 3: Download Complete 500 Questions JSON */}
+          {/* Method 3: Download Complete Questions JSON */}
           <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-start gap-3">
@@ -161,7 +161,7 @@ export const PermanentSaveModal: React.FC<PermanentSaveModalProps> = ({
                 </div>
                 <div>
                   <h3 className="font-bold text-sm text-slate-900 dark:text-white">
-                    3. Unduh File Database 500 Soal (.JSON)
+                    3. Unduh File Database Ratusan Soal UPA (.JSON)
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
                     Simpan seluruh naskah soal, kunci jawaban resmi, dan pembahasan dasar hukum ke laptop Anda dalam format file JSON standar.

@@ -81,6 +81,8 @@ export default function App() {
   const [secondsRemaining, setSecondsRemaining] = useState<number>(0);
   const [totalSeconds, setTotalSeconds] = useState<number>(0);
   const [quizStartTime, setQuizStartTime] = useState<number>(0);
+  const [questionStartTime, setQuestionStartTime] = useState<number>(Date.now());
+  const [questionDuration, setQuestionDuration] = useState<number>(60);
   const [quizSummary, setQuizSummary] = useState<QuizSessionSummary | null>(null);
 
   // Mobile drawer for Question Grid
@@ -143,7 +145,7 @@ export default function App() {
       } else if (activeView === 'review') {
         activity = 'Membaca Pembahasan Mendalam & Dasar Hukum';
       } else if (activeView === 'bank') {
-        activity = 'Membuka Bank Data 500 Soal';
+        activity = 'Membuka Ratusan Bank Data Soal UPA';
       } else if (activeView === 'cheatsheet') {
         activity = 'Menghafal Pasal-Pasal Kunci';
       } else if (activeView === 'monitor') {
@@ -180,8 +182,8 @@ export default function App() {
       setParticipants(updatedList);
     });
 
-    realtimeMultiplayerService.onStartExam((roomSettings, seed, lockedQuestions) => {
-      startPreparedQuiz(roomSettings, seed, lockedQuestions);
+    realtimeMultiplayerService.onStartExam((roomSettings, seed, lockedQuestions, initialIndex, startTime, duration) => {
+      startPreparedQuiz(roomSettings, seed, lockedQuestions, initialIndex, startTime, duration);
     });
 
     realtimeMultiplayerService.onScoreUpdate((data) => {
@@ -219,9 +221,15 @@ export default function App() {
       );
     });
 
-    realtimeMultiplayerService.onNextQuestionSync((targetIndex) => {
+    realtimeMultiplayerService.onNextQuestionSync((targetIndex, newStartTime, duration) => {
       soundEffects.playClick();
       setCurrentIndex(targetIndex);
+      const startTime = newStartTime || Date.now();
+      const qDur = duration || 60;
+      setQuestionStartTime(startTime);
+      setQuestionDuration(qDur);
+      setSecondsRemaining(qDur);
+      setTotalSeconds(qDur);
     });
 
     realtimeMultiplayerService.onChatMessage((msg) => {
@@ -242,58 +250,57 @@ export default function App() {
     };
   }, []);
 
-  // Main Timer ticker
+  // Handle timer expiration
+  const handleTimerExpire = useCallback(() => {
+    soundEffects.playUrgentTick();
+
+    // If this question wasn't answered yet, mark it so key and explanation are revealed
+    setAnswers((prev) => {
+      if (!prev[currentIndex]) {
+        return {
+          ...prev,
+          [currentIndex]: {
+            selectedOption: null,
+            isDoubtful: false,
+            timeSpentSeconds: questionDuration,
+          },
+        };
+      }
+      return prev;
+    });
+
+    // In multiplayer: NEVER auto advance without admin! Stay on current screen showing explanation.
+    // In solo mode: user stays on current question with explanation revealed until they click next.
+  }, [currentIndex, questionDuration]);
+
+  // Main Timer ticker (Authoritative synchronization for multiplayer)
   useEffect(() => {
     if (activeView !== 'quiz') return;
 
-    const timer = setInterval(() => {
-      setSecondsRemaining((prev) => {
-        if (prev <= 1) {
+    const tick = () => {
+      if (currentRoom) {
+        // Authoritative synchronized timer: compute remaining seconds from server questionStartTime
+        const elapsed = Math.floor((Date.now() - questionStartTime) / 1000);
+        const remaining = Math.max(0, questionDuration - elapsed);
+        setSecondsRemaining(remaining);
+        if (remaining <= 0) {
           handleTimerExpire();
-          return 0;
         }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [activeView, timerMode, currentIndex, quizQuestions.length]);
-
-  // Handle timer expiration
-  const handleTimerExpire = useCallback(() => {
-    if (timerMode === 'flash') {
-      // Per-question flash timer expired
-      soundEffects.playUrgentTick();
-
-      // If this question wasn't answered, mark it
-      setAnswers((prev) => {
-        if (!prev[currentIndex]) {
-          return {
-            ...prev,
-            [currentIndex]: {
-              selectedOption: null,
-              isDoubtful: false,
-              timeSpentSeconds: currentRoom?.flashSecondsPerQuestion || 60,
-            },
-          };
-        }
-        return prev;
-      });
-
-      // Move to next question or finish
-      if (currentIndex < quizQuestions.length - 1) {
-        setCurrentIndex((i) => i + 1);
-        const nextFlashSec = currentRoom ? currentRoom.flashSecondsPerQuestion : 60;
-        setSecondsRemaining(nextFlashSec);
-        setTotalSeconds(nextFlashSec);
       } else {
-        finishQuiz();
+        setSecondsRemaining((prev) => {
+          if (prev <= 1) {
+            handleTimerExpire();
+            return 0;
+          }
+          return prev - 1;
+        });
       }
-    } else {
-      // Official total exam timer expired!
-      finishQuiz();
-    }
-  }, [timerMode, currentIndex, quizQuestions.length, currentRoom]);
+    };
+
+    tick();
+    const timer = setInterval(tick, 1000);
+    return () => clearInterval(timer);
+  }, [activeView, currentRoom, questionStartTime, questionDuration, handleTimerExpire]);
 
   // Start Solo Quiz (Bebas Pengulangan & Acak Bagian/Pilihan)
   const handleStartSoloQuiz = (config: {
@@ -315,27 +322,31 @@ export default function App() {
       randomizeOptions: true,
     });
 
+    const qDur = config.flashSeconds || 60;
+    const now = Date.now();
+
     setQuizQuestions(questions);
     setCurrentIndex(0);
     setAnswers({});
     setTimerMode(config.timerMode);
-    setQuizStartTime(Date.now());
-
-    if (config.timerMode === 'official') {
-      const totalSec = config.officialMinutes * 60;
-      setTotalSeconds(totalSec);
-      setSecondsRemaining(totalSec);
-    } else {
-      const flashSec = config.flashSeconds;
-      setTotalSeconds(flashSec);
-      setSecondsRemaining(flashSec);
-    }
+    setQuizStartTime(now);
+    setQuestionStartTime(now);
+    setQuestionDuration(qDur);
+    setTotalSeconds(qDur);
+    setSecondsRemaining(qDur);
 
     setActiveView('quiz');
   };
 
   // Helper to start prepared quiz (for solo & multiplayer with locked questions)
-  const startPreparedQuiz = (room: RoomSettings, seed: string, lockedQuestions?: UPAQuestion[]) => {
+  const startPreparedQuiz = (
+    room: RoomSettings,
+    seed: string,
+    lockedQuestions?: UPAQuestion[],
+    initialIndex: number = 0,
+    startTime?: number,
+    duration?: number
+  ) => {
     let questions: UPAQuestion[];
 
     if (lockedQuestions && lockedQuestions.length > 0) {
@@ -353,21 +364,18 @@ export default function App() {
       });
     }
 
+    const qDur = duration || room.flashSecondsPerQuestion || 60;
+    const qStart = startTime || Date.now();
+
     setQuizQuestions(questions);
-    setCurrentIndex(0);
+    setCurrentIndex(initialIndex);
     setAnswers({});
     setTimerMode(room.timerMode);
-    setQuizStartTime(Date.now());
-
-    if (room.timerMode === 'official') {
-      const totalSec = room.officialTotalMinutes * 60;
-      setTotalSeconds(totalSec);
-      setSecondsRemaining(totalSec);
-    } else {
-      const flashSec = room.flashSecondsPerQuestion;
-      setTotalSeconds(flashSec);
-      setSecondsRemaining(flashSec);
-    }
+    setQuizStartTime(qStart);
+    setQuestionStartTime(qStart);
+    setQuestionDuration(qDur);
+    setTotalSeconds(qDur);
+    setSecondsRemaining(qDur);
 
     setActiveView('quiz');
   };
@@ -403,12 +411,13 @@ export default function App() {
     };
     setRoomMessages([welcomeMsg]);
 
-    // Connect to Supabase Realtime channel
+    // Connect to WebSocket / Realtime channel
     realtimeMultiplayerService.joinRoom(settings, hostUser);
   };
 
   // Join Real Multiplayer Room (Supabase Realtime & WebRTC P2P)
-  const handleJoinRoom = (code: string, userName: string) => {
+  const handleJoinRoom = async (code: string, userName: string) => {
+    const cleanCode = code.trim().toUpperCase();
     const guest: Participant = {
       id: authProfile?.id || ('guest-' + Date.now()),
       name: userName,
@@ -422,25 +431,43 @@ export default function App() {
       timeSpentSeconds: 0,
     };
 
-    const mockRoom: RoomSettings = {
-      code,
-      roomName: `Ruang UPA (${code})`,
+    let targetRoom: RoomSettings = {
+      code: cleanCode,
+      roomName: `Ruang UPA (${cleanCode})`,
       hostName: 'Host Penyelenggara',
       questionCount: 20,
-      timerMode: 'official',
+      timerMode: 'flash',
       categoryFilter: 'Semua Materi',
       flashSecondsPerQuestion: 60,
       officialTotalMinutes: 30,
     };
 
-    setCurrentRoom(mockRoom);
+    try {
+      const res = await fetch(`/api/rooms/${encodeURIComponent(cleanCode)}/state`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && data.settings) {
+          targetRoom = {
+            ...data.settings,
+            code: data.roomCode || cleanCode,
+          };
+          if (data.participants && Array.isArray(data.participants) && data.participants.length > 0) {
+            setParticipants(data.participants);
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('Could not fetch server room state:', e);
+    }
+
+    setCurrentRoom(targetRoom);
     setCurrentUser(guest);
-    setParticipants([guest]);
+    setParticipants((prev) => (prev.length > 0 ? prev : [guest]));
 
     // Initialize Room Live Chat
     const joinMsg: RoomChatMessage = {
       id: 'sys-join-' + Date.now(),
-      roomCode: code,
+      roomCode: cleanCode,
       senderId: 'sys',
       senderName: 'Sistem UPA',
       message: `${userName} bergabung ke ruangan.`,
@@ -451,18 +478,18 @@ export default function App() {
     setRoomMessages([
       {
         id: 'sys-welcome-' + Date.now(),
-        roomCode: code,
+        roomCode: cleanCode,
         senderId: 'sys',
         senderName: 'Sistem UPA',
-        message: `Selamat bergabung di Ruang Ujian (${code}).`,
+        message: `Selamat bergabung di Ruang Ujian (${cleanCode}).`,
         timestamp: Date.now() - 500,
         isSystem: true,
       },
       joinMsg,
     ]);
 
-    // Connect to Supabase Realtime channel
-    realtimeMultiplayerService.joinRoom(mockRoom, guest);
+    // Connect to WebSocket & Realtime channel
+    realtimeMultiplayerService.joinRoom(targetRoom, guest);
   };
 
   // Send message in Room Live Chat
@@ -490,11 +517,14 @@ export default function App() {
       customQuestions
     );
 
+    const qDur = currentRoom.flashSecondsPerQuestion || 60;
+    const now = Date.now();
+
     // 3. Server/Host mengirimkan daftar soal yang sudah fix tersebut ke semua pengguna yang ada di Room ID secara bersamaan
     realtimeMultiplayerService.startExam(currentRoom, seed, fixedQuestions);
 
-    // Host juga memulai dengan data soal yang sudah dikunci
-    startPreparedQuiz(currentRoom, seed, fixedQuestions);
+    // Host juga memulai dengan data soal dan waktu yang sinkron
+    startPreparedQuiz(currentRoom, seed, fixedQuestions, 0, now, qDur);
   };
 
   // Leave room
@@ -508,8 +538,22 @@ export default function App() {
     setActiveView('home');
   };
 
-  // Option selection
+  // Option selection - immediately reveals official answer key & statutory explanation
   const handleSelectOption = (key: QuestionOptionKey) => {
+    // If already answered, do not allow changing answer
+    if (answers[currentIndex]?.selectedOption !== undefined && answers[currentIndex]?.selectedOption !== null) {
+      return;
+    }
+
+    const currentQ = quizQuestions[currentIndex];
+    const isCorrect = currentQ?.correctAnswer === key;
+
+    if (isCorrect) {
+      soundEffects.playCorrect();
+    } else {
+      soundEffects.playWrong();
+    }
+
     setAnswers((prev) => {
       const existing = prev[currentIndex];
       const updated = {
@@ -549,24 +593,16 @@ export default function App() {
           )
         );
 
-        realtimeMultiplayerService.submitQuestionAnswer(currentIndex, answeredIndices);
+        realtimeMultiplayerService.submitQuestionAnswer(currentIndex, answeredIndices, key);
         realtimeMultiplayerService.updateMyScore(scorePct, answeredIndices.length, false, timeSpent);
       }
 
       return updated;
     });
 
-    // In solo flash timer mode only, automatically transition to next question after selecting
-    if (timerMode === 'flash' && !currentRoom) {
-      setTimeout(() => {
-        if (currentIndex < quizQuestions.length - 1) {
-          setCurrentIndex((i) => i + 1);
-          const flashSec = 60;
-          setSecondsRemaining(flashSec);
-          setTotalSeconds(flashSec);
-        }
-      }, 300);
-    }
+    // Stay on current question so participant can read the legal basis and juridical analysis!
+    // In multiplayer: wait for admin to trigger next.
+    // In solo: wait for user to click next.
   };
 
   // Toggle doubtful flag
@@ -602,15 +638,13 @@ export default function App() {
 
   const peersAnsweredCount = peersWhoAnsweredCurrent.length;
 
-  // Strict Synchronization Gate:
-  // In multiplayer mode, neither host nor any other participant can advance to the next question
-  // until EVERY participant in the room has answered the current question!
+  // Next question locked indicator
   const isNextQuestionLocked = isMultiplayerActive && totalPeersCount > 1 && peersAnsweredCount < totalPeersCount;
 
   // Navigate questions
   const handleSelectQuestionIndex = (index: number) => {
-    // In multiplayer mode, players cannot jump ahead past currentIndex while the gate is locked
-    if (isMultiplayerActive && index > currentIndex && isNextQuestionLocked) {
+    // In multiplayer mode, all participant screens are locked strictly to the current question
+    if (isMultiplayerActive) {
       soundEffects.playWrong();
       return;
     }
@@ -618,46 +652,60 @@ export default function App() {
     setCurrentIndex(index);
     setMobileGridOpen(false);
 
-    // If flash mode, reset timer for the new question
-    if (timerMode === 'flash') {
-      const flashSec = currentRoom ? currentRoom.flashSecondsPerQuestion : 60;
-      setSecondsRemaining(flashSec);
-      setTotalSeconds(flashSec);
-    }
+    // Reset countdown timer for the selected question
+    const now = Date.now();
+    setQuestionStartTime(now);
+    setSecondsRemaining(questionDuration);
+    setTotalSeconds(questionDuration);
   };
 
   const handleNext = () => {
-    // Strict Gate: neither host nor other participants can open next question until all answered
-    if (isNextQuestionLocked) {
-      soundEffects.playWrong();
+    if (isMultiplayerActive) {
+      // In multiplayer: only host / admin can advance to next question
+      if (!currentUser?.isHost) {
+        soundEffects.playWrong();
+        return;
+      }
+
+      if (currentIndex < quizQuestions.length - 1) {
+        const nextIdx = currentIndex + 1;
+        realtimeMultiplayerService.adminNextQuestion(nextIdx);
+        setCurrentIndex(nextIdx);
+        const now = Date.now();
+        setQuestionStartTime(now);
+        setSecondsRemaining(questionDuration);
+        setTotalSeconds(questionDuration);
+      } else {
+        realtimeMultiplayerService.adminFinishExam();
+        finishQuiz();
+      }
       return;
     }
 
+    // Solo mode: user advances and resets timer
     if (currentIndex < quizQuestions.length - 1) {
       const nextIdx = currentIndex + 1;
       setCurrentIndex(nextIdx);
-
-      // If multiplayer, synchronize advance to all devices in the room
-      if (currentRoom) {
-        realtimeMultiplayerService.syncNextQuestion(nextIdx);
-      }
-
-      if (timerMode === 'flash') {
-        const flashSec = currentRoom ? currentRoom.flashSecondsPerQuestion : 60;
-        setSecondsRemaining(flashSec);
-        setTotalSeconds(flashSec);
-      }
+      const now = Date.now();
+      setQuestionStartTime(now);
+      setSecondsRemaining(questionDuration);
+      setTotalSeconds(questionDuration);
+    } else {
+      finishQuiz();
     }
   };
 
   const handlePrev = () => {
+    if (isMultiplayerActive) {
+      // Screens are strictly synchronized in multiplayer
+      return;
+    }
     if (currentIndex > 0) {
       setCurrentIndex((i) => i - 1);
-      if (timerMode === 'flash') {
-        const flashSec = currentRoom ? currentRoom.flashSecondsPerQuestion : 60;
-        setSecondsRemaining(flashSec);
-        setTotalSeconds(flashSec);
-      }
+      const now = Date.now();
+      setQuestionStartTime(now);
+      setSecondsRemaining(questionDuration);
+      setTotalSeconds(questionDuration);
     }
   };
 
@@ -919,12 +967,14 @@ export default function App() {
                   isNextLocked={isNextQuestionLocked}
                   lockReasonText={`Menunggu Teman (${peersAnsweredCount}/${totalPeersCount})`}
                   isMultiplayer={isMultiplayerActive}
+                  isHost={currentUser ? currentUser.isHost : true}
                   peersAnsweredCount={peersAnsweredCount}
                   totalPeersCount={totalPeersCount}
+                  secondsRemaining={secondsRemaining}
                 />
               </div>
 
-              {/* Desktop Question Grid Sidebar (1 to 500 Numbers with Color Status) */}
+              {/* Desktop Question Grid Sidebar */}
               <div className="hidden md:block md:col-span-4 lg:col-span-4 sticky top-20">
                 <QuestionGrid
                   totalQuestions={quizQuestions.length}
@@ -1026,7 +1076,7 @@ export default function App() {
           />
         )}
 
-        {/* VIEW 6: QUESTION BANK DATABASE MANAGER (500 Questions) */}
+        {/* VIEW 6: QUESTION BANK DATABASE MANAGER */}
         {activeView === 'bank' && (
           <QuestionBankModal
             customQuestions={customQuestions}

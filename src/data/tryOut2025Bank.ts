@@ -1390,9 +1390,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Derden Verzet",
-      "legalBasis": "Pasal 195 ayat (6) HIR (Staatsblad 1941 No. 44) jo. Pasal 206 ayat (6) RBg jo. Pasal 378 - 384 Rv.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara Perdata, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Pihak ketiga yang hak miliknya terkena sita jaminan/eksekusi dapat mengajukan perlawanan pihak ketiga (Derden Verzet).",
+      "legalBasis": "Pasal 195 ayat (6) HIR / Pasal 206 ayat (6) RBg jo. Pasal 378 - 384 Rv.",
+      "analysis": "Jika barang milik pihak ketiga terkena sita jaminan atau sita eksekusi, pihak ketiga tersebut berhak mengajukan perlawanan pihak ketiga (derden verzet) ke Pengadilan Negeri yang meletakkan sita guna membuktikan bahwa barang tersebut adalah miliknya yang sah dan memohon agar sita diangkat."
     },
     "difficulty": "Sedang"
   },
@@ -1855,9 +1855,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Pasal 12 tentang pengawasan dan Pasal 31 tentang ketentuan pidana",
-      "legalBasis": "Pasal 24C ayat (1) UUD 1945 jo. Pasal 10 ayat (1) Undang-Undang No. 24 Tahun 2003 tentang Mahkamah Konstitusi jo. Putusan MK No. 006/PUU-II/2004.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan A."
+      "summary": "Putusan Mahkamah Konstitusi No. 006/PUU-II/2004 membatalkan Pasal 31 tentang pemidanaan advokat tanpa izin dan menguji Pasal 12 UU Advokat.",
+      "legalBasis": "Putusan Mahkamah Konstitusi No. 006/PUU-II/2004 jo. Pasal 24C ayat (1) UUD 1945 jo. Pasal 12 dan Pasal 31 UU No. 18 Tahun 2003 tentang Advokat.",
+      "analysis": "Mahkamah Konstitusi melalui Putusan No. 006/PUU-II/2004 menyatakan Pasal 31 UU Advokat (ancaman pidana advokat tanpa izin) bertentangan dengan UUD 1945 dan tidak mempunyai kekuatan hukum mengikat karena membatasi hak konstitusional masyarakat untuk membela diri. MK juga memberikan pertimbangan terhadap Pasal 12 UU Advokat mengenai pengawasan organisasi advokat."
     },
     "difficulty": "Sedang"
   },
@@ -1917,9 +1917,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "B",
     "explanation": {
-      "summary": "Pimpinan Partai Politik",
-      "legalBasis": "Pasal 28 ayat (3) Undang-Undang No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan B."
+      "summary": "Pimpinan organisasi advokat dilarang merangkap jabatan sebagai pimpinan partai politik demi independensi profesi.",
+      "legalBasis": "Pasal 28 ayat (3) UU No. 18 Tahun 2003 tentang Advokat.",
+      "analysis": "Pasal 28 ayat (3) UU Advokat menegaskan: \"Pimpinan Organisasi Advokat tidak dapat merangkap sebagai pimpinan partai politik, baik di tingkat pusat maupun di tingkat daerah.\" Hal ini untuk menjaga integritas, netralitas, dan independensi organisasi advokat dari tarik-menarik kepentingan politik praktis."
     },
     "difficulty": "Sedang"
   },
@@ -1948,9 +1948,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Hak Advokat untuk dilindungi dari tuntutan pidana atau perdata ketika ia menjalankan tugas profesinya dengan itikad baik untuk kepentingan pembelaan klien dalam sidang pengadilan",
-      "legalBasis": "Pasal 16 Undang-Undang No. 18 Tahun 2003 tentang Advokat jo. Putusan Mahkamah Konstitusi No. 26/PUU-XI/2013.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Kode Etik Profesi Advokat, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Hak imunitas melindungi advokat dari tuntutan pidana atau perdata saat menjalankan profesi dengan itikad baik di dalam maupun di luar sidang pengadilan.",
+      "legalBasis": "Pasal 16 UU No. 18 Tahun 2003 tentang Advokat jo. Putusan Mahkamah Konstitusi No. 26/PUU-XI/2013.",
+      "analysis": "Pasal 16 UU Advokat yang semula hanya melindungi advokat dalam sidang pengadilan, telah diperluas maknanya oleh Putusan Mahkamah Konstitusi No. 26/PUU-XI/2013 menjadi: \"Advokat tidak dapat dituntut baik secara perdata maupun pidana dalam menjalankan tugas profesinya dengan itikad baik untuk kepentingan pembelaan klien di dalam maupun di luar sidang pengadilan.\""
     },
     "difficulty": "Sedang"
   },
@@ -3064,9 +3064,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "UU No. 13 Tahun 2003 tentang Ketenagakerjaan",
-      "legalBasis": "Pasal 1 angka 1 jo. Pasal 125 ayat (1) dan ayat (2) Undang-Undang No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "UU No. 2 Tahun 2004 (PPHI) merupakan instrumen hukum formil/acara untuk menegakkan hukum materiil ketenagakerjaan dalam UU No. 13 Tahun 2003.",
+      "legalBasis": "Undang-Undang No. 2 Tahun 2004 tentang PPHI jo. Undang-Undang No. 13 Tahun 2003 tentang Ketenagakerjaan.",
+      "analysis": "UU No. 13 Tahun 2003 merupakan hukum materiil yang memuat hak-hak normatif ketenagakerjaan dan hubungan kerja. Sedangkan UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial (PPHI) adalah hukum formil (hukum acara) yang mengatur tata cara penegakan dan penyelesaian perselisihan hak, perselisihan kepentingan, perselisihan PHK, dan perselisihan antar serikat pekerja."
     },
     "difficulty": "Sedang"
   },
@@ -3095,9 +3095,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "D",
     "explanation": {
-      "summary": "P4D/P4P",
-      "legalBasis": "Pasal 124 Undang-Undang No. 2 Tahun 2004 tentang PPHI jo. Undang-Undang No. 22 Tahun 1957.",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan D."
+      "summary": "Sebelum PHI terbentuk, perselisihan perburuhan ditangani oleh Panitia Penyelesaian Perselisihan Perburuhan Daerah (P4D) dan Pusat (P4P).",
+      "legalBasis": "Pasal 124 UU No. 2 Tahun 2004 tentang PPHI jo. UU No. 22 Tahun 1957.",
+      "analysis": "Sebelum berlakunya UU No. 2 Tahun 2004 dan dibentuknya Pengadilan Hubungan Industrial pada Pengadilan Negeri, lembaga yang berwenang memeriksa dan memutus perselisihan perburuhan diatur oleh UU No. 22 Tahun 1957, yaitu melalui Panitia Penyelesaian Perselisihan Perburuhan Daerah (P4D) dan Panitia Penyelesaian Perselisihan Perburuhan Pusat (P4P)."
     },
     "difficulty": "Sedang"
   },
@@ -3188,9 +3188,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Pengadilan Hubungan Industrial",
-      "legalBasis": "Pasal 55 jo. Pasal 56 Undang-Undang No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial (PPHI).",
-      "analysis": "Berdasarkan ketentuan hukum acara peradilan Indonesia dalam ranah Hukum Acara PHI, jawaban yang sesuai dengan standar penilaian Ujian Profesi Advokat PERADI adalah pilihan C."
+      "summary": "Perkara perselisihan hubungan industrial yang belum diputus oleh P4D/P4P dialihkan penyelesaiannya kepada Pengadilan Hubungan Industrial (PHI).",
+      "legalBasis": "Pasal 124 ayat (1) dan Pasal 125 UU No. 2 Tahun 2004 tentang PPHI.",
+      "analysis": "Berdasarkan ketentuan peralihan Pasal 124 UU No. 2 Tahun 2004, sejak terbentuknya Pengadilan Hubungan Industrial, seluruh perselisihan hubungan industrial dan pemutusan hubungan kerja yang belum diputus oleh P4D atau P4P dialihkan dan diselesaikan oleh Pengadilan Hubungan Industrial pada Pengadilan Negeri setempat."
     },
     "difficulty": "Sedang"
   },

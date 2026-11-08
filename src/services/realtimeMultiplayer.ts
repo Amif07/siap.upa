@@ -7,7 +7,7 @@ import { createClient, SupabaseClient, RealtimeChannel } from '@supabase/supabas
 import Peer, { DataConnection } from 'peerjs';
 import { Participant, RoomSettings, RoomChatMessage, UPAQuestion } from '../types/quiz';
 
-export type RealtimeTransportType = 'supabase' | 'webrtc' | 'broadcast';
+export type RealtimeTransportType = 'websocket' | 'supabase' | 'webrtc' | 'broadcast';
 
 export interface SupabaseConfig {
   url: string;
@@ -22,7 +22,7 @@ const DEFAULT_SUPABASE_URL = (import.meta as unknown as { env: Record<string, st
 const DEFAULT_SUPABASE_ANON_KEY = (import.meta as unknown as { env: Record<string, string> }).env?.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.demo_advokatquiz_realtime_key';
 
 export interface RealtimeEventPayload {
-  type: 'ROOM_JOIN' | 'ROOM_LEAVE' | 'START_EXAM' | 'SCORE_UPDATE' | 'CHAT_MESSAGE' | 'HOST_SYNC' | 'QUESTION_ANSWERED' | 'NEXT_QUESTION_SYNC';
+  type: 'ROOM_JOIN' | 'ROOM_LEAVE' | 'START_EXAM' | 'SCORE_UPDATE' | 'CHAT_MESSAGE' | 'HOST_SYNC' | 'QUESTION_ANSWERED' | 'NEXT_QUESTION_SYNC' | 'ROOM_STATE' | 'ANSWER_UPDATE' | 'EXAM_STARTED';
   roomCode: string;
   senderId: string;
   participant?: Participant;
@@ -39,9 +39,13 @@ export interface RealtimeEventPayload {
   targetQuestionIndex?: number;
   questions?: UPAQuestion[];
   questionIds?: number[];
+  questionStartTime?: number;
+  questionDuration?: number;
+  currentQuestionIndex?: number;
 }
 
 export class RealtimeMultiplayerService {
+  private ws: WebSocket | null = null;
   private supabase: SupabaseClient | null = null;
   private supabaseChannel: RealtimeChannel | null = null;
   private peer: Peer | null = null;
@@ -58,10 +62,10 @@ export class RealtimeMultiplayerService {
 
   // Event Callbacks
   private onParticipantsChangeCb: ((participants: Participant[]) => void) | null = null;
-  private onStartExamCb: ((settings: RoomSettings, seed: string, questions?: UPAQuestion[]) => void) | null = null;
+  private onStartExamCb: ((settings: RoomSettings, seed: string, questions?: UPAQuestion[], currentQuestionIndex?: number, questionStartTime?: number, questionDuration?: number) => void) | null = null;
   private onScoreUpdateCb: ((data: { participantId: string; score: number; answeredCount: number; isFinished: boolean; timeSpentSeconds: number }) => void) | null = null;
   private onQuestionAnsweredCb: ((data: { participantId: string; answeredIndex: number; answeredIndices: number[] }) => void) | null = null;
-  private onNextQuestionSyncCb: ((targetIndex: number) => void) | null = null;
+  private onNextQuestionSyncCb: ((targetIndex: number, questionStartTime?: number, questionDuration?: number) => void) | null = null;
   private onChatMessageCb: ((message: RoomChatMessage) => void) | null = null;
   private onStatusChangeCb: ((status: string, transport: RealtimeTransportType) => void) | null = null;
 
@@ -138,7 +142,16 @@ export class RealtimeMultiplayerService {
     this.onParticipantsChangeCb = cb;
   }
 
-  public onStartExam(cb: (settings: RoomSettings, seed: string, questions?: UPAQuestion[]) => void) {
+  public onStartExam(
+    cb: (
+      settings: RoomSettings,
+      seed: string,
+      questions?: UPAQuestion[],
+      currentQuestionIndex?: number,
+      questionStartTime?: number,
+      questionDuration?: number
+    ) => void
+  ) {
     this.onStartExamCb = cb;
   }
 
@@ -170,6 +183,166 @@ export class RealtimeMultiplayerService {
     }
   }
 
+  private connectNativeWebSocket(roomSettings: RoomSettings, participant: Participant): Promise<boolean> {
+    if (typeof window === 'undefined') return Promise.resolve(false);
+
+    return new Promise((resolve) => {
+      try {
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const wsUrl = `${protocol}//${window.location.host}/ws`;
+        const socket = new WebSocket(wsUrl);
+
+        const timer = setTimeout(() => {
+          if (socket.readyState !== WebSocket.OPEN) {
+            try { socket.close(); } catch {}
+            resolve(false);
+          }
+        }, 2000);
+
+        socket.onopen = () => {
+          clearTimeout(timer);
+          this.ws = socket;
+          this.activeTransport = 'websocket';
+          this.updateStatus('connected', 'websocket', 'Terhubung via Native Server WebSocket (Sinkron 100%)');
+
+          socket.send(
+            JSON.stringify({
+              type: 'JOIN_ROOM',
+              roomCode: roomSettings.code,
+              participant,
+              roomSettings,
+            })
+          );
+          resolve(true);
+        };
+
+        socket.onmessage = (event) => {
+          try {
+            const data = JSON.parse(event.data);
+            this.handleNativeWebSocketMessage(data);
+          } catch (e) {
+            console.warn('[WS] Failed to parse message:', e);
+          }
+        };
+
+        socket.onerror = () => {
+          clearTimeout(timer);
+          resolve(false);
+        };
+
+        socket.onclose = () => {
+          if (this.ws === socket) {
+            this.ws = null;
+          }
+        };
+      } catch {
+        resolve(false);
+      }
+    });
+  }
+
+  private handleNativeWebSocketMessage(data: any): void {
+    switch (data.type) {
+      case 'ROOM_SYNC': {
+        if (data.roomSettings) {
+          this.currentRoomSettings = data.roomSettings;
+        }
+        if (Array.isArray(data.participants)) {
+          this.participantsMap.clear();
+          data.participants.forEach((p: Participant) => {
+            this.participantsMap.set(p.id, p);
+          });
+          this.notifyParticipants();
+        }
+        if (data.status === 'in_progress' && Array.isArray(data.questions)) {
+          this.currentLockedQuestions = data.questions;
+          if (this.onStartExamCb) {
+            this.onStartExamCb(
+              data.roomSettings || this.currentRoomSettings,
+              data.roomCode,
+              data.questions,
+              data.currentQuestionIndex || 0,
+              data.questionStartTime,
+              data.questionDuration || 60
+            );
+          }
+        }
+        break;
+      }
+
+      case 'PARTICIPANTS_UPDATE': {
+        if (Array.isArray(data.participants)) {
+          this.participantsMap.clear();
+          data.participants.forEach((p: Participant) => {
+            this.participantsMap.set(p.id, p);
+          });
+          this.notifyParticipants();
+        }
+        break;
+      }
+
+      case 'EXAM_STARTED': {
+        if (Array.isArray(data.questions)) {
+          this.currentLockedQuestions = data.questions;
+        }
+        if (Array.isArray(data.participants)) {
+          this.participantsMap.clear();
+          data.participants.forEach((p: Participant) => {
+            this.participantsMap.set(p.id, p);
+          });
+          this.notifyParticipants();
+        }
+        if (this.onStartExamCb) {
+          this.onStartExamCb(
+            data.roomSettings || this.currentRoomSettings,
+            data.roomCode,
+            data.questions,
+            data.currentQuestionIndex || 0,
+            data.questionStartTime,
+            data.questionDuration || 60
+          );
+        }
+        break;
+      }
+
+      case 'ANSWER_UPDATE': {
+        if (Array.isArray(data.participants)) {
+          this.participantsMap.clear();
+          data.participants.forEach((p: Participant) => {
+            this.participantsMap.set(p.id, p);
+          });
+          this.notifyParticipants();
+        }
+        if (this.onQuestionAnsweredCb && data.participantId) {
+          this.onQuestionAnsweredCb({
+            participantId: data.participantId,
+            answeredIndex: data.questionIndex,
+            answeredIndices: data.answeredIndices || [],
+          });
+        }
+        break;
+      }
+
+      case 'NEXT_QUESTION_SYNC': {
+        if (this.onNextQuestionSyncCb) {
+          this.onNextQuestionSyncCb(
+            data.targetIndex,
+            data.questionStartTime,
+            data.questionDuration || 60
+          );
+        }
+        break;
+      }
+
+      case 'CHAT_MESSAGE': {
+        if (this.onChatMessageCb && data.message) {
+          this.onChatMessageCb(data.message);
+        }
+        break;
+      }
+    }
+  }
+
   /**
    * Connect to a Room (as Host or Guest)
    */
@@ -182,6 +355,15 @@ export class RealtimeMultiplayerService {
     this.participantsMap.set(participant.id, participant);
     this.notifyParticipants();
 
+    this.updateStatus('connecting', 'websocket', 'Menghubungkan ke Real-Time Server...');
+
+    // 1. Try Native WebSocket Server on current host first (Immediate 100% synchronized state)
+    const wsOk = await this.connectNativeWebSocket(roomSettings, participant);
+    if (wsOk) {
+      return;
+    }
+
+    // 2. Fallback to Supabase Realtime if Native WS is not available
     this.updateStatus('connecting', 'supabase', 'Menghubungkan ke Supabase Realtime...');
 
     const config = this.getSupabaseConfig();
@@ -515,11 +697,13 @@ export class RealtimeMultiplayerService {
         }
         break;
 
-      case 'NEXT_QUESTION_SYNC':
-        if (payload.targetQuestionIndex !== undefined && this.onNextQuestionSyncCb) {
-          this.onNextQuestionSyncCb(payload.targetQuestionIndex);
+      case 'NEXT_QUESTION_SYNC': {
+        const target = payload.targetQuestionIndex !== undefined ? payload.targetQuestionIndex : (payload as any).targetIndex;
+        if (target !== undefined && this.onNextQuestionSyncCb) {
+          this.onNextQuestionSyncCb(target, payload.questionStartTime, payload.questionDuration);
         }
         break;
+      }
     }
   }
 
@@ -622,6 +806,16 @@ export class RealtimeMultiplayerService {
       timestamp: Date.now(),
     };
 
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(
+        JSON.stringify({
+          type: 'CHAT_MESSAGE',
+          roomCode: this.currentRoomCode,
+          message,
+        })
+      );
+    }
+
     this.broadcast({
       type: 'CHAT_MESSAGE',
       roomCode: this.currentRoomCode,
@@ -641,6 +835,16 @@ export class RealtimeMultiplayerService {
     this.currentLockedQuestions = lockedQuestions || null;
     this.currentRoomSettings = roomSettings;
 
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(
+        JSON.stringify({
+          type: 'START_EXAM',
+          roomCode: this.currentRoomCode,
+          settings: roomSettings,
+        })
+      );
+    }
+
     this.broadcast({
       type: 'START_EXAM',
       roomCode: this.currentRoomCode,
@@ -649,6 +853,8 @@ export class RealtimeMultiplayerService {
       seed,
       questions: lockedQuestions,
       questionIds: lockedQuestions ? lockedQuestions.map((q) => q.id) : undefined,
+      questionStartTime: Date.now(),
+      questionDuration: roomSettings.flashSecondsPerQuestion || 60,
     });
   }
 
@@ -659,13 +865,26 @@ export class RealtimeMultiplayerService {
   /**
    * Submit and broadcast that current user has answered a specific question index
    */
-  public submitQuestionAnswer(questionIndex: number, currentAnsweredIndices: number[]): void {
+  public submitQuestionAnswer(questionIndex: number, currentAnsweredIndices: number[], selectedOption?: string): void {
     if (!this.currentParticipant || !this.currentRoomCode) return;
 
     this.currentParticipant.answeredIndices = currentAnsweredIndices;
     this.currentParticipant.answeredCount = currentAnsweredIndices.length;
     this.participantsMap.set(this.currentParticipant.id, { ...this.currentParticipant });
     this.notifyParticipants();
+
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(
+        JSON.stringify({
+          type: 'SUBMIT_ANSWER',
+          roomCode: this.currentRoomCode,
+          participantId: this.currentParticipant.id,
+          questionIndex,
+          selectedOption,
+          timeSpentSeconds: 0,
+        })
+      );
+    }
 
     this.broadcast({
       type: 'QUESTION_ANSWERED',
@@ -674,6 +893,40 @@ export class RealtimeMultiplayerService {
       answeredIndex: questionIndex,
       answeredIndices: currentAnsweredIndices,
     });
+  }
+
+  /**
+   * Host-Triggered: Advance next question simultaneously for all users in the room
+   */
+  public adminNextQuestion(targetIndex: number): void {
+    if (!this.currentParticipant || !this.currentRoomCode) return;
+
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(
+        JSON.stringify({
+          type: 'ADMIN_NEXT_QUESTION',
+          roomCode: this.currentRoomCode,
+          targetIndex,
+        })
+      );
+    }
+
+    this.syncNextQuestion(targetIndex);
+  }
+
+  /**
+   * Host-Triggered: Finish examination for all users in room
+   */
+  public adminFinishExam(): void {
+    if (!this.currentParticipant || !this.currentRoomCode) return;
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(
+        JSON.stringify({
+          type: 'ADMIN_FINISH_EXAM',
+          roomCode: this.currentRoomCode,
+        })
+      );
+    }
   }
 
   /**
@@ -687,6 +940,8 @@ export class RealtimeMultiplayerService {
       roomCode: this.currentRoomCode,
       senderId: this.currentParticipant.id,
       targetQuestionIndex: targetIndex,
+      questionStartTime: Date.now(),
+      questionDuration: this.currentRoomSettings?.flashSecondsPerQuestion || 60,
     });
   }
 
@@ -694,7 +949,7 @@ export class RealtimeMultiplayerService {
     this.onQuestionAnsweredCb = cb;
   }
 
-  public onNextQuestionSync(cb: (targetIndex: number) => void): void {
+  public onNextQuestionSync(cb: (targetIndex: number, questionStartTime?: number, questionDuration?: number) => void): void {
     this.onNextQuestionSyncCb = cb;
   }
 
@@ -708,6 +963,15 @@ export class RealtimeMultiplayerService {
         roomCode: this.currentRoomCode,
         senderId: this.currentParticipant.id,
       });
+    }
+
+    if (this.ws) {
+      try {
+        this.ws.close();
+      } catch {
+        // ignore
+      }
+      this.ws = null;
     }
 
     if (this.supabaseChannel) {

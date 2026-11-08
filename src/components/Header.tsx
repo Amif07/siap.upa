@@ -113,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({
             }`}
           >
             <Layers className="w-4 h-4" />
-            <span>Bank 500 Soal</span>
+            <span>Bank Soal UPA</span>
           </button>
 
           <button
@@ -276,7 +276,7 @@ export const Header: React.FC<HeaderProps> = ({
           onClick={() => handleNavClick('bank')}
           className={`px-2 py-1 rounded ${activeView === 'bank' ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 font-semibold' : 'text-slate-600 dark:text-slate-400'}`}
         >
-          Bank 500
+          Bank Soal
         </button>
         <button
           onClick={() => handleNavClick('cheatsheet')}

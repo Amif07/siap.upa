@@ -1,10 +1,6 @@
 import { UPAQuestion, UPACategory } from '../types/quiz';
-import { ADDITIONAL_UPA_BANK_PART1 } from './additionalUpaQuestions';
-import { AUTHENTIC_PERADI_BANK_PART2 } from './authenticUpaQuestions';
 import { TRYOUT_2025_BANK } from './tryOut2025Bank';
 import { TOAZ_PERADI_BANK } from './toazPeradiBank';
-import { ADVANCED_UPA_BANK } from './advancedUpaBank';
-import { CATEGORY_EXPANSION_BANK } from './categoryExpansionBank';
 
 /**
  * Bank Data Soal Ujian Profesi Advokat (UPA) Indonesia
@@ -2318,49 +2314,39 @@ export const UPA_CATEGORIES: UPACategory[] = [
 ];
 
 /**
- * Generator procedural yang melengkapi bank data soal hingga 500 soal
- * menggunakan naskah otentik 120 soal Try Out Resmi UPA 2026/2025 sebagai fondasi utama.
+ * Mengkompilasi bank data master Ujian Profesi Advokat (UPA)
+ * Berdasarkan naskah otentik soal dari dokumen referensi terlampir:
+ * - Kunci Jawaban & Pembahasan PG Try Out 4 Juli 2026 (120 Soal Resmi PERADI)
+ * - Naskah Try Out UPA 2025 (108 Soal Terverifikasi)
+ * - Naskah Latihan Soal Ujian Advokat PERADI Toaz (88 Soal Terverifikasi)
+ * Seluruh soal telah ditinjau dan dilengkapi dasar hukum lengkap (ayat, pasal, undang-undang).
  */
-export function generateFull500QuestionBank(): UPAQuestion[] {
+export function generateMasterQuestionBank(): UPAQuestion[] {
   const normalizeKey = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
 
   const base: UPAQuestion[] = [
     ...OFFICIAL_TRYOUT_QUESTIONS,
-    ...ADDITIONAL_UPA_BANK_PART1,
-    ...AUTHENTIC_PERADI_BANK_PART2,
-    ...CATEGORY_EXPANSION_BANK,
     ...TRYOUT_2025_BANK,
     ...TOAZ_PERADI_BANK,
   ];
 
   const seen = new Set<string>();
-  const uniqueBase: UPAQuestion[] = [];
+  const uniqueQuestions: UPAQuestion[] = [];
 
   for (const q of base) {
     const k = normalizeKey(q.question);
     if (!seen.has(k)) {
       seen.add(k);
-      uniqueBase.push(q);
+      uniqueQuestions.push(q);
     }
   }
-
-  const filteredAdvanced: UPAQuestion[] = [];
-  for (const q of ADVANCED_UPA_BANK) {
-    const k = normalizeKey(q.question);
-    if (!seen.has(k)) {
-      seen.add(k);
-      filteredAdvanced.push(q);
-    }
-  }
-
-  const combined = [...uniqueBase, ...filteredAdvanced];
 
   // Re-index consecutive IDs starting from 1
-  return combined.map((q, index) => ({
+  return uniqueQuestions.map((q, index) => ({
     ...q,
     id: index + 1,
   }));
 }
 
-export const MASTER_UPA_DATABASE: UPAQuestion[] = generateFull500QuestionBank();
+export const MASTER_UPA_DATABASE: UPAQuestion[] = generateMasterQuestionBank();
 

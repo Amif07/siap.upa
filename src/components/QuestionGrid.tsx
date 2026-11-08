@@ -111,7 +111,7 @@ export const QuestionGrid: React.FC<QuestionGridProps> = ({
           </div>
         </div>
 
-        {/* Quick Jump Input (Ideal for 1-500 questions) */}
+        {/* Quick Jump Input */}
         {totalQuestions > 30 && (
           <form onSubmit={handleJump} className="mt-3 flex items-center gap-2">
             <div className="relative flex-1">
@@ -147,7 +147,9 @@ export const QuestionGrid: React.FC<QuestionGridProps> = ({
             if (filterMode === 'unanswered' && isAnswered) return null;
             if (filterMode === 'doubtful' && !isDoubt) return null;
 
-            const isLocked = maxAccessibleIndex !== undefined && idx > maxAccessibleIndex;
+            const isLocked = isMultiplayer
+              ? idx !== currentIndex
+              : maxAccessibleIndex !== undefined && idx > maxAccessibleIndex;
 
             return (
               <button
@@ -163,9 +165,17 @@ export const QuestionGrid: React.FC<QuestionGridProps> = ({
                   onSelectQuestion(idx);
                 }}
                 className={`h-9 ${getButtonStatusClass(idx)} ${
-                  isLocked ? 'opacity-35 cursor-not-allowed border border-dashed border-slate-300 dark:border-slate-700' : 'cursor-pointer'
+                  isLocked ? 'opacity-40 cursor-not-allowed border border-dashed border-slate-300 dark:border-slate-700' : 'cursor-pointer'
                 }`}
-                title={isLocked ? `Soal No. ${idx + 1} (Terkunci sampai seluruh peserta selesai)` : `Soal No. ${idx + 1}`}
+                title={
+                  isMultiplayer
+                    ? idx === currentIndex
+                      ? `Soal No. ${idx + 1} (Sedang Dikerjakan)`
+                      : `Soal No. ${idx + 1} (Layar dikunci bersama oleh Admin)`
+                    : isLocked
+                    ? `Soal No. ${idx + 1} (Terkunci)`
+                    : `Soal No. ${idx + 1}`
+                }
               >
                 {idx + 1}
               </button>

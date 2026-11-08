@@ -58,7 +58,7 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `advokatquiz_500_soal_upa_${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `advokatquiz_ratusan_soal_upa_${new Date().toISOString().slice(0, 10)}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -113,7 +113,7 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
             <span>Master Data Ujian Profesi Advokat</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold font-legal text-slate-900 dark:text-white">
-            Bank Database 500 Soal UPA
+            Bank Database Ratusan Soal UPA
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl">
             Struktur JSON modular yang memuat materi resmi standar PERADI. Anda dapat mengunduh file JSON lengkap atau menambahkan soal kustom sesuai kebutuhan latihan Anda.
@@ -183,7 +183,7 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
     },
     "difficulty": "Mudah"
   }
-  // ... duplikasi struktur ini hingga 500 soal
+  // ... struktur data modular bank soal UPA
 ]`}
           </pre>
         </div>
@@ -425,7 +425,7 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
 
         {filteredQuestions.length > 25 && (
           <div className="p-4 text-center text-xs text-slate-500 bg-slate-100 dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-800">
-            Menampilkan 25 dari {filteredQuestions.length} soal. Untuk melihat seluruh 500 soal secara utuh, gunakan tombol "Unduh .JSON" di atas.
+            Menampilkan 25 dari {filteredQuestions.length} soal. Untuk melihat seluruh {filteredQuestions.length} soal secara utuh, gunakan tombol "Unduh .JSON" di atas.
           </div>
         )}
       </div>

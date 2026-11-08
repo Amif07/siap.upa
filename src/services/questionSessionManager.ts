@@ -3,7 +3,7 @@
  * Solves question repetition across practice sessions:
  * 1. Tracks questions previously seen/completed by user across sessions.
  * 2. Strictly guarantees 0 duplicated question texts in any single session.
- * 3. Rotates through the entire 500-question pool across consecutive sessions before repeating.
+ * 3. Rotates through the entire question database pool across consecutive sessions before repeating.
  * 4. Randomizes question order, mixed legal categories, and option choices per session.
  */
 import { UPAQuestion, UPACategory, QuestionOptionKey, QuestionOption } from '../types/quiz';

@@ -28,7 +28,9 @@ export const TimerDisplay: React.FC<TimerDisplayProps> = ({
   }, [isUrgent, secondsRemaining]);
 
   useEffect(() => {
-    if (secondsRemaining <= 0 && !hasExpiredRef.current) {
+    if (secondsRemaining > 0) {
+      hasExpiredRef.current = false;
+    } else if (secondsRemaining <= 0 && !hasExpiredRef.current) {
       hasExpiredRef.current = true;
       onExpire();
     }

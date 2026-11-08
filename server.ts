@@ -3,8 +3,9 @@ import http from 'http';
 import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { MASTER_UPA_DATABASE } from './src/data/upaQuestions';
-import { UPAQuestion, QuestionOptionKey, QuestionOption } from './src/types/quiz';
+import { WebSocketServer, WebSocket } from 'ws';
+import { MASTER_UPA_DATABASE } from './src/data/upaQuestions.ts';
+import { UPAQuestion, QuestionOptionKey, QuestionOption, RoomSettings, Participant, RoomChatMessage } from './src/types/quiz.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,6 +19,57 @@ interface LockedRoomSession {
 }
 
 const lockedRoomStore = new Map<string, LockedRoomSession>();
+
+// Server-Authoritative Realtime Room Store (Strict Zero-Bot Policy: Only Real Connected Sockets)
+interface ServerParticipant extends Participant {
+  ws?: WebSocket;
+}
+
+interface ServerRoom {
+  code: string;
+  roomName: string;
+  hostId: string;
+  hostName: string;
+  settings: RoomSettings;
+  status: 'lobby' | 'in_progress' | 'finished';
+  currentQuestionIndex: number;
+  questionStartTime: number;
+  questionDuration: number;
+  questions: UPAQuestion[];
+  participants: Map<string, ServerParticipant>;
+  messages: RoomChatMessage[];
+}
+
+const serverRooms = new Map<string, ServerRoom>();
+
+function getCleanParticipants(room: ServerRoom): Participant[] {
+  return Array.from(room.participants.values()).map((p) => ({
+    id: p.id,
+    name: p.name,
+    isHost: p.isHost,
+    isReady: p.isReady,
+    currentQuestionIndex: room.currentQuestionIndex,
+    score: p.score,
+    answeredCount: p.answeredCount,
+    isFinished: p.isFinished,
+    avatarSeed: p.avatarSeed,
+    timeSpentSeconds: p.timeSpentSeconds,
+    answeredIndices: p.answeredIndices || [],
+  }));
+}
+
+function broadcastToRoom(room: ServerRoom, payload: any) {
+  const jsonStr = JSON.stringify(payload);
+  for (const p of room.participants.values()) {
+    if (p.ws && p.ws.readyState === WebSocket.OPEN) {
+      try {
+        p.ws.send(jsonStr);
+      } catch (err) {
+        console.warn(`[WS] Failed to send message to participant ${p.name}:`, err);
+      }
+    }
+  }
+}
 
 // Seeded pseudorandom generator for deterministic reproducible server locking per room
 function createServerRNG(seedStr: string) {
@@ -70,7 +122,7 @@ export function lockRoomQuestions(
 
   // Freeze questions and standardize options A, B, C, D so answer positions match 100%
   const optionKeys: QuestionOptionKey[] = ['A', 'B', 'C', 'D'];
-  const fixedQuestions: UPAQuestion[] = selected.map((q, idx) => {
+  const fixedQuestions: UPAQuestion[] = selected.map((q) => {
     // Determine the original correct option text
     const originalCorrectOption = q.options.find((o) => o.key === q.correctAnswer);
     const correctText = originalCorrectOption ? originalCorrectOption.text : q.options[0]?.text;
@@ -125,7 +177,27 @@ async function startServer() {
     res.json({ status: 'ok', time: new Date().toISOString() });
   });
 
-  // ALUR 1 SERVER: Lock and fetch fixed question package for Room ID
+  // REST API: Get or create room state
+  app.get('/api/rooms/:roomId/state', (req, res) => {
+    const { roomId } = req.params;
+    const room = serverRooms.get(roomId);
+    if (!room) {
+      return res.status(404).json({ success: false, error: 'Ruang tidak ditemukan' });
+    }
+    res.json({
+      success: true,
+      roomCode: room.code,
+      settings: room.settings,
+      status: room.status,
+      currentQuestionIndex: room.currentQuestionIndex,
+      questionStartTime: room.questionStartTime,
+      questionDuration: room.questionDuration,
+      participants: getCleanParticipants(room),
+      questions: room.status === 'in_progress' ? room.questions : undefined,
+    });
+  });
+
+  // REST API: Lock and fetch fixed question package for Room ID
   app.post('/api/rooms/:roomId/lock-questions', (req, res) => {
     const { roomId } = req.params;
     const { questionCount = 20, categoryFilter = 'Semua Materi' } = req.body;
@@ -146,7 +218,7 @@ async function startServer() {
     });
   });
 
-  // ALUR 1 SERVER: Get locked questions for Room ID
+  // REST API: Get locked questions for Room ID
   app.get('/api/rooms/:roomId/questions', (req, res) => {
     const { roomId } = req.params;
     const session = lockedRoomStore.get(roomId);
@@ -175,9 +247,286 @@ async function startServer() {
         lockedRoomStore.delete(id);
       }
     }
+    for (const [id, room] of serverRooms.entries()) {
+      if (now - (room.questionStartTime || 0) > 6 * 60 * 60 * 1000 && room.participants.size === 0) {
+        serverRooms.delete(id);
+      }
+    }
   }, 60 * 60 * 1000);
 
   const httpServer = http.createServer(app);
+
+  // Initialize Native WebSocket Server attached to httpServer
+  const wss = new WebSocketServer({ noServer: true });
+
+  httpServer.on('upgrade', (request, socket, head) => {
+    try {
+      const url = new URL(request.url || '', `http://${request.headers.host || 'localhost'}`);
+      if (url.pathname === '/ws') {
+        wss.handleUpgrade(request, socket, head, (ws) => {
+          wss.emit('connection', ws, request);
+        });
+      }
+    } catch {
+      // Allow other upgrade handlers (like Vite HMR) to proceed
+    }
+  });
+
+  wss.on('connection', (ws) => {
+    let currentParticipantId: string | null = null;
+    let currentRoomCode: string | null = null;
+
+    ws.on('message', (data) => {
+      try {
+        const payload = JSON.parse(data.toString());
+
+        switch (payload.type) {
+          case 'JOIN_ROOM': {
+            const { roomCode, participant, roomSettings } = payload;
+            if (!roomCode || !participant) return;
+
+            currentParticipantId = participant.id;
+            currentRoomCode = roomCode;
+
+            let room = serverRooms.get(roomCode);
+            if (!room) {
+              const settings: RoomSettings = roomSettings || {
+                code: roomCode,
+                roomName: `Ruang UPA (${roomCode})`,
+                hostName: participant.name,
+                questionCount: 20,
+                timerMode: 'flash',
+                categoryFilter: 'Semua Materi',
+                flashSecondsPerQuestion: 60,
+                officialTotalMinutes: 30,
+              };
+
+              room = {
+                code: roomCode,
+                roomName: settings.roomName,
+                hostId: participant.isHost ? participant.id : '',
+                hostName: settings.hostName,
+                settings,
+                status: 'lobby',
+                currentQuestionIndex: 0,
+                questionStartTime: 0,
+                questionDuration: settings.flashSecondsPerQuestion || 60,
+                questions: [],
+                participants: new Map(),
+                messages: [],
+              };
+              serverRooms.set(roomCode, room);
+            }
+
+            // If the room has no host, make the first participant the host
+            if (!room.hostId) {
+              room.hostId = participant.id;
+              room.hostName = participant.name;
+              participant.isHost = true;
+            }
+
+            // Register real human participant (Zero bots)
+            const serverP: ServerParticipant = {
+              ...participant,
+              isHost: participant.id === room.hostId || participant.isHost,
+              answeredIndices: participant.answeredIndices || [],
+              ws,
+            };
+
+            room.participants.set(participant.id, serverP);
+
+            // Send initial room sync to this user
+            ws.send(
+              JSON.stringify({
+                type: 'ROOM_SYNC',
+                roomCode: room.code,
+                roomSettings: room.settings,
+                status: room.status,
+                currentQuestionIndex: room.currentQuestionIndex,
+                questionStartTime: room.questionStartTime,
+                questionDuration: room.questionDuration,
+                participants: getCleanParticipants(room),
+                questions: room.status === 'in_progress' ? room.questions : undefined,
+                messages: room.messages,
+                serverTime: Date.now(),
+              })
+            );
+
+            // Broadcast participant join to all participants in this room
+            broadcastToRoom(room, {
+              type: 'PARTICIPANTS_UPDATE',
+              roomCode: room.code,
+              participants: getCleanParticipants(room),
+            });
+            break;
+          }
+
+          case 'START_EXAM': {
+            const { roomCode, settings } = payload;
+            const room = serverRooms.get(roomCode);
+            if (!room) return;
+
+            // Only host can start exam
+            if (currentParticipantId !== room.hostId && !room.participants.get(currentParticipantId || '')?.isHost) {
+              return;
+            }
+
+            const lockedQuestions = lockRoomQuestions(
+              room.code,
+              settings?.questionCount || room.settings.questionCount,
+              settings?.categoryFilter || room.settings.categoryFilter
+            );
+
+            room.questions = lockedQuestions;
+            room.status = 'in_progress';
+            room.currentQuestionIndex = 0;
+            room.questionDuration = settings?.flashSecondsPerQuestion || room.settings.flashSecondsPerQuestion || 60;
+            room.questionStartTime = Date.now();
+            if (settings) {
+              room.settings = { ...room.settings, ...settings };
+            }
+
+            // Reset participant counters for clean live exam
+            for (const p of room.participants.values()) {
+              p.score = 0;
+              p.answeredCount = 0;
+              p.answeredIndices = [];
+              p.isFinished = false;
+              p.timeSpentSeconds = 0;
+            }
+
+            broadcastToRoom(room, {
+              type: 'EXAM_STARTED',
+              roomCode: room.code,
+              questions: room.questions,
+              currentQuestionIndex: 0,
+              questionStartTime: room.questionStartTime,
+              questionDuration: room.questionDuration,
+              roomSettings: room.settings,
+              participants: getCleanParticipants(room),
+              serverTime: Date.now(),
+            });
+            break;
+          }
+
+          case 'SUBMIT_ANSWER': {
+            const { roomCode, participantId, questionIndex, selectedOption, timeSpentSeconds } = payload;
+            const room = serverRooms.get(roomCode);
+            if (!room) return;
+
+            const p = room.participants.get(participantId);
+            if (p) {
+              if (!p.answeredIndices) {
+                p.answeredIndices = [];
+              }
+              if (!p.answeredIndices.includes(questionIndex)) {
+                p.answeredIndices.push(questionIndex);
+                p.answeredCount = p.answeredIndices.length;
+              }
+              if (timeSpentSeconds !== undefined) {
+                p.timeSpentSeconds = timeSpentSeconds;
+              }
+
+              // Compute score based on room questions
+              let correct = 0;
+              for (const idx of p.answeredIndices) {
+                const targetQ = room.questions[idx];
+                if (targetQ && idx === questionIndex) {
+                  if (selectedOption === targetQ.correctAnswer) correct++;
+                }
+              }
+              // Update score percentage
+              const totalQ = room.questions.length || 1;
+              p.score = Math.round((p.score * (p.answeredCount - 1) / totalQ) + ((selectedOption === room.questions[questionIndex]?.correctAnswer ? 1 : 0) / totalQ * 100));
+
+              broadcastToRoom(room, {
+                type: 'ANSWER_UPDATE',
+                roomCode: room.code,
+                participantId,
+                questionIndex,
+                answeredIndices: p.answeredIndices,
+                participants: getCleanParticipants(room),
+              });
+            }
+            break;
+          }
+
+          case 'ADMIN_NEXT_QUESTION': {
+            const { roomCode, targetIndex } = payload;
+            const room = serverRooms.get(roomCode);
+            if (!room) return;
+
+            // Only host can trigger next question
+            const p = room.participants.get(currentParticipantId || '');
+            if (!p || (!p.isHost && p.id !== room.hostId)) {
+              return;
+            }
+
+            room.currentQuestionIndex = targetIndex;
+            room.questionStartTime = Date.now();
+
+            broadcastToRoom(room, {
+              type: 'NEXT_QUESTION_SYNC',
+              roomCode: room.code,
+              targetIndex,
+              questionStartTime: room.questionStartTime,
+              questionDuration: room.questionDuration,
+              serverTime: Date.now(),
+            });
+            break;
+          }
+
+          case 'ADMIN_FINISH_EXAM': {
+            const { roomCode } = payload;
+            const room = serverRooms.get(roomCode);
+            if (!room) return;
+
+            room.status = 'finished';
+            broadcastToRoom(room, {
+              type: 'EXAM_FINISHED',
+              roomCode: room.code,
+              participants: getCleanParticipants(room),
+            });
+            break;
+          }
+
+          case 'CHAT_MESSAGE': {
+            const { roomCode, message } = payload;
+            const room = serverRooms.get(roomCode);
+            if (!room || !message) return;
+
+            room.messages.push(message);
+            if (room.messages.length > 100) {
+              room.messages.shift();
+            }
+
+            broadcastToRoom(room, {
+              type: 'CHAT_MESSAGE',
+              roomCode: room.code,
+              message,
+            });
+            break;
+          }
+        }
+      } catch (err) {
+        console.warn('[WS] Error processing message:', err);
+      }
+    });
+
+    ws.on('close', () => {
+      if (currentRoomCode && currentParticipantId) {
+        const room = serverRooms.get(currentRoomCode);
+        if (room) {
+          room.participants.delete(currentParticipantId);
+          broadcastToRoom(room, {
+            type: 'PARTICIPANTS_UPDATE',
+            roomCode: room.code,
+            participants: getCleanParticipants(room),
+          });
+        }
+      }
+    });
+  });
 
   if (isDev) {
     // Mount Vite middlewares in development with HMR server bound to httpServer
@@ -203,7 +552,7 @@ async function startServer() {
   }
 
   httpServer.listen(PORT, '0.0.0.0', () => {
-    console.log(`AdvokatQuiz Server running on http://0.0.0.0:${PORT}`);
+    console.log(`AdvokatQuiz Server running on http://0.0.0.0:${PORT} (with Native WebSocket at /ws)`);
   });
 }
 
@@ -211,3 +560,4 @@ startServer().catch((err) => {
   console.error('Failed to start AdvokatQuiz server:', err);
   process.exit(1);
 });
+
