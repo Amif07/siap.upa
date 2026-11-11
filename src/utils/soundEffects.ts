@@ -123,6 +123,10 @@ class SoundEffectsService {
     }
   }
 
+  public playSuccess() {
+    this.playSuccessFanfare();
+  }
+
   public playSuccessFanfare() {
     if (!this.enabled) return;
     try {

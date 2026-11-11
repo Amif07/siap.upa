@@ -207,7 +207,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                     {isRevealed && isThisKeyCorrect && (
                       <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-bold bg-emerald-600 text-white shrink-0 self-center shadow-2xs">
                         <Check className="w-3.5 h-3.5" />
-                        <span>KUNCI RESMI</span>
+                        <span>KUNCI JAWABAN</span>
                       </span>
                     )}
                     {isRevealed && isSelected && !isThisKeyCorrect && (
@@ -256,7 +256,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                           : 'Jawaban Anda Kurang Tepat (0 Poin)'}
                       </h3>
                       <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-                        Kunci Jawaban Resmi:{' '}
+                        Kunci Jawaban:{' '}
                         <span className="font-bold text-slate-900 dark:text-white">
                           Pilihan {question.correctAnswer}
                         </span>

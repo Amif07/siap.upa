@@ -176,7 +176,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Yang diketahui sendiri oleh Penyidik 3"
+        "text": "Yang diketahui sendiri oleh Penyidik"
       }
     ],
     "correctAnswer": "B",
@@ -393,7 +393,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Menunggu keputusan pengadilan 4"
+        "text": "Menunggu keputusan pengadilan"
       }
     ],
     "correctAnswer": "C",
@@ -749,26 +749,26 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 225,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Yang dimaksud dengan istilah tertangkap tangan (opheerterdaad) menurut KUHAP adalah :",
+    "question": "Yang dimaksud dengan istilah tertangkap tangan (ontdekking op heterdaad) menurut KUHAP adalah :",
     "options": [
       {
         "key": "A",
-        "text": "Tertangkapnya seseorang pada waktu sedang melakukan kejahatan"
+        "text": "Tertangkapnya seseorang pada waktu sedang melakukan tindak pidana"
       },
       {
         "key": "B",
-        "text": "Tertangkapnya seseorang beberapa saat sesudah ia melakukan kejahatan"
+        "text": "Tertangkapnya seseorang beberapa saat sesudah ia melakukan tindak pidana"
       },
       {
         "key": "C",
-        "text": "Jawaban A dan B benar"
+        "text": "Tertangkapnya seseorang sesaat setelah diserukan oleh khalayak ramai sebagai orang yang melakukannya"
       },
       {
         "key": "D",
-        "text": "Jawaban A dan B salah 6"
+        "text": "Semua jawaban A, B, dan C benar"
       }
     ],
-    "correctAnswer": "C",
+    "correctAnswer": "D",
     "explanation": {
       "summary": "Tertangkap tangan adalah tertangkap saat sedang melakukan atau segera beberapa saat sesudah melakukan tindak pidana.",
       "legalBasis": "Pasal 1 angka 19 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
@@ -780,23 +780,23 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 226,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Yang dimaksud dengan putusan lepas dari segala tuntutan hukum adalah .....",
+    "question": "Yang dimaksud dengan putusan lepas dari segala tuntutan hukum (ontslag van alle rechtsvervolging) adalah :",
     "options": [
       {
         "key": "A",
-        "text": "Berdasarkan hasil pemeriksaan di pengadilan hakim berpendapat bahwa kesalahan terdakwa atas perbuatan yg didakwakan kepadanya tdk terbukti secara sah & meyakinkan."
+        "text": "Berdasarkan hasil pemeriksaan di pengadilan hakim berpendapat bahwa kesalahan terdakwa atas perbuatan yang didakwakan kepadanya tidak terbukti secara sah dan meyakinkan (Putusan Bebas)"
       },
       {
         "key": "B",
-        "text": "Berdasarkan hasil pembuktian di pengadilan hakim berpendapat bahwa perbuatan yg didakwakan kepada terdakwa terbukti secara sah & meyakinkan, namun perbuatan terdakwa tersebut menurut hakim ternyata bukan termasuk sebagai perbuatan pidana"
+        "text": "Berdasarkan hasil pembuktian di pengadilan hakim berpendapat bahwa perbuatan yang didakwakan kepada terdakwa terbukti secara sah dan meyakinkan, namun perbuatan tersebut bukan merupakan tindak pidana melainkan ranah perdata atau adat"
       },
       {
         "key": "C",
-        "text": "Jawaban a dan b benar"
+        "text": "Putusan yang menyatakan bahwa penuntutan pidana oleh Penuntut Umum gugur karena kedaluwarsa atau nebis in idem"
       },
       {
         "key": "D",
-        "text": "Jawaban a dan b salah HUKUM ACARA PERDATA"
+        "text": "Putusan yang menyatakan surat dakwaan Penuntut Umum batal demi hukum karena tidak memenuhi syarat materiil"
       }
     ],
     "correctAnswer": "B",
@@ -951,7 +951,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Peninjauan Kembali 7"
+        "text": "Peninjauan Kembali"
       }
     ],
     "correctAnswer": "C",
@@ -1168,7 +1168,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Putusan deklatoir 8"
+        "text": "Putusan deklaratoir (deklaratif)"
       }
     ],
     "correctAnswer": "B",
@@ -1323,7 +1323,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Eksepsi peremptoir 9"
+        "text": "Eksepsi peremtoir (peremptoir)"
       }
     ],
     "correctAnswer": "C",
@@ -1509,7 +1509,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Uraian lengkap posita dan petitum 10"
+        "text": "Uraian lengkap posita dan petitum tanpa identitas para pihak"
       }
     ],
     "correctAnswer": "A",
@@ -1695,7 +1695,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "PUSBADHI 11"
+        "text": "PUSBADHI"
       }
     ],
     "correctAnswer": "B",
@@ -1873,7 +1873,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "Orang yang telah diangkat oleh Organisasi Advokat yang bertugas memberi jasa hukum, baik di dalam maupun di luar pengadilan yang memenuhi persyaratan berdasarkan ketentuan Undang- undang 12"
+        "text": "Orang yang telah diangkat oleh Organisasi Advokat yang bertugas memberi jasa hukum, baik di dalam maupun di luar pengadilan yang memenuhi persyaratan berdasarkan ketentuan Undang-undang"
       },
       {
         "key": "C",
@@ -1958,7 +1958,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 264,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika & Profesi Advokat Indonesia",
-    "question": "Hakim, Jaksa, Kepolisian, Avokat sebagai penegak hukum selain diatur oleh Undang- undang, mempunyai fungsi masing-masing :",
+    "question": "Hakim, Jaksa, Kepolisian, dan Advokat sebagai penegak hukum selain diatur oleh Undang-undang, mempunyai fungsi masing-masing :",
     "options": [
       {
         "key": "A",
@@ -1974,7 +1974,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Hakim, Jaksa, Kepolisian dan Advokat mewakili kepentingan penegakkan hukum, mendapat keadilan, kemanfaatan dan kepastian hukum KODE ETIK PROFESI ADVOKAT"
+        "text": "Hakim, Jaksa, Kepolisian dan Advokat bersama-sama mewakili kepentingan penegakan hukum, keadilan, kemanfaatan dan kepastian hukum"
       }
     ],
     "correctAnswer": "A",
@@ -1989,7 +1989,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 265,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika & Profesi Advokat Indonesia",
-    "question": "Profesi Advokat adalah profesi terhormat dan menjadi salah satu pilar dalam menegakkan supremasi hukum dan hak asasi manusia. Dikenal dengan istilah apakah “profesi terhormat” tersebut : 13",
+    "question": "Profesi Advokat adalah profesi terhormat dan menjadi salah satu pilar dalam menegakkan supremasi hukum dan hak asasi manusia. Dikenal dengan istilah apakah “profesi terhormat” tersebut?",
     "options": [
       {
         "key": "A",
@@ -3144,7 +3144,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "UU No. 22 Tahun 1957 tentang Penyelesaian Perselisihan Perburuhan 21"
+        "text": "UU No. 22 Tahun 1957 tentang Penyelesaian Perselisihan Perburuhan"
       },
       {
         "key": "C",

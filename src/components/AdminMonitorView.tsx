@@ -1,5 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Users, History, Search, Download, CheckCircle2, XCircle, Clock, Shield, Eye, RefreshCw, Award, ArrowLeft, Mail } from 'lucide-react';
+import {
+  Users,
+  History,
+  Search,
+  Download,
+  CheckCircle2,
+  XCircle,
+  Clock,
+  Shield,
+  Eye,
+  RefreshCw,
+  Award,
+  ArrowLeft,
+  Mail,
+  UserCheck,
+  UserX,
+  AlertCircle,
+  Radio,
+  Check,
+} from 'lucide-react';
 import { UserProfile, UserQuizHistoryRecord, QuestionResultItem } from '../types/auth';
 import { userService } from '../services/userService';
 import { soundEffects } from '../utils/soundEffects';
@@ -13,30 +32,76 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
   currentUser,
   onClose,
 }) => {
-  const [activeTab, setActiveTab] = useState<'online' | 'history'>('online');
+  const [activeTab, setActiveTab] = useState<'online' | 'approvals' | 'users' | 'history'>('online');
   const [users, setUsers] = useState<UserProfile[]>([]);
   const [historyList, setHistoryList] = useState<UserQuizHistoryRecord[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'passed' | 'failed'>('all');
   const [selectedRecordForDetail, setSelectedRecordForDetail] = useState<UserQuizHistoryRecord | null>(null);
+  const [actionSuccessNotice, setActionSuccessNotice] = useState<string | null>(null);
+  const [isProcessingEmail, setIsProcessingEmail] = useState<string | null>(null);
 
-  const loadData = () => {
-    setUsers(userService.getAllUsers());
+  const loadData = async () => {
+    const remoteUsers = await userService.fetchAllUsers();
+    setUsers(remoteUsers);
     setHistoryList(userService.getAllHistory());
   };
 
   useEffect(() => {
     loadData();
 
-    // Auto-refresh presence every 6 seconds
+    // Auto-refresh presence every 3 seconds for strict real-time accuracy
     const interval = setInterval(() => {
       loadData();
-    }, 6000);
+    }, 3000);
 
-    return () => clearInterval(interval);
+    // Listen to instant WebSocket events (real-time presence and approval requests)
+    const unsubscribe = userService.onAuthEvent((event) => {
+      if (
+        event.type === 'NEW_ACCESS_REQUEST' ||
+        event.type === 'USER_PRESENCE_UPDATE' ||
+        event.type === 'USER_APPROVED' ||
+        event.type === 'USER_REJECTED'
+      ) {
+        loadData();
+      }
+    });
+
+    return () => {
+      clearInterval(interval);
+      unsubscribe();
+    };
   }, []);
 
   const onlineUsers = users.filter((u) => u.isOnline);
+  const pendingUsers = users.filter((u) => u.approvalStatus === 'pending');
+  const approvedUsers = users.filter((u) => u.approvalStatus === 'approved' || !u.approvalStatus);
+
+  const handleApprove = async (email: string) => {
+    setIsProcessingEmail(email);
+    soundEffects.playClick();
+    const res = await userService.approveUser(email);
+    setIsProcessingEmail(null);
+    if (res.success) {
+      soundEffects.playSuccess();
+      setActionSuccessNotice(`Akun ${email} berhasil disetujui! Rekan Anda sekarang bebas masuk kapan saja.`);
+      setTimeout(() => setActionSuccessNotice(null), 6000);
+      loadData();
+    }
+  };
+
+  const handleReject = async (email: string) => {
+    if (!confirm(`Tolak izin akses untuk email ${email}?`)) return;
+    setIsProcessingEmail(email);
+    soundEffects.playClick();
+    const res = await userService.rejectUser(email);
+    setIsProcessingEmail(null);
+    if (res.success) {
+      setActionSuccessNotice(`Permintaan akses ${email} telah ditolak.`);
+      setTimeout(() => setActionSuccessNotice(null), 5000);
+      loadData();
+    }
+  };
 
   const filteredHistory = historyList.filter((item) => {
     if (statusFilter === 'passed' && !item.passed) return false;
@@ -66,7 +131,8 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
 
   const formatTimeAgo = (timestamp: number) => {
     const diff = Math.floor((Date.now() - timestamp) / 1000);
-    if (diff < 60) return 'Baru saja';
+    if (diff < 15) return 'Sedang aktif sekarang';
+    if (diff < 60) return `${diff} detik lalu`;
     if (diff < 3600) return `${Math.floor(diff / 60)} menit lalu`;
     if (diff < 86400) return `${Math.floor(diff / 3600)} jam lalu`;
     return new Date(timestamp).toLocaleDateString('id-ID');
@@ -82,20 +148,20 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
               soundEffects.playClick();
               onClose();
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors mb-2"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors mb-2 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Kembali ke Halaman Utama</span>
           </button>
           <div className="flex items-center gap-2 text-xs font-semibold text-amber-700 dark:text-amber-400 mb-1">
             <Shield className="w-4 h-4" />
-            <span>Portal Pengawas & Evaluasi Hasil Belajar Peserta</span>
+            <span>Dashboard Pengawas & Persetujuan Akses Peserta</span>
           </div>
           <h1 className="text-xl sm:text-2xl font-bold font-legal text-slate-900 dark:text-white">
-            Dashboard Pemantauan & Riwayat Pengerjaan
+            Pemantauan Real-Time & Konfirmasi Akses
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl">
-            Pantau siapa saja rekan Anda yang sedang aktif di aplikasi dan evaluasi seluruh riwayat pengerjaan soal serta lembar jawaban mereka.
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-xl leading-relaxed">
+            Pantau rekan Anda yang sedang membuka website ini secara langsung (real-time), konfirmasi permohonan akses email baru, dan evaluasi riwayat nilai pengerjaan soal.
           </p>
         </div>
 
@@ -106,7 +172,7 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
               soundEffects.playClick();
               loadData();
             }}
-            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 transition-colors"
+            className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 transition-colors cursor-pointer"
             title="Refresh Data Terkini"
           >
             <RefreshCw className="w-4 h-4" />
@@ -114,7 +180,7 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
 
           <button
             onClick={handleExportCsv}
-            className="px-4 py-2.5 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-2 transition-colors shadow-xs"
+            className="px-4 py-2.5 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white flex items-center gap-2 transition-colors shadow-xs cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>Unduh Laporan CSV</span>
@@ -122,67 +188,202 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
         </div>
       </div>
 
+      {/* Action Success Toast Banner */}
+      {actionSuccessNotice && (
+        <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-xs font-semibold text-emerald-800 dark:text-emerald-300 flex items-center justify-between gap-3 shadow-xs animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+            <span>{actionSuccessNotice}</span>
+          </div>
+          <button
+            onClick={() => setActionSuccessNotice(null)}
+            className="text-xs text-emerald-700 hover:text-emerald-900 font-bold px-2 py-1"
+          >
+            Tutup
+          </button>
+        </div>
+      )}
+
+      {/* PENDING APPROVAL ALERT BANNER */}
+      {pendingUsers.length > 0 && (
+        <div className="p-4 sm:p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 font-bold">
+              <Clock className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <span>{pendingUsers.length} Permintaan Akses Menunggu Konfirmasi Anda!</span>
+                <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
+              </h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5">
+                Rekan Anda telah memasukkan email dan sedang menunggu di layar persetujuan untuk mulai belajar.
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => {
+              soundEffects.playClick();
+              setActiveTab('approvals');
+            }}
+            className="px-4 py-2 text-xs font-bold rounded-xl bg-amber-600 hover:bg-amber-500 text-white shrink-0 transition-colors shadow-xs cursor-pointer"
+          >
+            Buka Tab Konfirmasi ({pendingUsers.length})
+          </button>
+        </div>
+      )}
+
       {/* KPI Stats Strip */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
+        {/* Realtime Online Indicator */}
+        <div
+          onClick={() => {
+            soundEffects.playClick();
+            setActiveTab('online');
+          }}
+          className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+            activeTab === 'online'
+              ? 'bg-emerald-50/50 dark:bg-emerald-950/30 border-emerald-300 dark:border-emerald-700 shadow-xs'
+              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
+          }`}
+        >
           <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
-            <span>Sedang Online</span>
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span className="font-semibold text-emerald-700 dark:text-emerald-400">Sedang Online</span>
+            <span className="flex h-2.5 w-2.5 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
           </div>
           <span className="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400">
-            {onlineUsers.length} Peserta
+            {onlineUsers.length} Rekan
           </span>
-          <span className="text-[11px] text-slate-400 block mt-1">Aktif dalam 5 menit terakhir</span>
+          <span className="text-[11px] text-slate-400 block mt-1">Terbuka di layar browser</span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-          <span className="text-xs text-slate-500 dark:text-slate-400 block mb-1">
-            Total Teman Terdaftar
-          </span>
-          <span className="text-2xl font-bold font-mono text-slate-900 dark:text-white">
-            {users.length} Akun
-          </span>
-          <span className="text-[11px] text-slate-400 block mt-1">Menggunakan login email</span>
-        </div>
-
-        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-          <span className="text-xs text-slate-500 dark:text-slate-400 block mb-1">
-            Total Sesi Diselesaikan
-          </span>
-          <span className="text-2xl font-bold font-mono text-slate-900 dark:text-white">
-            {historyList.length} Kali
-          </span>
-          <span className="text-[11px] text-slate-400 block mt-1">Terekam di sistem</span>
-        </div>
-
-        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xs">
-          <span className="text-xs text-slate-500 dark:text-slate-400 block mb-1">
-            Tingkat Kelulusan
-          </span>
+        {/* Pending Approvals */}
+        <div
+          onClick={() => {
+            soundEffects.playClick();
+            setActiveTab('approvals');
+          }}
+          className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+            pendingUsers.length > 0
+              ? 'bg-amber-50 dark:bg-amber-950/40 border-amber-300 dark:border-amber-700 animate-pulse'
+              : activeTab === 'approvals'
+              ? 'bg-white dark:bg-slate-900 border-amber-500'
+              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
+          }`}
+        >
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <span className="font-semibold text-amber-700 dark:text-amber-400">Butuh Konfirmasi</span>
+            <Clock className="w-3.5 h-3.5 text-amber-600" />
+          </div>
           <span className="text-2xl font-bold font-mono text-amber-600 dark:text-amber-400">
-            {historyList.length > 0
-              ? `${((historyList.filter((h) => h.passed).length / historyList.length) * 100).toFixed(0)}%`
-              : '0%'}
+            {pendingUsers.length} Permintaan
           </span>
-          <span className="text-[11px] text-slate-400 block mt-1">Passing grade &ge; 70%</span>
+          <span className="text-[11px] text-slate-400 block mt-1">
+            {pendingUsers.length > 0 ? 'Klik untuk setujui' : 'Semua telah disetujui'}
+          </span>
+        </div>
+
+        {/* Approved Users */}
+        <div
+          onClick={() => {
+            soundEffects.playClick();
+            setActiveTab('users');
+          }}
+          className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+            activeTab === 'users'
+              ? 'bg-white dark:bg-slate-900 border-slate-900 dark:border-white'
+              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
+          }`}
+        >
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <span>Rekan Terkonfirmasi</span>
+            <UserCheck className="w-3.5 h-3.5 text-slate-400" />
+          </div>
+          <span className="text-2xl font-bold font-mono text-slate-900 dark:text-white">
+            {approvedUsers.length} Akun
+          </span>
+          <span className="text-[11px] text-slate-400 block mt-1">Bebas masuk kapan saja</span>
+        </div>
+
+        {/* Total Sessions */}
+        <div
+          onClick={() => {
+            soundEffects.playClick();
+            setActiveTab('history');
+          }}
+          className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+            activeTab === 'history'
+              ? 'bg-white dark:bg-slate-900 border-slate-900 dark:border-white'
+              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
+          }`}
+        >
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <span>Sesi Ujian Selesai</span>
+            <Award className="w-3.5 h-3.5 text-amber-600" />
+          </div>
+          <span className="text-2xl font-bold font-mono text-slate-900 dark:text-white">
+            {historyList.length} Sesi
+          </span>
+          <span className="text-[11px] text-slate-400 block mt-1">
+            Lulus: {historyList.filter((h) => h.passed).length} kali
+          </span>
         </div>
       </div>
 
       {/* Main Tab Controls */}
-      <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl max-w-md">
+      <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl max-w-2xl overflow-x-auto">
         <button
           onClick={() => {
             soundEffects.playClick();
             setActiveTab('online');
           }}
-          className={`flex-1 py-2 text-xs font-semibold rounded-xl flex items-center justify-center gap-2 transition-all ${
+          className={`py-2 px-3 text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
             activeTab === 'online'
               ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
               : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
-          <Users className="w-3.5 h-3.5" />
-          <span>Sedang Login ({onlineUsers.length})</span>
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span>Peserta Online ({onlineUsers.length})</span>
+        </button>
+
+        <button
+          onClick={() => {
+            soundEffects.playClick();
+            setActiveTab('approvals');
+          }}
+          className={`py-2 px-3 text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
+            activeTab === 'approvals'
+              ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+          }`}
+        >
+          <Shield className="w-3.5 h-3.5 text-amber-600" />
+          <span>Konfirmasi Akses</span>
+          {pendingUsers.length > 0 && (
+            <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-slate-950 font-bold text-[10px]">
+              {pendingUsers.length}
+            </span>
+          )}
+        </button>
+
+        <button
+          onClick={() => {
+            soundEffects.playClick();
+            setActiveTab('users');
+          }}
+          className={`py-2 px-3 text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
+            activeTab === 'users'
+              ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+          }`}
+        >
+          <UserCheck className="w-3.5 h-3.5" />
+          <span>Rekan Terdaftar ({approvedUsers.length})</span>
         </button>
 
         <button
@@ -190,59 +391,249 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
             soundEffects.playClick();
             setActiveTab('history');
           }}
-          className={`flex-1 py-2 text-xs font-semibold rounded-xl flex items-center justify-center gap-2 transition-all ${
+          className={`py-2 px-3 text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all whitespace-nowrap cursor-pointer ${
             activeTab === 'history'
               ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs'
               : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <History className="w-3.5 h-3.5" />
-          <span>Seluruh Riwayat Ujian ({historyList.length})</span>
+          <span>Riwayat Ujian ({historyList.length})</span>
         </button>
       </div>
 
-      {/* TAB 1: USERS ONLINE & DIRECTORY */}
+      {/* TAB 1: REAL-TIME ONLINE USERS */}
       {activeTab === 'online' && (
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
             <div>
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-emerald-500 animate-ping" />
+                <h2 className="text-base sm:text-lg font-bold font-legal text-slate-900 dark:text-white">
+                  Rekan yang Sedang Online Saat Ini (Real-Time)
+                </h2>
+              </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                Tampilan langsung aktivitas teman Anda saat sedang membuka website AdvokatQuiz
+              </p>
+            </div>
+            <div className="flex items-center gap-2 text-xs font-mono font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1.5 rounded-xl border border-emerald-200 dark:border-emerald-800">
+              <Radio className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
+              <span>{onlineUsers.length} Rekan Sedang Terhubung</span>
+            </div>
+          </div>
+
+          <div className="divide-y divide-slate-100 dark:divide-slate-800">
+            {onlineUsers.length === 0 ? (
+              <div className="py-12 text-center text-slate-500 text-xs space-y-2">
+                <Users className="w-8 h-8 text-slate-400 mx-auto" />
+                <p>Saat ini belum ada rekan lain yang sedang membuka website.</p>
+                <p className="text-[11px] text-slate-400">
+                  Begitu rekan Anda membuka link website di HP atau laptopnya, nama dan aktivitas mereka akan langsung muncul di sini secara otomatis.
+                </p>
+              </div>
+            ) : (
+              onlineUsers.map((user) => {
+                const isMe = user.id === currentUser.id;
+
+                return (
+                  <div
+                    key={user.id}
+                    className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in duration-150"
+                  >
+                    <div className="flex items-start gap-3.5">
+                      {/* Avatar with Live Green Pulse */}
+                      <div className="relative">
+                        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-700 to-slate-900 text-white font-mono font-bold text-sm flex items-center justify-center shadow-xs border-2 border-emerald-400">
+                          {user.name.slice(0, 2).toUpperCase()}
+                        </div>
+                        <span
+                          className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-900 animate-pulse"
+                          title="Sedang Online"
+                        />
+                      </div>
+
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold text-sm text-slate-900 dark:text-white">
+                            {user.name}
+                          </span>
+                          {isMe && (
+                            <span className="text-[10px] px-2 py-0.5 rounded-md bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-bold">
+                              Anda (Admin)
+                            </span>
+                          )}
+                          {user.role === 'admin' && !isMe && (
+                            <span className="text-[10px] px-2 py-0.5 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 font-bold">
+                              Pengawas
+                            </span>
+                          )}
+                          <span className="text-[10px] px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-semibold flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                            <span>Bebas Masuk</span>
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+                          <span className="flex items-center gap-1 font-mono">
+                            <Mail className="w-3 h-3 text-slate-400" />
+                            <span>{user.email}</span>
+                          </span>
+                          <span aria-hidden="true">·</span>
+                          <span>{user.organization || 'PKPA PERADI 2026'}</span>
+                        </div>
+
+                        {/* Current Real-Time Activity Ticker */}
+                        <div className="mt-1 text-xs text-slate-800 dark:text-slate-200 bg-amber-50 dark:bg-amber-950/40 px-3 py-1.5 rounded-xl inline-flex items-center gap-2 border border-amber-200 dark:border-amber-800/80 shadow-2xs">
+                          <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping shrink-0" />
+                          <span className="font-bold text-amber-800 dark:text-amber-400">Aktivitas Terkini:</span>
+                          <span className="font-medium">{user.currentActivity || 'Sedang berada di aplikasi'}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Status & Last Active */}
+                    <div className="sm:text-right shrink-0">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        <span>ONLINE SEKARANG</span>
+                      </span>
+                      <span className="text-[11px] text-slate-400 block mt-1 font-mono">
+                        {formatTimeAgo(user.lastActive)}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* TAB 2: PENDING APPROVAL REQUESTS */}
+      {activeTab === 'approvals' && (
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+            <div>
+              <h2 className="text-base sm:text-lg font-bold font-legal text-slate-900 dark:text-white flex items-center gap-2">
+                <Shield className="w-5 h-5 text-amber-600" />
+                <span>Permintaan Konfirmasi Masuk dari Teman</span>
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                Semua orang yang baru pertama kali login dengan email harus disetujui di sini terlebih dahulu.
+              </p>
+            </div>
+            <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
+              {pendingUsers.length} Permintaan Tertunda
+            </span>
+          </div>
+
+          {/* Guide Explainer Note */}
+          <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 flex items-start gap-2.5">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <p className="leading-relaxed">
+              <strong>Aturan Masuk Mandiri:</strong> Begitu Anda menekan tombol <span className="font-bold text-emerald-700 dark:text-emerald-400">"Setujui Akses"</span>, rekan Anda di seberang sana akan otomatis masuk secara langsung. Di masa mendatang, teman Anda bisa bebas masuk kapan saja tanpa perlu konfirmasi ulang.
+            </p>
+          </div>
+
+          <div className="divide-y divide-slate-100 dark:divide-slate-800">
+            {pendingUsers.length === 0 ? (
+              <div className="py-12 text-center text-slate-500 text-xs space-y-2">
+                <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto" />
+                <p className="font-semibold text-slate-700 dark:text-slate-300">
+                  Tidak ada permintaan baru yang tertunda.
+                </p>
+                <p className="text-[11px] text-slate-400">
+                  Semua rekan Anda yang telah mencoba login sudah Anda konfirmasi dan bisa masuk bebas kapan saja.
+                </p>
+              </div>
+            ) : (
+              pendingUsers.map((user) => {
+                const isProcessing = isProcessingEmail === user.email;
+
+                return (
+                  <div
+                    key={user.id}
+                    className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-amber-50/40 dark:bg-amber-950/20 p-4 rounded-2xl border border-amber-200/80 dark:border-amber-900/40 mt-3"
+                  >
+                    <div className="flex items-start gap-3.5">
+                      <div className="w-11 h-11 rounded-2xl bg-amber-600 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0 shadow-xs">
+                        {user.name.slice(0, 2).toUpperCase()}
+                      </div>
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-sm text-slate-900 dark:text-white">
+                            {user.name}
+                          </span>
+                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-200 font-bold">
+                            Menunggu Persetujuan Anda
+                          </span>
+                        </div>
+                        <div className="text-xs text-slate-600 dark:text-slate-400 font-mono flex items-center gap-1.5">
+                          <Mail className="w-3.5 h-3.5 text-slate-400" />
+                          <span className="font-semibold text-slate-800 dark:text-slate-200">{user.email}</span>
+                        </div>
+                        <span className="text-[11px] text-slate-400 block">
+                          Mengajukan: {new Date(user.createdAt).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} ({formatTimeAgo(user.createdAt)})
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Action Approval Buttons */}
+                    <div className="flex items-center gap-2 shrink-0">
+                      <button
+                        onClick={() => handleApprove(user.email)}
+                        disabled={isProcessing}
+                        className="px-4 py-2 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white flex items-center gap-1.5 shadow-sm transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                      >
+                        <Check className="w-4 h-4" />
+                        <span>Setujui Akses (Bebaskan)</span>
+                      </button>
+
+                      <button
+                        onClick={() => handleReject(user.email)}
+                        disabled={isProcessing}
+                        className="px-3 py-2 text-xs font-semibold rounded-xl bg-slate-200 hover:bg-rose-100 text-slate-700 hover:text-rose-700 dark:bg-slate-800 dark:hover:bg-rose-950/60 dark:text-slate-300 dark:hover:text-rose-300 transition-colors cursor-pointer"
+                      >
+                        <XCircle className="w-4 h-4" />
+                        <span>Tolak</span>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* TAB 3: APPROVED USERS DIRECTORY */}
+      {activeTab === 'users' && (
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
+            <div>
               <h2 className="text-base sm:text-lg font-bold font-legal text-slate-900 dark:text-white">
-                Daftar Peserta & Status Aktivitas Real-Time
+                Daftar Rekan yang Telah Dikonfirmasi
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Mendeteksi siapa yang sedang berada di dalam aplikasi dan aktivitas yang sedang mereka jalankan
+                Rekan-rekan dalam daftar ini telah Anda setujui dan bisa bebas masuk kapan saja tanpa perlu konfirmasi ulang.
               </p>
             </div>
             <span className="text-xs font-mono font-semibold text-slate-600 dark:text-slate-400">
-              Total {users.length} Akun Terdaftar
+              {approvedUsers.length} Rekan Diizinkan
             </span>
           </div>
 
           <div className="divide-y divide-slate-100 dark:divide-slate-800">
-            {users.length === 0 ? (
-              <div className="py-12 text-center text-slate-500 text-xs">
-                Belum ada peserta lain yang terdaftar. Hanya akun pengguna nyata yang akan ditampilkan di sini (tanpa bot).
-              </div>
-            ) : (
-              users.map((user) => {
+            {approvedUsers.map((user) => {
               const isMe = user.id === currentUser.id;
 
               return (
                 <div key={user.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex items-start gap-3.5">
-                    {/* Avatar with live status dot */}
-                    <div className="relative">
-                      <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-slate-700 to-slate-900 text-white font-mono font-bold text-sm flex items-center justify-center shadow-xs">
-                        {user.name.slice(0, 2).toUpperCase()}
-                      </div>
-                      <span
-                        className={`absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full border-2 border-white dark:border-slate-900 ${
-                          user.isOnline ? 'bg-emerald-500' : 'bg-slate-400'
-                        }`}
-                        title={user.isOnline ? 'Sedang Online' : 'Offline'}
-                      />
+                    <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-slate-700 to-slate-900 text-white font-mono font-bold text-sm flex items-center justify-center shadow-xs">
+                      {user.name.slice(0, 2).toUpperCase()}
                     </div>
-
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="font-semibold text-sm text-slate-900 dark:text-white">
@@ -250,34 +641,26 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
                         </span>
                         {isMe && (
                           <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-medium">
-                            Anda
+                            Anda (Admin)
                           </span>
                         )}
-                        {user.role === 'admin' && (
-                          <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 font-medium">
-                            Pengawas
-                          </span>
-                        )}
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 font-bold flex items-center gap-1">
+                          <Check className="w-3 h-3 text-emerald-600" />
+                          <span>Terkonfirmasi Bebas Masuk</span>
+                        </span>
                       </div>
 
-                      <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                        <span className="flex items-center gap-1">
+                      <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-1">
+                        <span className="flex items-center gap-1 font-mono">
                           <Mail className="w-3 h-3" />
                           <span>{user.email}</span>
                         </span>
                         <span aria-hidden="true">·</span>
-                        <span>{user.organization || 'Calon Advokat'}</span>
-                      </div>
-
-                      {/* Current Activity Ticker */}
-                      <div className="mt-1.5 text-xs text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800/60 px-2.5 py-1 rounded-lg inline-block border border-slate-100 dark:border-slate-800">
-                        <span className="font-medium text-amber-700 dark:text-amber-400">Aktivitas: </span>
-                        <span>{user.currentActivity || 'Membuka aplikasi'}</span>
+                        <span>{user.organization || 'PKPA PERADI 2026'}</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Status & Last Active */}
                   <div className="sm:text-right shrink-0">
                     <span
                       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold ${
@@ -287,27 +670,26 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
                       }`}
                     >
                       <span className={`w-2 h-2 rounded-full ${user.isOnline ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'}`} />
-                      <span>{user.isOnline ? 'Sedang Login' : 'Offline'}</span>
+                      <span>{user.isOnline ? 'Sedang Online' : 'Offline'}</span>
                     </span>
                     <span className="text-[11px] text-slate-400 block mt-1">
-                      Aktif: {formatTimeAgo(user.lastActive)}
+                      Terakhir aktif: {formatTimeAgo(user.lastActive)}
                     </span>
                   </div>
                 </div>
               );
-            })
-          )}
+            })}
           </div>
         </div>
       )}
 
-      {/* TAB 2: GLOBAL EXAM HISTORY & ANSWER SHEETS */}
+      {/* TAB 4: GLOBAL EXAM HISTORY & ANSWER SHEETS */}
       {activeTab === 'history' && (
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
             <div>
               <h2 className="text-base sm:text-lg font-bold font-legal text-slate-900 dark:text-white">
-                Seluruh Riwayat Pengerjaan Soal Teman
+                Seluruh Riwayat Pengerjaan Soal Rekan
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Daftar lengkap sesi ujian, skor kelulusan, dan lembar jawaban yang telah dikerjakan oleh seluruh peserta
@@ -370,7 +752,7 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
                           month: 'short',
                           year: 'numeric',
                           hour: '2-digit',
-                          minute: '2-digit'
+                          minute: '2-digit',
                         })}
                       </td>
 
@@ -428,7 +810,7 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
                             soundEffects.playClick();
                             setSelectedRecordForDetail(item);
                           }}
-                          className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 dark:bg-amber-600 hover:bg-slate-800 dark:hover:bg-amber-500 text-white flex items-center gap-1.5 transition-colors ml-auto shadow-xs"
+                          className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-900 dark:bg-amber-600 hover:bg-slate-800 dark:hover:bg-amber-500 text-white flex items-center gap-1.5 transition-colors ml-auto shadow-xs cursor-pointer"
                         >
                           <Eye className="w-3.5 h-3.5" />
                           <span>Lembar Jawaban</span>
@@ -448,65 +830,61 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
           <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-3xl w-full max-h-[85vh] p-6 sm:p-8 shadow-2xl relative my-8 flex flex-col">
             {/* Header */}
-            <div className="flex items-start justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800 shrink-0">
+            <div className="flex items-start justify-between pb-4 border-b border-slate-200 dark:border-slate-800 shrink-0">
               <div>
-                <span className="text-xs font-semibold text-amber-700 dark:text-amber-400 uppercase tracking-wider block mb-1">
-                  Inspeksi Lembar Jawaban Peserta
+                <span className="text-xs font-bold text-amber-700 dark:text-amber-400">
+                  Evaluasi Jawaban Rekan UPA
                 </span>
-                <h3 className="text-xl font-bold font-legal text-slate-900 dark:text-white">
-                  {selectedRecordForDetail.userName}
+                <h3 className="text-lg font-bold font-legal text-slate-900 dark:text-white mt-0.5">
+                  {selectedRecordForDetail.userName} — {selectedRecordForDetail.quizTitle}
                 </h3>
-                <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  <span>{selectedRecordForDetail.userEmail}</span>
-                  <span aria-hidden="true">·</span>
-                  <span>{selectedRecordForDetail.quizTitle}</span>
-                  <span aria-hidden="true">·</span>
-                  <span className="font-mono font-bold text-slate-800 dark:text-slate-200">
-                    Skor: {selectedRecordForDetail.scorePercent.toFixed(1)}/100 ({selectedRecordForDetail.passed ? 'Lulus' : 'Belum Lulus'})
+                <span className="text-xs text-slate-500 dark:text-slate-400">
+                  {selectedRecordForDetail.userEmail} · Skor Akhir:{' '}
+                  <span className="font-mono font-bold text-slate-900 dark:text-white">
+                    {selectedRecordForDetail.scorePercent.toFixed(1)}/100
                   </span>
-                </div>
+                </span>
               </div>
-
               <button
                 onClick={() => setSelectedRecordForDetail(null)}
-                className="p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="p-2 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
-            {/* Questions Results List */}
-            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+            {/* Answer List */}
+            <div className="overflow-y-auto py-4 space-y-4 flex-1 pr-2">
               {selectedRecordForDetail.questionResults && selectedRecordForDetail.questionResults.length > 0 ? (
                 selectedRecordForDetail.questionResults.map((q, idx) => (
                   <div
                     key={q.id || idx}
-                    className={`p-4 rounded-2xl border text-xs sm:text-sm space-y-2 ${
+                    className={`p-4 rounded-2xl border text-xs ${
                       q.isCorrect
-                        ? 'border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/30 dark:bg-emerald-950/20'
-                        : 'border-rose-200 dark:border-rose-900/60 bg-rose-50/30 dark:bg-rose-950/20'
+                        ? 'border-emerald-200 bg-emerald-50/40 dark:border-emerald-900/50 dark:bg-emerald-950/20'
+                        : 'border-rose-200 bg-rose-50/40 dark:border-rose-900/50 dark:bg-rose-950/20'
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-2 text-xs">
-                      <span className="font-semibold text-slate-900 dark:text-white">
-                        Soal No. {idx + 1} · {q.category}
+                    <div className="flex items-center justify-between gap-2 mb-2 font-semibold">
+                      <span className="text-slate-500">
+                        Soal #{idx + 1} ({q.category})
                       </span>
                       <span
-                        className={`font-semibold px-2 py-0.5 rounded text-[11px] ${
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                           q.isCorrect
-                            ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-300'
-                            : 'bg-rose-100 text-rose-800 dark:bg-rose-900 dark:text-rose-300'
+                            ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/80 dark:text-emerald-200'
+                            : 'bg-rose-100 text-rose-800 dark:bg-rose-900/80 dark:text-rose-200'
                         }`}
                       >
-                        {q.isCorrect ? 'Jawaban Benar' : 'Jawaban Salah'}
+                        {q.isCorrect ? 'Benar (+1)' : 'Salah (0)'}
                       </span>
                     </div>
 
-                    <p className="font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
+                    <p className="font-medium text-slate-800 dark:text-slate-200 mb-3 text-xs sm:text-sm">
                       {q.question}
                     </p>
 
-                    <div className="grid grid-cols-2 gap-2 text-xs pt-1">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
                       <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                         <span className="text-slate-400 block text-[10px]">Pilihan Teman Anda:</span>
                         <span className={`font-mono font-bold ${q.isCorrect ? 'text-emerald-600' : 'text-rose-600'}`}>
@@ -515,7 +893,7 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
                       </div>
 
                       <div className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                        <span className="text-slate-400 block text-[10px]">Kunci Jawaban Resmi:</span>
+                        <span className="text-slate-400 block text-[10px]">Kunci Jawaban:</span>
                         <span className="font-mono font-bold text-emerald-600">
                           {q.correctAnswer}
                         </span>
@@ -533,19 +911,18 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
                   </div>
                 ))
               ) : (
-                <div className="p-8 text-center text-slate-500 text-xs">
-                  Ringkasan butir soal untuk sesi ini tercatat dengan skor {selectedRecordForDetail.scorePercent.toFixed(1)}/100 ({selectedRecordForDetail.correctCount} Benar, {selectedRecordForDetail.wrongCount} Salah).
+                <div className="py-12 text-center text-slate-400 text-xs">
+                  Detail butir soal tidak tersedia untuk sesi ini.
                 </div>
               )}
             </div>
 
-            {/* Footer */}
-            <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-end shrink-0">
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex justify-end shrink-0">
               <button
                 onClick={() => setSelectedRecordForDetail(null)}
-                className="px-5 py-2 text-xs font-bold text-white bg-slate-900 dark:bg-amber-600 hover:bg-slate-800 dark:hover:bg-amber-500 rounded-xl transition-colors"
+                className="px-4 py-2 text-xs font-semibold rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 cursor-pointer"
               >
-                Tutup
+                Tutup Lembar Jawaban
               </button>
             </div>
           </div>

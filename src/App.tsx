@@ -47,6 +47,7 @@ export default function App() {
   const [onlineUserCount, setOnlineUserCount] = useState<number>(() => {
     return userService.getAllUsers().filter((u) => u.isOnline).length;
   });
+  const [pendingApprovalCount, setPendingApprovalCount] = useState<number>(0);
 
   // Theme state
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -129,7 +130,39 @@ export default function App() {
     localStorage.setItem('advokatquiz_sound', String(soundEnabled));
   }, [soundEnabled]);
 
-  // Real-time Presence & Activity Heartbeat
+  // Real-time Presence, Activity Heartbeat & User Directory Synchronization
+  useEffect(() => {
+    const syncDirectory = async () => {
+      const users = await userService.fetchAllUsers();
+      const online = users.filter((u) => u.isOnline).length;
+      const pending = users.filter((u) => u.approvalStatus === 'pending').length;
+      setOnlineUserCount(online);
+      setPendingApprovalCount(pending);
+
+      // Verify non-admin account status
+      const current = userService.getCurrentUser();
+      if (current && current.role !== 'admin') {
+        const found = users.find((u) => u.email.toLowerCase() === current.email.toLowerCase());
+        if (found && found.approvalStatus === 'rejected') {
+          userService.logout();
+          setAuthProfile(null);
+        }
+      }
+    };
+
+    syncDirectory();
+    const syncTimer = setInterval(syncDirectory, 4000);
+
+    const unsubscribe = userService.onAuthEvent(() => {
+      syncDirectory();
+    });
+
+    return () => {
+      clearInterval(syncTimer);
+      unsubscribe();
+    };
+  }, []);
+
   useEffect(() => {
     if (!authProfile) return;
 
@@ -153,26 +186,13 @@ export default function App() {
       }
 
       userService.updateActivity(activity);
-      const online = userService.getAllUsers().filter((u) => u.isOnline).length;
-      setOnlineUserCount(online);
     };
 
     reportHeartbeat();
-    const timer = setInterval(reportHeartbeat, 8000);
-
-    // Listen to auth sync broadcast
-    let bc: BroadcastChannel | null = null;
-    if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
-      bc = new BroadcastChannel('advokatquiz_auth_sync');
-      bc.onmessage = () => {
-        const online = userService.getAllUsers().filter((u) => u.isOnline).length;
-        setOnlineUserCount(online);
-      };
-    }
+    const timer = setInterval(reportHeartbeat, 5000);
 
     return () => {
       clearInterval(timer);
-      if (bc) bc.close();
     };
   }, [authProfile, activeView, currentIndex, quizQuestions.length, currentRoom]);
 
@@ -878,6 +898,7 @@ export default function App() {
         }}
         onOpenMonitor={() => setActiveView('monitor')}
         onlineUserCount={onlineUserCount}
+        pendingApprovalCount={authProfile?.role === 'admin' ? pendingApprovalCount : 0}
       />
 
       {/* Main Content Area */}

@@ -1,4 +1,5 @@
 export type UserRole = 'admin' | 'peserta';
+export type UserApprovalStatus = 'approved' | 'pending' | 'rejected';
 
 export interface UserProfile {
   id: string;
@@ -6,6 +7,9 @@ export interface UserProfile {
   email: string;
   organization?: string;
   role: UserRole;
+  approvalStatus?: UserApprovalStatus;
+  approvedAt?: number;
+  approvedBy?: string;
   createdAt: number;
   lastActive: number;
   isOnline: boolean;

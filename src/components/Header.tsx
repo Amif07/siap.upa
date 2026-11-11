@@ -17,6 +17,7 @@ interface HeaderProps {
   onLogout?: () => void;
   onOpenMonitor?: () => void;
   onlineUserCount?: number;
+  pendingApprovalCount?: number;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -33,6 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
   onLogout,
   onOpenMonitor,
   onlineUserCount = 1,
+  pendingApprovalCount = 0,
 }) => {
   const toggleSound = () => {
     const next = !soundEnabled;
@@ -139,10 +141,16 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Shield className="w-4 h-4 text-amber-600 dark:text-amber-400" />
             <span>Monitor & Riwayat</span>
-            <span className="flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-bold rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              {onlineUserCount} Online
-            </span>
+            {pendingApprovalCount > 0 ? (
+              <span className="flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold rounded-full bg-amber-500 text-slate-950 animate-pulse">
+                {pendingApprovalCount} Butuh Konfirmasi
+              </span>
+            ) : (
+              <span className="flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-bold rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                {onlineUserCount} Online
+              </span>
+            )}
           </button>
         </nav>
 

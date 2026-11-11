@@ -164,7 +164,7 @@ export const PermanentSaveModal: React.FC<PermanentSaveModalProps> = ({
                     3. Unduh File Database Ratusan Soal UPA (.JSON)
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-slate-300 mt-1">
-                    Simpan seluruh naskah soal, kunci jawaban resmi, dan pembahasan dasar hukum ke laptop Anda dalam format file JSON standar.
+                    Simpan seluruh naskah soal, kunci jawaban, dan pembahasan dasar hukum ke laptop Anda dalam format file JSON standar.
                   </p>
                 </div>
               </div>

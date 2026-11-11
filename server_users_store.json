@@ -1,0 +1,44 @@
+[
+  {
+    "id": "usr-admin-YWhtYWRt",
+    "email": "ahmadmiftahulfauzi07@gmail.com",
+    "name": "Ahmad Miftahul Fauzi, S.H.",
+    "organization": "Pengawas & Pengembang UPA",
+    "role": "admin",
+    "approvalStatus": "approved",
+    "approvedAt": 1794378498486,
+    "approvedBy": "System",
+    "createdAt": 1794378498486,
+    "lastActive": 1794378498486,
+    "isOnline": false,
+    "currentActivity": "Di Halaman Pengawas AdvokatQuiz"
+  },
+  {
+    "id": "usr-admin-YW1pZmF2",
+    "email": "amifaveiro9@gmail.com",
+    "name": "Ahmad Miftahul Fauzi, S.H.",
+    "organization": "Pengawas & Pengembang UPA",
+    "role": "admin",
+    "approvalStatus": "approved",
+    "approvedAt": 1794378498486,
+    "approvedBy": "System",
+    "createdAt": 1794378498486,
+    "lastActive": 1794378498486,
+    "isOnline": false,
+    "currentActivity": "Di Halaman Pengawas AdvokatQuiz"
+  },
+  {
+    "id": "usr-YnVkaS5yZWth",
+    "email": "budi.rekan@gmail.com",
+    "name": "Budi Rekan, S.H.",
+    "organization": "PKPA PERADI 2026",
+    "role": "peserta",
+    "approvalStatus": "approved",
+    "approvedAt": 1794378518362,
+    "approvedBy": "Ahmad Miftahul Fauzi, S.H.",
+    "createdAt": 1794378504825,
+    "lastActive": 1794378535264,
+    "isOnline": true,
+    "currentActivity": "Menunggu Konfirmasi Admin"
+  }
+]

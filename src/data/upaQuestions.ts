@@ -835,10 +835,10 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     topicTag: 'Actio Pauliana',
     question: 'Yang dimaksud dengan "Actio Pauliana" dalam Pasal 1341 KUHPerdata adalah....',
     options: [
-      { key: 'A', text: 'Bahwa debitur dalam keadaan tertentu dapat membatalkan kewenangan dari perbuatan kreditur.' },
-      { key: 'B', text: 'Bahwa kreditur dalam keadaan tertentu dapat menuntut pembatalan perbuatan hukum debitur yang merugikan kreditur.' },
-      { key: 'C', text: 'Kedua jawaban A dan B benar.' },
-      { key: 'D', text: 'Semua jawaban salah.' }
+      { key: 'A', text: 'Hak debitur dalam keadaan tertentu untuk membatalkan perjanjian sepihak dengan kreditur.' },
+      { key: 'B', text: 'Hak kreditur dalam keadaan tertentu untuk menuntut pembatalan perbuatan hukum debitur yang merugikan kreditur.' },
+      { key: 'C', text: 'Hak debitur untuk menolak sita eksekusi atas benda jaminan miliknya sebelum putusan inkracht.' },
+      { key: 'D', text: 'Hak pihak ketiga untuk menyita seluruh aset debitur pailit tanpa persetujuan kurator.' }
     ],
     correctAnswer: 'B',
     explanation: {
@@ -852,16 +852,16 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     id: 45,
     category: 'Hukum Acara Perdata',
     topicTag: 'Unsur Wanprestasi',
-    question: 'Bentuk-bentuk wanprestasi (ingkar janji) menurut hukum perdata adalah....',
+    question: 'Bentuk-bentuk wanprestasi (ingkar janji) menurut ketentuan hukum perdata meliputi....',
     options: [
-      { key: 'A', text: 'Debitur yang tidak memenuhi kewajibannya atau terlambat memenuhi kewajibannya.' },
-      { key: 'B', text: 'Debitur yang memenuhi kewajibannya tetapi tidak seperti yang telah diperjanjikan.' },
-      { key: 'C', text: 'A dan B benar.' },
-      { key: 'D', text: 'A dan B salah.' }
+      { key: 'A', text: 'Debitur tidak memenuhi kewajiban (prestasi) sama sekali atau terlambat memenuhi kewajiban.' },
+      { key: 'B', text: 'Debitur memenuhi kewajibannya tetapi tidak seperti yang telah diperjanjikan.' },
+      { key: 'C', text: 'Debitur melakukan perbuatan yang dilarang untuk dilakukan menurut perjanjian.' },
+      { key: 'D', text: 'Semua jawaban A, B, dan C benar.' }
     ],
-    correctAnswer: 'C',
+    correctAnswer: 'D',
     explanation: {
-      summary: 'Wanprestasi mencakup tidak berprestasi, terlambat berprestasi, atau berprestasi keliru/cacat.',
+      summary: 'Wanprestasi mencakup tidak berprestasi, terlambat berprestasi, berprestasi keliru/cacat, atau melakukan yang dilarang.',
       legalBasis: 'Pasal 1238 & Pasal 1243 KUHPerdata.',
       analysis: 'Doktrin Subekti merinci 4 wujud wanprestasi: 1. Tidak melakukan apa yang disanggupi, 2. Melaksanakan apa yang dijanjikan tapi terlambat, 3. Melaksanakan apa yang dijanjikan tapi tidak sebagaimana mestinya, 4. Melakukan sesuatu yang menurut perjanjian dilarang.'
     },
@@ -1234,14 +1234,14 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     id: 65,
     category: 'Hukum Acara Pidana',
     topicTag: 'Jenis Pidana Pokok KUHP Baru',
-    question: 'Menurut Pasal 64 & 65 KUHP Nasional (UU No. 1 Tahun 2023), pidana pokok meliputi....',
+    question: 'Menurut Pasal 65 KUHP Nasional (UU No. 1 Tahun 2023), jenis-jenis pidana pokok meliputi....',
     options: [
-      { key: 'A', text: 'Denda, kerja sosial, penjara' },
-      { key: 'B', text: 'Penjara, tutupan, pengawasan' },
-      { key: 'C', text: 'Penjara, denda, tutupan, pengawasan, dan kerja sosial' },
-      { key: 'D', text: 'Semua jawaban benar' }
+      { key: 'A', text: 'Pidana mati, pidana penjara, pidana kurungan, dan pidana denda' },
+      { key: 'B', text: 'Pidana penjara, pidana kerja sosial, dan pidana kurungan' },
+      { key: 'C', text: 'Pidana penjara, pidana tutupan, pidana pengawasan, pidana denda, dan pidana kerja sosial' },
+      { key: 'D', text: 'Pidana tutupan, pidana pengawasan, dan pencabutan hak tertentu' }
     ],
-    correctAnswer: 'D',
+    correctAnswer: 'C',
     explanation: {
       summary: 'Pidana pokok terdiri dari pidana penjara, tutupan, pengawasan, denda, dan kerja sosial.',
       legalBasis: 'Pasal 65 UU No. 1 Tahun 2023 tentang Kitab Undang-Undang Hukum Pidana.',
@@ -2152,18 +2152,18 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     id: 113,
     category: 'Hukum Acara PTUN',
     topicTag: 'Alasan Gugatan PTUN',
-    question: 'Menurut Pasal 53 UU PTUN, alasan-alasan yang dapat digunakan dalam mengajukan gugatan di PTUN adalah....',
+    question: 'Menurut Pasal 53 ayat (2) UU PTUN, alasan-alasan yang dapat digunakan dalam mengajukan gugatan di PTUN adalah....',
     options: [
       { key: 'A', text: 'KTUN yang digugat bertentangan dengan peraturan perundang-undangan yang berlaku' },
-      { key: 'B', text: 'KTUN yang digugat bertentangan dengan Asas-Asas Umum Pemerintahan yang Baik (AUPB)' },
-      { key: 'C', text: 'Semua benar (A dan B)' },
-      { key: 'D', text: 'Semua salah' }
+      { key: 'B', text: 'Badan atau Pejabat TUN pada waktu mengeluarkan keputusan telah menggunakan wewenangnya untuk tujuan lain dari maksud diberikannya wewenang tersebut' },
+      { key: 'C', text: 'KTUN yang digugat bertentangan dengan Asas-Asas Umum Pemerintahan yang Baik (AUPB)' },
+      { key: 'D', text: 'Semua jawaban A, B, dan C benar' }
     ],
-    correctAnswer: 'C',
+    correctAnswer: 'D',
     explanation: {
-      summary: 'Alasan gugatan PTUN: bertentangan dengan UU atau bertentangan dengan AUPB.',
+      summary: 'Alasan gugatan PTUN: bertentangan dengan UU, penyalahgunaan wewenang, atau bertentangan dengan AUPB.',
       legalBasis: 'Pasal 53 ayat (2) UU No. 9 Tahun 2004.',
-      analysis: 'Pasca amandemen UU No. 9 Tahun 2004, pelanggaran terhadap Asas-Asas Umum Pemerintahan yang Baik (AUPB) diakui secara tegas sebagai alasan pengujian KTUN.'
+      analysis: 'Pasca amandemen UU No. 9 Tahun 2004, pelanggaran terhadap peraturan perundang-undangan, penyalahgunaan wewenang, dan pelanggaran Asas-Asas Umum Pemerintahan yang Baik (AUPB) diakui secara tegas sebagai alasan pengujian KTUN.'
     },
     difficulty: 'Mudah'
   },
@@ -2176,7 +2176,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
       { key: 'A', text: 'Pasal 98 UU No. 5 Tahun 1986' },
       { key: 'B', text: 'Pasal 62 UU No. 5 Tahun 1986' },
       { key: 'C', text: 'Pasal 99 UU No. 5 Tahun 1986' },
-      { key: 'D', text: 'Pasal 98 & 99 UU No. 5 Tahun 1986' }
+      { key: 'D', text: 'Pasal 98 dan Pasal 99 UU No. 5 Tahun 1986' }
     ],
     correctAnswer: 'D',
     explanation: {

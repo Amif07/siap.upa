@@ -1,23 +1,110 @@
-import { UserProfile, UserQuizHistoryRecord, QuestionResultItem } from '../types/auth';
+import { UserProfile, UserQuizHistoryRecord, UserApprovalStatus } from '../types/auth';
 
 const STORAGE_KEY_CURRENT_USER = 'advokatquiz_current_user_v1';
 const STORAGE_KEY_ALL_USERS = 'advokatquiz_all_users_v1';
 const STORAGE_KEY_HISTORY = 'advokatquiz_all_history_v1';
 
-// No bots or simulated dummy users. Only genuine registered human users are tracked.
-const INITIAL_SEED_USERS: UserProfile[] = [];
-const INITIAL_SEED_HISTORY: UserQuizHistoryRecord[] = [];
+export type AuthEventListener = (event: any) => void;
 
 class UserService {
   private channel: BroadcastChannel | null = null;
+  private ws: WebSocket | null = null;
+  private wsReconnectTimer: any = null;
+  private authListeners: Set<AuthEventListener> = new Set();
 
   constructor() {
-    if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
-      this.channel = new BroadcastChannel('advokatquiz_auth_sync');
+    if (typeof window !== 'undefined') {
+      if ('BroadcastChannel' in window) {
+        this.channel = new BroadcastChannel('advokatquiz_auth_sync');
+        this.channel.onmessage = (e) => {
+          this.notifyListeners(e.data);
+        };
+      }
+      this.initWebSocket();
     }
   }
 
-  // Get current logged-in user
+  // Real-time WebSocket connection to server at /ws for presence & instant approvals
+  private initWebSocket() {
+    if (typeof window === 'undefined') return;
+
+    try {
+      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${protocol}//${window.location.host}/ws`;
+
+      this.ws = new WebSocket(wsUrl);
+
+      this.ws.onopen = () => {
+        const currentUser = this.getCurrentUser();
+        if (currentUser) {
+          this.sendWsMessage({
+            type: 'AUTH_IDENTIFY',
+            email: currentUser.email,
+            name: currentUser.name,
+            currentActivity: currentUser.currentActivity || 'Di Beranda AdvokatQuiz',
+          });
+        }
+      };
+
+      this.ws.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data.type === 'USER_APPROVED') {
+            const current = this.getCurrentUser();
+            if (current && current.email === data.email) {
+              current.approvalStatus = 'approved';
+              this.setCurrentUser(current);
+            }
+          }
+          this.notifyListeners(data);
+        } catch {
+          // ignore non-json
+        }
+      };
+
+      this.ws.onclose = () => {
+        if (!this.wsReconnectTimer) {
+          this.wsReconnectTimer = setTimeout(() => {
+            this.wsReconnectTimer = null;
+            this.initWebSocket();
+          }, 6000);
+        }
+      };
+
+      this.ws.onerror = (e) => {
+        // Silently handled: HTTP polling automatically handles presence and sync as fallback
+      };
+    } catch {
+      // Offline fallback
+    }
+  }
+
+  private sendWsMessage(payload: any) {
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      try {
+        this.ws.send(JSON.stringify(payload));
+      } catch {}
+    }
+  }
+
+  public onAuthEvent(listener: AuthEventListener): () => void {
+    this.authListeners.add(listener);
+    return () => {
+      this.authListeners.delete(listener);
+    };
+  }
+
+  private notifyListeners(event: any) {
+    for (const listener of this.authListeners) {
+      try {
+        listener(event);
+      } catch (err) {
+        console.warn('[AUTH] Error in auth listener:', err);
+      }
+    }
+  }
+
+  // Get current logged-in user from localStorage
   public getCurrentUser(): UserProfile | null {
     if (typeof window === 'undefined') return null;
     const raw = localStorage.getItem(STORAGE_KEY_CURRENT_USER);
@@ -29,11 +116,64 @@ class UserService {
     }
   }
 
-  // Login or Register User (Support email-only login)
+  // Set current user in localStorage
+  public setCurrentUser(user: UserProfile | null): void {
+    if (typeof window === 'undefined') return;
+    if (user) {
+      localStorage.setItem(STORAGE_KEY_CURRENT_USER, JSON.stringify(user));
+      this.upsertUserDirectory(user);
+    } else {
+      localStorage.removeItem(STORAGE_KEY_CURRENT_USER);
+    }
+  }
+
+  // Login or Request Access via Server
+  public async loginOrRequestAccess(
+    email: string,
+    nameOrEmpty?: string,
+    organization?: string
+  ): Promise<{ status: UserApprovalStatus; user: UserProfile; message?: string }> {
+    const cleanEmail = email.trim().toLowerCase();
+
+    try {
+      const res = await fetch('/api/auth/login-or-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: cleanEmail,
+          name: nameOrEmpty?.trim(),
+          organization: organization?.trim(),
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        const user: UserProfile = data.user;
+        const status: UserApprovalStatus = data.status || 'pending';
+
+        if (status === 'approved') {
+          this.setCurrentUser(user);
+          this.sendWsMessage({
+            type: 'AUTH_IDENTIFY',
+            email: user.email,
+            name: user.name,
+            currentActivity: user.currentActivity,
+          });
+        }
+
+        return { status, user, message: data.message };
+      }
+    } catch (err) {
+      console.warn('[AUTH] Server login request failed, falling back to local verification:', err);
+    }
+
+    // Local fallback if offline
+    return this.loginLocalFallback(nameOrEmpty || '', cleanEmail, organization);
+  }
+
+  // Synchronous local login fallback
   public login(nameOrEmpty: string, email: string, organization?: string): UserProfile {
     const cleanEmail = email.trim().toLowerCase();
-    
-    // Check if user already exists in directory
     const all = this.getAllUsers();
     const existing = all.find((u) => u.email === cleanEmail);
 
@@ -55,7 +195,6 @@ class UserService {
       }
     }
 
-    // Recognize admin by email
     const isAdmin =
       cleanEmail === 'ahmadmiftahulfauzi07@gmail.com' ||
       cleanEmail === 'amifaveiro9@gmail.com' ||
@@ -65,42 +204,167 @@ class UserService {
       id: existing?.id || ('usr-' + btoa(cleanEmail).replace(/[^a-zA-Z0-9]/g, '').slice(0, 12)),
       name: cleanName,
       email: cleanEmail,
-      organization: organization?.trim() || existing?.organization || (isAdmin ? 'DPN PERADI / Tim Penguji' : 'PKPA PERADI 2026'),
+      organization: organization?.trim() || existing?.organization || (isAdmin ? 'Pengawas & Pengembang UPA' : 'PKPA PERADI 2026'),
       role: isAdmin ? 'admin' : (existing?.role || 'peserta'),
+      approvalStatus: isAdmin ? 'approved' : (existing?.approvalStatus || 'approved'),
       createdAt: existing?.createdAt || Date.now(),
       lastActive: Date.now(),
       isOnline: true,
       currentActivity: 'Di Halaman Utama AdvokatQuiz',
     };
 
-    localStorage.setItem(STORAGE_KEY_CURRENT_USER, JSON.stringify(user));
+    this.setCurrentUser(user);
 
-    // Also register into all users directory
-    this.upsertUserDirectory(user);
-
-    // Notify other tabs
-    if (this.channel) {
-      this.channel.postMessage({ type: 'USER_LOGIN', user });
-    }
+    // Async sync with server in background
+    fetch('/api/auth/heartbeat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: cleanEmail,
+        name: cleanName,
+        currentActivity: user.currentActivity,
+      }),
+    }).catch(() => {});
 
     return user;
   }
 
-  // Logout
-  public logout(): void {
-    const currentUser = this.getCurrentUser();
-    if (currentUser) {
-      currentUser.isOnline = false;
-      currentUser.lastActive = Date.now();
-      this.upsertUserDirectory(currentUser);
-      if (this.channel) {
-        this.channel.postMessage({ type: 'USER_LOGOUT', userId: currentUser.id });
-      }
-    }
-    localStorage.removeItem(STORAGE_KEY_CURRENT_USER);
+  private loginLocalFallback(nameOrEmpty: string, email: string, organization?: string) {
+    const user = this.login(nameOrEmpty, email, organization);
+    return {
+      status: user.approvalStatus || 'approved',
+      user,
+      message: 'Masuk melalui verifikasi lokal.',
+    };
   }
 
-  // Update Activity & Heartbeat
+  // Check Approval Status (for waiting modal polling)
+  public async checkApprovalStatus(email: string): Promise<{ status: UserApprovalStatus | 'not_found'; user?: UserProfile }> {
+    try {
+      const res = await fetch(`/api/auth/status?email=${encodeURIComponent(email)}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.status === 'approved' && data.user) {
+          this.setCurrentUser(data.user);
+        }
+        return { status: data.status, user: data.user };
+      }
+    } catch {
+      // Offline fallback
+    }
+
+    const user = this.getAllUsers().find((u) => u.email.toLowerCase() === email.toLowerCase());
+    return {
+      status: user?.approvalStatus || 'pending',
+      user,
+    };
+  }
+
+  // Admin Approve User (Teman bebas masuk kapan saja setelah ini)
+  public async approveUser(email: string): Promise<{ success: boolean; user?: UserProfile; message?: string }> {
+    const currentAdmin = this.getCurrentUser();
+    try {
+      const res = await fetch('/api/auth/approve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email.trim().toLowerCase(),
+          adminEmail: currentAdmin?.email,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.user) {
+          this.upsertUserDirectory(data.user);
+        }
+        await this.fetchAllUsers();
+        return { success: true, user: data.user, message: data.message };
+      }
+    } catch (err) {
+      console.warn('[AUTH] Approve API failed:', err);
+    }
+
+    // Local fallback update
+    const all = this.getAllUsers();
+    const idx = all.findIndex((u) => u.email.toLowerCase() === email.toLowerCase());
+    if (idx >= 0) {
+      all[idx].approvalStatus = 'approved';
+      all[idx].approvedAt = Date.now();
+      all[idx].approvedBy = currentAdmin?.name || 'Ahmad Miftahul Fauzi, S.H.';
+      localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(all));
+    }
+    return { success: true, message: 'Disetujui secara lokal.' };
+  }
+
+  // Admin Reject User
+  public async rejectUser(email: string): Promise<{ success: boolean; message?: string }> {
+    try {
+      const res = await fetch('/api/auth/reject', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim().toLowerCase() }),
+      });
+
+      if (res.ok) {
+        await this.fetchAllUsers();
+        return { success: true };
+      }
+    } catch (err) {
+      console.warn('[AUTH] Reject API failed:', err);
+    }
+
+    const all = this.getAllUsers();
+    const idx = all.findIndex((u) => u.email.toLowerCase() === email.toLowerCase());
+    if (idx >= 0) {
+      all[idx].approvalStatus = 'rejected';
+      localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(all));
+    }
+    return { success: true };
+  }
+
+  // Fetch all registered users & real-time presence from server
+  public async fetchAllUsers(): Promise<UserProfile[]> {
+    try {
+      const res = await fetch('/api/auth/users');
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data.users)) {
+          const list: UserProfile[] = data.users;
+          localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(list));
+          return list;
+        }
+      }
+    } catch {
+      // Network failure
+    }
+    return this.getAllUsers();
+  }
+
+  // Get cached user directory
+  public getAllUsers(): UserProfile[] {
+    if (typeof window === 'undefined') return [];
+    const raw = localStorage.getItem(STORAGE_KEY_ALL_USERS);
+    let list: UserProfile[] = [];
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          list = parsed.filter((u: UserProfile) => u && u.email && !u.id?.startsWith('user-seed-'));
+        }
+      } catch {
+        list = [];
+      }
+    }
+
+    const now = Date.now();
+    return list.map((u) => ({
+      ...u,
+      isOnline: u.isOnline !== false && now - u.lastActive <= 30000,
+    }));
+  }
+
+  // Update Activity & Send Heartbeat to server + WS
   public updateActivity(activityText: string): void {
     const user = this.getCurrentUser();
     if (!user) return;
@@ -112,50 +376,56 @@ class UserService {
     localStorage.setItem(STORAGE_KEY_CURRENT_USER, JSON.stringify(user));
     this.upsertUserDirectory(user);
 
+    // Push via WebSocket for immediate real-time update
+    this.sendWsMessage({
+      type: 'AUTH_HEARTBEAT',
+      email: user.email,
+      name: user.name,
+      currentActivity: activityText,
+    });
+
+    // Also push via HTTP heartbeat
+    fetch('/api/auth/heartbeat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: user.email,
+        name: user.name,
+        currentActivity: activityText,
+      }),
+    }).catch(() => {});
+
     if (this.channel) {
       this.channel.postMessage({ type: 'USER_HEARTBEAT', user });
     }
   }
 
-  // Get all registered / active users (strictly genuine human users only, no bots)
-  public getAllUsers(): UserProfile[] {
-    if (typeof window === 'undefined') return [];
-    const raw = localStorage.getItem(STORAGE_KEY_ALL_USERS);
-    let list: UserProfile[] = [];
-    if (raw) {
-      try {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) {
-          // Strictly filter out any old simulated/bot seed users
-          list = parsed.filter(
-            (u: UserProfile) =>
-              u &&
-              u.id &&
-              !u.id.startsWith('user-seed-') &&
-              !u.email.includes('seed') &&
-              !u.id.includes('seed')
-          );
-        }
-      } catch {
-        list = [];
+  // Logout
+  public logout(): void {
+    const currentUser = this.getCurrentUser();
+    if (currentUser) {
+      currentUser.isOnline = false;
+      currentUser.lastActive = Date.now();
+      currentUser.currentActivity = 'Offline';
+      this.upsertUserDirectory(currentUser);
+
+      fetch('/api/auth/logout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: currentUser.email }),
+      }).catch(() => {});
+
+      if (this.channel) {
+        this.channel.postMessage({ type: 'USER_LOGOUT', userId: currentUser.id });
       }
     }
-
-    // Persist cleaned list if old seeds were purged
-    localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(list));
-
-    // Update isOnline status based on lastActive threshold (active in last 5 minutes)
-    const now = Date.now();
-    return list.map((u) => ({
-      ...u,
-      isOnline: now - u.lastActive <= 5 * 60 * 1000,
-    }));
+    localStorage.removeItem(STORAGE_KEY_CURRENT_USER);
   }
 
-  // Save new user or update existing
-  private upsertUserDirectory(user: UserProfile): void {
+  // Upsert user in directory
+  public upsertUserDirectory(user: UserProfile): void {
     const all = this.getAllUsers();
-    const index = all.findIndex((u) => u.email === user.email || u.id === user.id);
+    const index = all.findIndex((u) => u.email.toLowerCase() === user.email.toLowerCase() || u.id === user.id);
     if (index >= 0) {
       all[index] = { ...all[index], ...user, lastActive: Date.now() };
     } else {
@@ -164,39 +434,28 @@ class UserService {
     localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(all));
   }
 
-  // Record an exam / quiz attempt
+  // Save Quiz History Record
   public saveQuizHistory(record: UserQuizHistoryRecord): void {
     const all = this.getAllHistory();
     all.unshift(record);
     localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(all));
 
-    // Update user's last activity
-    this.updateActivity(`Selesai mengerjakan ${record.quizTitle} (Skor: ${record.scorePercent.toFixed(1)}%)`);
+    this.updateActivity(`Selesai ${record.quizTitle} (Skor: ${record.scorePercent.toFixed(1)}%)`);
 
     if (this.channel) {
       this.channel.postMessage({ type: 'NEW_HISTORY_RECORD', record });
     }
   }
 
-  // Get all quiz history (genuine real users only, no fake bots)
+  // Get All History Records
   public getAllHistory(): UserQuizHistoryRecord[] {
     if (typeof window === 'undefined') return [];
     const raw = localStorage.getItem(STORAGE_KEY_HISTORY);
-    if (!raw) {
-      return [];
-    }
+    if (!raw) return [];
     try {
       const parsed = JSON.parse(raw);
       if (Array.isArray(parsed)) {
-        const cleaned = parsed.filter(
-          (h: UserQuizHistoryRecord) =>
-            h &&
-            h.id &&
-            !h.id.startsWith('hist-seed-') &&
-            (!h.userId || !h.userId.startsWith('user-seed-'))
-        );
-        localStorage.setItem(STORAGE_KEY_HISTORY, JSON.stringify(cleaned));
-        return cleaned;
+        return parsed.filter((h) => h && h.id && !h.id.startsWith('hist-seed-'));
       }
       return [];
     } catch {
@@ -220,7 +479,7 @@ class UserService {
       'Benar',
       'Salah',
       'Ragu-ragu',
-      'Durasi (Menit)'
+      'Durasi (Menit)',
     ];
 
     const rows = historyList.map((h) => [
@@ -237,7 +496,7 @@ class UserService {
       h.correctCount,
       h.wrongCount,
       h.doubtfulCount,
-      Math.round(h.durationSeconds / 60)
+      Math.round(h.durationSeconds / 60),
     ]);
 
     const csvContent = [headers.join(','), ...rows.map((r) => r.join(','))].join('\n');

@@ -1439,7 +1439,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "Mengajukan banding ke PT.TUN"
+        "text": "Mengajukan banding ke PT TUN"
       },
       {
         "key": "C",
