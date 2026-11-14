@@ -1,4 +1,4 @@
-import { UPAQuestion } from '../types/quiz';
+import type { UPAQuestion } from '../types/quiz.ts';
 
 export const TOAZ_PERADI_BANK: UPAQuestion[] = [
   {
@@ -9,11 +9,11 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "options": [
       {
         "key": "A",
-        "text": "Pemberitahuan yang disampaikan oleh seorang karena hak dan kewajiban berdasarkan undang – undang kepada pejabat yang berwenang tentang telah atau sedang atau diduga akan terjadinya peristiwa pidana."
+        "text": "Pemberitahuan yang disampaikan oleh seorang karena hak dan kewajiban berdasarkan undang-undang kepada pejabat yang berwenang tentang telah atau sedang atau diduga akan terjadinya peristiwa pidana."
       },
       {
         "key": "B",
-        "text": "Pemberitahuan dan permintaan oleh pihak yang berkepentingan kepada polisi tentang telah atau sedang atau diduga telah terjadi peristiwa pidana"
+        "text": "Pemberitahuan dan permintaan oleh pihak yang berkepentingan kepada polisi tentang telah atau sedang atau diduga telah terjadi peristiwa pidana."
       },
       {
         "key": "C",
@@ -26,25 +26,25 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Laporan adalah pemberitahuan karena hak/kewajiban UU kepada pejabat berwenang tentang peristiwa pidana.",
+      "summary": "Laporan adalah pemberitahuan karena hak atau kewajiban berdasarkan undang-undang kepada pejabat berwenang tentang peristiwa pidana.",
       "legalBasis": "Pasal 1 angka 24 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "analysis": "Pasal 1 angka 24 KUHAP merumuskan: \"Laporan adalah pemberitahuan yang disampaikan oleh seorang karena hak atau kewajiban berdasarkan undang-undang kepada pejabat yang berwenang tentang telah atau sedang atau diduga akan terjadinya peristiwa pidana.\" Sedangkan opsi C merupakan definisi Pengaduan (Pasal 1 angka 25 KUHAP)."
+      "analysis": "Pasal 1 angka 24 KUHAP merumuskan: \"Laporan adalah pemberitahuan yang disampaikan oleh seorang karena hak atau kewajiban berdasarkan undang-undang kepada pejabat yang berwenang tentang telah atau sedang atau diduga akan terjadinya peristiwa pidana.\" Sedangkan definisi Pengaduan diatur dalam Pasal 1 angka 25 KUHAP."
     },
     "difficulty": "Mudah"
   },
   {
     "id": 310,
     "category": "Hukum Acara Pidana",
-    "topicTag": "Jenis Pidana Pokok & Tambahan (KUHP)",
-    "question": "Pasal 10 KUHP mengatur tentang jenis – jenis hukuman, yaitu hukuman pokok dan hukuman tambahan. Berikut ini adalah termasuk hukuman tambahan, KECUALI:",
+    "topicTag": "Jenis Pidana Pokok dan Tambahan (KUHP)",
+    "question": "Pasal 10 KUHP mengatur tentang jenis-jenis hukuman, yaitu hukuman pokok dan hukuman tambahan. Berikut ini yang termasuk hukuman tambahan adalah, KECUALI:",
     "options": [
       {
         "key": "A",
-        "text": "Pencabutan hak – hak tertentu"
+        "text": "Pencabutan hak-hak tertentu"
       },
       {
         "key": "B",
-        "text": "Perampasan barang – barang tertentu"
+        "text": "Perampasan barang-barang tertentu"
       },
       {
         "key": "C",
@@ -67,7 +67,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 311,
     "category": "Hukum Acara Pidana",
     "topicTag": "Dasar Hukum KUHAP",
-    "question": "Undang – undang yang mengatur tentang Hukum Acara Pidana di Indonesia adalah:",
+    "question": "Undang-Undang yang mengatur tentang Hukum Acara Pidana di Indonesia adalah:",
     "options": [
       {
         "key": "A",
@@ -137,7 +137,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "Bekerjasama dengan penyidik"
+        "text": "Bekerja sama dengan penyidik"
       },
       {
         "key": "C",
@@ -191,15 +191,15 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 315,
     "category": "Hukum Acara Pidana",
     "topicTag": "Alasan Peninjauan Kembali (KUHAP)",
-    "question": "Berikut ini adalah alasan – alasan yang dapat dijadikan dasar permintaan peninjauan kembali yang diatur dalam KUHAP, KECUALI:",
+    "question": "Berikut ini adalah alasan-alasan yang dapat dijadikan dasar permintaan peninjauan kembali yang diatur dalam KUHAP, KECUALI:",
     "options": [
       {
         "key": "A",
-        "text": "Apabila ditemukan / terdapat keadaan hukum (novum) baru"
+        "text": "Apabila ditemukan/terdapat keadaan baru (novum)"
       },
       {
         "key": "B",
-        "text": "Apabila terdapat kekhilafan yang nyata dalam pemeriksaan hakim"
+        "text": "Apabila terdapat kekhilafan hakim atau kekeliruan yang nyata dalam putusan"
       },
       {
         "key": "C",
@@ -207,7 +207,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Apabila hukum pidana yang dijatuhkan kurang dari 2/3 dari ancaman maksimal dalam undang – undang."
+        "text": "Apabila pidana yang dijatuhkan kurang dari 2/3 dari ancaman maksimal dalam undang-undang"
       }
     ],
     "correctAnswer": "D",
@@ -222,23 +222,23 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 316,
     "category": "Hukum Acara Pidana",
     "topicTag": "Jenis-Jenis Penahanan (KUHAP)",
-    "question": "Dalam Pasal 22 ayat (1) KUHAP jenis penahanan terdiri atas:",
+    "question": "Berdasarkan Pasal 22 ayat (1) KUHAP, jenis penahanan dalam proses peradilan pidana terdiri atas:",
     "options": [
       {
         "key": "A",
-        "text": "Penahanan Rutan"
+        "text": "Penahanan rumah tahanan negara (rutan) saja"
       },
       {
         "key": "B",
-        "text": "Penahanan rumah dan penahanan kota"
+        "text": "Penahanan rumah dan penahanan kota saja"
       },
       {
         "key": "C",
-        "text": "Penahanan badan"
+        "text": "Penahanan badan di lembaga pemasyarakatan"
       },
       {
         "key": "D",
-        "text": "Jawaban a dan b benar"
+        "text": "Penahanan rutan, penahanan rumah, dan penahanan kota"
       }
     ],
     "correctAnswer": "D",
@@ -354,7 +354,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "Perkara yang diancam dengan pidana penjara atau kurungan paling lama 3 bulan dan / atau denda sebanyak – banyaknya Rp. 7.500,- dan penghinaan ringan."
+        "text": "Perkara yang diancam dengan pidana penjara atau kurungan paling lama 3 bulan dan/atau denda sebanyak-banyaknya Rp7.500,00 dan penghinaan ringan."
       },
       {
         "key": "C",
@@ -625,7 +625,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 329,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Hak Imunitas Advokat Beritikad Baik",
-    "question": "Dalam Undang – Undang Advokat diatur mengenai hak imunitas advokat yaitu:",
+    "question": "Dalam Undang-Undang Advokat diatur mengenai hak imunitas advokat, yaitu:",
     "options": [
       {
         "key": "A",
@@ -656,7 +656,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 330,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Kedudukan Profesi Advokat dalam Pemberian Jasa Hukum",
-    "question": "Menurut Undang – undang No. 18 Tahun 2003, pernyataan bahwa \"satu – satunya profesi yang memberikan jasa hukum di Indonesia adalah advokat\":",
+    "question": "Menurut Undang-Undang No. 18 Tahun 2003, pernyataan bahwa \"satu-satunya profesi yang memberikan jasa hukum di Indonesia adalah advokat\":",
     "options": [
       {
         "key": "A",
@@ -749,7 +749,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 333,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Undang-Undang Advokat Indonesia",
-    "question": "Undang – undang yang mengatur tentang Profesi Advokat di Indonesia saat ini adalah:",
+    "question": "Undang-Undang yang mengatur tentang Profesi Advokat di Indonesia saat ini adalah:",
     "options": [
       {
         "key": "A",
@@ -772,7 +772,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Profesi Advokat diatur dalam Undang-Undang No. 18 Tahun 2003.",
       "legalBasis": "Pasal 1 angka 1 jo. Pasal 36 Undang-Undang No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "UU No. 18 Tahun 2003 disahkan pada tanggal 5 April 2003 sebagai landasan hukum formil dan materil bagi profesi advokat di Indonesia."
+      "analysis": "UU No. 18 Tahun 2003 disahkan pada tanggal 5 April 2003 sebagai landasan hukum formil dan materiil bagi profesi advokat di Indonesia."
     },
     "difficulty": "Mudah"
   },
@@ -788,7 +788,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "18 Nopember 2004"
+        "text": "18 November 2004"
       },
       {
         "key": "C",
@@ -908,26 +908,26 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "options": [
       {
         "key": "A",
-        "text": "Mengabaikan atau menelantarkan kepentingan kliennya"
+        "text": "Menolak memberikan jasa hukum kepada calon klien karena perkara bertentangan dengan keahlian dan hati nuraninya"
       },
       {
         "key": "B",
-        "text": "Berbuat atau bertingkah laku tidak patut terhadap lawan atau rekan seprofesi"
+        "text": "Menjalankan tugas pembelaan klien secara bebas dan mandiri dengan itikad baik di dalam maupun di luar pengadilan"
       },
       {
         "key": "C",
-        "text": "Melakukan pelanggaran terhadap peraturan perundang – undangan atau perbuatan tercela"
+        "text": "Menjaga rahasia jabatan dan informasi klien meskipun hubungan hukum dengan klien telah berakhir"
       },
       {
         "key": "D",
-        "text": "Jawaban semua benar (A, B, dan C benar)"
+        "text": "Mengabaikan kepentingan klien, berbuat tidak patut terhadap lawan atau rekan seprofesi, melanggar peraturan perundang-undangan, atau melakukan perbuatan tercela"
       }
     ],
     "correctAnswer": "D",
     "explanation": {
-      "summary": "Advokat dapat ditindak karena menelantarkan klien, berbuat tidak patut, atau melanggar hukum/etik.",
-      "legalBasis": "Pasal 6 huruf a, b, dan c UU No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "Pasal 6 UU Advokat menyebutkan alasan penindakan terhadap Advokat meliputi: mengabaikan kepentingan klien, bertingkah laku tidak patut, bersikap tidak sopan terhadap penegak hukum, melanggar sumpah/janji dan/atau kode etik profesi."
+      "summary": "Advokat dapat ditindak karena menelantarkan kepentingan klien, berbuat tidak patut, melanggar peraturan perundang-undangan/kode etik, atau berbuat tercela.",
+      "legalBasis": "Pasal 6 huruf a sampai f UU No. 18 Tahun 2003 tentang Advokat.",
+      "analysis": "Pasal 6 UU Advokat mengatur alasan penindakan terhadap Advokat meliputi: mengabaikan/menelantarkan kepentingan klien, berbuat atau bertingkah laku tidak patut terhadap lawan atau rekan seprofesi, bersikap/bertutur kata tidak hormat terhadap hukum atau pengadilan, melakukan perbuatan yang bertentangan dengan kewajiban/kehormatan profesi, melanggar peraturan perundang-undangan dan/atau perbuatan tercela, serta melanggar sumpah/janji Advokat dan/atau kode etik profesi. Sebaliknya, menolak perkara sesuai hati nurani, membela klien dengan itikad baik, dan menjaga rahasia jabatan merupakan hak dan kewajiban sah Advokat."
     },
     "difficulty": "Mudah"
   },
@@ -970,19 +970,19 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "options": [
       {
         "key": "A",
-        "text": "Permohonan sendiri"
+        "text": "Menolak menerima kuasa hukum dari calon klien karena bertentangan dengan hati nurani"
       },
       {
         "key": "B",
-        "text": "Dijatuhi pidana yang telah inkracht karena tindak pidana berancaman 4 tahun atau lebih"
+        "text": "Dijatuhi sanksi teguran tertulis satu kali oleh Dewan Kehormatan Daerah"
       },
       {
         "key": "C",
-        "text": "Berdasarkan keputusan Organisasi Advokat"
+        "text": "Dijatuhi pidana denda atau kurungan ringan paling lama 3 bulan dalam perkara lalu lintas"
       },
       {
         "key": "D",
-        "text": "Jawaban semua benar (A, B, dan C benar)"
+        "text": "Permohonan sendiri, dijatuhi pidana berkekuatan hukum tetap atas tindak pidana yang diancam pidana 4 tahun atau lebih, atau berdasarkan keputusan Organisasi Advokat"
       }
     ],
     "correctAnswer": "D",
@@ -1173,7 +1173,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "D",
     "explanation": {
-      "summary": "Pemberhentian sementara melarang advokat berpraktek baik di dalam maupun di luar pengadilan selama masa sanksi.",
+      "summary": "Pemberhentian sementara melarang advokat berpraktik baik di dalam maupun di luar pengadilan selama masa sanksi.",
       "legalBasis": "Pasal 7 ayat (1) huruf c Kode Etik Advokat Indonesia jo. Pasal 26 UU No. 18 Tahun 2003.",
       "analysis": "Sanksi pemberhentian sementara (skorsing) berakibat advokat dilarang total menjalankan profesinya, baik di dalam pengadilan (litigasi) maupun di luar pengadilan (non-litigasi/konsultasi) selama jangka waktu berlakunya putusan skorsing tersebut."
     },
@@ -1311,19 +1311,19 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "options": [
       {
         "key": "A",
-        "text": "Mengadakan ujian bagi calon advokat"
+        "text": "Mengadakan ujian calon advokat saja tanpa berwenang melakukan pengawasan maupun pemberhentian"
       },
       {
         "key": "B",
-        "text": "Melakukan pengangkatan advokat"
+        "text": "Melakukan penyumpahan calon advokat di sidang terbuka serta memutus sengketa perdata klien"
       },
       {
         "key": "C",
-        "text": "Melakukan tindakan pengawasan dan pemberhentian advokat"
+        "text": "Menjatuhkan pidana kurungan dan menyita harta benda advokat yang melanggar kode etik"
       },
       {
         "key": "D",
-        "text": "Semua jawaban benar (Ujian, pengangkatan, pengawasan, dan pemberhentian advokat)"
+        "text": "Menyelenggarakan ujian calon advokat, mengangkat, mengawasi, serta memberhentikan advokat"
       }
     ],
     "correctAnswer": "D",
@@ -1404,19 +1404,19 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "options": [
       {
         "key": "A",
-        "text": "Gugatan tidak diterima atau gugur"
+        "text": "Gugatan tidak diterima, gugatan gugur, atau putusan verstek"
       },
       {
         "key": "B",
-        "text": "Gugatan ditolak atau dikabulkan"
+        "text": "Gugatan ditolak atau gugatan dikabulkan saja tanpa mengenal gugatan gugur"
       },
       {
         "key": "C",
-        "text": "Gugatan ditolak atau dikabulkan atau tidak diterima saja"
+        "text": "Putusan bebas, lepas dari segala tuntutan hukum, atau gugatan gugur"
       },
       {
         "key": "D",
-        "text": "Gugatan ditolak, gugatan dikabulkan, gugatan tidak diterima, atau gugatan gugur (Jawaban a dan b benar)"
+        "text": "Gugatan ditolak, gugatan dikabulkan, gugatan tidak diterima, atau gugatan gugur"
       }
     ],
     "correctAnswer": "D",
@@ -1528,19 +1528,19 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "options": [
       {
         "key": "A",
-        "text": "Pencabutan Keputusan Tata Usaha Negara yang bersangkutan"
+        "text": "Pencabutan peraturan perundang-undangan yang bersifat umum dan abstrak (regeling)"
       },
       {
         "key": "B",
-        "text": "Pencabutan Keputusan Tata Usaha Negara yang bersangkutan dan menerbitkan keputusan baru"
+        "text": "Penjatuhan pidana kurungan serta penyitaan harta kekayaan pribadi Pejabat TUN"
       },
       {
         "key": "C",
-        "text": "Penerbitan keputusan tata usaha negara dalam hal gugatan didasarkan pada Pasal 3"
+        "text": "Pencabutan Keputusan Tata Usaha Negara yang bersangkutan saja tanpa kewajiban menerbitkan KTUN baru"
       },
       {
         "key": "D",
-        "text": "Ketiga – tiganya benar (A, B, dan C benar)"
+        "text": "Pencabutan KTUN yang bersangkutan, pencabutan KTUN disertai penerbitan KTUN baru, atau penerbitan KTUN dalam hal gugatan fiktif negatif (Pasal 3)"
       }
     ],
     "correctAnswer": "D",
@@ -1559,19 +1559,19 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "options": [
       {
         "key": "A",
-        "text": "Permohonan pihak ketiga yang berkepentingan"
+        "text": "Permohonan pihak ketiga yang berkepentingan saja tanpa kewenangan prakarsa hakim"
       },
       {
         "key": "B",
-        "text": "Permintaan pihak yang sedang bersengketa"
+        "text": "Permintaan salah satu pihak yang bersengketa saja tanpa hak intervensi pihak ketiga"
       },
       {
         "key": "C",
-        "text": "Prakarsa Majelis Hakim yang memeriksa perkara"
+        "text": "Perintah langsung atasan Pejabat Tata Usaha Negara atau Jaksa Agung"
       },
       {
         "key": "D",
-        "text": "Semua jawaban benar (permohonan pihak ketiga, permintaan para pihak, atau prakarsa hakim)"
+        "text": "Permohonan pihak ketiga yang berkepentingan, permintaan salah satu pihak yang bersengketa, atau atas prakarsa Majelis Hakim"
       }
     ],
     "correctAnswer": "D",
@@ -1617,7 +1617,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 361,
     "category": "Hukum Acara PTUN",
     "topicTag": "Perkembangan Regulasi UU PTUN",
-    "question": "Undang – undang tentang Peradilan Tata Usaha Negara telah dua kali mengalami perubahan / penyempurnaan yaitu melalui:",
+    "question": "Undang-Undang tentang Peradilan Tata Usaha Negara telah dua kali mengalami perubahan/penyempurnaan, yaitu melalui:",
     "options": [
       {
         "key": "A",
@@ -2272,7 +2272,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "options": [
       {
         "key": "A",
-        "text": "Bukti – bukti tentang adanya hak"
+        "text": "Bukti-bukti tentang adanya hak"
       },
       {
         "key": "B",
@@ -2299,7 +2299,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 383,
     "category": "Hukum Acara PHI",
     "topicTag": "Kedudukan UU 2/2004 sebagai Hukum Formil",
-    "question": "Undang – undang No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial merupakan hukum formil penegakan dari:",
+    "question": "Undang-Undang No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial merupakan hukum formil penegakan dari:",
     "options": [
       {
         "key": "A",
@@ -2384,7 +2384,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Gugatan PHI di bawah Rp150 juta dibebaskan dari biaya perkara termasuk biaya eksekusi.",
       "legalBasis": "Pasal 58 UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
-      "analysis": "Pasal 58 UU No. 2 Tahun 2004 menegaskan: \"Pihak-pihak yang berperkara tidak dikenakan biaya, termasuk biaya eksekusi yang nilai gugatannya di bawah Rp 150.000.000,00 (seratus lima puluh juta rupiah).\""
+      "analysis": "Pasal 58 UU No. 2 Tahun 2004 menegaskan: \"Pihak-pihak yang berperkara tidak dikenakan biaya, termasuk biaya eksekusi yang nilai gugatannya di bawah Rp150.000.000,00 (seratus lima puluh juta rupiah).\""
     },
     "difficulty": "Sedang"
   },
@@ -2582,7 +2582,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "options": [
       {
         "key": "A",
-        "text": "Calon suami dan calon isteri saja"
+        "text": "Calon suami dan calon istri saja"
       },
       {
         "key": "B",
@@ -2590,18 +2590,18 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       },
       {
         "key": "C",
-        "text": "Dua orang saksi dan ijab-kabul saja"
+        "text": "Dua orang saksi dan ijab kabul saja"
       },
       {
         "key": "D",
-        "text": "Semua benar (Calon suami, calon isteri, wali nikah, dua orang saksi, dan ijab kabul)"
+        "text": "Calon suami, calon istri, wali nikah, dua orang saksi, dan ijab kabul"
       }
     ],
     "correctAnswer": "D",
     "explanation": {
       "summary": "Rukun nikah menurut Pasal 14 KHI terdiri dari calon suami, calon istri, wali nikah, dua orang saksi, dan ijab kabul.",
       "legalBasis": "Pasal 14 Kompilasi Hukum Islam (KHI) (Instruksi Presiden No. 1 Tahun 1991).",
-      "analysis": "Pasal 14 KHI menegaskan: \"Untuk melaksanakan perkawinan harus ada: a. Calon Suami; b. Calon Isteri; c. Wali nikah; d. Dua orang saksi; dan e. Ijab dan Kabul.\" Ketiadaan salah satu rukun ini menyebabkan perkawinan batal atau tidak sah."
+      "analysis": "Pasal 14 KHI menegaskan: \"Untuk melaksanakan perkawinan harus ada: a. Calon Suami; b. Calon Istri; c. Wali nikah; d. Dua orang saksi; dan e. Ijab dan Kabul.\" Ketiadaan salah satu rukun ini menyebabkan perkawinan batal atau tidak sah."
     },
     "difficulty": "Mudah"
   },
@@ -2640,7 +2640,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 394,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Kompetensi Relatif Cerai Talak",
-    "question": "Kepada Pengadilan Agama manakah seorang suami yang bermaksud menceraikan isterinya (Cerai Talak) harus mengajukan permohonan?",
+    "question": "Kepada Pengadilan Agama manakah seorang suami yang bermaksud menceraikan istrinya (Cerai Talak) harus mengajukan permohonan?",
     "options": [
       {
         "key": "A",
@@ -2648,7 +2648,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Termohon (isteri)"
+        "text": "Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Termohon (istri)"
       },
       {
         "key": "C",
@@ -2661,7 +2661,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "B",
     "explanation": {
-      "summary": "Permohonan cerai talak diajukan ke Pengadilan Agama tempat kediaman Termohon (isteri).",
+      "summary": "Permohonan cerai talak diajukan ke Pengadilan Agama tempat kediaman Termohon (istri).",
       "legalBasis": "Pasal 66 ayat (2) UU No. 7 Tahun 1989 tentang Peradilan Agama jo. Pasal 129 KHI.",
       "analysis": "Pasal 66 ayat (2) UU No. 7 Tahun 1989 mengatur bahwa permohonan cerai talak diajukan kepada Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Termohon, kecuali apabila Termohon dengan sengaja meninggalkan tempat kediaman bersama tanpa izin Pemohon."
     },
@@ -2675,7 +2675,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "options": [
       {
         "key": "A",
-        "text": "Suami terhadap isteri untuk mendapatkan izin menjatuhkan talak"
+        "text": "Suami terhadap istri untuk mendapatkan izin menjatuhkan talak"
       },
       {
         "key": "B",
@@ -2683,7 +2683,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       },
       {
         "key": "C",
-        "text": "Isteri atau kuasanya terhadap suami ke Pengadilan Agama"
+        "text": "Istri atau kuasanya terhadap suami ke Pengadilan Agama"
       },
       {
         "key": "D",
@@ -2692,9 +2692,9 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Cerai Gugat diajukan oleh isteri atau kuasanya kepada Pengadilan Agama.",
+      "summary": "Cerai Gugat diajukan oleh istri atau kuasanya kepada Pengadilan Agama.",
       "legalBasis": "Pasal 73 ayat (1) UU No. 7 Tahun 1989 tentang Peradilan Agama jo. Pasal 132 ayat (1) KHI.",
-      "analysis": "Gugatan perceraian yang diajukan oleh isteri atau kuasanya dinamakan \"Cerai Gugat\", sedangkan permohonan perceraian yang diajukan oleh suami dinamakan \"Cerai Talak\". Keduanya memiliki perbedaan mendasar dalam prosedur formil dan hak-hak pasca perceraian."
+      "analysis": "Gugatan perceraian yang diajukan oleh istri atau kuasanya dinamakan \"Cerai Gugat\", sedangkan permohonan perceraian yang diajukan oleh suami dinamakan \"Cerai Talak\". Keduanya memiliki perbedaan mendasar dalam prosedur formil dan hak-hak pasca perceraian."
     },
     "difficulty": "Mudah"
   },
@@ -2702,7 +2702,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 396,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Kompetensi Relatif Cerai Gugat",
-    "question": "Kepada Pengadilan Agama manakah seorang isteri mengajukan gugatan perceraian (Cerai Gugat) terhadap suaminya?",
+    "question": "Kepada Pengadilan Agama manakah seorang istri mengajukan gugatan perceraian (Cerai Gugat) terhadap suaminya?",
     "options": [
       {
         "key": "A",
@@ -2710,7 +2710,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Penggugat (isteri)"
+        "text": "Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Penggugat (istri)"
       },
       {
         "key": "C",
@@ -2723,9 +2723,9 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "B",
     "explanation": {
-      "summary": "Gugatan cerai oleh isteri diajukan ke Pengadilan Agama tempat kediaman Penggugat (isteri).",
+      "summary": "Gugatan cerai oleh istri diajukan ke Pengadilan Agama tempat kediaman Penggugat (istri).",
       "legalBasis": "Pasal 73 ayat (1) UU No. 7 Tahun 1989 tentang Peradilan Agama jo. Pasal 132 ayat (1) KHI.",
-      "analysis": "Berdasarkan Pasal 73 ayat (1) UU No. 7 Tahun 1989 jo. Pasal 132 ayat (1) KHI, gugatan perceraian diajukan oleh isteri atau kuasanya kepada Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Penggugat, kecuali apabila Penggugat dengan sengaja meninggalkan tempat kediaman bersama tanpa izin Tergugat."
+      "analysis": "Berdasarkan Pasal 73 ayat (1) UU No. 7 Tahun 1989 jo. Pasal 132 ayat (1) KHI, gugatan perceraian diajukan oleh istri atau kuasanya kepada Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Penggugat, kecuali apabila Penggugat dengan sengaja meninggalkan tempat kediaman bersama tanpa izin Tergugat."
     },
     "difficulty": "Mudah"
   }

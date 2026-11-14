@@ -6,7 +6,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { WebSocketServer, WebSocket } from 'ws';
 import { MASTER_UPA_DATABASE } from './src/data/upaQuestions.ts';
-import { UPAQuestion, QuestionOptionKey, QuestionOption, RoomSettings, Participant, RoomChatMessage } from './src/types/quiz.ts';
+import type { UPAQuestion, QuestionOptionKey, QuestionOption, RoomSettings, Participant, RoomChatMessage } from './src/types/quiz.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -959,13 +959,28 @@ async function startServer() {
   });
 
   if (isDev) {
-    // Mount Vite middlewares in development with HMR server bound to httpServer
+    // Mount Vite middlewares in development with HMR and WS disabled
     const vite = await createViteServer({
+      plugins: [
+        {
+          name: 'disable-vite-hmr-ws',
+          enforce: 'post',
+          transform(code, id) {
+            if (id.includes('vite/dist/client/client.mjs')) {
+              return code.replace(
+                /const transport = normalizeModuleRunnerTransport\(\(\(\) => \{[\s\S]*?\}\)\(\)\);/,
+                'const transport = normalizeModuleRunnerTransport({ async connect() {}, async disconnect() {}, send() {} });'
+              );
+            }
+          },
+        },
+      ],
       server: {
         middlewareMode: true,
         host: '0.0.0.0',
         allowedHosts: true,
         hmr: false,
+        ws: false,
       },
       appType: 'spa',
     });
