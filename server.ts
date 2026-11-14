@@ -25,8 +25,10 @@ export interface ServerUserAccount {
   approvedBy?: string;
   createdAt: number;
   lastActive: number;
+  last_seen?: string | null;
   isOnline: boolean;
   currentActivity: string;
+  current_page?: string | null;
 }
 
 const USERS_FILE_PATH = path.resolve(__dirname, 'server_users_store.json');
@@ -406,18 +408,18 @@ async function startServer() {
   app.get('/api/auth/users', (_req, res) => {
     const now = Date.now();
     const users = Array.from(serverUsersStore.values()).map((u) => {
-      const hasActiveSocket = Array.from(connectedAuthSockets).some(
-        (c) => c.email === u.email && c.ws.readyState === WebSocket.OPEN
-      );
-      const isOnline = hasActiveSocket || (u.isOnline && now - u.lastActive < 25000);
+      const lastSeenMs = u.last_seen ? new Date(u.last_seen).getTime() : u.lastActive;
+      const isOffline = u.current_page === 'Offline' || u.currentActivity === 'Offline' || u.last_seen === null;
+      const isOnline = !isOffline && Boolean(lastSeenMs && now - lastSeenMs < 45000);
       return {
         ...u,
+        lastActive: lastSeenMs || 0,
         isOnline,
       };
     });
 
     const pendingCount = users.filter((u) => !u.is_approved).length;
-    const onlineCount = users.filter((u) => u.isOnline).length;
+    const onlineCount = users.filter((u) => u.isOnline && u.email.toLowerCase() !== 'amifaveiro9@gmail.com').length;
 
     res.json({
       success: true,
@@ -485,7 +487,7 @@ async function startServer() {
 
   // REST API: Real-Time Heartbeat & Activity Sync
   app.post('/api/auth/heartbeat', (req, res) => {
-    const { email, name, currentActivity } = req.body;
+    const { email, name, currentActivity, current_page } = req.body;
     if (!email) {
       return res.json({ success: false });
     }
@@ -493,6 +495,8 @@ async function startServer() {
     const cleanEmail = String(email).trim().toLowerCase();
     let user = serverUsersStore.get(cleanEmail);
     const now = Date.now();
+    const nowIso = new Date(now).toISOString();
+    const pageValue = current_page || currentActivity || 'Beranda / Persiapan Ujian';
 
     if (!user) {
       const isAdmin = isAdminEmail(cleanEmail);
@@ -506,16 +510,21 @@ async function startServer() {
         approvalStatus: isAdmin ? 'approved' : 'pending',
         createdAt: now,
         lastActive: now,
-        isOnline: isAdmin,
-        currentActivity: currentActivity || 'Aktif di AdvokatQuiz',
+        last_seen: nowIso,
+        isOnline: true,
+        currentActivity: pageValue,
+        current_page: pageValue,
       };
       serverUsersStore.set(cleanEmail, user);
       saveUsersToDisk();
     } else {
       user.lastActive = now;
+      user.last_seen = nowIso;
       user.isOnline = true;
-      if (currentActivity) user.currentActivity = currentActivity;
+      user.currentActivity = pageValue;
+      user.current_page = pageValue;
       if (name && name !== user.name) user.name = name;
+      saveUsersToDisk();
     }
 
     broadcastGlobalAuthEvent({
@@ -523,12 +532,18 @@ async function startServer() {
       email: cleanEmail,
       isOnline: true,
       lastActive: user.lastActive,
+      last_seen: user.last_seen,
       currentActivity: user.currentActivity,
+      current_page: user.current_page,
       user,
     });
 
     const onlineCount = Array.from(serverUsersStore.values()).filter(
-      (u) => u.isOnline && now - u.lastActive < 25000
+      (u) =>
+        u.email.toLowerCase() !== 'amifaveiro9@gmail.com' &&
+        u.current_page !== 'Offline' &&
+        u.isOnline &&
+        now - u.lastActive < 45000
     ).length;
 
     res.json({
@@ -538,23 +553,35 @@ async function startServer() {
     });
   });
 
-  // REST API: Logout (Immediately update online status)
+  // REST API: Logout / Unload (Immediately mark user offline)
   app.post('/api/auth/logout', (req, res) => {
-    const { email } = req.body;
+    let body = req.body;
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch {
+        body = {};
+      }
+    }
+    const email = body?.email;
     if (email) {
       const cleanEmail = String(email).trim().toLowerCase();
       const user = serverUsersStore.get(cleanEmail);
       if (user) {
         user.isOnline = false;
-        user.lastActive = Date.now();
+        user.lastActive = 0;
+        user.last_seen = null;
         user.currentActivity = 'Offline';
+        user.current_page = 'Offline';
         saveUsersToDisk();
         broadcastGlobalAuthEvent({
           type: 'USER_PRESENCE_UPDATE',
           email: cleanEmail,
           isOnline: false,
-          lastActive: user.lastActive,
+          lastActive: 0,
+          last_seen: null,
           currentActivity: 'Offline',
+          current_page: 'Offline',
           user,
         });
       }
@@ -1043,17 +1070,11 @@ async function startServer() {
         if (!stillConnected) {
           const user = serverUsersStore.get(authClient.email);
           if (user) {
-            user.isOnline = false;
-            user.lastActive = Date.now();
             broadcastGlobalAuthEvent({
               type: 'USER_PRESENCE_UPDATE',
               email: authClient.email,
-              isOnline: false,
-              lastActive: user.lastActive,
-              currentActivity: 'Offline',
               user,
             });
-            saveUsersToDisk();
           }
         }
       }

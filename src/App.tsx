@@ -28,7 +28,7 @@ import {
   RoomChatMessage,
 } from './types/quiz';
 import { UserProfile, QuestionResultItem } from './types/auth';
-import { userService } from './services/userService';
+import { userService, isPeerOnline } from './services/userService';
 import { LoginGateModal } from './components/LoginGateModal';
 import { AdminMonitorView } from './components/AdminMonitorView';
 import { RoomLiveChat } from './components/RoomLiveChat';
@@ -45,7 +45,7 @@ export default function App() {
     return userService.getCurrentUser();
   });
   const [onlineUserCount, setOnlineUserCount] = useState<number>(() => {
-    return userService.getAllUsers().filter((u) => u.isOnline).length;
+    return userService.getAllUsers().filter((u) => isPeerOnline(u)).length;
   });
   const [pendingApprovalCount, setPendingApprovalCount] = useState<number>(0);
 
@@ -142,11 +142,11 @@ export default function App() {
     localStorage.setItem('advokatquiz_sound', String(soundEnabled));
   }, [soundEnabled]);
 
-  // Real-time Presence, Activity Heartbeat & User Directory Synchronization
+  // Real-time Presence & User Directory Synchronization (Supabase Realtime + 10s Auto-Refresh)
   useEffect(() => {
     const syncDirectory = async () => {
       const users = await userService.fetchAllUsers();
-      const online = users.filter((u) => u.isOnline).length;
+      const online = users.filter((u) => isPeerOnline(u)).length;
       const pending = users.filter((u) => u.is_approved === false || u.approvalStatus === 'pending').length;
       setOnlineUserCount(online);
       setPendingApprovalCount(pending);
@@ -164,48 +164,77 @@ export default function App() {
     };
 
     syncDirectory();
-    const syncTimer = setInterval(syncDirectory, 4000);
+    const syncTimer = setInterval(syncDirectory, 10000);
 
-    const unsubscribe = userService.onAuthEvent(() => {
+    const unsubscribeAuth = userService.onAuthEvent(() => {
+      syncDirectory();
+    });
+    const unsubscribeRealtime = userService.subscribeToAppUsersChanges(() => {
       syncDirectory();
     });
 
     return () => {
       clearInterval(syncTimer);
-      unsubscribe();
+      unsubscribeAuth();
+      unsubscribeRealtime();
     };
   }, []);
 
+  // Database Heartbeat (last_seen & current_page) every 15s + immediately on load + offline on unload
   useEffect(() => {
     if (!authProfile) return;
 
-    const reportHeartbeat = () => {
-      let activity = 'Di Beranda AdvokatQuiz';
+    const getCurrentPageLabel = () => {
       if (activeView === 'quiz') {
         const cat = quizQuestions[currentIndex]?.category || 'Materi UPA';
-        activity = `Mengerjakan Soal ${currentIndex + 1}/${quizQuestions.length} (${cat})`;
-      } else if (activeView === 'multiplayer') {
-        activity = currentRoom ? `Di Ruang Belajar: ${currentRoom.roomName}` : 'Di Lobi Multiplayer';
-      } else if (activeView === 'results') {
-        activity = 'Melihat Ringkasan Skor & Evaluasi';
-      } else if (activeView === 'review') {
-        activity = 'Membaca Pembahasan Mendalam & Dasar Hukum';
-      } else if (activeView === 'bank') {
-        activity = 'Membuka Ratusan Bank Data Soal UPA';
-      } else if (activeView === 'cheatsheet') {
-        activity = 'Menghafal Pasal-Pasal Kunci';
-      } else if (activeView === 'monitor') {
-        activity = 'Memantau Peserta Online & Riwayat';
+        return `Mengerjakan Soal ${currentIndex + 1}/${quizQuestions.length} (${cat})`;
       }
+      if (activeView === 'multiplayer') {
+        return currentRoom ? `Ruang Belajar: ${currentRoom.roomName}` : 'Lobi Multiplayer';
+      }
+      if (activeView === 'results') {
+        return 'Hasil & Evaluasi Skor';
+      }
+      if (activeView === 'review') {
+        return 'Pembahasan Soal & Dasar Hukum';
+      }
+      if (activeView === 'bank') {
+        return 'Bank Data Soal UPA';
+      }
+      if (activeView === 'cheatsheet') {
+        return 'Pasal-Pasal Kunci';
+      }
+      if (activeView === 'monitor') {
+        return 'Dashboard Admin & Persetujuan';
+      }
+      return 'Beranda / Persiapan Ujian';
+    };
 
-      userService.updateActivity(activity);
+    const reportHeartbeat = () => {
+      userService.updateActivity(getCurrentPageLabel());
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        reportHeartbeat();
+      }
+    };
+
+    const handleUnload = () => {
+      userService.markOfflineOnUnload();
     };
 
     reportHeartbeat();
-    const timer = setInterval(reportHeartbeat, 5000);
+    const timer = setInterval(reportHeartbeat, 15000);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('beforeunload', handleUnload);
+    window.addEventListener('pagehide', handleUnload);
 
     return () => {
       clearInterval(timer);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('beforeunload', handleUnload);
+      window.removeEventListener('pagehide', handleUnload);
     };
   }, [authProfile, activeView, currentIndex, quizQuestions.length, currentRoom]);
 

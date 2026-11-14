@@ -6,6 +6,8 @@ export interface AppUserRow {
   username: string | null;
   role: 'admin' | 'user' | string;
   is_approved: boolean;
+  last_seen?: string | null;
+  current_page?: string | null;
   created_at: string;
 }
 
@@ -28,8 +30,10 @@ export interface UserProfile {
   approvedBy?: string;
   createdAt: number;
   lastActive: number;
+  last_seen?: string | null;
   isOnline: boolean;
   currentActivity: string;
+  current_page?: string | null;
 }
 
 export interface QuestionResultItem {

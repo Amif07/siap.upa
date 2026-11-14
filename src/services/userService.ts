@@ -6,7 +6,10 @@ import {
   StoredAuthSession,
   UserRole,
 } from '../types/auth';
-import { getSupabaseClient, isSupabaseDatabaseConfigured } from './supabaseClient';
+import { getSupabaseClient, getSupabaseCredentials, isSupabaseDatabaseConfigured } from './supabaseClient';
+
+export const ADMIN_EMAIL = 'amifaveiro9@gmail.com';
+export const ONLINE_THRESHOLD_MS = 45_000; // 45 detik
 
 const STORAGE_KEY_CURRENT_USER = 'advokatquiz_current_user_v1';
 const STORAGE_KEY_AUTH_SESSION = 'advokatquiz_auth_session_v1';
@@ -21,11 +24,46 @@ export interface LoginOrRequestResult {
   message?: string;
 }
 
+export function isPeerOnline(
+  user: Pick<UserProfile, 'email' | 'last_seen' | 'lastActive' | 'isOnline' | 'current_page' | 'currentActivity'>
+): boolean {
+  if (!user || !user.email) return false;
+
+  // Kecualikan akun Admin utama dari hitungan "Rekan"
+  if (user.email.trim().toLowerCase() === ADMIN_EMAIL) {
+    return false;
+  }
+
+  const pageText = user.current_page || user.currentActivity || '';
+  if (pageText === 'Offline') {
+    return false;
+  }
+
+  const lastSeenMs = user.last_seen ? new Date(user.last_seen).getTime() : user.lastActive;
+  if (!lastSeenMs || !Number.isFinite(lastSeenMs)) {
+    return false;
+  }
+
+  return Date.now() - lastSeenMs < ONLINE_THRESHOLD_MS;
+}
+
 function mapAppUserToProfile(row: AppUserRow, presenceSource?: UserProfile): UserProfile {
   const cleanEmail = row.email.trim().toLowerCase();
   const normalizedRole: UserRole = row.role === 'admin' ? 'admin' : 'user';
   const username = row.username ?? null;
   const createdMs = row.created_at ? new Date(row.created_at).getTime() : Date.now();
+
+  const effectiveLastSeen = row.last_seen !== undefined ? row.last_seen : (presenceSource?.last_seen ?? null);
+  const lastSeenMs = effectiveLastSeen
+    ? new Date(effectiveLastSeen).getTime()
+    : (presenceSource?.lastActive || 0);
+  const currentPage = row.current_page !== undefined ? row.current_page : (presenceSource?.current_page ?? null);
+  const isOfflineMarked = currentPage === 'Offline' || effectiveLastSeen === null;
+  const computedOnline =
+    !isOfflineMarked &&
+    Number.isFinite(lastSeenMs) &&
+    lastSeenMs > 0 &&
+    Date.now() - lastSeenMs < ONLINE_THRESHOLD_MS;
 
   return {
     id: presenceSource?.id || 'usr-' + btoa(cleanEmail).replace(/[^a-zA-Z0-9]/g, '').slice(0, 12),
@@ -37,9 +75,14 @@ function mapAppUserToProfile(row: AppUserRow, presenceSource?: UserProfile): Use
     is_approved: Boolean(row.is_approved),
     approvalStatus: row.is_approved ? 'approved' : 'pending',
     createdAt: Number.isFinite(createdMs) ? createdMs : Date.now(),
-    lastActive: presenceSource?.lastActive || Date.now(),
-    isOnline: presenceSource?.isOnline || false,
-    currentActivity: presenceSource?.currentActivity || (row.is_approved ? 'Terdaftar' : 'Menunggu Persetujuan Admin'),
+    lastActive: Number.isFinite(lastSeenMs) ? lastSeenMs : 0,
+    last_seen: effectiveLastSeen,
+    isOnline: computedOnline,
+    current_page: currentPage,
+    currentActivity:
+      currentPage ||
+      presenceSource?.currentActivity ||
+      (row.is_approved ? 'Di Beranda AdvokatQuiz' : 'Menunggu Persetujuan Admin'),
   };
 }
 
@@ -77,7 +120,7 @@ class UserService {
             type: 'AUTH_IDENTIFY',
             email: currentUser.email,
             name: currentUser.username || currentUser.name,
-            currentActivity: currentUser.currentActivity || 'Di Beranda AdvokatQuiz',
+            currentActivity: currentUser.current_page || currentUser.currentActivity || 'Beranda / Persiapan Ujian',
           });
         }
       };
@@ -109,7 +152,7 @@ class UserService {
       };
 
       this.ws.onerror = () => {
-        // Silently handled: HTTP polling & Supabase queries serve as fallback
+        // Silently handled: HTTP polling & Supabase Realtime handle sync
       };
     } catch {
       // Offline fallback
@@ -141,6 +184,30 @@ class UserService {
         console.warn('[AUTH] Error in auth listener:', err);
       }
     }
+  }
+
+  // Subscribe to Supabase Realtime postgres_changes on public.app_users
+  public subscribeToAppUsersChanges(onChange: () => void): () => void {
+    const supabase = isSupabaseDatabaseConfigured() ? getSupabaseClient() : null;
+    if (!supabase) {
+      return () => {};
+    }
+
+    const channelName = `app_users_changes_${Math.random().toString(36).slice(2, 9)}`;
+    const realtimeChannel = supabase
+      .channel(channelName)
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'app_users' },
+        () => {
+          onChange();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(realtimeChannel).catch(() => {});
+    };
   }
 
   // Get stored minimal session { email, username, role }
@@ -190,8 +257,10 @@ class UserService {
         approvalStatus: 'approved',
         createdAt: Date.now(),
         lastActive: Date.now(),
+        last_seen: new Date().toISOString(),
         isOnline: true,
-        currentActivity: 'Di Beranda AdvokatQuiz',
+        current_page: 'Beranda / Persiapan Ujian',
+        currentActivity: 'Beranda / Persiapan Ujian',
       };
     }
 
@@ -226,7 +295,7 @@ class UserService {
       try {
         const { data: existing, error: fetchError } = await supabase
           .from('app_users')
-          .select('email, username, role, is_approved, created_at')
+          .select('email, username, role, is_approved, last_seen, current_page, created_at')
           .eq('email', cleanEmail)
           .maybeSingle();
 
@@ -247,15 +316,21 @@ class UserService {
             };
           }
 
+          const isMainAdmin = cleanEmail === ADMIN_EMAIL;
+          const nowIso = isMainAdmin ? new Date().toISOString() : null;
+          const initialPage = isMainAdmin ? 'Beranda / Persiapan Ujian' : 'Menunggu Persetujuan Admin';
+
           const { data: inserted, error: insertError } = await supabase
             .from('app_users')
             .insert({
               email: cleanEmail,
               username: typedUsername,
-              role: cleanEmail === 'amifaveiro9@gmail.com' ? 'admin' : 'user',
-              is_approved: cleanEmail === 'amifaveiro9@gmail.com',
+              role: isMainAdmin ? 'admin' : 'user',
+              is_approved: isMainAdmin,
+              last_seen: nowIso,
+              current_page: initialPage,
             })
-            .select('email, username, role, is_approved, created_at')
+            .select('email, username, role, is_approved, last_seen, current_page, created_at')
             .single();
 
           if (insertError) {
@@ -277,7 +352,6 @@ class UserService {
             return { status: 'approved', user };
           }
 
-          // Best-effort WS/local mirror notification
           fetch('/api/auth/login-or-request', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -302,42 +376,54 @@ class UserService {
           };
         }
 
-        // Case 3: Email sudah ada dan is_approved === true -> langsung izinkan masuk!
-        let activeRow = row;
+        // Case 3: Email sudah ada dan is_approved === true -> langsung izinkan masuk & set last_seen
+        const updatePayload: Record<string, any> = {
+          last_seen: new Date().toISOString(),
+          current_page: 'Beranda / Persiapan Ujian',
+        };
         if (typedUsername && typedUsername !== (row.username || '')) {
-          const { data: updated, error: updateError } = await supabase
-            .from('app_users')
-            .update({ username: typedUsername })
-            .eq('email', cleanEmail)
-            .select('email, username, role, is_approved, created_at')
-            .single();
+          updatePayload.username = typedUsername;
+        }
 
-          if (updateError) {
-            if (updateError.code === '23505') {
-              return {
-                status: 'error',
-                message: 'Username sudah digunakan oleh pengguna lain. Silakan ketik username yang berbeda.',
-              };
-            }
+        const { data: updated, error: updateError } = await supabase
+          .from('app_users')
+          .update(updatePayload)
+          .eq('email', cleanEmail)
+          .select('email, username, role, is_approved, last_seen, current_page, created_at')
+          .single();
+
+        let activeRow = row;
+        if (updateError) {
+          if (updateError.code === '23505') {
             return {
               status: 'error',
-              message: `Gagal memperbarui username: ${updateError.message}`,
+              message: 'Username sudah digunakan oleh pengguna lain. Silakan ketik username yang berbeda.',
             };
           }
-          if (updated) {
-            activeRow = updated as AppUserRow;
+          // Fallback non-fatal if optional columns aren't created yet
+          if (!updateError.message?.toLowerCase().includes('last_seen')) {
+            return {
+              status: 'error',
+              message: `Gagal memperbarui data user: ${updateError.message}`,
+            };
           }
+        } else if (updated) {
+          activeRow = updated as AppUserRow;
         }
 
         const approvedUser = mapAppUserToProfile(activeRow);
         approvedUser.isOnline = true;
-        approvedUser.currentActivity = 'Di Beranda AdvokatQuiz';
+        approvedUser.lastActive = Date.now();
+        approvedUser.last_seen = activeRow.last_seen || new Date().toISOString();
+        approvedUser.current_page = activeRow.current_page || 'Beranda / Persiapan Ujian';
+        approvedUser.currentActivity = approvedUser.current_page;
+
         this.setCurrentUser(approvedUser);
         this.sendWsMessage({
           type: 'AUTH_IDENTIFY',
           email: approvedUser.email,
           name: approvedUser.username || approvedUser.email,
-          currentActivity: approvedUser.currentActivity,
+          currentActivity: approvedUser.current_page,
         });
 
         return {
@@ -386,7 +472,7 @@ class UserService {
           type: 'AUTH_IDENTIFY',
           email: user.email,
           name: user.username || user.name,
-          currentActivity: user.currentActivity,
+          currentActivity: user.current_page || user.currentActivity,
         });
       }
 
@@ -410,7 +496,7 @@ class UserService {
       try {
         const { data, error } = await supabase
           .from('app_users')
-          .select('email, username, role, is_approved, created_at')
+          .select('email, username, role, is_approved, last_seen, current_page, created_at')
           .eq('email', cleanEmail)
           .maybeSingle();
 
@@ -421,7 +507,10 @@ class UserService {
           const user = mapAppUserToProfile(data as AppUserRow);
           if (user.is_approved) {
             user.isOnline = true;
-            user.currentActivity = 'Di Beranda AdvokatQuiz';
+            user.lastActive = Date.now();
+            user.last_seen = new Date().toISOString();
+            user.current_page = 'Beranda / Persiapan Ujian';
+            user.currentActivity = 'Beranda / Persiapan Ujian';
             this.setCurrentUser(user);
             return { status: 'approved', user };
           }
@@ -467,7 +556,7 @@ class UserService {
           .from('app_users')
           .update({ is_approved: true })
           .eq('email', cleanEmail)
-          .select('email, username, role, is_approved, created_at')
+          .select('email, username, role, is_approved, last_seen, current_page, created_at')
           .single();
 
         if (error) {
@@ -477,7 +566,6 @@ class UserService {
         const approvedUser = mapAppUserToProfile(data as AppUserRow);
         this.upsertUserDirectory(approvedUser);
 
-        // Best-effort server WS broadcast
         fetch('/api/auth/approve', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -531,7 +619,6 @@ class UserService {
           return { success: false, message: error.message };
         }
 
-        // Remove from local directory cache
         const filtered = this.getAllUsers().filter((u) => u.email.toLowerCase() !== cleanEmail);
         localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(filtered));
 
@@ -566,7 +653,6 @@ class UserService {
     return { success: false, message: 'Gagal menghapus user.' };
   }
 
-  // Backward-compatible alias for deleteUser
   public async rejectUser(email: string): Promise<{ success: boolean; message?: string }> {
     return this.deleteUser(email);
   }
@@ -575,50 +661,51 @@ class UserService {
   public async fetchAllUsers(): Promise<UserProfile[]> {
     const supabase = isSupabaseDatabaseConfigured() ? getSupabaseClient() : null;
 
-    let presenceMap = new Map<string, UserProfile>();
-    try {
-      const res = await fetch('/api/auth/users');
-      if (res.ok) {
-        const data = await res.json();
-        if (Array.isArray(data.users)) {
-          for (const u of data.users as UserProfile[]) {
-            if (u?.email) {
-              presenceMap.set(u.email.toLowerCase(), u);
-            }
-          }
-          if (!supabase) {
-            const normalized = (data.users as UserProfile[]).map((u) => ({
-              ...u,
-              username: u.username ?? null,
-              name: u.username || u.name || u.email,
-              is_approved: typeof u.is_approved === 'boolean' ? u.is_approved : u.approvalStatus === 'approved',
-            }));
-            localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(normalized));
-            return normalized;
-          }
-        }
-      }
-    } catch {
-      // Ignore network fallback failure
-    }
-
     if (supabase) {
       try {
         const { data, error } = await supabase
           .from('app_users')
-          .select('email, username, role, is_approved, created_at')
+          .select('email, username, role, is_approved, last_seen, current_page, created_at')
           .order('created_at', { ascending: false });
 
         if (!error && Array.isArray(data)) {
-          const list = (data as AppUserRow[]).map((row) =>
-            mapAppUserToProfile(row, presenceMap.get(row.email.toLowerCase()))
-          );
+          const list = (data as AppUserRow[]).map((row) => mapAppUserToProfile(row));
           localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(list));
           return list;
         }
       } catch (err) {
         console.warn('[SUPABASE] Gagal mengambil daftar app_users:', err);
       }
+    }
+
+    try {
+      const res = await fetch('/api/auth/users');
+      if (res.ok) {
+        const data = await res.json();
+        if (Array.isArray(data.users)) {
+          const now = Date.now();
+          const normalized = (data.users as UserProfile[]).map((u) => {
+            const lastSeenMs = u.last_seen ? new Date(u.last_seen).getTime() : u.lastActive;
+            const pageText = u.current_page || u.currentActivity || '';
+            const online =
+              pageText !== 'Offline' &&
+              Boolean(lastSeenMs && Number.isFinite(lastSeenMs) && now - lastSeenMs < ONLINE_THRESHOLD_MS);
+            return {
+              ...u,
+              username: u.username ?? null,
+              name: u.username || u.name || u.email,
+              is_approved: typeof u.is_approved === 'boolean' ? u.is_approved : u.approvalStatus === 'approved',
+              isOnline: online,
+              current_page: u.current_page ?? u.currentActivity ?? null,
+              lastActive: lastSeenMs || 0,
+            };
+          });
+          localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(normalized));
+          return normalized;
+        }
+      }
+    } catch {
+      // Network failure
     }
 
     return this.getAllUsers();
@@ -641,27 +728,57 @@ class UserService {
     }
 
     const now = Date.now();
-    return list.map((u) => ({
-      ...u,
-      isOnline: u.isOnline !== false && now - u.lastActive <= 30000,
-    }));
+    return list.map((u) => {
+      const lastSeenMs = u.last_seen ? new Date(u.last_seen).getTime() : u.lastActive;
+      const pageText = u.current_page || u.currentActivity || '';
+      return {
+        ...u,
+        isOnline:
+          pageText !== 'Offline' &&
+          Boolean(lastSeenMs && Number.isFinite(lastSeenMs) && now - lastSeenMs < ONLINE_THRESHOLD_MS),
+      };
+    });
   }
 
-  // Update Activity & Send Heartbeat to server + WS
+  // Send Database Heartbeat (last_seen = now(), current_page = activityText) to Supabase + WS/HTTP fallback
   public updateActivity(activityText: string): void {
     const user = this.getCurrentUser();
     if (!user) return;
 
+    const now = Date.now();
+    const nowIso = new Date(now).toISOString();
+    const cleanEmail = user.email.trim().toLowerCase();
+
     user.currentActivity = activityText;
-    user.lastActive = Date.now();
+    user.current_page = activityText;
+    user.lastActive = now;
+    user.last_seen = nowIso;
     user.isOnline = true;
 
     localStorage.setItem(STORAGE_KEY_CURRENT_USER, JSON.stringify(user));
     this.upsertUserDirectory(user);
 
+    // Primary: Update last_seen & current_page in Supabase table app_users
+    const supabase = isSupabaseDatabaseConfigured() ? getSupabaseClient() : null;
+    if (supabase) {
+      supabase
+        .from('app_users')
+        .update({
+          last_seen: nowIso,
+          current_page: activityText,
+        })
+        .eq('email', cleanEmail)
+        .then(({ error }) => {
+          if (error) {
+            console.warn('[SUPABASE HEARTBEAT] Gagal update last_seen/current_page:', error.message);
+          }
+        });
+    }
+
+    // Secondary: WebSocket + local Express server sync
     this.sendWsMessage({
       type: 'AUTH_HEARTBEAT',
-      email: user.email,
+      email: cleanEmail,
       name: user.username || user.name,
       currentActivity: activityText,
     });
@@ -670,9 +787,10 @@ class UserService {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        email: user.email,
+        email: cleanEmail,
         name: user.username || user.name,
         currentActivity: activityText,
+        current_page: activityText,
       }),
     }).catch(() => {});
 
@@ -681,19 +799,89 @@ class UserService {
     }
   }
 
-  // Logout (clears localStorage session so user must re-login next time)
+  // Immediately mark user offline when closing tab / beforeunload (using keepalive fetch + sendBeacon)
+  public markOfflineOnUnload(): void {
+    const currentUser = this.getCurrentUser();
+    if (!currentUser?.email) return;
+
+    const cleanEmail = currentUser.email.trim().toLowerCase();
+
+    // Update Supabase REST API with keepalive: true so request survives tab close
+    if (isSupabaseDatabaseConfigured()) {
+      const { url, anonKey } = getSupabaseCredentials();
+      if (url && anonKey) {
+        try {
+          const endpoint = `${url.replace(/\/+$/, '')}/rest/v1/app_users?email=eq.${encodeURIComponent(cleanEmail)}`;
+          fetch(endpoint, {
+            method: 'PATCH',
+            keepalive: true,
+            headers: {
+              'Content-Type': 'application/json',
+              apikey: anonKey,
+              Authorization: `Bearer ${anonKey}`,
+              Prefer: 'return=minimal',
+            },
+            body: JSON.stringify({
+              last_seen: null,
+              current_page: 'Offline',
+            }),
+          }).catch(() => {});
+        } catch {
+          // ignore
+        }
+      }
+    }
+
+    // Local server fallback via sendBeacon (survives tab unload)
+    try {
+      if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+        const payload = new Blob([JSON.stringify({ email: cleanEmail })], { type: 'application/json' });
+        navigator.sendBeacon('/api/auth/logout', payload);
+      } else {
+        fetch('/api/auth/logout', {
+          method: 'POST',
+          keepalive: true,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: cleanEmail }),
+        }).catch(() => {});
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  // Logout (immediately clear active status in Supabase & server + clear localStorage session)
   public logout(): void {
     const currentUser = this.getCurrentUser();
     if (currentUser) {
+      const cleanEmail = currentUser.email.trim().toLowerCase();
       currentUser.isOnline = false;
-      currentUser.lastActive = Date.now();
+      currentUser.lastActive = 0;
+      currentUser.last_seen = null;
+      currentUser.current_page = 'Offline';
       currentUser.currentActivity = 'Offline';
       this.upsertUserDirectory(currentUser);
+
+      const supabase = isSupabaseDatabaseConfigured() ? getSupabaseClient() : null;
+      if (supabase) {
+        supabase
+          .from('app_users')
+          .update({
+            last_seen: null,
+            current_page: 'Offline',
+          })
+          .eq('email', cleanEmail)
+          .then(({ error }) => {
+            if (error) {
+              console.warn('[SUPABASE LOGOUT] Gagal update status offline:', error.message);
+            }
+          });
+      }
 
       fetch('/api/auth/logout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: currentUser.email }),
+        body: JSON.stringify({ email: cleanEmail }),
       }).catch(() => {});
 
       if (this.channel) {
@@ -709,7 +897,7 @@ class UserService {
     const all = this.getAllUsers();
     const index = all.findIndex((u) => u.email.toLowerCase() === user.email.toLowerCase() || u.id === user.id);
     if (index >= 0) {
-      all[index] = { ...all[index], ...user, lastActive: Date.now() };
+      all[index] = { ...all[index], ...user };
     } else {
       all.unshift(user);
     }

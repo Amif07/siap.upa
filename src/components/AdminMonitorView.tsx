@@ -20,7 +20,7 @@ import {
   Check,
 } from 'lucide-react';
 import { UserProfile, UserQuizHistoryRecord, QuestionResultItem } from '../types/auth';
-import { userService } from '../services/userService';
+import { userService, isPeerOnline } from '../services/userService';
 import { soundEffects } from '../utils/soundEffects';
 
 interface AdminMonitorViewProps {
@@ -54,11 +54,12 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
     if (!isAdmin) return;
     loadData();
 
+    // Auto-refresh setiap 10 detik + Supabase Realtime postgres_changes
     const interval = setInterval(() => {
       loadData();
-    }, 3000);
+    }, 10000);
 
-    const unsubscribe = userService.onAuthEvent((event) => {
+    const unsubscribeAuth = userService.onAuthEvent((event) => {
       if (
         event.type === 'NEW_ACCESS_REQUEST' ||
         event.type === 'USER_PRESENCE_UPDATE' ||
@@ -69,9 +70,14 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
       }
     });
 
+    const unsubscribeRealtime = userService.subscribeToAppUsersChanges(() => {
+      loadData();
+    });
+
     return () => {
       clearInterval(interval);
-      unsubscribe();
+      unsubscribeAuth();
+      unsubscribeRealtime();
     };
   }, [isAdmin]);
 
@@ -95,7 +101,7 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
     );
   }
 
-  const onlineUsers = users.filter((u) => u.isOnline);
+  const onlineUsers = users.filter((u) => isPeerOnline(u));
   const pendingUsers = users.filter((u) => u.is_approved === false || u.approvalStatus === 'pending');
   const approvedUsers = users.filter((u) => u.is_approved === true || (u.is_approved === undefined && u.approvalStatus === 'approved'));
 
@@ -459,18 +465,20 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
               </div>
             ) : (
               onlineUsers.map((user) => {
-                const isMe = user.id === currentUser.id;
+                const displayUsername = user.username || user.name || user.email;
+                const activePageText = user.current_page || user.currentActivity || 'Beranda / Persiapan Ujian';
+                const lastSeenMs = user.last_seen ? new Date(user.last_seen).getTime() : user.lastActive;
 
                 return (
                   <div
-                    key={user.id}
+                    key={user.email}
                     className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-in fade-in duration-150"
                   >
                     <div className="flex items-start gap-3.5">
                       {/* Avatar with Live Green Pulse */}
                       <div className="relative">
                         <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-700 to-slate-900 text-white font-mono font-bold text-sm flex items-center justify-center shadow-xs border-2 border-emerald-400">
-                          {user.name.slice(0, 2).toUpperCase()}
+                          {displayUsername.slice(0, 2).toUpperCase()}
                         </div>
                         <span
                           className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-900 animate-pulse"
@@ -479,23 +487,13 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
                       </div>
 
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
                           <span className="font-semibold text-sm text-slate-900 dark:text-white">
-                            {user.name}
+                            {displayUsername}
                           </span>
-                          {isMe && (
-                            <span className="text-[10px] px-2 py-0.5 rounded-md bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-bold">
-                              Anda (Admin)
-                            </span>
-                          )}
-                          {user.role === 'admin' && !isMe && (
-                            <span className="text-[10px] px-2 py-0.5 rounded-md bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-300 font-bold">
-                              Pengawas
-                            </span>
-                          )}
                           <span className="text-[10px] px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-semibold flex items-center gap-1">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                            <span>Bebas Masuk</span>
+                            <span>Aktif</span>
                           </span>
                         </div>
 
@@ -504,27 +502,25 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
                             <Mail className="w-3 h-3 text-slate-400" />
                             <span>{user.email}</span>
                           </span>
-                          <span aria-hidden="true">·</span>
-                          <span>{user.organization || 'PKPA PERADI 2026'}</span>
                         </div>
 
-                        {/* Current Real-Time Activity Ticker */}
+                        {/* Current Active Page */}
                         <div className="mt-1 text-xs text-slate-800 dark:text-slate-200 bg-amber-50 dark:bg-amber-950/40 px-3 py-1.5 rounded-xl inline-flex items-center gap-2 border border-amber-200 dark:border-amber-800/80 shadow-2xs">
                           <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping shrink-0" />
-                          <span className="font-bold text-amber-800 dark:text-amber-400">Aktivitas Terkini:</span>
-                          <span className="font-medium">{user.currentActivity || 'Sedang berada di aplikasi'}</span>
+                          <span className="font-bold text-amber-800 dark:text-amber-400">Halaman Aktif:</span>
+                          <span className="font-medium">{activePageText}</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Status & Last Active */}
+                    {/* Status & Last Seen */}
                     <div className="sm:text-right shrink-0">
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-900/60 dark:text-emerald-200 border border-emerald-300 dark:border-emerald-700">
                         <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                         <span>ONLINE SEKARANG</span>
                       </span>
                       <span className="text-[11px] text-slate-400 block mt-1 font-mono">
-                        {formatTimeAgo(user.lastActive)}
+                        {lastSeenMs ? formatTimeAgo(lastSeenMs) : 'Baru saja'}
                       </span>
                     </div>
                   </div>
