@@ -23,6 +23,101 @@ export function normalizeQuestionText(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9]/g, '');
 }
 
+export function normalizeLegalBasisKey(legalBasis: string): string {
+  return (legalBasis || '')
+    .toLowerCase()
+    .replace(/undang-undang/g, 'uu')
+    .replace(/nomor/g, 'no')
+    .replace(/[^a-z0-9]/g, '');
+}
+
+export function getLegalConceptKey(q: UPAQuestion): string {
+  const basis = normalizeLegalBasisKey(q.explanation?.legalBasis || '');
+  const ansText = normalizeQuestionText(
+    q.options.find((o) => o.key === q.correctAnswer)?.text || ''
+  );
+  return `${q.category}::${basis}::${ansText}`;
+}
+
+export function deduplicatePoolByIdAndText(questions: UPAQuestion[]): UPAQuestion[] {
+  const seenIds = new Set<number>();
+  const seenTexts = new Set<string>();
+  const result: UPAQuestion[] = [];
+  for (const q of questions) {
+    const textKey = normalizeQuestionText(q.question);
+    if (!seenIds.has(q.id) && !seenTexts.has(textKey)) {
+      seenIds.add(q.id);
+      seenTexts.add(textKey);
+      result.push(q);
+    }
+  }
+  return result;
+}
+
+/**
+ * Selects up to `count` questions from a pre-shuffled pool while guaranteeing:
+ * - Zero duplicate question IDs
+ * - Zero duplicate normalized question texts
+ * - Pass 1 prioritizes unique legalBasis per session
+ * - Pass 2 relaxes to unique (legalBasis + correctAnswer) if more questions are needed
+ * - Pass 3 fills remaining capacity (up to pool size) while preserving unique ID & text
+ */
+export function selectNonDuplicateQuestions(
+  shuffledPool: UPAQuestion[],
+  count: number
+): UPAQuestion[] {
+  const selected: UPAQuestion[] = [];
+  const usedIds = new Set<number>();
+  const usedTexts = new Set<string>();
+  const usedBases = new Set<string>();
+  const usedConcepts = new Set<string>();
+
+  // Pass 1: strictly unique ID, text, and legalBasis
+  for (const q of shuffledPool) {
+    if (selected.length >= count) break;
+    const textKey = normalizeQuestionText(q.question);
+    const basisKey = `${q.category}::${normalizeLegalBasisKey(q.explanation?.legalBasis || '')}`;
+    const conceptKey = getLegalConceptKey(q);
+    if (!usedIds.has(q.id) && !usedTexts.has(textKey) && (!basisKey || !usedBases.has(basisKey))) {
+      usedIds.add(q.id);
+      usedTexts.add(textKey);
+      if (basisKey) usedBases.add(basisKey);
+      usedConcepts.add(conceptKey);
+      selected.push(q);
+    }
+  }
+
+  // Pass 2: unique ID, text, and (legalBasis + correctAnswer)
+  if (selected.length < count) {
+    for (const q of shuffledPool) {
+      if (selected.length >= count) break;
+      const textKey = normalizeQuestionText(q.question);
+      const conceptKey = getLegalConceptKey(q);
+      if (!usedIds.has(q.id) && !usedTexts.has(textKey) && !usedConcepts.has(conceptKey)) {
+        usedIds.add(q.id);
+        usedTexts.add(textKey);
+        usedConcepts.add(conceptKey);
+        selected.push(q);
+      }
+    }
+  }
+
+  // Pass 3: unique ID and text fallback (e.g. when selecting full pool)
+  if (selected.length < count) {
+    for (const q of shuffledPool) {
+      if (selected.length >= count) break;
+      const textKey = normalizeQuestionText(q.question);
+      if (!usedIds.has(q.id) && !usedTexts.has(textKey)) {
+        usedIds.add(q.id);
+        usedTexts.add(textKey);
+        selected.push(q);
+      }
+    }
+  }
+
+  return selected;
+}
+
 // Fallback in-memory storage for test/SSR environments
 let inMemorySeenIds: Set<number> = new Set();
 
@@ -71,7 +166,7 @@ export class QuestionSessionManager {
    * Get current rotation statistics
    */
   public getRotationStats(categoryFilter?: UPACategory | 'Semua Materi', customQuestions: UPAQuestion[] = []): RotationStats {
-    const all = [...MASTER_UPA_DATABASE, ...customQuestions];
+    const all = deduplicatePoolByIdAndText([...MASTER_UPA_DATABASE, ...customQuestions]);
     const filtered = !categoryFilter || categoryFilter === 'Semua Materi'
       ? all
       : all.filter((q) => q.category === categoryFilter);
@@ -97,7 +192,7 @@ export class QuestionSessionManager {
   /**
    * Select non-repeating, randomized questions for a new session
    * Automatically randomizes sections/categories and option positions.
-   * STRICT GUARANTEE: Zero duplicate question texts in every session!
+   * STRICT GUARANTEE: Zero duplicate question IDs, texts, or legal-basis concepts in every session!
    */
   public getSessionQuestions(config: {
     questionCount: number;
@@ -106,17 +201,10 @@ export class QuestionSessionManager {
     seed?: string;
     randomizeOptions?: boolean;
   }): { questions: UPAQuestion[]; isFreshCycle: boolean; unseenPicked: number } {
-    const all = [...MASTER_UPA_DATABASE, ...(config.customQuestions || [])];
-    
-    // Deduplicate entire master pool by normalized question text first
-    const uniquePoolMap = new Map<string, UPAQuestion>();
-    all.forEach((q) => {
-      const key = normalizeQuestionText(q.question);
-      if (!uniquePoolMap.has(key)) {
-        uniquePoolMap.set(key, q);
-      }
-    });
-    const uniqueAll = Array.from(uniquePoolMap.values());
+    const uniqueAll = deduplicatePoolByIdAndText([
+      ...MASTER_UPA_DATABASE,
+      ...(config.customQuestions || []),
+    ]);
 
     const pool = config.categoryFilter === 'Semua Materi'
       ? uniqueAll
@@ -151,48 +239,21 @@ export class QuestionSessionManager {
     let unseenPicked = 0;
 
     if (shuffledUnseen.length >= requestedCount) {
-      // 100% unseen questions guaranteed! No repetition from previous sessions!
-      selected = shuffledUnseen.slice(0, requestedCount);
-      unseenPicked = requestedCount;
+      // Prioritize unseen questions with unique legalBasis / concept guards
+      selected = selectNonDuplicateQuestions([...shuffledUnseen, ...shuffledSeen], requestedCount);
+      unseenPicked = selected.filter((q) => !seenSet.has(q.id)).length;
     } else {
-      // Take all remaining unseen questions
-      selected = [...shuffledUnseen];
-      unseenPicked = shuffledUnseen.length;
-      const needed = requestedCount - selected.length;
-      
-      // Select from seen, ensuring NO duplicate text with what was already picked in this session
-      const selectedKeys = new Set(selected.map((q) => normalizeQuestionText(q.question)));
-      for (const q of shuffledSeen) {
-        const k = normalizeQuestionText(q.question);
-        if (!selectedKeys.has(k)) {
-          selectedKeys.add(k);
-          selected.push(q);
-          if (selected.length >= requestedCount) break;
-        }
-      }
+      selected = selectNonDuplicateQuestions([...shuffledUnseen, ...shuffledSeen], requestedCount);
+      unseenPicked = selected.filter((q) => !seenSet.has(q.id)).length;
 
-      // If we completely exhausted unseen questions, reset rotation cycle automatically for future sessions
       if (shuffledUnseen.length === 0) {
         this.resetRotation();
         isFreshCycle = true;
       }
     }
 
-    // STRICT IN-SESSION DEDUPLICATION:
-    // Guarantee that every single number in this session has a 100% unique question
-    const sessionSeenTexts = new Set<string>();
-    const strictlyUnique: UPAQuestion[] = [];
-    for (const q of selected) {
-      const key = normalizeQuestionText(q.question);
-      if (!sessionSeenTexts.has(key)) {
-        sessionSeenTexts.add(key);
-        strictlyUnique.push(q);
-      }
-    }
-
-    // "setiap sesi baru buat soal menjadi acak bagiannya"
     // Randomize order of questions across different legal categories so sections are intermixed dynamically
-    const randomizedQuestions = shuffleArray(strictlyUnique);
+    const randomizedQuestions = shuffleArray(selected);
 
     // Randomize options A, B, C, D per question while preserving the true answer key
     const randomizeOptions = config.randomizeOptions !== false;
@@ -244,6 +305,7 @@ export class QuestionSessionManager {
   /**
    * Deterministically locks and returns fixed questions and options for a Room ID.
    * STRICT GUARANTEE: Does NOT filter by local user history.
+   * Zero duplicate IDs, texts, or legal-basis concepts in a room session.
    * Shuffles questions and freezes options A, B, C, D once with room seed.
    * Every client calling this with the same roomId and config receives the exact same array.
    */
@@ -253,15 +315,10 @@ export class QuestionSessionManager {
     categoryFilter: UPACategory | 'Semua Materi';
     customQuestions?: UPAQuestion[];
   }): UPAQuestion[] {
-    const all = [...MASTER_UPA_DATABASE, ...(config.customQuestions || [])];
-    const uniquePoolMap = new Map<string, UPAQuestion>();
-    all.forEach((q) => {
-      const key = normalizeQuestionText(q.question);
-      if (!uniquePoolMap.has(key)) {
-        uniquePoolMap.set(key, q);
-      }
-    });
-    const uniqueAll = Array.from(uniquePoolMap.values());
+    const uniqueAll = deduplicatePoolByIdAndText([
+      ...MASTER_UPA_DATABASE,
+      ...(config.customQuestions || []),
+    ]);
     const pool = !config.categoryFilter || config.categoryFilter === 'Semua Materi'
       ? uniqueAll
       : uniqueAll.filter((q) => q.category === config.categoryFilter);
@@ -276,7 +333,7 @@ export class QuestionSessionManager {
       [copy[i], copy[j]] = [copy[j], copy[i]];
     }
 
-    const selected = copy.slice(0, count);
+    const selected = selectNonDuplicateQuestions(copy, count);
     return selected.map((q) => this.shuffleQuestionOptions(q, rng));
   }
 

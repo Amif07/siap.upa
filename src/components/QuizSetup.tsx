@@ -126,7 +126,7 @@ export const QuizSetup: React.FC<QuizSetupProps> = ({
         {/* Bottom Feature Badges */}
         <div className="mt-8 pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-4 text-xs">
           <div>
-            <span className="font-mono text-xl font-bold text-amber-400 block">8</span>
+            <span className="font-mono text-xl font-bold text-amber-400 block">{UPA_CATEGORIES.length}</span>
             <span className="text-slate-400">Materi Hukum Utama</span>
           </div>
           <div>

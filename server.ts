@@ -6,6 +6,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { WebSocketServer, WebSocket } from 'ws';
 import { MASTER_UPA_DATABASE } from './src/data/upaQuestions.ts';
+import { deduplicatePoolByIdAndText, selectNonDuplicateQuestions } from './src/services/questionSessionManager.ts';
 import type { UPAQuestion, QuestionOptionKey, QuestionOption, RoomSettings, Participant, RoomChatMessage } from './src/types/quiz.ts';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -219,12 +220,15 @@ export function lockRoomQuestions(
 
   const rng = createServerRNG(roomId + '-upa-room-lock-2026');
 
+  // Deduplicate master pool by ID and normalized question text first
+  const uniqueDatabase = deduplicatePoolByIdAndText(MASTER_UPA_DATABASE);
+
   // Filter pool by category if specified
   const pool = !categoryFilter || categoryFilter === 'Semua Materi'
-    ? [...MASTER_UPA_DATABASE]
-    : MASTER_UPA_DATABASE.filter((q) => q.category === categoryFilter);
+    ? uniqueDatabase
+    : uniqueDatabase.filter((q) => q.category === categoryFilter);
 
-  const available = pool.length > 0 ? pool : [...MASTER_UPA_DATABASE];
+  const available = pool.length > 0 ? pool : uniqueDatabase;
   const targetCount = Math.min(questionCount || 20, available.length);
 
   // Fisher-Yates shuffle using server room RNG
@@ -234,7 +238,7 @@ export function lockRoomQuestions(
     [shuffledPool[i], shuffledPool[j]] = [shuffledPool[j], shuffledPool[i]];
   }
 
-  const selected = shuffledPool.slice(0, targetCount);
+  const selected = selectNonDuplicateQuestions(shuffledPool, targetCount);
 
   // Freeze questions and standardize options A, B, C, D so answer positions match 100%
   const optionKeys: QuestionOptionKey[] = ['A', 'B', 'C', 'D'];

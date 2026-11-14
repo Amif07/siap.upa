@@ -3,7 +3,8 @@ export type UPACategory =
   | 'Hukum Acara Pidana'
   | 'Hukum Acara PTUN'
   | 'Hukum Acara Peradilan Agama'
-  | 'Kode Etik Profesi Advokat'
+  | 'Peran, Fungsi, dan Perkembangan Organisasi Advokat'
+  | 'Kode Etik Advokat Indonesia (KEAI)'
   | 'Hukum Acara Mahkamah Konstitusi'
   | 'Hukum Acara PHI'
   | 'Hukum Acara Arbitrase & APS';

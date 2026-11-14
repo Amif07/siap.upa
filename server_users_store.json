@@ -2,15 +2,17 @@
   {
     "id": "usr-admin-YW1pZmF2",
     "email": "amifaveiro9@gmail.com",
-    "name": "amifaveiro9@gmail.com",
+    "name": "Amif",
     "username": null,
     "role": "admin",
     "is_approved": true,
     "approvalStatus": "approved",
     "approvedBy": "System",
     "createdAt": 1794378498486,
-    "lastActive": 1794378498486,
-    "isOnline": false,
-    "currentActivity": "Di Halaman Pengawas AdvokatQuiz"
+    "lastActive": 1794669607230,
+    "isOnline": true,
+    "currentActivity": "Beranda / Persiapan Ujian",
+    "last_seen": "2026-11-14T15:20:07.230Z",
+    "current_page": "Beranda / Persiapan Ujian"
   }
 ]

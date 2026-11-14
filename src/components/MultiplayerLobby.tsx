@@ -6,6 +6,7 @@ import { generateRoomCode } from '../utils/seededRandom';
 import { soundEffects } from '../utils/soundEffects';
 import { RealtimeTransportType } from '../services/realtimeMultiplayer';
 import { SupabaseConfigModal } from './SupabaseConfigModal';
+import { UPA_CATEGORIES } from '../data/upaQuestions';
 
 interface MultiplayerLobbyProps {
   currentRoom: RoomSettings | null;
@@ -457,14 +458,11 @@ export const MultiplayerLobby: React.FC<MultiplayerLobbyProps> = ({
                 className="w-full text-sm px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-amber-500"
               >
                 <option value="Semua Materi">Semua Materi (Standar UPA)</option>
-                <option value="Hukum Acara Perdata">Hukum Acara Perdata</option>
-                <option value="Hukum Acara Pidana">Hukum Acara Pidana</option>
-                <option value="Hukum Acara PTUN">Hukum Acara PTUN</option>
-                <option value="Hukum Acara Peradilan Agama">Hukum Acara Peradilan Agama</option>
-                <option value="Kode Etik Profesi Advokat">Kode Etik Profesi Advokat</option>
-                <option value="Hukum Acara Mahkamah Konstitusi">Hukum Acara MK</option>
-                <option value="Hukum Acara PHI">Hukum Acara PHI</option>
-                <option value="Hukum Acara Arbitrase & APS">Hukum Acara Arbitrase & APS</option>
+                {UPA_CATEGORIES.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
               </select>
             </div>
           </div>

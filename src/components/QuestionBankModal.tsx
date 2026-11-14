@@ -178,7 +178,7 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
     "correctAnswer": "B",
     "explanation": {
       "summary": "Asas pokok kompetensi relatif menyatakan gugatan diajukan ke PN tempat tinggal Tergugat.",
-      "legalBasis": "Pasal 118 ayat (1) HIR jo. Pasal 142 ayat (1) RBg.",
+      "legalBasis": "Pasal 118 ayat (1) HIR / Pasal 142 ayat (1) RBg.",
       "analysis": "Asas Actor Sequitur Forum Rei mengatur bahwa tuntutan hak diajukan kepada ketua pengadilan negeri di tempat diamnya tergugat..."
     },
     "difficulty": "Mudah"

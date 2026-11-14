@@ -2,39 +2,6 @@ import type { UPAQuestion } from '../types/quiz.ts';
 
 export const TOAZ_PERADI_BANK: UPAQuestion[] = [
   {
-    "id": 309,
-    "category": "Hukum Acara Pidana",
-    "topicTag": "Pengertian Laporan (KUHAP)",
-    "question": "Menurut KUHAP, yang dimaksud dengan Laporan adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Pemberitahuan yang disampaikan oleh seorang karena hak dan kewajiban berdasarkan undang-undang kepada pejabat yang berwenang tentang telah atau sedang atau diduga akan terjadinya peristiwa pidana"
-      },
-      {
-        "key": "B",
-        "text": "Pemberitahuan dan permintaan oleh pihak yang berkepentingan kepada polisi tentang telah atau sedang atau diduga telah terjadi peristiwa pidana"
-      },
-      {
-        "key": "C",
-        "text": "Pemberitahuan disertai permintaan oleh pihak yang berkepentingan kepada pejabat yang berwenang untuk menindak menurut hukum seseorang yang telah melakukan tindak pidana aduan yang merugikannya"
-      },
-      {
-        "key": "D",
-        "text": "Tertangkapnya seseorang beberapa saat sesudah ia melakukan kejahatan"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "Laporan adalah pemberitahuan karena hak atau kewajiban berdasarkan undang-undang kepada pejabat berwenang tentang peristiwa pidana.",
-      "legalBasis": "Pasal 1 angka 24 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "statuteText": "Laporan adalah pemberitahuan yang disampaikan oleh seorang karena hak atau kewajiban berdasarkan undang-undang kepada pejabat yang berwenang tentang telah atau sedang atau diduga akan terjadinya peristiwa pidana.",
-      "analysis": "Pilihan A tepat karena sesuai persis dengan rumusan Pasal 1 angka 24 KUHAP mengenai Laporan. Pilihan B merupakan rumusan kurang tepat yang mencampur unsur pengaduan, pilihan C adalah definisi Pengaduan (Pasal 1 angka 25 KUHAP), dan pilihan D merupakan pengertian tertangkap tangan (Pasal 1 angka 19 KUHAP).",
-      "ruuComparison": "RUU KUHAP mempertahankan definisi laporan, sekaligus mewajibkan pejabat penerima laporan menerbitkan surat tanda bukti lapor serta memberi kepastian batas waktu penyelidikan agar pelapor tidak terkatung-katung."
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 310,
     "category": "Hukum Acara Pidana",
     "topicTag": "Jenis Pidana Pokok dan Tambahan (KUHP)",
@@ -66,138 +33,6 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       "ruuComparison": "Dalam KUHP Nasional (UU No. 1 Tahun 2023) dan sinkronisasi RUU KUHAP, pidana pokok diperluas menjadi penjara, tutupan, pengawasan, denda, dan kerja sosial, sedangkan pidana tambahan ditambah dengan pembayaran ganti rugi serta pemenuhan kewajiban adat setempat."
     },
     "difficulty": "Mudah"
-  },
-  {
-    "id": 311,
-    "category": "Hukum Acara Pidana",
-    "topicTag": "Dasar Hukum KUHAP",
-    "question": "Undang-Undang yang mengatur tentang Hukum Acara Pidana di Indonesia adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "UU No. 18 Tahun 1981"
-      },
-      {
-        "key": "B",
-        "text": "UU No. 15 Tahun 1991"
-      },
-      {
-        "key": "C",
-        "text": "UU No. 8 Tahun 1981"
-      },
-      {
-        "key": "D",
-        "text": "UU No. 5 Tahun 1985"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Hukum Acara Pidana diatur dalam UU No. 8 Tahun 1981 (KUHAP).",
-      "legalBasis": "Pasal 1 angka 1 jo. Pasal 284 ayat (1) dan Pasal 285 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "statuteText": "Undang-undang ini disebut Kitab Undang-Undang Hukum Acara Pidana (KUHAP), yakni Undang-Undang Republik Indonesia Nomor 8 Tahun 1981 yang mulai berlaku pada tanggal diundangkan.",
-      "analysis": "Pilihan C tepat karena dasar hukum kodifikasi Hukum Acara Pidana Indonesia yang berlaku saat ini adalah UU No. 8 Tahun 1981 (KUHAP). Pilihan A, B, dan D bukan undang-undang yang mengatur hukum acara pidana.",
-      "ruuComparison": "RUU KUHAP dirancang sebagai pembaruan menyeluruh atas UU No. 8 Tahun 1981 untuk memperkuat perlindungan HAM, memperkenalkan Hakim Pemeriksa Pendahuluan, keadilan restoratif, serta digitalisasi pembuktian."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 312,
-    "category": "Hukum Acara Pidana",
-    "topicTag": "Penyerahan Berkas Perkara Penyidikan",
-    "question": "Penyidik telah selesai menyidik suatu perkara, selanjutnya berkas perkara diserahkan kepada...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Pengadilan Negeri"
-      },
-      {
-        "key": "B",
-        "text": "Tersangka"
-      },
-      {
-        "key": "C",
-        "text": "Kejaksaan / Penuntut Umum"
-      },
-      {
-        "key": "D",
-        "text": "Menunggu keputusan pengadilan"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Berkas perkara yang selesai disidik diserahkan kepada Penuntut Umum (Tahap I).",
-      "legalBasis": "Pasal 8 ayat (2) jo. Pasal 110 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "statuteText": "Dalam hal penyidik telah selesai melakukan penyidikan, penyidik wajib segera menyerahkan berkas perkara itu kepada penuntut umum.",
-      "analysis": "Pilihan C tepat karena dalam alur penyidikan KUHAP, penyidik menyerahkan berkas perkara Tahap I kepada Kejaksaan/Penuntut Umum untuk diteliti kelengkapannya (prapenuntutan). Pilihan A keliru karena pelimpahan perkara ke pengadilan adalah wewenang penuntut umum, sedangkan pilihan B dan D bukan mekanisme penyerahan berkas.",
-      "ruuComparison": "RUU KUHAP memperkuat koordinasi sejak awal antara penyidik dan penuntut umum agar berkas yang diserahkan memenuhi standar penuntutan dan menghindari pengembalian berkas berulang."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 313,
-    "category": "Hukum Acara Pidana",
-    "topicTag": "Peran Penasihat Hukum pada Tahap Penyidikan",
-    "question": "Peran Penasihat Hukum dalam KUHAP dalam mendampingi tersangka pada pemeriksaan penyidik adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Ikut menentukan jalannya pemeriksaan"
-      },
-      {
-        "key": "B",
-        "text": "Bekerja sama dengan penyidik"
-      },
-      {
-        "key": "C",
-        "text": "Melihat dan mendengar jalannya pemeriksaan"
-      },
-      {
-        "key": "D",
-        "text": "Memberikan jawaban langsung kepada penyidik"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Penasihat hukum mengikuti pemeriksaan penyidikan dengan melihat dan mendengar jalannya pemeriksaan secara pasif.",
-      "legalBasis": "Pasal 115 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "statuteText": "Dalam hal penyidik sedang melakukan pemeriksaan terhadap tersangka, penasihat hukum dapat mengikuti jalannya pemeriksaan dengan cara melihat serta mendengar pemeriksaan.",
-      "analysis": "Pilihan C tepat karena menurut Pasal 115 ayat (1) KUHAP, peran penasihat hukum pada pemeriksaan penyidikan adalah melihat dan mendengar jalannya pemeriksaan (kecuali kejahatan terhadap keamanan negara yang hanya boleh melihat tanpa mendengar, ayat 2). Pilihan A, B, dan D melampaui batasan peran pasif dalam KUHAP 1981.",
-      "ruuComparison": "RUU KUHAP mengubah paradigma pendampingan advokat dari pasif menjadi aktif: penasihat hukum berhak menyampaikan keberatan dan mencatat langsung apabila terjadi intimidasi atau pertanyaan menjerat oleh penyidik."
-    },
-    "difficulty": "Sedang"
-  },
-  {
-    "id": 314,
-    "category": "Hukum Acara Pidana",
-    "topicTag": "Kasasi Demi Kepentingan Hukum",
-    "question": "Demi kepentingan hukum terhadap semua putusan yang telah memperoleh kekuatan hukum tetap dari pengadilan lain selain daripada Mahkamah Agung, permohonan kasasi dapat diajukan oleh...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Jaksa Penuntut Umum"
-      },
-      {
-        "key": "B",
-        "text": "Majelis Hakim"
-      },
-      {
-        "key": "C",
-        "text": "Jaksa Agung"
-      },
-      {
-        "key": "D",
-        "text": "Terdakwa"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Kasasi demi kepentingan hukum hanya dapat diajukan oleh Jaksa Agung.",
-      "legalBasis": "Pasal 259 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "statuteText": "Demi kepentingan hukum terhadap semua putusan yang telah memperoleh kekuatan hukum tetap dari pengadilan lain selain daripada Mahkamah Agung, dapat diajukan satu kali permohonan kasasi oleh Jaksa Agung.",
-      "analysis": "Pilihan C tepat karena kasasi demi kepentingan hukum merupakan hak prerogatif/eksklusif Jaksa Agung RI sebagai upaya hukum luar biasa. Pilihan A dan D hanya berwenang dalam kasasi biasa atau peninjauan kembali, sedangkan pilihan B adalah hakim pemeriksa perkara.",
-      "ruuComparison": "RUU KUHAP tetap mempertahankan kewenangan Jaksa Agung mengajukan kasasi demi kepentingan hukum dengan prinsip bahwa putusannya tidak boleh memperberat atau merugikan hak pihak yang bersangkutan."
-    },
-    "difficulty": "Sedang"
   },
   {
     "id": 315,
@@ -299,39 +134,6 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Mudah"
   },
   {
-    "id": 318,
-    "category": "Hukum Acara Pidana",
-    "topicTag": "Tenggang Waktu Putusan Praperadilan",
-    "question": "Perkara praperadilan adalah perkara yang pemeriksaannya termasuk cepat karena harus sudah diputuskan dalam waktu paling lama...",
-    "options": [
-      {
-        "key": "A",
-        "text": "14 hari"
-      },
-      {
-        "key": "B",
-        "text": "17 hari"
-      },
-      {
-        "key": "C",
-        "text": "7 hari"
-      },
-      {
-        "key": "D",
-        "text": "4 hari"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Pemeriksaan praperadilan wajib diputus dalam waktu 7 (tujuh) hari.",
-      "legalBasis": "Pasal 82 ayat (1) huruf c UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "statuteText": "Dalam waktu tujuh hari hakim harus sudah menjatuhkan putusannya.",
-      "analysis": "Pilihan C tepat karena Pasal 82 ayat (1) huruf c KUHAP memerintahkan hakim tunggal menjatuhkan putusan praperadilan paling lama 7 hari. Pilihan A (14 hari), B (17 hari), dan D (4 hari) tidak sesuai dengan ketentuan tenggang waktu praperadilan dalam KUHAP.",
-      "ruuComparison": "RUU KUHAP menggantikan mekanisme praperadilan dengan Hakim Pemeriksa Pendahuluan (HPP) yang memutus keberatan upaya paksa secara cepat dan berkelanjutan sebelum perkara dilimpahkan ke persidangan pokok."
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 319,
     "category": "Hukum Acara Pidana",
     "topicTag": "Alat Bukti Sah Pidana (KUHAP)",
@@ -396,39 +198,6 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       "ruuComparison": "RUU KUHAP menyesuaikan batasan nilai denda pada tindak pidana ringan (Tipiring) agar relevan dengan nilai ekonomi kontemporer (seperti yang sebelumnya diadaptasi melalui PERMA No. 2 Tahun 2012) serta mendorong penyelesaian Tipiring melalui denda damai atau keadilan restoratif."
     },
     "difficulty": "Sedang"
-  },
-  {
-    "id": 321,
-    "category": "Hukum Acara Pidana",
-    "topicTag": "Klasifikasi Saksi di Persidangan",
-    "question": "Jaksa penuntut umum dapat mengajukan saksi yang memberatkan terdakwa di persidangan, saksi ini disebut...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Saksi a charge"
-      },
-      {
-        "key": "B",
-        "text": "Saksi a de charge"
-      },
-      {
-        "key": "C",
-        "text": "Saksi Testimonium de auditu"
-      },
-      {
-        "key": "D",
-        "text": "Saksi Mahkota"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "Saksi yang diajukan penuntut umum yang memberatkan disebut saksi a charge.",
-      "legalBasis": "Pasal 160 ayat (1) huruf c jo. Pasal 65 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "statuteText": "Dalam hal ada saksi baik yang menguntungkan maupun yang memberatkan terdakwa yang tercantum dalam surat pelimpahan perkara dan atau yang diminta oleh terdakwa atau penasihat hukum atau penuntut umum selama berlangsungnya sidang, hakim ketua sidang wajib mendengar keterangan saksi tersebut.",
-      "analysis": "Pilihan A tepat karena saksi yang memberatkan terdakwa disebut saksi a charge. Pilihan B (saksi a de charge) adalah saksi yang meringankan, pilihan C (testimonium de auditu) adalah saksi yang hanya mendengar dari cerita orang lain, dan pilihan D (saksi mahkota) adalah sesama pelaku yang dijadikan saksi.",
-      "ruuComparison": "RUU KUHAP mempertegas hak terdakwa dan advokat untuk memanggil saksi a de charge secara seimbang serta memastikan pemeriksaan saksi dilakukan secara terbuka dan objektif."
-    },
-    "difficulty": "Mudah"
   },
   {
     "id": 322,
@@ -497,39 +266,6 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Mudah"
   },
   {
-    "id": 324,
-    "category": "Hukum Acara Pidana",
-    "topicTag": "Pengembalian Berkas Perkara Belum Lengkap (P-19)",
-    "question": "Berkas perkara yang dipelajari / diteliti oleh penuntut umum ternyata belum lengkap. Untuk itu tindakan penuntut umum adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Melimpahkan berkas perkara tersebut ke Pengadilan Negeri untuk disidangkan"
-      },
-      {
-        "key": "B",
-        "text": "Membuat surat dakwaan"
-      },
-      {
-        "key": "C",
-        "text": "Mengembalikan berkas perkara kepada penyidik, disertai petunjuk (P-19)"
-      },
-      {
-        "key": "D",
-        "text": "Menyidangkan perkara tersebut ke Pengadilan"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Penuntut umum mengembalikan berkas perkara belum lengkap kepada penyidik disertai petunjuk (P-19).",
-      "legalBasis": "Pasal 110 ayat (2) jo. Pasal 138 ayat (2) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "statuteText": "Dalam hal penuntut umum berpendapat bahwa hasil penyidikan tersebut ternyata masih kurang lengkap, penuntut umum segera mengembalikan berkas perkara itu kepada penyidik disertai petunjuk untuk dilengkapi.",
-      "analysis": "Pilihan C tepat karena penuntut umum wajib mengembalikan berkas yang belum lengkap kepada penyidik disertai petunjuk tertulis (P-19) dalam tenggang waktu 14 hari. Pilihan A, B, dan D keliru karena berkas yang belum lengkap (belum P-21) tidak sah dilimpahkan atau dibuatkan surat dakwaan.",
-      "ruuComparison": "RUU KUHAP membatasi frekuensi pengembalian berkas perkara antara penuntut umum dan penyidik agar tidak terjadi bolak-balik perkara (ping-pong) berkepanjangan yang merugikan kepastian hukum tersangka dan korban."
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 325,
     "category": "Hukum Acara Pidana",
     "topicTag": "Keterangan Saksi yang Bernilai Pembuktian",
@@ -563,73 +299,8 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Mudah"
   },
   {
-    "id": 326,
-    "category": "Hukum Acara Pidana",
-    "topicTag": "Batas Waktu Penangkapan oleh Penyidik",
-    "question": "Berapa lama jangka waktu maksimal bagi penyidik untuk melakukan penangkapan guna menentukan apakah tersangka akan ditahan atau tidak?",
-    "options": [
-      {
-        "key": "A",
-        "text": "2 hari"
-      },
-      {
-        "key": "B",
-        "text": "1 hari (24 jam)"
-      },
-      {
-        "key": "C",
-        "text": "1 minggu"
-      },
-      {
-        "key": "D",
-        "text": "2 minggu"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": {
-      "summary": "Penangkapan dapat dilakukan untuk paling lama 1 hari (24 jam).",
-      "legalBasis": "Pasal 19 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "statuteText": "Penangkapan sebagaimana dimaksud dalam Pasal 17, dapat dilakukan untuk paling lama satu hari.",
-      "analysis": "Pilihan B tepat karena Pasal 19 ayat (1) KUHAP membatasi penangkapan paling lama 1 hari (24 jam) guna menentukan status penahanan atau pembebasan tersangka. Pilihan A, C, dan D melanggar batas waktu penangkapan dalam KUHAP dan dapat digugat melalui praperadilan.",
-      "ruuComparison": "RUU KUHAP mempertahankan batas maksimal 1 x 24 jam penangkapan sebagai wujud perlindungan kemerdekaan individu (habeas corpus) dan mewajibkan penangkapan yang melampaui batas waktu tersebut dinilai tidak sah oleh Hakim Pemeriksa Pendahuluan."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 327,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Definisi Klien Menurut UU Advokat",
-    "question": "Orang, badan hukum atau lembaga lain yang menerima jasa hukum dari Advokat dikenal dengan sebutan...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Justisiabelen"
-      },
-      {
-        "key": "B",
-        "text": "Pencari keadilan"
-      },
-      {
-        "key": "C",
-        "text": "Klien"
-      },
-      {
-        "key": "D",
-        "text": "Pasien"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Penerima jasa hukum dari advokat disebut Klien.",
-      "legalBasis": "Pasal 1 angka 3 UU No. 18 Tahun 2003 tentang Advokat.",
-      "statuteText": "Klien adalah orang, badan hukum, atau lembaga lain yang menerima jasa hukum dari Advokat.",
-      "analysis": "Pasal 1 angka 3 UU No. 18 Tahun 2003 merumuskan: \"Klien adalah orang, badan hukum, atau lembaga lain yang menerima jasa hukum dari Advokat.\""
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 328,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Hak Memperoleh Berkas Perkara Pembelaan",
     "question": "Sesuai dengan Pasal 72 KUHAP dan Pasal 17 UU Advokat, maka advokat berhak...",
     "options": [
@@ -659,39 +330,8 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Sedang"
   },
   {
-    "id": 329,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Hak Imunitas Advokat Beritikad Baik",
-    "question": "Dalam Undang-Undang Advokat diatur mengenai hak imunitas advokat, yaitu...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Hak advokat untuk bebas dari segala kewajiban pajak negara"
-      },
-      {
-        "key": "B",
-        "text": "Hak advokat untuk menolak panggilan persidangan tanpa sanksi"
-      },
-      {
-        "key": "C",
-        "text": "Hak advokat untuk dilindungi dari tuntutan pidana atau perdata ketika ia menjalankan tugas profesinya dengan itikad baik untuk kepentingan pembelaan klien dalam maupun di luar sidang pengadilan"
-      },
-      {
-        "key": "D",
-        "text": "Hak advokat untuk menahan barang bukti asli kliennya"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Hak imunitas melindungi advokat dari tuntutan perdata/pidana saat bertugas dengan itikad baik.",
-      "legalBasis": "Pasal 16 UU No. 18 Tahun 2003 tentang Advokat jo. Putusan Mahkamah Konstitusi No. 26/PUU-XI/2013.",
-      "analysis": "Pasal 16 UU Advokat jo. Putusan MK No. 26/PUU-XI/2013 menyatakan advokat tidak dapat dituntut baik secara perdata maupun pidana dalam menjalankan tugas profesinya dengan itikad baik untuk kepentingan pembelaan klien di dalam maupun di luar sidang pengadilan."
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 330,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Kedudukan Profesi Advokat dalam Pemberian Jasa Hukum",
     "question": "Menurut Undang-Undang No. 18 Tahun 2003, pernyataan bahwa \"satu-satunya profesi yang memberikan jasa hukum di Indonesia adalah advokat\"...",
     "options": [
@@ -721,101 +361,8 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Sedang"
   },
   {
-    "id": 331,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Gelar Kehormatan Advokat (Officium Nobile)",
-    "question": "Profesi Advokat adalah profesi terhormat. Dikenal dengan istilah apakah “profesi terhormat dan mulia” tersebut?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Honour profession"
-      },
-      {
-        "key": "B",
-        "text": "Officium Juris"
-      },
-      {
-        "key": "C",
-        "text": "Officium Nobile"
-      },
-      {
-        "key": "D",
-        "text": "Respected Profession"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Profesi advokat disebut officium nobile (profesi yang mulia dan terhormat).",
-      "legalBasis": "Penjelasan Umum Alinea ke-1 Undang-Undang No. 18 Tahun 2003 tentang Advokat jo. Pasal 3 huruf g KEAI 2002.",
-      "analysis": "Istilah officium nobile menegaskan bahwa profesi advokat mengemban nilai moral, pengabdian keadilan, dan pembelaan hak asasi manusia di atas semata-mata motif materiil."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 332,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Karakter Pendampingan Advokat di Tingkat Penyidikan",
-    "question": "Peran dan fungsi advokat di tingkat penyidikan menurut KUHAP pada hakikatnya bersifat...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Pasif (melihat dan mendengar jalannya pemeriksaan)"
-      },
-      {
-        "key": "B",
-        "text": "Aktif mengarahkan jawaban tersangka"
-      },
-      {
-        "key": "C",
-        "text": "Menggantikan tersangka menjawab berita acara"
-      },
-      {
-        "key": "D",
-        "text": "Memimpin jalannya pemeriksaan penyidikan"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "Pendampingan advokat dalam pemeriksaan penyidik bersifat pasif (melihat dan mendengar).",
-      "legalBasis": "Pasal 115 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "analysis": "Berdasarkan Pasal 115 ayat (1) KUHAP, peran penasihat hukum di tingkat penyidikan dibatasi secara pasif dengan cara melihat serta mendengar pemeriksaan, guna memastikan tidak terjadi kekerasan fisik atau intimidasi terhadap tersangka."
-    },
-    "difficulty": "Sedang"
-  },
-  {
-    "id": 333,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Undang-Undang Advokat Indonesia",
-    "question": "Undang-Undang yang mengatur tentang Profesi Advokat di Indonesia saat ini adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "UU No. 14 Tahun 1985"
-      },
-      {
-        "key": "B",
-        "text": "UU No. 18 Tahun 2004"
-      },
-      {
-        "key": "C",
-        "text": "UU No. 18 Tahun 2003"
-      },
-      {
-        "key": "D",
-        "text": "UU No. 20 Tahun 2003"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Profesi Advokat diatur dalam Undang-Undang No. 18 Tahun 2003.",
-      "legalBasis": "Pasal 1 angka 1 jo. Pasal 36 Undang-Undang No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "UU No. 18 Tahun 2003 disahkan pada tanggal 5 April 2003 sebagai landasan hukum formil dan materiil bagi profesi advokat di Indonesia."
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 334,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Kelahiran Perhimpunan Advokat Indonesia (PERADI)",
     "question": "Perhimpunan Advokat Indonesia (PERADI) resmi didirikan dan dideklarasikan oleh 8 organisasi advokat pada tanggal...",
     "options": [
@@ -846,7 +393,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
   },
   {
     "id": 335,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Komposisi Komisi Pengawasan Advokat",
     "question": "Berdasarkan Pasal 13 ayat (2) UU No. 18 Tahun 2003, anggota Komisi Pengawasan Advokat terdiri dari unsur...",
     "options": [
@@ -877,71 +424,8 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Sedang"
   },
   {
-    "id": 336,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Wilayah Kerja Advokat Indonesia",
-    "question": "Wilayah hukum kerja praktik seorang advokat berdasarkan Pasal 5 ayat (2) UU No. 18 Tahun 2003 adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Seluruh wilayah negara Republik Indonesia"
-      },
-      {
-        "key": "B",
-        "text": "Terbatas pada wilayah hukum Pengadilan Tinggi setempat"
-      },
-      {
-        "key": "C",
-        "text": "Terbatas hanya di wilayah hukum Pengadilan Negeri domisili kantor"
-      },
-      {
-        "key": "D",
-        "text": "Hanya di ibu kota provinsi tempat sumpah advokat diambil"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "Wilayah kerja advokat meliputi seluruh wilayah negara Republik Indonesia.",
-      "legalBasis": "Pasal 5 ayat (2) UU No. 18 Tahun 2003 tentang Advokat.",
-      "statuteText": "Wilayah kerja Advokat meliputi seluruh wilayah negara Republik Indonesia.",
-      "analysis": "Pasal 5 ayat (2) UU Advokat menyatakan secara tegas: \"Wilayah kerja Advokat meliputi seluruh wilayah negara Republik Indonesia.\" Dengan demikian tidak ada batasan yurisdiksi kedaerahan bagi advokat Indonesia."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 337,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Ruang Lingkup Jasa Hukum",
-    "question": "Tidak termasuk pengertian jasa hukum menurut Pasal 1 angka 2 UU No. 18 Tahun 2003 adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Memberikan jasa pengawalan dan keamanan fisik klien"
-      },
-      {
-        "key": "B",
-        "text": "Memberikan konsultasi hukum dan bantuan hukum"
-      },
-      {
-        "key": "C",
-        "text": "Menjalankan kuasa, mewakili, mendampingi, dan membela klien"
-      },
-      {
-        "key": "D",
-        "text": "Melakukan tindakan hukum lain untuk kepentingan hukum klien"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "Jasa pengawalan keamanan fisik bukan merupakan jasa hukum advokat.",
-      "legalBasis": "Pasal 1 angka 2 UU No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "Pasal 1 angka 2 UU Advokat merumuskan jasa hukum adalah jasa yang diberikan Advokat berupa memberikan konsultasi hukum, bantuan hukum, menjalankan kuasa, mewakili, mendampingi, membela, dan melakukan tindakan hukum lain untuk kepentingan hukum klien. Pengamanan fisik bukan tindakan profesi hukum."
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 338,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Alasan Penindakan terhadap Advokat",
     "question": "Seorang advokat dapat dikenakan tindakan pendisiplinan menurut Pasal 6 UU No. 18 Tahun 2003 karena...",
     "options": [
@@ -972,7 +456,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
   },
   {
     "id": 339,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Jenis Tindakan terhadap Advokat",
     "question": "Berdasarkan Pasal 7 ayat (1) UU No. 18 Tahun 2003, jenis tindakan yang dapat dikenakan kepada Advokat terdiri dari...",
     "options": [
@@ -1003,7 +487,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
   },
   {
     "id": 340,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Pemberhentian Tetap Advokat",
     "question": "Seorang advokat diberhentikan dari profesinya secara tetap menurut Pasal 10 ayat (1) UU Advokat karena...",
     "options": [
@@ -1035,7 +519,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
   },
   {
     "id": 341,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Ruang Lingkup Hak Imunitas Advokat",
     "question": "Pasal 16 UU Advokat jo. Putusan Mahkamah Konstitusi No. 26/PUU-XI/2013 mengatur ketentuan hak imunitas bagi seorang advokat dalam lingkup...",
     "options": [
@@ -1065,39 +549,8 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Sedang"
   },
   {
-    "id": 342,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Kesetaraan Kedudukan Penegak Hukum",
-    "question": "Profesi Advokat adalah profesi yang mulia dan terhormat dan karenanya dalam menjalankan profesi selaku penegak hukum di pengadilan sejajar dengan...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Satuan Polisi Pamong Praja"
-      },
-      {
-        "key": "B",
-        "text": "Lembaga Swadaya Masyarakat"
-      },
-      {
-        "key": "C",
-        "text": "Polisi, Jaksa, dan Hakim"
-      },
-      {
-        "key": "D",
-        "text": "Panitera dan Juru Sita saja"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Advokat memiliki kedudukan yang sejajar dengan penegak hukum lainnya (Polisi, Jaksa, dan Hakim).",
-      "legalBasis": "Pasal 5 ayat (1) UU No. 18 Tahun 2003 tentang Advokat jo. Doktrin Catur Wangsa.",
-      "analysis": "Pasal 5 ayat (1) UU Advokat menegaskan status advokat sebagai penegak hukum yang bebas dan mandiri. Dalam konsep Catur Wangsa Penegak Hukum, advokat berdiri sejajar dengan polisi, jaksa, dan hakim."
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 343,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
     "topicTag": "Larangan Mencari Publisitas (KEAI)",
     "question": "Bolehkah seorang Advokat mencari publisitas bagi dirinya sendiri di media massa menurut Kode Etik Advokat Indonesia?",
     "options": [
@@ -1128,134 +581,8 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Mudah"
   },
   {
-    "id": 344,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Rahasia Jabatan Advokat",
-    "question": "Sampai kapankah kewajiban memegang rahasia jabatan profesi Advokat wajib untuk dijaga?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Sampai dengan klien meninggal dunia"
-      },
-      {
-        "key": "B",
-        "text": "Selama berlangsungnya proses hukum klien tersebut"
-      },
-      {
-        "key": "C",
-        "text": "Selama rahasia tersebut belum dicantumkan dalam putusan pengadilan"
-      },
-      {
-        "key": "D",
-        "text": "Selamanya, bahkan setelah berakhirnya hubungan hukum dengan klien"
-      }
-    ],
-    "correctAnswer": "D",
-    "explanation": {
-      "summary": "Kewajiban menjaga rahasia jabatan advokat berlaku selamanya, bahkan setelah hubungan dengan klien berakhir.",
-      "legalBasis": "Pasal 19 ayat (2) UU No. 18 Tahun 2003 tentang Advokat jo. Pasal 4 huruf h Kode Etik Advokat Indonesia (KEAI).",
-      "analysis": "Pasal 19 ayat (2) UU No. 18 Tahun 2003 dan Pasal 4 huruf h KEAI secara mutlak mewajibkan Advokat merahasiakan segala sesuatu yang diketahui atau diperoleh dari kliennya karena hubungan profesinya, dan kewajiban tersebut tetap berlaku walaupun hubungan hukum antara Advokat dan klien telah berakhir."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 345,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Hak Menolak Perkara",
-    "question": "Bolehkah seorang advokat menolak calon kliennya yang meminta bantuan hukum?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Boleh, dengan pertimbangan tidak sesuai dengan keahliannya dan bertentangan dengan hati nuraninya"
-      },
-      {
-        "key": "B",
-        "text": "Tidak boleh, karena agama atau partai calon klien berbeda dengan yang dimiliki oleh advokat tersebut"
-      },
-      {
-        "key": "C",
-        "text": "Tidak boleh, karena advokat wajib menerima setiap orang tanpa kecuali"
-      },
-      {
-        "key": "D",
-        "text": "Boleh ditolak hanya apabila calon klien tidak mampu membayar honorarium di muka"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "Advokat berhak menolak perkara jika tidak sesuai keahlian atau bertentangan dengan hati nuraninya.",
-      "legalBasis": "Pasal 3 huruf a Kode Etik Advokat Indonesia (KEAI) jo. Pasal 18 ayat (1) UU No. 18 Tahun 2003.",
-      "statuteText": "Advokat dapat menolak untuk memberi nasihat dan bantuan hukum kepada setiap orang yang memerlukan jasa dan atau bantuan hukum dengan pertimbangan oleh karena tidak sesuai dengan keahliannya dan bertentangan dengan hati nuraninya.",
-      "analysis": "Pasal 3 huruf a KEAI menegaskan: \"Advokat dapat menolak untuk memberi nasihat dan bantuan hukum kepada setiap orang yang memerlukan jasa dan atau bantuan hukum dengan pertimbangan oleh karena tidak sesuai dengan keahliannya dan bertentangan dengan hati nuraninya.\" Penolakan tidak boleh didasarkan pada pertimbangan SARA atau gender."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 346,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Sanksi Pemberhentian Sementara (Skorsing)",
-    "question": "Jika seorang advokat dijatuhi sanksi berupa pemberhentian sementara untuk waktu tertentu oleh Dewan Kehormatan, maka akibat hukumnya adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Advokat tersebut hanya dapat menjalankan profesinya di luar sidang pengadilan"
-      },
-      {
-        "key": "B",
-        "text": "Advokat tersebut hanya dapat memberikan konsultasi hukum tertulis"
-      },
-      {
-        "key": "C",
-        "text": "Advokat tersebut masih dapat beracara bila didampingi advokat senior"
-      },
-      {
-        "key": "D",
-        "text": "Advokat tersebut tidak dapat menjalankan profesinya, baik di dalam maupun di luar sidang pengadilan"
-      }
-    ],
-    "correctAnswer": "D",
-    "explanation": {
-      "summary": "Pemberhentian sementara melarang advokat berpraktik baik di dalam maupun di luar pengadilan selama masa sanksi.",
-      "legalBasis": "Pasal 7 ayat (1) huruf c Kode Etik Advokat Indonesia jo. Pasal 26 UU No. 18 Tahun 2003.",
-      "analysis": "Sanksi pemberhentian sementara (skorsing) berakibat advokat dilarang total menjalankan profesinya, baik di dalam pengadilan (litigasi) maupun di luar pengadilan (non-litigasi/konsultasi) selama jangka waktu berlakunya putusan skorsing tersebut."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 347,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Hubungan Antar Teman Sejawat Advokat",
-    "question": "Bagaimanakah hubungan advokat dengan teman sejawatnya dalam menjalankan profesinya di masyarakat?",
-    "options": [
-      {
-        "key": "A",
-        "text": "Advokat harus saling menjatuhkan reputasi rekan agar mendapatkan klien terbanyak"
-      },
-      {
-        "key": "B",
-        "text": "Advokat harus menjunjung tinggi nilai-nilai profesinya dengan dilandasi sikap saling menghormati, saling menghargai, dan saling mempercayai sesama rekan seprofesi"
-      },
-      {
-        "key": "C",
-        "text": "Advokat harus mampu bersaing bebas tanpa perlu memikirkan kode etik antar rekan"
-      },
-      {
-        "key": "D",
-        "text": "Teman sejawat advokat semata-mata adalah kompetitor bisnis di pasar jasa hukum"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": {
-      "summary": "Hubungan antar teman sejawat advokat dilandasi sikap saling menghormati, menghargai, dan mempercayai.",
-      "legalBasis": "Pasal 5 huruf a Kode Etik Advokat Indonesia (KEAI) 2002.",
-      "statuteText": "Hubungan antara teman sejawat Advokat berdasarkan atas sikap saling menghormati, saling menghargai dan saling mempercayai.",
-      "analysis": "Pasal 5 huruf a KEAI menegaskan: \"Hubungan antara teman sejawat Advokat berdasarkan atas sikap saling menghormati, saling menghargai dan saling mempercayai.\" Sikap menjatuhkan teman sejawat dilarang keras sebagai pelanggaran etik."
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 348,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Bantuan Hukum Cuma-Cuma (Pro Bono)",
     "question": "Jasa hukum yang diberikan oleh advokat secara cuma-cuma (tanpa imbalan) kepada klien yang tidak mampu disebut...",
     "options": [
@@ -1286,7 +613,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
   },
   {
     "id": 349,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Pengambilan Sumpah Advokat",
     "question": "Sebelum menjalankan profesinya, advokat wajib bersumpah menurut agamanya atau berjanji dengan sungguh-sungguh dalam sidang terbuka di...",
     "options": [
@@ -1318,7 +645,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
   },
   {
     "id": 350,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Kewenangan Pengangkatan Advokat",
     "question": "Pengangkatan seorang advokat menurut Undang-Undang No. 18 Tahun 2003 dilakukan oleh...",
     "options": [
@@ -1350,7 +677,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
   },
   {
     "id": 351,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Wewenang Mandiri Organisasi Advokat",
     "question": "Undang-Undang Advokat memberikan kewenangan yang cukup besar kepada Organisasi Advokat, antara lain kewenangan untuk...",
     "options": [
@@ -1380,40 +707,8 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Mudah"
   },
   {
-    "id": 352,
-    "category": "Kode Etik Profesi Advokat",
-    "topicTag": "Larangan Rangkap Jabatan Politik",
-    "question": "Berdasarkan Pasal 28 ayat (3) UU No. 18 Tahun 2003, pimpinan Organisasi Advokat dilarang merangkap jabatan sebagai...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Dosen atau akademisi di perguruan tinggi"
-      },
-      {
-        "key": "B",
-        "text": "Pimpinan Partai Politik, baik di tingkat Pusat maupun Daerah"
-      },
-      {
-        "key": "C",
-        "text": "Ketua yayasan sosial atau keagamaan"
-      },
-      {
-        "key": "D",
-        "text": "Pengurus organisasi bantuan hukum pro bono"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": {
-      "summary": "Pimpinan Organisasi Advokat tidak dapat merangkap sebagai pimpinan partai politik.",
-      "legalBasis": "Pasal 28 ayat (3) UU No. 18 Tahun 2003 tentang Advokat.",
-      "statuteText": "Pimpinan Organisasi Advokat tidak dapat merangkap sebagai pimpinan partai politik, baik di tingkat Pusat maupun di tingkat Daerah.",
-      "analysis": "Pasal 28 ayat (3) UU Advokat secara tegas menentukan: \"Pimpinan Organisasi Advokat tidak dapat merangkap sebagai pimpinan partai politik, baik di tingkat Pusat maupun di tingkat Daerah.\""
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 353,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
     "topicTag": "Legitimasi Beracara Advokat di Persidangan",
     "question": "Kelengkapan yuridis apa yang wajib ditunjukkan oleh advokat dalam persidangan di pengadilan agar sah mendampingi atau mewakili kliennya?",
     "options": [
@@ -1663,37 +958,6 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Mudah"
   },
   {
-    "id": 361,
-    "category": "Hukum Acara PTUN",
-    "topicTag": "Perkembangan Regulasi UU PTUN",
-    "question": "Undang-Undang tentang Peradilan Tata Usaha Negara telah dua kali mengalami perubahan/penyempurnaan, yaitu melalui...",
-    "options": [
-      {
-        "key": "A",
-        "text": "UU No. 5/1960 direvisi dengan UU No. 8/2004"
-      },
-      {
-        "key": "B",
-        "text": "UU No. 5 Tahun 1986 diubah dengan UU No. 9 Tahun 2004 dan kemudian UU No. 51 Tahun 2009"
-      },
-      {
-        "key": "C",
-        "text": "UU No. 9/2004 direvisi dengan UU No. 51/2009 saja"
-      },
-      {
-        "key": "D",
-        "text": "UU No. 15/1986 direvisi dengan UU No. 9/2004"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": {
-      "summary": "UU PTUN No. 5/1986 mengalami perubahan pertama melalui UU 9/2004 dan perubahan kedua melalui UU 51/2009.",
-      "legalBasis": "Pasal 1 angka 1 jo. Konsiderans Menimbang UU No. 9 Tahun 2004 jo. UU No. 51 Tahun 2009 tentang Perubahan Atas UU No. 5 Tahun 1986 tentang PTUN.",
-      "analysis": "Rezim hukum PTUN Indonesia bertumpu pada UU No. 5 Tahun 1986, yang diamandemen dengan UU No. 9 Tahun 2004 dan diperbarui lagi dengan UU No. 51 Tahun 2009."
-    },
-    "difficulty": "Mudah"
-  },
-  {
     "id": 362,
     "category": "Hukum Acara PTUN",
     "topicTag": "Kewenangan Sengketa Kepegawaian",
@@ -1756,69 +1020,6 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Mudah"
   },
   {
-    "id": 364,
-    "category": "Hukum Acara PTUN",
-    "topicTag": "Kedudukan Pengadilan TUN Tingkat Pertama",
-    "question": "Pengadilan Tata Usaha Negara (PTUN tingkat pertama) menurut Pasal 6 ayat (1) UU No. 5 Tahun 1986 berkedudukan di...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Kotamadya atau di Ibukota Kabupaten"
-      },
-      {
-        "key": "B",
-        "text": "Ibukota Provinsi saja"
-      },
-      {
-        "key": "C",
-        "text": "Ibukota Negara Republik Indonesia"
-      },
-      {
-        "key": "D",
-        "text": "Kecamatan setempat"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "PTUN tingkat pertama berkedudukan di kotamadya atau ibukota kabupaten.",
-      "legalBasis": "Pasal 6 ayat (1) UU No. 5 Tahun 1986 tentang Peradilan Tata Usaha Negara.",
-      "statuteText": "Pengadilan Tata Usaha Negara berkedudukan di kotamadya atau ibukota kabupaten, dan daerah hukumnya meliputi wilayah kotamadya atau kabupaten.",
-      "analysis": "Pasal 6 ayat (1) UU PTUN mengatur: \"Pengadilan Tata Usaha Negara berkedudukan di kotamadya atau ibukota kabupaten, dan daerah hukumnya meliputi wilayah kotamadya atau kabupaten.\" Sedangkan Pengadilan Tinggi TUN berkedudukan di ibukota provinsi (Pasal 6 ayat 2)."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 365,
-    "category": "Hukum Acara Perdata",
-    "topicTag": "Sita Revindikasi (Revindicatoir Beslag)",
-    "question": "Sita Revindikasi (Revindicatoir Beslaag) berdasarkan Pasal 226 HIR / 260 RBg dapat dimintakan terhadap...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Barang tidak bergerak milik pihak ketiga yang dikuasai tergugat"
-      },
-      {
-        "key": "B",
-        "text": "Barang tidak bergerak milik penggugat yang dikuasai oleh tergugat"
-      },
-      {
-        "key": "C",
-        "text": "Barang bergerak milik penggugat yang berada di bawah penguasaan tergugat"
-      },
-      {
-        "key": "D",
-        "text": "Barang bergerak milik pihak ketiga yang disengketakan"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Sita revindikasi diajukan oleh pemilik barang bergerak untuk menuntut kembali barang bergeraknya yang dikuasai tergugat.",
-      "legalBasis": "Pasal 226 ayat (1) HIR / Pasal 260 ayat (1) RBg.",
-      "analysis": "Revindicatoir beslag adalah penyitaan atas barang bergerak milik Penggugat sendiri yang berada di tangan Tergugat tanpa hak, guna menuntut pengembalian hak milik tersebut secara utuh."
-    },
-    "difficulty": "Sedang"
-  },
-  {
     "id": 366,
     "category": "Hukum Acara Perdata",
     "topicTag": "Kompetensi Relatif (Forum Rei Sitae)",
@@ -1846,68 +1047,6 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       "summary": "Gugatan atas benda tidak bergerak diajukan di Pengadilan Negeri tempat benda itu terletak (forum rei sitae).",
       "legalBasis": "Pasal 118 ayat (3) HIR / Pasal 142 ayat (3) RBg.",
       "analysis": "Pasal 118 ayat (3) HIR mengatur pengecualian asas actor sequitur forum rei: bilamana gugatan mengenai barang tidak bergerak (tanah/bangunan), gugatan diajukan kepada Pengadilan Negeri yang daerah hukumnya meliputi tempat letak barang tidak bergerak tersebut (forum rei sitae)."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 367,
-    "category": "Hukum Acara Perdata",
-    "topicTag": "Intervensi dalam Perkara Perdata (Voeging)",
-    "question": "Suatu aksi hukum oleh pihak ketiga yang berkepentingan dengan jalan masuk ke dalam perkara perdata yang sedang berlangsung antara penggugat dan tergugat untuk memihak salah satu pihak (misalnya bersama tergugat) disebut...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Rekonvensi"
-      },
-      {
-        "key": "B",
-        "text": "Voeging (Menyertai)"
-      },
-      {
-        "key": "C",
-        "text": "Tussenkomst (Menengahi)"
-      },
-      {
-        "key": "D",
-        "text": "Vrijwaring (Penjaminan)"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": {
-      "summary": "Pihak ketiga yang masuk bergabung untuk membela atau memihak salah satu pihak disebut Voeging.",
-      "legalBasis": "Pasal 279 Reglement op de Rechtsvordering (Rv) jo. Doktrin Hukum Acara Perdata.",
-      "analysis": "Voeging adalah campur tangan pihak ketiga yang berkepentingan untuk bergabung dengan salah satu pihak (Penggugat atau Tergugat). Sedangkan bila pihak ketiga menuntut hak miliknya sendiri melawan Penggugat dan Tergugat sekaligus disebut Tussenkomst."
-    },
-    "difficulty": "Sedang"
-  },
-  {
-    "id": 368,
-    "category": "Hukum Acara Perdata",
-    "topicTag": "Upaya Hukum Putusan Verstek (Verzet)",
-    "question": "Upaya hukum biasa yang dapat diajukan oleh pihak Tergugat terhadap putusan verstek (putusan tanpa hadirnya Tergugat) adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Banding langsung ke Pengadilan Tinggi"
-      },
-      {
-        "key": "B",
-        "text": "Kasasi ke Mahkamah Agung"
-      },
-      {
-        "key": "C",
-        "text": "Verzet (Perlawanan) kepada Pengadilan Negeri yang memutus"
-      },
-      {
-        "key": "D",
-        "text": "Peninjauan Kembali (PK)"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Upaya hukum terhadap putusan verstek adalah Verzet (perlawanan).",
-      "legalBasis": "Pasal 129 ayat (1) dan (2) HIR / Pasal 153 ayat (1) dan (2) RBg.",
-      "analysis": "Berdasarkan Pasal 129 HIR, Tergugat yang dijatuhi putusan verstek dapat mengajukan verzet (perlawanan) dalam tenggang waktu 14 hari setelah putusan diberitahukan kepadanya secara langsung."
     },
     "difficulty": "Mudah"
   },
@@ -1975,7 +1114,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
   },
   {
     "id": 371,
-    "category": "Kode Etik Profesi Advokat",
+    "category": "Hukum Acara Perdata",
     "topicTag": "Surat Kuasa Khusus",
     "question": "Untuk mewakili klien beracara di muka persidangan pengadilan, disyaratkan secara tegas menggunakan surat kuasa yang bersifat...",
     "options": [
@@ -1999,7 +1138,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Mewakili di pengadilan wajib menggunakan Surat Kuasa Khusus.",
-      "legalBasis": "Pasal 123 ayat (1) HIR jo. SEMA No. 1 Tahun 1971 jo. SEMA No. 6 Tahun 1994.",
+      "legalBasis": "Pasal 123 ayat (1) HIR / Pasal 147 ayat (1) RBg jo. SEMA No. 1 Tahun 1971 jo. SEMA No. 6 Tahun 1994.",
       "analysis": "SEMA No. 1/1971 dan SEMA No. 6/1994 mewajibkan surat kuasa untuk beracara di pengadilan berbentuk surat kuasa khusus yang menyebutkan para pihak, objek perkara, dan pengadilan yang bersangkutan."
     },
     "difficulty": "Mudah"
@@ -2092,40 +1231,10 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Petitum adalah tuntutan apa saja yang dimintakan oleh penggugat kepada hakim untuk dikabulkan.",
-      "legalBasis": "Pasal 118 jo. Pasal 125 HIR jo. Yurisprudensi Mahkamah Agung RI No. 556 K/Sip/1971.",
-      "analysis": "Petitum berisi permohonan konkret dari penggugat kepada majelis hakim (misalnya menyatakan tergugat wanprestasi, menghukum ganti rugi, menyatakan sita jaminan sah dan berharga). Posita berisi uraian fakta dan dalil hukum."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 375,
-    "category": "Hukum Acara Perdata",
-    "topicTag": "Alat Bukti Sah Perdata",
-    "question": "Berdasarkan ketentuan Pasal 164 HIR / Pasal 284 RBg jo. Pasal 1866 KUHPerdata, alat-alat bukti yang sah dalam hukum acara perdata terdiri atas...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Surat, Saksi, Pengetahuan Hakim, Keyakinan Hakim, dan Sumpah"
-      },
-      {
-        "key": "B",
-        "text": "Surat, Saksi, Yurisprudensi, Keyakinan Hakim, dan Sumpah"
-      },
-      {
-        "key": "C",
-        "text": "Surat, Keterangan Terdakwa, Petunjuk, dan Saksi Ahli"
-      },
-      {
-        "key": "D",
-        "text": "Alat bukti Surat, Saksi, Persangkaan, Pengakuan, dan Sumpah"
-      }
-    ],
-    "correctAnswer": "D",
-    "explanation": {
-      "summary": "Alat bukti perdata menurut Pasal 164 HIR adalah surat, saksi, persangkaan, pengakuan, dan sumpah.",
-      "legalBasis": "Pasal 164 HIR / Pasal 284 RBg jo. Pasal 1866 Kitab Undang-Undang Hukum Perdata (KUHPerdata).",
-      "analysis": "Pasal 164 HIR mengatur 5 alat bukti sah secara urut: 1. Bukti tulisan/surat; 2. Bukti saksi; 3. Persangkaan (vermoedens); 4. Pengakuan (bekentenis); 5. Sumpah (eed). Keyakinan hakim bukan alat bukti formil melainkan standar penilaian pembuktian pidana."
+      "summary": "Petitum adalah bagian surat gugatan yang memuat hal-hal yang dimohonkan atau dituntut oleh Penggugat untuk diputus dan dikabulkan oleh hakim.",
+      "legalBasis": "Pasal 8 ayat (3) Rv (Reglement op de Burgerlijke Rechtsvordering) jo. Pasal 118 ayat (1) HIR / Pasal 142 ayat (1) RBg.",
+      "analysis": "Syarat formal sistematika surat gugatan (Identitas, Posita, dan Petitum) berpedoman pada Pasal 8 ayat (3) Rv yang tetap diterapkan dalam praktik peradilan perdata berdasarkan asas process doelmatigheid (kepentingan beracara), sedangkan Pasal 118 ayat (1) HIR / Pasal 142 ayat (1) RBg mengatur tata cara pengajuan gugatan tertulis kepada Ketua Pengadilan Negeri. Secara fungsional: (1) Identitas memuat keterangan lengkap para pihak (nama, alamat, dan kedudukan hukum); (2) Posita (Fundamentum Petendi) memuat uraian kejadian (feitelijke gronden) dan dasar hukum (rechtsgronden) dalil gugatan; (3) Petitum memuat tuntutan konkret Penggugat untuk dikabulkan dalam amar putusan; sedangkan (4) Considerans merupakan bagian dari putusan hakim (bukan bagian surat gugatan) yang berisi pertimbangan hukum majelis hakim sebelum menjatuhkan amar putusan.",
+      "statuteText": "Surat gugatan harus memuat identitas para pihak, uraian kejadian atau dalil gugatan (fundamentum petendi / posita), serta tuntutan yang dimohonkan kepada hakim untuk diputus (petitum)."
     },
     "difficulty": "Mudah"
   },
@@ -2217,73 +1326,10 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Gugatan perdata pada dasarnya diajukan tertulis, namun bagi yang buta huruf diperkenankan secara lisan.",
-      "legalBasis": "Pasal 118 ayat (1) jo. Pasal 120 HIR / Pasal 144 RBg.",
+      "legalBasis": "Pasal 118 ayat (1) dan Pasal 120 HIR / Pasal 142 ayat (1) dan Pasal 144 RBg.",
       "analysis": "Pasal 120 HIR memberi kemudahan akses keadilan (access to justice) bagi pihak yang buta huruf untuk mengajukan gugatan secara lisan kepada Ketua Pengadilan Negeri, yang selanjutnya mencatat atau menyuruh mencatat gugatan tersebut."
     },
     "difficulty": "Mudah"
-  },
-  {
-    "id": 379,
-    "category": "Hukum Acara Perdata",
-    "topicTag": "Sita Jaminan (Conservatoir Beslag)",
-    "question": "Sita Jaminan (Conservatoir Beslaag) berdasarkan Pasal 227 HIR dapat dimintakan penyitaannya terhadap...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Barang bergerak maupun barang tidak bergerak milik Tergugat"
-      },
-      {
-        "key": "B",
-        "text": "Barang milik pihak ketiga yang tidak tersangkut perkara"
-      },
-      {
-        "key": "C",
-        "text": "Harta warisan milik saksi persidangan"
-      },
-      {
-        "key": "D",
-        "text": "Aset lembaga pemerintah yang dilindungi undang-undang keuangan negara"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "Sita jaminan diletakkan atas barang bergerak atau tidak bergerak milik Tergugat guna menjamin pelaksanaan putusan.",
-      "legalBasis": "Pasal 227 ayat (1) HIR / Pasal 261 ayat (1) RBg.",
-      "analysis": "Sita jaminan (conservatoir beslag) bertujuan membekukan aset debitur/tergugat agar tidak dipindahtangankan, disembunyikan, atau dialihkan selama perkara berjalan, sehingga putusan pengadilan tidak menjadi hampa (illusoir)."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 380,
-    "category": "Hukum Acara PHI",
-    "topicTag": "Tenggang Waktu Putusan Pengadilan Hubungan Industrial",
-    "question": "Tenggang waktu penyelesaian perselisihan hubungan industrial pada Pengadilan Hubungan Industrial (PHI) sejak sidang pertama menurut UU No. 2 Tahun 2004 adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "50 (lima puluh) hari kerja sejak sidang pertama"
-      },
-      {
-        "key": "B",
-        "text": "30 (tiga puluh) hari kerja sejak sidang pertama"
-      },
-      {
-        "key": "C",
-        "text": "90 (sembilan puluh) hari kerja sejak berkas perkara diterima"
-      },
-      {
-        "key": "D",
-        "text": "14 (empat belas) hari kerja sejak pembuktian selesai"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "Majelis hakim PHI wajib memutus perkara paling lama 50 hari kerja sejak sidang pertama.",
-      "legalBasis": "Pasal 103 UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
-      "statuteText": "Majelis Hakim wajib memberikan putusan penyelesaian perselisihan hubungan industrial dalam waktu selambat-lambatnya 50 (lima puluh) hari kerja terhitung sejak sidang pertama.",
-      "analysis": "Pasal 103 UU No. 2 Tahun 2004 menegaskan: \"Majelis Hakim wajib memberikan putusan penyelesaian perselisihan hubungan industrial dalam waktu selambat-lambatnya 50 (lima puluh) hari kerja terhitung sejak sidang pertama.\""
-    },
-    "difficulty": "Sedang"
   },
   {
     "id": 381,
@@ -2313,321 +1359,6 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
       "summary": "Tindak pidana perburuhan bukan objek sengketa hubungan industrial melainkan ranah pidana umum/khusus.",
       "legalBasis": "Pasal 2 UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
       "analysis": "Pasal 2 UU No. 2 Tahun 2004 membagi perselisihan hubungan industrial secara limitatif menjadi 4 jenis: perselisihan hak, perselisihan kepentingan, perselisihan pemutusan hubungan kerja, dan perselisihan antar serikat pekerja/serikat buruh hanya dalam satu perusahaan."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 382,
-    "category": "Hukum Acara PHI",
-    "topicTag": "Syarat Lampiran Gugatan PHI (Risalah Mediasi/Konsiliasi)",
-    "question": "Untuk mengajukan gugatan ke Pengadilan Hubungan Industrial, surat gugatan secara imperatif harus dilampiri dengan...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Bukti-bukti tentang adanya hak"
-      },
-      {
-        "key": "B",
-        "text": "Keterangan tertulis dari kepolisian"
-      },
-      {
-        "key": "C",
-        "text": "Surat izin dari Menteri Ketenagakerjaan"
-      },
-      {
-        "key": "D",
-        "text": "Risalah penyelesaian melalui mediasi atau konsiliasi"
-      }
-    ],
-    "correctAnswer": "D",
-    "explanation": {
-      "summary": "Gugatan PHI wajib melampirkan risalah mediasi atau konsiliasi; tanpa itu hakim wajib mengembalikan gugatan.",
-      "legalBasis": "Pasal 83 ayat (1) UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
-      "statuteText": "Pengajuan gugatan yang tidak dilampiri risalah penyelesaian melalui mediasi atau konsiliasi, maka hakim Pengadilan Hubungan Industrial wajib mengembalikan gugatan kepada penggugat.",
-      "analysis": "Pasal 83 ayat (1) UU No. 2 Tahun 2004 menetapkan: \"Pengajuan gugatan yang tidak dilampiri risalah penyelesaian melalui mediasi atau konsiliasi, maka hakim Pengadilan Hubungan Industrial wajib mengembalikan gugatan kepada penggugat.\""
-    },
-    "difficulty": "Sedang"
-  },
-  {
-    "id": 383,
-    "category": "Hukum Acara PHI",
-    "topicTag": "Kedudukan UU 2/2004 sebagai Hukum Formil",
-    "question": "Undang-Undang No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial merupakan hukum formil penegakan dari...",
-    "options": [
-      {
-        "key": "A",
-        "text": "UU No. 12 Tahun 1964 tentang Pemutusan Hubungan Kerja di Perusahaan Swasta"
-      },
-      {
-        "key": "B",
-        "text": "UU No. 22 Tahun 1957 tentang Penyelesaian Perselisihan Perburuhan"
-      },
-      {
-        "key": "C",
-        "text": "UU No. 13 Tahun 2003 tentang Ketenagakerjaan"
-      },
-      {
-        "key": "D",
-        "text": "UU No. 14 Tahun 1969 tentang Ketentuan-Ketentuan Pokok Tenaga Kerja"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "UU No. 2 Tahun 2004 adalah hukum formil dari UU No. 13 Tahun 2003 tentang Ketenagakerjaan.",
-      "legalBasis": "Pasal 125 ayat (1) dan ayat (2) Undang-Undang No. 2 Tahun 2004 tentang PPHI jo. UU No. 13 Tahun 2003 tentang Ketenagakerjaan.",
-      "analysis": "Hukum materiil ketenagakerjaan diatur dalam UU No. 13 Tahun 2003, sedangkan hukum formil/hukum acara penyelesaian sengketanya diatur dalam UU No. 2 Tahun 2004."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 384,
-    "category": "Hukum Acara PHI",
-    "topicTag": "Pengertian Perundingan Bipartit",
-    "question": "Istilah perundingan antara pekerja/buruh atau serikat pekerja/serikat buruh dengan pengusaha untuk menyelesaikan perselisihan hubungan industrial dalam satu perusahaan adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Perundingan Bipartit"
-      },
-      {
-        "key": "B",
-        "text": "Musyawarah Tripartit"
-      },
-      {
-        "key": "C",
-        "text": "Konsiliasi Ketenagakerjaan"
-      },
-      {
-        "key": "D",
-        "text": "Arbitrase Hubungan Industrial"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "Perundingan langsung antara pekerja dan pengusaha dinamakan Bipartit.",
-      "legalBasis": "Pasal 1 angka 10 jo. Pasal 3 ayat (1) UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
-      "statuteText": "Perundingan bipartit adalah perundingan antara pekerja/buruh atau serikat pekerja/serikat buruh dengan pengusaha untuk menyelesaikan perselisihan hubungan industrial.",
-      "analysis": "Pasal 1 angka 10 UU No. 2 Tahun 2004 merumuskan: \"Perundingan bipartit adalah perundingan antara pekerja/buruh atau serikat pekerja/serikat buruh dengan pengusaha untuk menyelesaikan perselisihan hubungan industrial.\" Perundingan ini wajib ditempuh lebih dahulu."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 385,
-    "category": "Hukum Acara PHI",
-    "topicTag": "Pembebasan Biaya Perkara PHI (Pasal 58 UU 2/2004)",
-    "question": "Ketentuan pembebasan biaya perkara pada Pengadilan Hubungan Industrial (PHI) diatur bagi gugatan yang...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Diajukan oleh perusahaan multinasional"
-      },
-      {
-        "key": "B",
-        "text": "Nilai gugatannya di bawah Rp150.000.000,00 (tidak dikenakan biaya perkara termasuk biaya eksekusi)"
-      },
-      {
-        "key": "C",
-        "text": "Nilai gugatannya di atas Rp500.000.000,00"
-      },
-      {
-        "key": "D",
-        "text": "Semua perkara PHI wajib membayar panjar perkara tanpa perkecualian"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": {
-      "summary": "Gugatan PHI di bawah Rp150 juta dibebaskan dari biaya perkara termasuk biaya eksekusi.",
-      "legalBasis": "Pasal 58 UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
-      "statuteText": "Pihak-pihak yang berperkara tidak dikenakan biaya, termasuk biaya eksekusi yang nilai gugatannya di bawah Rp150.000.000,00 (seratus lima puluh juta rupiah).",
-      "analysis": "Pasal 58 UU No. 2 Tahun 2004 menegaskan: \"Pihak-pihak yang berperkara tidak dikenakan biaya, termasuk biaya eksekusi yang nilai gugatannya di bawah Rp150.000.000,00 (seratus lima puluh juta rupiah).\""
-    },
-    "difficulty": "Sedang"
-  },
-  {
-    "id": 386,
-    "category": "Hukum Acara Peradilan Agama",
-    "topicTag": "Dasar Hukum Peradilan Agama",
-    "question": "Peradilan Agama di Indonesia dibentuk dan diatur dalam peraturan perundang-undangan...",
-    "options": [
-      {
-        "key": "A",
-        "text": "UU No. 7 Tahun 1989 jo. UU No. 8 Tahun 2006"
-      },
-      {
-        "key": "B",
-        "text": "UU No. 7 Tahun 1989 jo. UU No. 3 Tahun 2006 jo. UU No. 50 Tahun 2009"
-      },
-      {
-        "key": "C",
-        "text": "UU No. 2 Tahun 1989 jo. UU No. 3 Tahun 2006"
-      },
-      {
-        "key": "D",
-        "text": "UU No. 5 Tahun 1986 jo. UU No. 5 Tahun 2004"
-      }
-    ],
-    "correctAnswer": "B",
-    "explanation": {
-      "summary": "Peradilan Agama diatur dalam UU No. 7 Tahun 1989 jo. UU No. 3 Tahun 2006 jo. UU No. 50 Tahun 2009.",
-      "legalBasis": "Pasal 1 angka 1 jo. Pasal 2 Undang-Undang No. 7 Tahun 1989 jo. UU No. 3 Tahun 2006 jo. UU No. 50 Tahun 2009 tentang Peradilan Agama.",
-      "analysis": "Ketentuan pokok mengenai Peradilan Agama diatur dalam Undang-Undang Nomor 7 Tahun 1989, yang kemudian diamandemen dengan UU No. 3 Tahun 2006 dan UU No. 50 Tahun 2009."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 387,
-    "category": "Hukum Acara Peradilan Agama",
-    "topicTag": "Tenggang Waktu Ikrar Talak",
-    "question": "Dalam putusan permohonan talak yang telah berkekuatan hukum tetap dan telah ditetapkan sidang penyaksian ikrar talak, maka tenggang waktu yang diberikan kepada pemohon untuk mengikrarkan talaknya sebelum gugur adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "3 (tiga) bulan"
-      },
-      {
-        "key": "B",
-        "text": "1 (satu) bulan"
-      },
-      {
-        "key": "C",
-        "text": "6 (enam) bulan terhitung sejak hari sidang penyaksian ikrar talak ditetapkan"
-      },
-      {
-        "key": "D",
-        "text": "12 (dua belas) bulan"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Tenggang waktu pengucapan ikrar talak adalah 6 (enam) bulan sejak hari sidang ditetapkan.",
-      "legalBasis": "Pasal 70 ayat (6) UU No. 7 Tahun 1989 jo. Pasal 131 ayat (4) Kompilasi Hukum Islam (KHI).",
-      "analysis": "Berdasarkan Pasal 70 ayat (6) UU No. 7 Tahun 1989, apabila suami tidak mengucapkan ikrar talak dalam tenggang waktu 6 bulan sejak hari sidang penyaksian ikrar talak ditetapkan, maka hak suami untuk mengikrarkan talak gugur dan perkawinan tetap utuh."
-    },
-    "difficulty": "Sedang"
-  },
-  {
-    "id": 388,
-    "category": "Hukum Acara Peradilan Agama",
-    "topicTag": "Masa Iddah Karena Kematian (KHI)",
-    "question": "Waktu tunggu (masa iddah) bagi seorang janda apabila perkawinan putus karena kematian suami ditetapkan selama...",
-    "options": [
-      {
-        "key": "A",
-        "text": "120 (seratus dua puluh) hari"
-      },
-      {
-        "key": "B",
-        "text": "125 (seratus dua puluh lima) hari"
-      },
-      {
-        "key": "C",
-        "text": "130 (seratus tiga puluh) hari (4 bulan 10 hari)"
-      },
-      {
-        "key": "D",
-        "text": "135 (seratus tiga puluh lima) hari"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Waktu tunggu (iddah) janda yang ditinggal mati suami adalah 130 hari.",
-      "legalBasis": "Pasal 39 ayat (1) huruf a PP No. 9 Tahun 1975 jo. Pasal 153 ayat (2) huruf a Kompilasi Hukum Islam (KHI).",
-      "statuteText": "Apabila perkawinan putus karena kematian, walaupun qobla al dukhul, waktu tunggu ditetapkan 130 (seratus tiga puluh) hari.",
-      "analysis": "Menurut Pasal 153 ayat (2) huruf a KHI: \"Apabila perkawinan putus karena kematian, walaupun qobla al dukhul, waktu tunggu ditetapkan 130 (seratus tiga puluh) hari.\" Hal ini sejalan dengan Al-Qur'an Surah Al-Baqarah ayat 234."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 389,
-    "category": "Hukum Acara Peradilan Agama",
-    "topicTag": "Taklik Talak (KHI)",
-    "question": "Perjanjian yang diucapkan calon mempelai pria setelah akad nikah yang dicantumkan dalam Akta Nikah berupa janji talak yang digantungkan kepada suatu keadaan tertentu yang mungkin terjadi di masa yang akan datang disebut...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Khuluk"
-      },
-      {
-        "key": "B",
-        "text": "Talak Ba'in Kubraa"
-      },
-      {
-        "key": "C",
-        "text": "Taklik talak"
-      },
-      {
-        "key": "D",
-        "text": "Mut'ah"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Perjanjian janji talak yang digantungkan pada syarat tertentu dalam Akta Nikah adalah taklik-talak.",
-      "legalBasis": "Pasal 1 huruf e jo. Pasal 45 Kompilasi Hukum Islam (KHI) (Inpres No. 1 Tahun 1991).",
-      "analysis": "Pasal 1 huruf e KHI mendefinisikan taklik-talak sebagai perjanjian yang diucapkan calon mempelai pria setelah akad nikah yang dicantumkan dalam Akta Nikah berupa janji talak yang digantungkan kepada suatu keadaan tertentu yang mungkin terjadi di masa yang akan datang."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 390,
-    "category": "Hukum Acara Peradilan Agama",
-    "topicTag": "Itsbat Nikah (KHI)",
-    "question": "Dalam hal perkawinan tidak dapat dibuktikan dengan Akta Nikah maka pihak yang berkepentingan dapat mengajukan permohonan ke Pengadilan Agama yaitu perkara...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Cerai talak"
-      },
-      {
-        "key": "B",
-        "text": "Cerai gugat"
-      },
-      {
-        "key": "C",
-        "text": "Itsbat nikah (Pengesahan nikah)"
-      },
-      {
-        "key": "D",
-        "text": "Permohonan rujuk"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Perkawinan tanpa akta nikah dapat diajukan permohonan itsbat nikah ke Pengadilan Agama.",
-      "legalBasis": "Pasal 7 ayat (2) dan (3) Kompilasi Hukum Islam (KHI).",
-      "statuteText": "Dalam hal perkawinan tidak dapat dibuktikan dengan Akta Nikah, dapat diajukan itsbat nikahnya ke Pengadilan Agama.",
-      "analysis": "Pasal 7 ayat (2) KHI menegaskan: \"Dalam hal perkawinan tidak dapat dibuktikan dengan Akta Nikah, dapat diajukan itsbat nikahnya ke Pengadilan Agama.\" Tujuannya demi kepastian status hukum perkawinan dan perlindungan hak anak serta pasangan."
-    },
-    "difficulty": "Mudah"
-  },
-  {
-    "id": 391,
-    "category": "Hukum Acara Peradilan Agama",
-    "topicTag": "Saat Terjadinya Perceraian Talak",
-    "question": "Dalam perkara Cerai Talak di Pengadilan Agama, ikatan perkawinan secara hukum dinyatakan putus beserta akibat-akibatnya terhitung sejak...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Meninggalkan tempat kediaman bersama"
-      },
-      {
-        "key": "B",
-        "text": "Putusan permohonan cerai talak dibacakan majelis hakim"
-      },
-      {
-        "key": "C",
-        "text": "Ikrar Talak diucapkan oleh suami di depan sidang terbuka Pengadilan Agama"
-      },
-      {
-        "key": "D",
-        "text": "Buku nikah diserahkan kembali kepada Kantor Urusan Agama (KUA)"
-      }
-    ],
-    "correctAnswer": "C",
-    "explanation": {
-      "summary": "Perceraian talak terjadi terhitung sejak saat ikrar talak diucapkan di depan sidang Pengadilan Agama.",
-      "legalBasis": "Pasal 34 ayat (2) PP No. 9 Tahun 1975 jo. Pasal 70 ayat (1) UU No. 7 Tahun 1989 jo. Pasal 131 KHI.",
-      "analysis": "Berdasarkan hukum acara peradilan agama, perkawinan dalam permohonan cerai talak baru sah putus sejak diucapkannya ikrar talak di depan sidang terbuka Pengadilan Agama, bukan sejak putusan izin mengikrarkan talak dijatuhkan."
     },
     "difficulty": "Mudah"
   },
@@ -2759,34 +1490,739 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "difficulty": "Mudah"
   },
   {
-    "id": 396,
-    "category": "Hukum Acara Peradilan Agama",
-    "topicTag": "Kompetensi Relatif Cerai Gugat",
-    "question": "Kepada Pengadilan Agama manakah seorang istri mengajukan gugatan perceraian (Cerai Gugat) terhadap suaminya?",
+    "id": 951,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Sejawat Asing dalam KEAI",
+    "question": "Berdasarkan Pasal 6 Kode Etik Advokat Indonesia (KEAI), bagaimanakah kedudukan Advokat asing yang berdasarkan peraturan perundang-undangan menjalankan profesinya di Indonesia?",
     "options": [
       {
         "key": "A",
-        "text": "Pengadilan Agama tempat mereka dahulu melangsungkan akad nikah"
+        "text": "Hanya tunduk pada kode etik organisasi advokat negara asalnya"
       },
       {
         "key": "B",
-        "text": "Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Penggugat (istri)"
+        "text": "Tunduk kepada serta wajib menaati Kode Etik Advokat Indonesia"
       },
       {
         "key": "C",
-        "text": "Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Tergugat (suami)"
+        "text": "Dikecualikan dari yurisdiksi Dewan Kehormatan Advokat Indonesia"
       },
       {
         "key": "D",
-        "text": "Pengadilan Agama tempat orang tua Penggugat bertempat tinggal"
+        "text": "Hanya wajib menaati ketentuan hukum pidana dan perdata nasional"
       }
     ],
     "correctAnswer": "B",
     "explanation": {
-      "summary": "Gugatan cerai oleh istri diajukan ke Pengadilan Agama tempat kediaman Penggugat (istri).",
-      "legalBasis": "Pasal 73 ayat (1) UU No. 7 Tahun 1989 tentang Peradilan Agama jo. Pasal 132 ayat (1) KHI.",
-      "analysis": "Berdasarkan Pasal 73 ayat (1) UU No. 7 Tahun 1989 jo. Pasal 132 ayat (1) KHI, gugatan perceraian diajukan oleh istri atau kuasanya kepada Pengadilan Agama yang daerah hukumnya meliputi tempat kediaman Penggugat, kecuali apabila Penggugat dengan sengaja meninggalkan tempat kediaman bersama tanpa izin Tergugat."
+      "summary": "Advokat asing yang berpraktik secara sah di Indonesia tunduk pada dan wajib menaati Kode Etik Advokat Indonesia.",
+      "legalBasis": "Pasal 1 huruf d jo. Pasal 6 Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat asing yang berdasarkan peraturan perundang-undangan yang berlaku menjalankan profesinya di Indonesia tunduk kepada serta wajib mentaati Kode Etik ini.",
+      "analysis": "Pasal 6 KEAI menegaskan yurisdiksi etis berlaku pula bagi Advokat asing (Teman Sejawat Asing) selama menjalankan tugas profesinya di wilayah hukum Indonesia, sehingga setiap pelanggaran etika oleh Advokat asing juga dapat diperiksa oleh Dewan Kehormatan."
     },
     "difficulty": "Mudah"
+  },
+  {
+    "id": 952,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Kepribadian Advokat Indonesia (KEAI)",
+    "question": "Menurut Pasal 2 Kode Etik Advokat Indonesia (KEAI), sikap dasar kepribadian yang wajib dimiliki seorang Advokat Indonesia dalam mempertahankan keadilan dan kebenaran adalah...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Bertakwa kepada Tuhan Yang Maha Esa, bersikap satria, jujur, serta dilandasi moral yang tinggi, luhur, dan mulia"
+      },
+      {
+        "key": "B",
+        "text": "Mengutamakan kemenangan perkara klien dengan segala cara yang tersedia"
+      },
+      {
+        "key": "C",
+        "text": "Bersikap tunduk sepenuhnya pada instruksi pejabat penegak hukum lain"
+      },
+      {
+        "key": "D",
+        "text": "Menjaga kerahasiaan tarif jasa hukum tanpa mempertimbangkan keadilan"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "summary": "Pasal 2 KEAI mensyaratkan Advokat Indonesia bertakwa kepada Tuhan Yang Maha Esa, bersikap satria, jujur, bermoral tinggi, serta menjunjung hukum, UUD 1945, KEAI, dan sumpah jabatan.",
+      "legalBasis": "Pasal 2 Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat Indonesia adalah warga negara Indonesia yang bertakwa kepada Tuhan Yang Maha Esa, bersikap satria, jujur dalam mempertahankan keadilan dan kebenaran dilandasi moral yang tinggi, luhur dan mulia, dan yang dalam melaksanakan tugasnya menjunjung tinggi hukum, Undang-undang Dasar Republik Indonesia, Kode Etik Advokat serta sumpah jabatannya.",
+      "analysis": "Pasal 2 KEAI merupakan landasan filosofis kepribadian profesi Advokat sebagai pengemban amanat keadilan yang memadukan integritas moral, ketakwaan, kejujuran, dan kepatuhan terhadap konstitusi serta sumpah profesi."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 953,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Larangan Diskriminasi dalam Penolakan Klien",
+    "question": "Meskipun Advokat memiliki hak menolak calon klien karena alasan keahlian dan hati nurani, Pasal 3 huruf a Kode Etik Advokat Indonesia secara tegas melarang Advokat menolak pemberian bantuan hukum dengan alasan...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Perkara tersebut berada di luar bidang keahlian hukum yang dikuasainya"
+      },
+      {
+        "key": "B",
+        "text": "Perkara tersebut bertentangan dengan hati nurani Advokat yang bersangkutan"
+      },
+      {
+        "key": "C",
+        "text": "Perbedaan agama, kepercayaan, suku, keturunan, jenis kelamin, keyakinan politik, atau kedudukan sosial"
+      },
+      {
+        "key": "D",
+        "text": "Calon klien sebelumnya masih memiliki Advokat lain tanpa pencabutan kuasa"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": {
+      "summary": "Advokat dilarang menolak klien karena alasan diskriminatif berupa perbedaan agama, kepercayaan, suku, keturunan, jenis kelamin, keyakinan politik, atau kedudukan sosialnya.",
+      "legalBasis": "Pasal 3 huruf a Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat dapat menolak untuk memberi nasihat dan bantuan hukum kepada setiap orang yang memerlukan jasa dan atau bantuan hukum dengan pertimbangan oleh karena tidak sesuai dengan keahliannya dan bertentangan dengan hati nuraninya, tetapi tidak dapat menolak dengan alasan karena perbedaan agama, kepercayaan, suku, keturunan, jenis kelamin, keyakinan politik dan kedudukan sosialnya.",
+      "analysis": "Ketentuan Pasal 3 huruf a KEAI menyeimbangkan kebebasan nurani Advokat dengan prinsip non-diskriminasi dan kesamaan kedudukan warga negara di hadapan hukum (equality before the law)."
+    },
+    "difficulty": "Sedang"
+  },
+  {
+    "id": 954,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Orientasi Pengabdian Profesi (KEAI)",
+    "question": "Berdasarkan Pasal 3 huruf b Kode Etik Advokat Indonesia, dalam menjalankan tugas profesinya seorang Advokat tidak bertujuan semata-mata memperoleh imbalan materi, melainkan lebih mengutamakan...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Popularitas kantor hukum di kalangan pelaku usaha"
+      },
+      {
+        "key": "B",
+        "text": "Tegaknya hukum, kebenaran, dan keadilan"
+      },
+      {
+        "key": "C",
+        "text": "Kepuasan subjektif klien tanpa memperhatikan norma hukum"
+      },
+      {
+        "key": "D",
+        "text": "Kecepatan penyelesaian perkara melalui kompromi biaya"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "summary": "Advokat dalam tugasnya lebih mengutamakan tegaknya hukum, kebenaran, dan keadilan daripada imbalan materi.",
+      "legalBasis": "Pasal 3 huruf b Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat dalam melakukan tugasnya tidak bertujuan semata-mata untuk memperoleh imbalan materi tetapi lebih mengutamakan tegaknya Hukum, Kebenaran dan Keadilan.",
+      "analysis": "Norma ini menegaskan sifat profesi Advokat bukan sebagai pedagang jasa hukum komersial semata, melainkan pengemban fungsi penegakan hukum dan keadilan."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 955,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Kemandirian dan Perjuangan HAM (KEAI)",
+    "question": "Menurut Pasal 3 huruf c Kode Etik Advokat Indonesia (KEAI), sifat profesi Advokat dalam memperjuangkan hak asasi manusia di Negara Hukum Indonesia adalah...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Bebas dan mandiri serta tidak dipengaruhi oleh siapapun"
+      },
+      {
+        "key": "B",
+        "text": "Tergantung pada persetujuan instansi penyidik dan kejaksaan"
+      },
+      {
+        "key": "C",
+        "text": "Tunduk secara hierarkis di bawah pimpinan pengadilan negeri"
+      },
+      {
+        "key": "D",
+        "text": "Terbatas hanya pada perkara perdata yang tidak melibatkan negara"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "summary": "Advokat bersifat bebas dan mandiri, tidak dipengaruhi siapapun, dan wajib memperjuangkan hak asasi manusia.",
+      "legalBasis": "Pasal 3 huruf c Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat adalah bebas dan mandiri yang tidak dipengaruhi oleh siapapun dan wajib memperjuangkan hak-hak azasi manusia dalam Negara Hukum Indonesia.",
+      "analysis": "Kemandirian Advokat menjamin keberanian profesional dalam membela hak konstitusional pencari keadilan tanpa tekanan kekuasaan eksekutif, yudikatif, maupun pihak lain."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 956,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Larangan Pekerjaan Lain yang Merugikan Martabat",
+    "question": "Ketentuan Pasal 3 huruf f Kode Etik Advokat Indonesia mengenai pekerjaan sampingan atau profesi lain bagi seorang Advokat menyatakan bahwa Advokat...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Bebas melakukan segala bentuk usaha komersial termasuk makelar kasus"
+      },
+      {
+        "key": "B",
+        "text": "Tidak dibenarkan melakukan pekerjaan lain yang dapat merugikan kebebasan, derajat, dan martabat Advokat"
+      },
+      {
+        "key": "C",
+        "text": "Dilarang total menulis karya ilmiah hukum atau mengajar di perguruan tinggi"
+      },
+      {
+        "key": "D",
+        "text": "Wajib memiliki izin tertulis dari pengadilan negeri sebelum bekerja sebagai konsultan"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "summary": "Advokat tidak dibenarkan melakukan pekerjaan lain yang dapat merugikan kebebasan, derajat, dan martabat profesinya.",
+      "legalBasis": "Pasal 3 huruf f Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat tidak dibenarkan untuk melakukan pekerjaan lain yang dapat merugikan kebebasan, derajat dan martabat Advokat.",
+      "analysis": "Profesi Advokat tidak melarang aktivitas akademis atau kegiatan sosial yang terhormat, namun melarang pekerjaan yang menimbulkan konflik integritas atau merendahkan martabat officium nobile."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 957,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Larangan Praktik Saat Menjabat Jabatan Negara",
+    "question": "Berdasarkan Pasal 3 huruf i Kode Etik Advokat Indonesia, apabila seorang Advokat diangkat menduduki suatu jabatan Negara (Eksekutif, Legislatif, atau Yudikatif), maka akibat etisnya adalah...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Tetap boleh beracara di pengadilan sepanjang tidak menerima honorarium"
+      },
+      {
+        "key": "B",
+        "text": "Namanya tetap boleh dicantumkan di surat kuasa kantor hukumnya sebagai penasihat"
+      },
+      {
+        "key": "C",
+        "text": "Tidak dibenarkan berpraktik sebagai Advokat dan namanya tidak diperkenankan dicantumkan atau digunakan oleh siapapun dalam perkara berjalan"
+      },
+      {
+        "key": "D",
+        "text": "Hanya dilarang beracara di wilayah pengadilan tempat ia berdomisili"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": {
+      "summary": "Advokat yang menduduki jabatan Negara dilarang berpraktik dan namanya tidak boleh dicantumkan atau dipergunakan dalam perkara yang sedang berjalan.",
+      "legalBasis": "Pasal 3 huruf i Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Seorang Advokat yang kemudian diangkat untuk menduduki suatu jabatan Negara (Eksekutif, Legislatif dan Yudikatif) tidak dibenarkan untuk berpraktek sebagai Advokat dan tidak diperkenankan namanya dicantumkan atau dipergunakan oleh siapapun atau oleh kantor manapun dalam suatu perkara yang sedang berjalan, dan selama ia menduduki jabatan tersebut ia tidak dapat berpraktek sebagai Advokat.",
+      "analysis": "Larangan ini sejalan dengan pencegahan benturan kepentingan dan penyalahgunaan pengaruh kekuasaan jabatan publik dalam proses peradilan."
+    },
+    "difficulty": "Sedang"
+  },
+  {
+    "id": 958,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Prioritas Penyelesaian Damai Perdata (KEAI)",
+    "question": "Menurut Pasal 4 huruf a Kode Etik Advokat Indonesia (KEAI), dalam menangani perkara-perkara perdata seorang Advokat harus mengutamakan...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Penyelesaian dengan jalan damai"
+      },
+      {
+        "key": "B",
+        "text": "Pengajuan sita jaminan terlebih dahulu sebelum berunding"
+      },
+      {
+        "key": "C",
+        "text": "Laporan pidana untuk menekan pihak lawan"
+      },
+      {
+        "key": "D",
+        "text": "Proses litigasi penuh hingga tingkat peninjauan kembali"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "summary": "Dalam perkara perdata, Advokat wajib mengutamakan penyelesaian secara damai terlebih dahulu.",
+      "legalBasis": "Pasal 4 huruf a Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat dalam perkara-perkara perdata harus mengutamakan penyelesaian dengan jalan damai.",
+      "analysis": "Pasal 4 huruf a KEAI mewajibkan Advokat berperan sebagai juru damai yang konstruktif sebelum menempuh jalur sengketa litigasi yang berkepanjangan dan berbiaya tinggi."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 959,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Larangan Memberi Keterangan Menyesatkan",
+    "question": "Dalam hubungan dengan klien menurut Pasal 4 huruf b Kode Etik Advokat Indonesia, seorang Advokat secara tegas dilarang untuk...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Meminta pembayaran panjar biaya perkara sesuai kesepakatan"
+      },
+      {
+        "key": "B",
+        "text": "Memberikan keterangan yang dapat menyesatkan klien mengenai perkara yang sedang diurusnya"
+      },
+      {
+        "key": "C",
+        "text": "Menjelaskan risiko kekalahan dalam suatu gugatan perdata"
+      },
+      {
+        "key": "D",
+        "text": "Meminta klien menyediakan alat bukti tertulis yang asli"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "summary": "Advokat dilarang memberikan keterangan atau informasi yang menyesatkan kepada klien terkait perkara yang ditanganinya.",
+      "legalBasis": "Pasal 4 huruf b Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat tidak dibenarkan memberikan keterangan yang dapat menyesatkan klien mengenai perkara yang sedang diurusnya.",
+      "analysis": "Hubungan Advokat dan klien dilandasi kepercayaan (fiduciary relationship), sehingga Advokat wajib menyampaikan analisis hukum dan perkembangan perkara secara objektif serta jujur."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 960,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Larangan Menjamin Kemenangan Perkara",
+    "question": "Sesuai dengan Pasal 4 huruf c Kode Etik Advokat Indonesia (KEAI), apakah seorang Advokat dibenarkan menjanjikan atau menjamin kepada klien bahwa perkaranya pasti akan menang?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Dibenarkan apabila klien bersedia membayar success fee tinggi"
+      },
+      {
+        "key": "B",
+        "text": "Dibenarkan jika alat bukti klien menurut Advokat sudah lengkap"
+      },
+      {
+        "key": "C",
+        "text": "Tidak dibenarkan menjamin kepada kliennya bahwa perkara yang ditanganinya akan menang"
+      },
+      {
+        "key": "D",
+        "text": "Dibenarkan khusus untuk perkara di pengadilan tingkat pertama"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": {
+      "summary": "Advokat tidak dibenarkan menjamin kemenangan perkara kepada kliennya karena putusan berada pada kewenangan hakim yang independen.",
+      "legalBasis": "Pasal 4 huruf c Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat tidak dibenarkan menjamin kepada kliennya bahwa perkara yang ditanganinya akan menang.",
+      "analysis": "Kewajiban Advokat bersifat inspanningsverbintenis (kewajiban berupaya secara sungguh-sungguh dan profesional), bukan resultaatverbintenis (kewajiban menjamin hasil putusan). Menjamin kemenangan melanggar kode etik profesi."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 961,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Pertimbangan Kemampuan Klien atas Honorarium",
+    "question": "Menurut Pasal 4 huruf d Kode Etik Advokat Indonesia (KEAI), dalam menentukan besarnya honorarium jasa hukum, seorang Advokat wajib...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Mempertimbangkan kemampuan klien"
+      },
+      {
+        "key": "B",
+        "text": "Mengikuti tarif seragam yang ditetapkan oleh pengadilan negeri"
+      },
+      {
+        "key": "C",
+        "text": "Menetapkan minimal setengah dari nilai objek sengketa"
+      },
+      {
+        "key": "D",
+        "text": "Menyesuaikan dengan honorarium Advokat pihak lawan"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "summary": "Pasal 4 huruf d KEAI mewajibkan Advokat mempertimbangkan kemampuan ekonomi klien saat menetapkan honorarium.",
+      "legalBasis": "Pasal 4 huruf d Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Dalam menentukan besarnya honorarium Advokat wajib mempertimbangkan kemampuan klien.",
+      "analysis": "Meskipun besar honorarium disepakati bersama berdasarkan Pasal 21 UU Advokat, KEAI memberikan pedoman etis agar Advokat tidak memeras klien dan tetap memperhatikan kemampuan finansial klien serta tidak membebani biaya yang tidak perlu (Pasal 4 huruf e KEAI)."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 962,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Standar Penanganan Perkara Cuma-Cuma (KEAI)",
+    "question": "Menurut Pasal 4 huruf f Kode Etik Advokat Indonesia (KEAI), bagaimanakah standar ketekunan Advokat dalam mengurus perkara cuma-cuma (pro deo / pro bono)?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Boleh diserahkan sepenuhnya kepada staf administrasi yang belum disumpah"
+      },
+      {
+        "key": "B",
+        "text": "Cukup mendampingi pada sidang pembacaan putusan saja"
+      },
+      {
+        "key": "C",
+        "text": "Harus memberikan perhatian yang sama seperti terhadap perkara yang menerima uang jasa"
+      },
+      {
+        "key": "D",
+        "text": "Tidak wajib membuat eksepsi maupun duplik apabila tidak ada biaya operasional"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": {
+      "summary": "Dalam mengurus perkara cuma-cuma, Advokat wajib memberikan perhatian dan kesungguhan yang sama seperti perkara berbayar.",
+      "legalBasis": "Pasal 4 huruf f Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat dalam mengurus perkara cuma-cuma harus memberikan perhatian yang sama seperti terhadap perkara untuk mana ia menerima uang jasa.",
+      "analysis": "Ketentuan ini memastikan akses keadilan yang bermartabat bagi masyarakat tidak mampu tanpa perlakuan diskriminatif dalam kualitas pembelaan hukum."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 963,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Menolak Perkara Tanpa Dasar Hukum",
+    "question": "Berdasarkan Pasal 4 huruf g Kode Etik Advokat Indonesia (KEAI), sikap yang wajib diambil Advokat apabila menurut keyakinannya perkara yang dimintakan klien tidak ada dasar hukumnya adalah...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Tetap menerima perkara asalkan klien menandatangani surat pernyataan tanggung jawab sendiri"
+      },
+      {
+        "key": "B",
+        "text": "Harus menolak mengurus perkara tersebut"
+      },
+      {
+        "key": "C",
+        "text": "Mengajukan gugatan terlebih dahulu sambil mencari dasar hukum di persidangan"
+      },
+      {
+        "key": "D",
+        "text": "Meminta penetapan ketua pengadilan sebelum menolak klien"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "summary": "Advokat wajib menolak mengurus perkara yang menurut keyakinannya tidak mempunyai dasar hukum.",
+      "legalBasis": "Pasal 4 huruf g Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat harus menolak mengurus perkara yang menurut keyakinannya tidak ada dasar hukumnya.",
+      "analysis": "Advokat tidak boleh menjadi alat untuk mengajukan gugatan atau pembelaan yang tidak berdasar hukum (unmeritorious/frivolous claim) demi mencegah penyalahgunaan lembaga peradilan."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 964,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Larangan Melepaskan Tugas pada Saat Merugikan Klien",
+    "question": "Menurut Pasal 4 huruf i Kode Etik Advokat Indonesia (KEAI), dalam hal seorang Advokat hendak melepaskan tugas pembelaan yang dibebankan kepadanya, maka ia...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Dapat mengundurkan diri secara lisan seketika di tengah persidangan tanpa alasan"
+      },
+      {
+        "key": "B",
+        "text": "Tidak dibenarkan melepaskan tugas pada saat yang tidak menguntungkan posisi klien atau menimbulkan kerugian yang tidak dapat diperbaiki lagi"
+      },
+      {
+        "key": "C",
+        "text": "Wajib tetap melanjutkan perkara meskipun tidak sesuai hati nuraninya selamanya"
+      },
+      {
+        "key": "D",
+        "text": "Hanya boleh mengundurkan diri apabila disetujui oleh hakim ketua majelis"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "summary": "Advokat tidak dibenarkan melepaskan tugas pada saat yang tidak menguntungkan posisi klien atau dapat menimbulkan kerugian yang tidak dapat diperbaiki lagi.",
+      "legalBasis": "Pasal 4 huruf i Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat tidak dibenarkan melepaskan tugas yang dibebankan kepadanya pada saat yang tidak menguntungkan posisi klien atau pada saat tugas itu akan dapat menimbulkan kerugian yang tidak dapat diperbaiki lagi bagi klien yang bersangkutan, dengan tidak mengurangi ketentuan sebagaimana dimaksud dalam Pasal 3 huruf a.",
+      "analysis": "Pengunduran diri Advokat tidak boleh dilakukan secara mendadak di momen krusial (misalnya menjelang daluwarsa upaya hukum atau sidang pembuktian terakhir) yang mencederai kepentingan pembelaan klien."
+    },
+    "difficulty": "Sedang"
+  },
+  {
+    "id": 965,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Benturan Kepentingan (Conflict of Interest)",
+    "question": "Seorang Advokat semula mengurus kepentingan hukum bersama dari dua pihak. Di kemudian hari timbul pertentangan kepentingan antara kedua pihak tersebut. Tindakan etis yang wajib dilakukan Advokat berdasarkan Pasal 4 huruf j KEAI adalah...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Memilih membela pihak yang membayar honorarium lebih besar"
+      },
+      {
+        "key": "B",
+        "text": "Tetap mendampingi keduanya secara bersamaan agar adil"
+      },
+      {
+        "key": "C",
+        "text": "Mengundurkan diri sepenuhnya dari pengurusan kepentingan pihak-pihak tersebut"
+      },
+      {
+        "key": "D",
+        "text": "Membela salah satu pihak setelah meminta persetujuan panitera pengadilan"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": {
+      "summary": "Apabila timbul benturan kepentingan antara dua pihak yang kepentingan bersamanya pernah diurus oleh Advokat, Advokat wajib mengundurkan diri sepenuhnya.",
+      "legalBasis": "Pasal 4 huruf j Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat yang mengurus kepentingan bersama dari dua pihak atau lebih harus mengundurkan diri sepenuhnya dari pengurusan kepentingan-kepentingan tersebut, apabila di kemudian hari timbul pertentangan kepentingan antara pihak-pihak yang bersangkutan.",
+      "analysis": "Aturan larangan benturan kepentingan (conflict of interest) melindungi kerahasiaan informasi kedua pihak yang sebelumnya telah dipercayakan kepada Advokat tersebut."
+    },
+    "difficulty": "Sedang"
+  },
+  {
+    "id": 966,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Keberatan Terhadap Rekan Sejawat Melalui Dewan Kehormatan",
+    "question": "Apabila seorang Advokat memiliki keberatan atas tindakan teman sejawatnya yang dianggap bertentangan dengan Kode Etik Advokat, saluran penyelesaian yang benar menurut Pasal 5 huruf c KEAI adalah...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Mengajukan keberatan kepada Dewan Kehormatan untuk diperiksa dan tidak menyiarkannya melalui media massa"
+      },
+      {
+        "key": "B",
+        "text": "Mengadakan konferensi pers terbuka untuk memperingatkan masyarakat umum"
+      },
+      {
+        "key": "C",
+        "text": "Memublikasikan surat somasi terbuka di media sosial dan surat kabar"
+      },
+      {
+        "key": "D",
+        "text": "Meminta ketua pengadilan negeri mencabut izin beracara teman sejawat tersebut"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "summary": "Keberatan terhadap pelanggaran etika teman sejawat wajib diajukan ke Dewan Kehormatan dan dilarang disiarkan melalui media massa.",
+      "legalBasis": "Pasal 5 huruf c Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Keberatan-keberatan terhadap tindakan teman sejawat yang dianggap bertentangan dengan Kode Etik Advokat harus diajukan kepada Dewan Kehormatan untuk diperiksa dan tidak dibenarkan untuk disiarkan melalui media massa atau cara lain.",
+      "analysis": "Pasal 5 huruf c KEAI menjaga kehormatan korps profesi Advokat dengan menyelesaikan dugaan pelanggaran etika melalui forum internal Dewan Kehormatan secara bermartabat, bukan melalui peradilan opini publik di media massa."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 967,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Syarat Penerimaan Perkara Penggantian Advokat",
+    "question": "Seorang klien hendak mengganti kuasa dari Advokat sebelumnya kepada Advokat yang baru. Berdasarkan Pasal 5 huruf e Kode Etik Advokat Indonesia, Advokat baru baru dapat menerima perkara tersebut setelah...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Menerima pembayaran honorarium penuh dari klien di muka"
+      },
+      {
+        "key": "B",
+        "text": "Mendapat izin lisan dari majelis hakim yang memeriksa perkara"
+      },
+      {
+        "key": "C",
+        "text": "Menerima bukti pencabutan pemberian kuasa kepada Advokat semula serta mengingatkan klien memenuhi kewajibannya kepada Advokat semula"
+      },
+      {
+        "key": "D",
+        "text": "Menunggu putusan perkara sebelumnya berkekuatan hukum tetap terlebih dahulu"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": {
+      "summary": "Advokat baru hanya boleh menerima perkara penggantian kuasa setelah menerima bukti pencabutan kuasa Advokat semula dan mengingatkan klien memenuhi kewajibannya.",
+      "legalBasis": "Pasal 5 huruf d dan huruf e Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Apabila klien hendak mengganti Advokat, maka Advokat yang baru hanya dapat menerima perkara itu setelah menerima bukti pencabutan pemberian kuasa kepada Advokat semula dan berkewajiban mengingatkan klien untuk memenuhi kewajibannya apabila masih ada terhadap Advokat semula.",
+      "analysis": "Selain mencegah perebutan klien (Pasal 5 huruf d), Pasal 5 huruf e KEAI melindungi hak Advokat terdahulu atas kewajiban honorarium maupun biaya yang belum diselesaikan oleh klien."
+    },
+    "difficulty": "Sedang"
+  },
+  {
+    "id": 968,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Larangan Menjadikan Pembicaraan Damai Sebagai Bukti",
+    "question": "Menurut Pasal 7 huruf b Kode Etik Advokat Indonesia (KEAI), apabila para Advokat melakukan pembicaraan atau korespondensi dalam rangka upaya perdamaian namun tidak berhasil mencapai kesepakatan, maka isi pembicaraan atau korespondensi tersebut...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Dapat dijadikan bukti pengakuan bersalah pihak lawan di pengadilan"
+      },
+      {
+        "key": "B",
+        "text": "Tidak dibenarkan untuk digunakan sebagai bukti di muka pengadilan"
+      },
+      {
+        "key": "C",
+        "text": "Wajib dilampirkan sebagai bagian dari replik atau duplik"
+      },
+      {
+        "key": "D",
+        "text": "Dapat diajukan ke pengadilan setelah dilegalisasi oleh notaris"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "summary": "Isi pembicaraan atau korespondensi perdamaian antar Advokat yang gagal tidak boleh digunakan sebagai alat bukti di persidangan.",
+      "legalBasis": "Pasal 7 huruf b Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Isi pembicaraan atau korespondensi dalam rangka upaya perdamaian antar Advokat akan tetapi tidak berhasil, tidak dibenarkan untuk digunakan sebagai bukti di muka pengadilan.",
+      "analysis": "Ketentuan ini sejalan dengan prinsip itikad baik negosiasi agar para pihak dan Advokat dapat berunding secara terbuka menuju perdamaian tanpa khawatir penawaran damainya dijadikan alat bukti yang merugikan di persidangan."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 969,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Larangan Menghubungi Hakim Secara Sepihak & Surat Ad Informandum",
+    "question": "Dalam perkara perdata yang sedang berjalan menurut Pasal 7 huruf c Kode Etik Advokat Indonesia, apabila Advokat menyampaikan surat kepada hakim termasuk surat bersifat \"ad informandum\", maka ia wajib...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Menghubungi hakim secara pribadi di luar sidang agar perkara cepat diputus"
+      },
+      {
+        "key": "B",
+        "text": "Seketika menyerahkan atau mengirimkan tembusan surat tersebut kepada Advokat pihak lawan, dan hanya menghubungi hakim bersama-sama Advokat pihak lawan"
+      },
+      {
+        "key": "C",
+        "text": "Merahasiakan isi surat tersebut dari pihak lawan hingga putusan diucapkan"
+      },
+      {
+        "key": "D",
+        "text": "Menyampaikan surat melalui panitera pengganti tanpa tembusan kepada pihak lawan"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "summary": "Advokat hanya boleh menghubungi hakim perdata bersama-sama Advokat pihak lawan dan wajib langsung mengirim tembusan setiap surat termasuk ad informandum kepada Advokat lawan.",
+      "legalBasis": "Pasal 7 huruf c Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Dalam perkara perdata yang sedang berjalan, Advokat hanya dapat menghubungi hakim apabila bersama-sama dengan Advokat pihak lawan, dan apabila ia menyampaikan surat, termasuk surat yang bersifat \"ad informandum\" maka hendaknya seketika itu tembusan dari surat tersebut wajib diserahkan atau dikirimkan pula kepada Advokat pihak lawan.",
+      "analysis": "Aturan ini menjaga asas audi et alteram partem (kesetaraan hak para pihak untuk didengar) dan integritas kemandirian hakim dari komunikasi sepihak (ex parte communication). Dalam perkara pidana (Pasal 7 huruf d KEAI), Advokat hanya dapat menghubungi hakim bersama-sama jaksa penuntut umum."
+    },
+    "difficulty": "Sedang"
+  },
+  {
+    "id": 970,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Larangan Memengaruhi Saksi Lawan",
+    "question": "Berdasarkan Pasal 7 huruf e Kode Etik Advokat Indonesia (KEAI), sikap etis yang harus dijunjung Advokat terhadap saksi yang diajukan oleh pihak lawan dalam perkara perdata atau jaksa penuntut umum dalam perkara pidana adalah...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Diperbolehkan mengarahkan jawaban saksi di luar sidang demi kepentingan klien"
+      },
+      {
+        "key": "B",
+        "text": "Tidak dibenarkan mengajari dan atau memengaruhi saksi-saksi pihak lawan"
+      },
+      {
+        "key": "C",
+        "text": "Boleh memberikan imbalan materi kepada saksi agar mengubah keterangannya"
+      },
+      {
+        "key": "D",
+        "text": "Wajib memeriksa dan menyetujui daftar pertanyaan untuk saksi lawan sebelum sidang"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "summary": "Advokat dilarang mengajari atau memengaruhi saksi yang diajukan pihak lawan maupun jaksa penuntut umum.",
+      "legalBasis": "Pasal 7 huruf e Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat tidak dibenarkan mengajari dan atau mempengaruhi saksi-saksi yang diajukan oleh pihak lawan dalam perkara perdata atau oleh jaksa penuntut umum dalam perkara pidana.",
+      "analysis": "Memengaruhi atau mengarahkan saksi pihak lawan merusak kemurnian pembuktian dan merupakan pelanggaran berat terhadap integritas proses peradilan."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 971,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Komunikasi Dengan Pihak yang Sudah Memiliki Advokat",
+    "question": "Apabila seorang Advokat mengetahui bahwa pihak lawan telah menunjuk Advokat mengenai suatu perkara tertentu, maka menurut Pasal 7 huruf f Kode Etik Advokat Indonesia hubungan mengenai perkara tersebut...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Tetap boleh dilakukan langsung kepada pihak lawan secara diam-diam"
+      },
+      {
+        "key": "B",
+        "text": "Hanya boleh dilakukan melalui Advokat yang telah ditunjuknya"
+      },
+      {
+        "key": "C",
+        "text": "Boleh dilakukan langsung sepanjang disaksikan oleh notaris"
+      },
+      {
+        "key": "D",
+        "text": "Hanya boleh dilakukan melalui pesan tertulis langsung kepada prinsipal lawan"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": {
+      "summary": "Apabila pihak lain sudah menunjuk Advokat dalam suatu perkara, komunikasi mengenai perkara tersebut hanya boleh dilakukan melalui Advokatnya.",
+      "legalBasis": "Pasal 7 huruf f Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Apabila Advokat mengetahui, bahwa seseorang telah menunjuk Advokat mengenai suatu perkara tertentu, maka hubungan dengan orang itu mengenai perkara tertentu tersebut hanya boleh dilakukan melalui Advokat tersebut.",
+      "analysis": "Larangan menghubungi langsung prinsipal lawan yang telah didampingi kuasa hukum (anti-bypass rule) melindungi prinsipal lawan dari tekanan hukum sepihak serta menghormati kedudukan rekan sejawat."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 972,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Larangan Iklan Berlebihan dan Pencantuman Non-Advokat",
+    "question": "Berdasarkan Pasal 8 huruf b dan huruf d Kode Etik Advokat Indonesia (KEAI), ketentuan mengenai iklan dan papan nama kantor Advokat menyatakan bahwa...",
+    "options": [
+      {
+        "key": "A",
+        "text": "Pemasangan iklan untuk menarik perhatian dan pemasangan papan nama berukuran berlebihan adalah dilarang, demikian pula mencantumkan nama orang bukan Advokat di papan nama kantor"
+      },
+      {
+        "key": "B",
+        "text": "Kantor Advokat diperbolehkan memasang reklame komersial berukuran besar di jalan raya"
+      },
+      {
+        "key": "C",
+        "text": "Nama staf administrasi non-Advokat boleh dicantumkan sebagai Advokat pada papan nama kantor"
+      },
+      {
+        "key": "D",
+        "text": "Papan nama kantor hukum tidak tunduk pada Kode Etik Advokat Indonesia"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": {
+      "summary": "KEAI melarang pemasangan iklan untuk menarik perhatian, papan nama berukuran berlebihan, dan pencantuman nama bukan Advokat pada papan nama kantor.",
+      "legalBasis": "Pasal 8 huruf b dan huruf d Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Pemasangan iklan semata-mata untuk menarik perhatian orang adalah dilarang termasuk pemasangan papan nama dengan ukuran dan atau bentuk yang berlebih-lebihan; Advokat tidak dibenarkan mengizinkan orang yang bukan Advokat mencantumkan namanya sebagai Advokat di papan nama kantor Advokat.",
+      "analysis": "Papan nama kantor Advokat berfungsi sebagai penunjuk alamat yang wajar dan proporsional, bukan sarana komersialisasi atau iklan yang menyesatkan publik mengenai kualifikasi Advokat."
+    },
+    "difficulty": "Mudah"
+  },
+  {
+    "id": 973,
+    "category": "Kode Etik Advokat Indonesia (KEAI)",
+    "topicTag": "Tenggang Waktu Banding Putusan Dewan Kehormatan (KEAI)",
+    "question": "Berdasarkan Pasal 17 ayat (2) Kode Etik Advokat Indonesia (KEAI), apabila pengadu atau teradu merasa tidak puas terhadap keputusan Majelis Dewan Kehormatan Cabang/Daerah, permohonan banding ke Dewan Kehormatan Pusat harus diajukan dalam tenggang waktu...",
+    "options": [
+      {
+        "key": "A",
+        "text": "7 (tujuh) hari sejak keputusan diucapkan"
+      },
+      {
+        "key": "B",
+        "text": "14 (empat belas) hari sejak pemeriksaan selesai"
+      },
+      {
+        "key": "C",
+        "text": "21 (dua puluh satu) hari sejak tanggal yang bersangkutan menerima salinan keputusan"
+      },
+      {
+        "key": "D",
+        "text": "30 (tiga puluh) hari sejak tanggal pendaftaran pengaduan"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": {
+      "summary": "Permohonan banding atas keputusan Dewan Kehormatan Cabang/Daerah ke Dewan Kehormatan Pusat diajukan dalam waktu 21 hari sejak salinan keputusan diterima.",
+      "legalBasis": "Pasal 17 ayat (2) Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Permohonan banding beserta memori bandingnya yang sifatnya wajib, harus disampaikan melalui Dewan Kehormatan Cabang/Daerah dalam waktu 21 (dua puluh satu) hari sejak tanggal yang bersangkutan menerima salinan keputusan.",
+      "analysis": "Berbeda dengan tenggang waktu banding perkara perdata biasa (14 hari), Hukum Acara Dewan Kehormatan dalam Pasal 17 ayat (2) KEAI menetapkan tenggang waktu banding etik selama 21 hari disertai kewajiban menyertakan memori banding."
+    },
+    "difficulty": "Sedang"
   }
 ];

@@ -19,12 +19,12 @@ export const UPA_LEGAL_COMPENDIUM: LegalArticleSummary[] = [
         content: 'Gugatan perdata diajukan ke Pengadilan Negeri tempat tinggal Tergugat.'
       },
       {
-        article: 'Pasal 125 ayat (1) HIR',
+        article: 'Pasal 125 ayat (1) HIR / 149 RBg',
         topic: 'Putusan Verstek',
         content: 'Jika Tergugat tidak hadir pada hari sidang tanpa alasan sah, perkara diputus tanpa hadirnya Tergugat (Verstek).'
       },
       {
-        article: 'Pasal 129 HIR',
+        article: 'Pasal 129 HIR / 153 RBg',
         topic: 'Perlawanan (Verzet)',
         content: 'Tenggang waktu mengajukan verzet terhadap putusan verstek adalah 14 hari sejak pemberitahuan putusan diterima.'
       },
