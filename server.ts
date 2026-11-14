@@ -11,13 +11,15 @@ import type { UPAQuestion, QuestionOptionKey, QuestionOption, RoomSettings, Part
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Server User Accounts Store with Persistent Disk Backup
+// Server User Accounts Store with Persistent Disk Backup (mirrors Supabase app_users)
 export interface ServerUserAccount {
   id: string;
   email: string;
   name: string;
+  username: string | null;
   organization?: string;
-  role: 'admin' | 'peserta';
+  role: 'admin' | 'user' | 'peserta';
+  is_approved: boolean;
   approvalStatus: 'approved' | 'pending' | 'rejected';
   approvedAt?: number;
   approvedBy?: string;
@@ -32,11 +34,7 @@ const serverUsersStore = new Map<string, ServerUserAccount>();
 
 export function isAdminEmail(email: string): boolean {
   const clean = email.trim().toLowerCase();
-  return (
-    clean === 'ahmadmiftahulfauzi07@gmail.com' ||
-    clean === 'amifaveiro9@gmail.com' ||
-    clean === 'admin@advokatquiz.id'
-  );
+  return clean === 'amifaveiro9@gmail.com';
 }
 
 function loadUsersFromDisk() {
@@ -46,8 +44,14 @@ function loadUsersFromDisk() {
       if (Array.isArray(data)) {
         for (const u of data) {
           if (u && u.email) {
-            serverUsersStore.set(u.email.toLowerCase(), {
+            const cleanEmail = u.email.toLowerCase();
+            const isApproved = typeof u.is_approved === 'boolean' ? u.is_approved : u.approvalStatus === 'approved';
+            serverUsersStore.set(cleanEmail, {
               ...u,
+              email: cleanEmail,
+              username: u.username ?? null,
+              is_approved: isApproved,
+              approvalStatus: isApproved ? 'approved' : (u.approvalStatus || 'pending'),
               isOnline: false, // Reset online state on process startup
             });
           }
@@ -58,41 +62,29 @@ function loadUsersFromDisk() {
     console.warn('[AUTH STORE] Error loading users store from disk:', err);
   }
 
-  // Pre-seed Admin Accounts (Auto-approved with Full Access)
-  const defaultAdmins = [
-    {
-      email: 'ahmadmiftahulfauzi07@gmail.com',
-      name: 'Ahmad Miftahul Fauzi, S.H.',
-      organization: 'Pengawas & Pengembang UPA',
-    },
-    {
-      email: 'amifaveiro9@gmail.com',
-      name: 'Ahmad Miftahul Fauzi, S.H.',
-      organization: 'Pengawas & Pengembang UPA',
-    },
-  ];
-
-  for (const adm of defaultAdmins) {
-    const existing = serverUsersStore.get(adm.email);
-    if (!existing) {
-      serverUsersStore.set(adm.email, {
-        id: 'usr-admin-' + btoa(adm.email).replace(/[^a-zA-Z0-9]/g, '').slice(0, 8),
-        email: adm.email,
-        name: adm.name,
-        organization: adm.organization,
-        role: 'admin',
-        approvalStatus: 'approved',
-        approvedAt: Date.now(),
-        approvedBy: 'System',
-        createdAt: Date.now(),
-        lastActive: Date.now(),
-        isOnline: false,
-        currentActivity: 'Di Halaman Pengawas AdvokatQuiz',
-      });
-    } else {
-      existing.role = 'admin';
-      existing.approvalStatus = 'approved';
-    }
+  // Pre-seed Admin Account (role = 'admin', is_approved = true) without auto-generating username
+  const adminEmail = 'amifaveiro9@gmail.com';
+  const existingAdmin = serverUsersStore.get(adminEmail);
+  if (!existingAdmin) {
+    serverUsersStore.set(adminEmail, {
+      id: 'usr-admin-' + btoa(adminEmail).replace(/[^a-zA-Z0-9]/g, '').slice(0, 8),
+      email: adminEmail,
+      name: adminEmail,
+      username: null,
+      role: 'admin',
+      is_approved: true,
+      approvalStatus: 'approved',
+      approvedAt: Date.now(),
+      approvedBy: 'System',
+      createdAt: Date.now(),
+      lastActive: Date.now(),
+      isOnline: false,
+      currentActivity: 'Di Halaman Pengawas AdvokatQuiz',
+    });
+  } else {
+    existingAdmin.role = 'admin';
+    existingAdmin.is_approved = true;
+    existingAdmin.approvalStatus = 'approved';
   }
 }
 
@@ -143,6 +135,7 @@ const lockedRoomStore = new Map<string, LockedRoomSession>();
 // Server-Authoritative Realtime Room Store (Strict Zero-Bot Policy: Only Real Connected Sockets)
 interface ServerParticipant extends Participant {
   ws?: WebSocket;
+  selectedOptions?: Record<number, string>;
 }
 
 interface ServerRoom {
@@ -175,6 +168,7 @@ function getCleanParticipants(room: ServerRoom): Participant[] {
     avatarSeed: p.avatarSeed,
     timeSpentSeconds: p.timeSpentSeconds,
     answeredIndices: p.answeredIndices || [],
+    isOnline: p.isOnline !== false,
   }));
 }
 
@@ -297,53 +291,65 @@ async function startServer() {
     res.json({ status: 'ok', time: new Date().toISOString() });
   });
 
-  // REST API: Login or Request Access
+  // REST API: Login or Request Access (mirrors app_users table rules)
   app.post('/api/auth/login-or-request', (req, res) => {
-    const { email, name, organization } = req.body;
-    if (!email || typeof email !== 'string') {
-      return res.status(400).json({ success: false, error: 'Email wajib disertakan' });
+    const { email, username, name, organization } = req.body;
+    if (!email || typeof email !== 'string' || !email.trim()) {
+      return res.status(400).json({ success: false, error: 'Email wajib diisi.' });
     }
 
     const cleanEmail = email.trim().toLowerCase();
+    const typedUsername = typeof username === 'string'
+      ? username.trim()
+      : (typeof name === 'string' ? name.trim() : '');
     const isAdmin = isAdminEmail(cleanEmail);
+
+    // Check unique username against other users when typedUsername is provided
+    if (typedUsername) {
+      for (const existingUser of serverUsersStore.values()) {
+        if (
+          existingUser.email !== cleanEmail &&
+          existingUser.username &&
+          existingUser.username.toLowerCase() === typedUsername.toLowerCase()
+        ) {
+          return res.status(409).json({
+            success: false,
+            error: 'Username sudah digunakan oleh pengguna lain. Silakan ketik username yang berbeda.',
+          });
+        }
+      }
+    }
 
     let user = serverUsersStore.get(cleanEmail);
     if (!user) {
-      let cleanName = name?.trim();
-      if (!cleanName) {
-        if (isAdmin) {
-          cleanName = 'Ahmad Miftahul Fauzi, S.H.';
-        } else {
-          const localPart = cleanEmail.split('@')[0] || 'Peserta';
-          const words = localPart
-            .replace(/[\._\-0-9]/g, ' ')
-            .trim()
-            .split(/\s+/)
-            .filter(Boolean)
-            .map((w) => w.charAt(0).toUpperCase() + w.slice(1));
-          cleanName = words.length > 0 ? `${words.join(' ')}, S.H.` : 'Calon Advokat, S.H.';
-        }
+      if (!isAdmin && !typedUsername) {
+        return res.status(400).json({
+          success: false,
+          error: 'Silakan ketik username Anda sendiri sebelum mengirim permintaan akses.',
+        });
       }
 
+      const finalUsername = typedUsername || null;
       user = {
         id: 'usr-' + btoa(cleanEmail).replace(/[^a-zA-Z0-9]/g, '').slice(0, 12),
         email: cleanEmail,
-        name: cleanName,
-        organization: organization?.trim() || (isAdmin ? 'Pengawas & Pengembang UPA' : 'PKPA PERADI 2026'),
-        role: isAdmin ? 'admin' : 'peserta',
+        name: finalUsername || cleanEmail,
+        username: finalUsername,
+        organization: typeof organization === 'string' ? organization.trim() : undefined,
+        role: isAdmin ? 'admin' : 'user',
+        is_approved: isAdmin,
         approvalStatus: isAdmin ? 'approved' : 'pending',
         approvedAt: isAdmin ? Date.now() : undefined,
         approvedBy: isAdmin ? 'System' : undefined,
         createdAt: Date.now(),
         lastActive: Date.now(),
-        isOnline: true,
-        currentActivity: isAdmin ? 'Di Halaman Pengawas AdvokatQuiz' : 'Menunggu Konfirmasi Admin',
+        isOnline: isAdmin,
+        currentActivity: isAdmin ? 'Di Beranda AdvokatQuiz' : 'Menunggu Persetujuan Admin',
       };
 
       serverUsersStore.set(cleanEmail, user);
       saveUsersToDisk();
 
-      // Notify admin via WebSocket broadcast about new access request
       if (!isAdmin) {
         broadcastGlobalAuthEvent({
           type: 'NEW_ACCESS_REQUEST',
@@ -351,27 +357,29 @@ async function startServer() {
         });
       }
     } else {
-      if (name && name.trim()) user.name = name.trim();
-      if (organization && organization.trim()) user.organization = organization.trim();
-      user.lastActive = Date.now();
-      user.isOnline = true;
+      if (typedUsername) {
+        user.username = typedUsername;
+        user.name = typedUsername;
+      } else if (!user.name) {
+        user.name = user.username || cleanEmail;
+      }
       if (isAdmin) {
         user.role = 'admin';
+        user.is_approved = true;
         user.approvalStatus = 'approved';
       }
+      user.lastActive = Date.now();
+      user.isOnline = user.is_approved;
       saveUsersToDisk();
     }
 
     res.json({
       success: true,
-      status: user.approvalStatus,
+      status: user.is_approved ? 'approved' : 'pending',
       user,
-      message:
-        user.approvalStatus === 'approved'
-          ? 'Login berhasil'
-          : user.approvalStatus === 'pending'
-          ? 'Akun Anda sedang menunggu konfirmasi dari Admin (Ahmad Miftahul Fauzi, S.H.).'
-          : 'Akses akun Anda telah ditolak oleh Admin.',
+      message: user.is_approved
+        ? 'Login berhasil.'
+        : 'Permintaan akses terkirim. Silakan tunggu persetujuan Admin.',
     });
   });
 
@@ -389,7 +397,7 @@ async function startServer() {
 
     res.json({
       success: true,
-      status: user.approvalStatus,
+      status: user.is_approved ? 'approved' : user.approvalStatus,
       user,
     });
   });
@@ -408,7 +416,7 @@ async function startServer() {
       };
     });
 
-    const pendingCount = users.filter((u) => u.approvalStatus === 'pending').length;
+    const pendingCount = users.filter((u) => !u.is_approved).length;
     const onlineCount = users.filter((u) => u.isOnline).length;
 
     res.json({
@@ -420,7 +428,7 @@ async function startServer() {
     });
   });
 
-  // REST API: Admin Approve Access (Teman bebas masuk kapan saja setelah ini)
+  // REST API: Admin Approve Access (is_approved = true)
   app.post('/api/auth/approve', (req, res) => {
     const { email, adminEmail } = req.body;
     if (!email) {
@@ -433,12 +441,12 @@ async function startServer() {
       return res.status(404).json({ success: false, error: 'User tidak ditemukan' });
     }
 
+    user.is_approved = true;
     user.approvalStatus = 'approved';
     user.approvedAt = Date.now();
-    user.approvedBy = adminEmail || 'Ahmad Miftahul Fauzi, S.H.';
+    user.approvedBy = adminEmail || 'Admin';
     saveUsersToDisk();
 
-    // Broadcast instant approval event to all sockets (so waiting screen unlocks automatically!)
     broadcastGlobalAuthEvent({
       type: 'USER_APPROVED',
       email: cleanEmail,
@@ -448,11 +456,11 @@ async function startServer() {
     res.json({
       success: true,
       user,
-      message: `Akun ${cleanEmail} telah berhasil disetujui! Rekan Anda sekarang bebas masuk kapan saja.`,
+      message: `Akun ${cleanEmail} berhasil disetujui.`,
     });
   });
 
-  // REST API: Admin Reject Access
+  // REST API: Admin Reject / Delete User from app_users
   app.post('/api/auth/reject', (req, res) => {
     const { email } = req.body;
     if (!email) {
@@ -460,21 +468,19 @@ async function startServer() {
     }
 
     const cleanEmail = String(email).trim().toLowerCase();
-    const user = serverUsersStore.get(cleanEmail);
-    if (!user) {
+    const existed = serverUsersStore.delete(cleanEmail);
+    if (!existed) {
       return res.status(404).json({ success: false, error: 'User tidak ditemukan' });
     }
 
-    user.approvalStatus = 'rejected';
     saveUsersToDisk();
 
     broadcastGlobalAuthEvent({
       type: 'USER_REJECTED',
       email: cleanEmail,
-      user,
     });
 
-    res.json({ success: true, message: `Permintaan akses ${cleanEmail} telah ditolak.` });
+    res.json({ success: true, message: `User ${cleanEmail} telah dihapus.` });
   });
 
   // REST API: Real-Time Heartbeat & Activity Sync
@@ -494,11 +500,13 @@ async function startServer() {
         id: 'usr-' + btoa(cleanEmail).replace(/[^a-zA-Z0-9]/g, '').slice(0, 12),
         email: cleanEmail,
         name: name || cleanEmail,
-        role: isAdmin ? 'admin' : 'peserta',
+        username: name || null,
+        role: isAdmin ? 'admin' : 'user',
+        is_approved: isAdmin,
         approvalStatus: isAdmin ? 'approved' : 'pending',
         createdAt: now,
         lastActive: now,
-        isOnline: true,
+        isOnline: isAdmin,
         currentActivity: currentActivity || 'Aktif di AdvokatQuiz',
       };
       serverUsersStore.set(cleanEmail, user);
@@ -570,7 +578,8 @@ async function startServer() {
       questionStartTime: room.questionStartTime,
       questionDuration: room.questionDuration,
       participants: getCleanParticipants(room),
-      questions: room.status === 'in_progress' ? room.questions : undefined,
+      questions: room.status === 'in_progress' || room.status === 'finished' ? room.questions : undefined,
+      serverTime: Date.now(),
     });
   });
 
@@ -649,9 +658,39 @@ async function startServer() {
     }
   });
 
+  // Keep WebSocket connections clean by detecting stale/dropped clients
+  const wsAliveMap = new WeakMap<WebSocket, boolean>();
+  const wsHeartbeatInterval = setInterval(() => {
+    for (const client of wss.clients) {
+      if (wsAliveMap.get(client) === false) {
+        try {
+          client.terminate();
+        } catch {
+          // ignore
+        }
+        continue;
+      }
+      wsAliveMap.set(client, false);
+      try {
+        client.ping();
+      } catch {
+        // ignore
+      }
+    }
+  }, 15000);
+
+  wss.on('close', () => {
+    clearInterval(wsHeartbeatInterval);
+  });
+
   wss.on('connection', (ws) => {
     let currentParticipantId: string | null = null;
     let currentRoomCode: string | null = null;
+
+    wsAliveMap.set(ws, true);
+    ws.on('pong', () => {
+      wsAliveMap.set(ws, true);
+    });
 
     const authClient: ConnectedAuthSocket = { ws, lastPing: Date.now() };
     connectedAuthSockets.add(authClient);
@@ -732,13 +771,24 @@ async function startServer() {
               participant.isHost = true;
             }
 
-            // Register real human participant (Zero bots)
-            const serverP: ServerParticipant = {
-              ...participant,
-              isHost: participant.id === room.hostId || participant.isHost,
-              answeredIndices: participant.answeredIndices || [],
-              ws,
-            };
+            // Register or reconnect real human participant (Zero bots)
+            const existingP = room.participants.get(participant.id);
+            const serverP: ServerParticipant = existingP
+              ? {
+                  ...existingP,
+                  name: participant.name || existingP.name,
+                  isHost: existingP.id === room.hostId || existingP.isHost || participant.isHost,
+                  isOnline: true,
+                  ws,
+                }
+              : {
+                  ...participant,
+                  isHost: participant.id === room.hostId || participant.isHost,
+                  answeredIndices: participant.answeredIndices || [],
+                  selectedOptions: {},
+                  isOnline: true,
+                  ws,
+                };
 
             room.participants.set(participant.id, serverP);
 
@@ -753,13 +803,13 @@ async function startServer() {
                 questionStartTime: room.questionStartTime,
                 questionDuration: room.questionDuration,
                 participants: getCleanParticipants(room),
-                questions: room.status === 'in_progress' ? room.questions : undefined,
+                questions: room.status === 'in_progress' || room.status === 'finished' ? room.questions : undefined,
                 messages: room.messages,
                 serverTime: Date.now(),
               })
             );
 
-            // Broadcast participant join to all participants in this room
+            // Broadcast participant join/reconnect to all participants in this room
             broadcastToRoom(room, {
               type: 'PARTICIPANTS_UPDATE',
               roomCode: room.code,
@@ -798,6 +848,7 @@ async function startServer() {
               p.score = 0;
               p.answeredCount = 0;
               p.answeredIndices = [];
+              p.selectedOptions = {};
               p.isFinished = false;
               p.timeSpentSeconds = 0;
             }
@@ -826,25 +877,30 @@ async function startServer() {
               if (!p.answeredIndices) {
                 p.answeredIndices = [];
               }
+              if (!p.selectedOptions) {
+                p.selectedOptions = {};
+              }
               if (!p.answeredIndices.includes(questionIndex)) {
                 p.answeredIndices.push(questionIndex);
                 p.answeredCount = p.answeredIndices.length;
+              }
+              if (selectedOption !== undefined && selectedOption !== null) {
+                p.selectedOptions[questionIndex] = selectedOption;
               }
               if (timeSpentSeconds !== undefined) {
                 p.timeSpentSeconds = timeSpentSeconds;
               }
 
-              // Compute score based on room questions
+              // Compute accurate score percentage across all recorded answers
               let correct = 0;
-              for (const idx of p.answeredIndices) {
-                const targetQ = room.questions[idx];
-                if (targetQ && idx === questionIndex) {
-                  if (selectedOption === targetQ.correctAnswer) correct++;
+              for (const [idxStr, opt] of Object.entries(p.selectedOptions)) {
+                const targetQ = room.questions[Number(idxStr)];
+                if (targetQ && opt === targetQ.correctAnswer) {
+                  correct++;
                 }
               }
-              // Update score percentage
               const totalQ = room.questions.length || 1;
-              p.score = Math.round((p.score * (p.answeredCount - 1) / totalQ) + ((selectedOption === room.questions[questionIndex]?.correctAnswer ? 1 : 0) / totalQ * 100));
+              p.score = (correct / totalQ) * 100;
 
               broadcastToRoom(room, {
                 type: 'ANSWER_UPDATE',
@@ -852,6 +908,27 @@ async function startServer() {
                 participantId,
                 questionIndex,
                 answeredIndices: p.answeredIndices,
+                participants: getCleanParticipants(room),
+              });
+            }
+            break;
+          }
+
+          case 'SCORE_UPDATE': {
+            const { roomCode, participantId, score, answeredCount, isFinished, timeSpentSeconds } = payload;
+            const room = serverRooms.get(roomCode);
+            if (!room) return;
+
+            const p = room.participants.get(participantId || currentParticipantId || '');
+            if (p) {
+              if (typeof score === 'number') p.score = score;
+              if (typeof answeredCount === 'number') p.answeredCount = answeredCount;
+              if (typeof isFinished === 'boolean') p.isFinished = isFinished;
+              if (typeof timeSpentSeconds === 'number') p.timeSpentSeconds = timeSpentSeconds;
+
+              broadcastToRoom(room, {
+                type: 'PARTICIPANTS_UPDATE',
+                roomCode: room.code,
                 participants: getCleanParticipants(room),
               });
             }
@@ -888,12 +965,49 @@ async function startServer() {
             const room = serverRooms.get(roomCode);
             if (!room) return;
 
+            const p = room.participants.get(currentParticipantId || '');
+            if (!p || (!p.isHost && p.id !== room.hostId)) {
+              return;
+            }
+
             room.status = 'finished';
             broadcastToRoom(room, {
               type: 'EXAM_FINISHED',
               roomCode: room.code,
+              status: 'finished',
               participants: getCleanParticipants(room),
+              serverTime: Date.now(),
             });
+            break;
+          }
+
+          case 'LEAVE_ROOM': {
+            const { roomCode, participantId } = payload;
+            const targetRoomCode = roomCode || currentRoomCode;
+            const targetPId = participantId || currentParticipantId;
+            if (!targetRoomCode || !targetPId) return;
+
+            const room = serverRooms.get(targetRoomCode);
+            if (room) {
+              const p = room.participants.get(targetPId);
+              if (p) {
+                if (room.status === 'lobby') {
+                  room.participants.delete(targetPId);
+                } else {
+                  p.isOnline = false;
+                  p.ws = undefined;
+                }
+                broadcastToRoom(room, {
+                  type: 'PARTICIPANTS_UPDATE',
+                  roomCode: room.code,
+                  participants: getCleanParticipants(room),
+                });
+              }
+            }
+            if (currentRoomCode === targetRoomCode) {
+              currentRoomCode = null;
+              currentParticipantId = null;
+            }
             break;
           }
 
@@ -947,12 +1061,21 @@ async function startServer() {
       if (currentRoomCode && currentParticipantId) {
         const room = serverRooms.get(currentRoomCode);
         if (room) {
-          room.participants.delete(currentParticipantId);
-          broadcastToRoom(room, {
-            type: 'PARTICIPANTS_UPDATE',
-            roomCode: room.code,
-            participants: getCleanParticipants(room),
-          });
+          const p = room.participants.get(currentParticipantId);
+          if (p) {
+            if (room.status === 'lobby') {
+              room.participants.delete(currentParticipantId);
+            } else {
+              // Preserve participant record for Leaderboard, mark offline so Next Soal isn't blocked
+              p.isOnline = false;
+              p.ws = undefined;
+            }
+            broadcastToRoom(room, {
+              type: 'PARTICIPANTS_UPDATE',
+              roomCode: room.code,
+              participants: getCleanParticipants(room),
+            });
+          }
         }
       }
     });

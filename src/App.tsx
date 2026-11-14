@@ -96,11 +96,23 @@ export default function App() {
   const [currentRoom, setCurrentRoom] = useState<RoomSettings | null>(null);
   const [currentUser, setCurrentUser] = useState<Participant | null>(null);
   const [participants, setParticipants] = useState<Participant[]>([]);
+  const [roomStatus, setRoomStatus] = useState<'lobby' | 'in_progress' | 'finished'>('lobby');
   const [roomMessages, setRoomMessages] = useState<RoomChatMessage[]>([]);
   const [chatModalOpen, setChatModalOpen] = useState<boolean>(false);
   const [realtimeTransport, setRealtimeTransport] = useState<RealtimeTransportType>('broadcast');
   const [connectionStatusText, setConnectionStatusText] = useState<string>('Siap terhubung');
   const [urlRoomCode, setUrlRoomCode] = useState<string>('');
+
+  // Mutable refs to prevent stale closures inside WebSocket/Realtime callbacks
+  const isFinishingRef = useRef<boolean>(false);
+  const expiredForIndexRef = useRef<number | null>(null);
+  const finishQuizRef = useRef<() => void>(() => {});
+  const quizQuestionsRef = useRef<UPAQuestion[]>(quizQuestions);
+  quizQuestionsRef.current = quizQuestions;
+  const activeViewRef = useRef(activeView);
+  activeViewRef.current = activeView;
+  const currentRoomRef = useRef(currentRoom);
+  currentRoomRef.current = currentRoom;
 
   // Check URL query params on mount for invitation link (?room=UPA-XYZ123)
   useEffect(() => {
@@ -135,17 +147,18 @@ export default function App() {
     const syncDirectory = async () => {
       const users = await userService.fetchAllUsers();
       const online = users.filter((u) => u.isOnline).length;
-      const pending = users.filter((u) => u.approvalStatus === 'pending').length;
+      const pending = users.filter((u) => u.is_approved === false || u.approvalStatus === 'pending').length;
       setOnlineUserCount(online);
       setPendingApprovalCount(pending);
 
-      // Verify non-admin account status
+      // Verify non-admin account status against app_users / server store
       const current = userService.getCurrentUser();
-      if (current && current.role !== 'admin') {
+      if (current && current.role !== 'admin' && users.length > 0) {
         const found = users.find((u) => u.email.toLowerCase() === current.email.toLowerCase());
-        if (found && found.approvalStatus === 'rejected') {
+        if (!found || found.is_approved === false || found.approvalStatus === 'rejected') {
           userService.logout();
           setAuthProfile(null);
+          setActiveView('home');
         }
       }
     };
@@ -243,6 +256,7 @@ export default function App() {
 
     realtimeMultiplayerService.onNextQuestionSync((targetIndex, newStartTime, duration) => {
       soundEffects.playClick();
+      expiredForIndexRef.current = null;
       setCurrentIndex(targetIndex);
       const startTime = newStartTime || Date.now();
       const qDur = duration || 60;
@@ -250,6 +264,19 @@ export default function App() {
       setQuestionDuration(qDur);
       setSecondsRemaining(qDur);
       setTotalSeconds(qDur);
+    });
+
+    realtimeMultiplayerService.onExamFinished((finalParticipants, fallbackQuestions) => {
+      if (Array.isArray(finalParticipants) && finalParticipants.length > 0) {
+        setParticipants(finalParticipants);
+      }
+      if (Array.isArray(fallbackQuestions) && fallbackQuestions.length > 0 && quizQuestionsRef.current.length === 0) {
+        setQuizQuestions(fallbackQuestions);
+      }
+      setRoomStatus('finished');
+      if (currentRoomRef.current && activeViewRef.current === 'quiz') {
+        finishQuizRef.current();
+      }
     });
 
     realtimeMultiplayerService.onChatMessage((msg) => {
@@ -270,9 +297,67 @@ export default function App() {
     };
   }, []);
 
+  // Automatically redirect participants to Final Results (Leaderboard & Pembahasan) when room status becomes finished
+  useEffect(() => {
+    if (currentRoom && roomStatus === 'finished' && activeView === 'quiz') {
+      finishQuizRef.current();
+    }
+  }, [currentRoom, roomStatus, activeView]);
+
+  // Safety-net room state sync polling for non-host participants during active multiplayer quiz
+  useEffect(() => {
+    if (!currentRoom || activeView !== 'quiz' || currentUser?.isHost) return;
+
+    const pollRoomState = async () => {
+      try {
+        const res = await fetch(`/api/rooms/${encodeURIComponent(currentRoom.code)}/state`);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!data || !data.success) return;
+
+        if (Array.isArray(data.participants)) {
+          setParticipants(data.participants);
+        }
+
+        if (data.status === 'finished') {
+          if (Array.isArray(data.questions) && data.questions.length > 0 && quizQuestionsRef.current.length === 0) {
+            setQuizQuestions(data.questions);
+          }
+          setRoomStatus('finished');
+          return;
+        }
+
+        if (
+          data.status === 'in_progress' &&
+          typeof data.currentQuestionIndex === 'number' &&
+          data.currentQuestionIndex > currentIndex
+        ) {
+          const qDur = data.questionDuration || 60;
+          const skew = data.serverTime ? data.serverTime - Date.now() : 0;
+          const adjustedStart = data.questionStartTime ? data.questionStartTime - skew : Date.now();
+          expiredForIndexRef.current = null;
+          setCurrentIndex(data.currentQuestionIndex);
+          setQuestionStartTime(adjustedStart);
+          setQuestionDuration(qDur);
+          setTotalSeconds(qDur);
+          const elapsed = Math.floor((Date.now() - adjustedStart) / 1000);
+          setSecondsRemaining(Math.max(0, qDur - elapsed));
+        }
+      } catch {
+        // Ignore transient network errors
+      }
+    };
+
+    const interval = setInterval(pollRoomState, 4000);
+    return () => clearInterval(interval);
+  }, [currentRoom, activeView, currentUser?.isHost, currentIndex]);
+
   // Handle timer expiration
   const handleTimerExpire = useCallback(() => {
-    soundEffects.playUrgentTick();
+    if (expiredForIndexRef.current !== currentIndex) {
+      expiredForIndexRef.current = currentIndex;
+      soundEffects.playUrgentTick();
+    }
 
     // If this question wasn't answered yet, mark it so key and explanation are revealed
     setAnswers((prev) => {
@@ -345,6 +430,10 @@ export default function App() {
     const qDur = config.flashSeconds || 60;
     const now = Date.now();
 
+    isFinishingRef.current = false;
+    expiredForIndexRef.current = null;
+    setRoomStatus('lobby');
+    setQuizSummary(null);
     setQuizQuestions(questions);
     setCurrentIndex(0);
     setAnswers({});
@@ -386,7 +475,13 @@ export default function App() {
 
     const qDur = duration || room.flashSecondsPerQuestion || 60;
     const qStart = startTime || Date.now();
+    const elapsed = Math.floor((Date.now() - qStart) / 1000);
+    const remaining = Math.max(0, qDur - elapsed);
 
+    isFinishingRef.current = false;
+    expiredForIndexRef.current = null;
+    setRoomStatus('in_progress');
+    setQuizSummary(null);
     setQuizQuestions(questions);
     setCurrentIndex(initialIndex);
     setAnswers({});
@@ -395,7 +490,7 @@ export default function App() {
     setQuestionStartTime(qStart);
     setQuestionDuration(qDur);
     setTotalSeconds(qDur);
-    setSecondsRemaining(qDur);
+    setSecondsRemaining(remaining);
 
     setActiveView('quiz');
   };
@@ -413,11 +508,13 @@ export default function App() {
       isFinished: false,
       avatarSeed: hostName,
       timeSpentSeconds: 0,
+      isOnline: true,
     };
 
     setCurrentRoom(settings);
     setCurrentUser(hostUser);
     setParticipants([hostUser]);
+    setRoomStatus('lobby');
 
     // Initialize Room Live Chat
     const welcomeMsg: RoomChatMessage = {
@@ -449,6 +546,7 @@ export default function App() {
       isFinished: false,
       avatarSeed: userName,
       timeSpentSeconds: 0,
+      isOnline: true,
     };
 
     let targetRoom: RoomSettings = {
@@ -462,6 +560,7 @@ export default function App() {
       officialTotalMinutes: 30,
     };
 
+    let fetchedStatus: 'lobby' | 'in_progress' | 'finished' = 'lobby';
     try {
       const res = await fetch(`/api/rooms/${encodeURIComponent(cleanCode)}/state`);
       if (res.ok) {
@@ -471,6 +570,9 @@ export default function App() {
             ...data.settings,
             code: data.roomCode || cleanCode,
           };
+          if (data.status === 'in_progress' || data.status === 'finished') {
+            fetchedStatus = data.status;
+          }
           if (data.participants && Array.isArray(data.participants) && data.participants.length > 0) {
             setParticipants(data.participants);
           }
@@ -482,6 +584,7 @@ export default function App() {
 
     setCurrentRoom(targetRoom);
     setCurrentUser(guest);
+    setRoomStatus(fetchedStatus);
     setParticipants((prev) => (prev.length > 0 ? prev : [guest]));
 
     // Initialize Room Live Chat
@@ -550,6 +653,8 @@ export default function App() {
   // Leave room
   const handleLeaveRoom = () => {
     realtimeMultiplayerService.leaveRoom();
+    isFinishingRef.current = false;
+    setRoomStatus('lobby');
     setCurrentRoom(null);
     setCurrentUser(null);
     setParticipants([]);
@@ -646,10 +751,16 @@ export default function App() {
     ? participants
     : (currentUser ? [currentUser] : []);
 
-  const totalPeersCount = Math.max(1, connectedParticipants.length);
+  // Exclude disconnected participants so Next Soal cannot be locked indefinitely if someone drops
+  const activeParticipants = connectedParticipants.filter((p) => p.isOnline !== false);
+  const effectiveParticipants = activeParticipants.length > 0
+    ? activeParticipants
+    : (currentUser ? [currentUser] : []);
 
-  // Check how many participants have answered the current question index
-  const peersWhoAnsweredCurrent = connectedParticipants.filter((p) => {
+  const totalPeersCount = Math.max(1, effectiveParticipants.length);
+
+  // Check how many active participants have answered the current question index
+  const peersWhoAnsweredCurrent = effectiveParticipants.filter((p) => {
     if (p.id === currentUser?.id) {
       return answers[currentIndex]?.selectedOption !== null && answers[currentIndex]?.selectedOption !== undefined;
     }
@@ -657,9 +768,11 @@ export default function App() {
   });
 
   const peersAnsweredCount = peersWhoAnsweredCurrent.length;
+  const allActiveAnswered = peersAnsweredCount >= totalPeersCount;
+  const isTimerRunning = secondsRemaining > 0;
 
-  // Next question locked indicator
-  const isNextQuestionLocked = isMultiplayerActive && totalPeersCount > 1 && peersAnsweredCount < totalPeersCount;
+  // Next question is locked for Admin ONLY while timer > 0 AND not all active participants have answered
+  const isNextQuestionLocked = isMultiplayerActive && isTimerRunning && !allActiveAnswered;
 
   // Navigate questions
   const handleSelectQuestionIndex = (index: number) => {
@@ -674,6 +787,7 @@ export default function App() {
 
     // Reset countdown timer for the selected question
     const now = Date.now();
+    expiredForIndexRef.current = null;
     setQuestionStartTime(now);
     setSecondsRemaining(questionDuration);
     setTotalSeconds(questionDuration);
@@ -681,14 +795,15 @@ export default function App() {
 
   const handleNext = () => {
     if (isMultiplayerActive) {
-      // In multiplayer: only host / admin can advance to next question
-      if (!currentUser?.isHost) {
+      // In multiplayer: only host / admin can advance to next question or finish exam
+      if (!currentUser?.isHost || isNextQuestionLocked) {
         soundEffects.playWrong();
         return;
       }
 
       if (currentIndex < quizQuestions.length - 1) {
         const nextIdx = currentIndex + 1;
+        expiredForIndexRef.current = null;
         realtimeMultiplayerService.adminNextQuestion(nextIdx);
         setCurrentIndex(nextIdx);
         const now = Date.now();
@@ -696,6 +811,7 @@ export default function App() {
         setSecondsRemaining(questionDuration);
         setTotalSeconds(questionDuration);
       } else {
+        setRoomStatus('finished');
         realtimeMultiplayerService.adminFinishExam();
         finishQuiz();
       }
@@ -705,6 +821,7 @@ export default function App() {
     // Solo mode: user advances and resets timer
     if (currentIndex < quizQuestions.length - 1) {
       const nextIdx = currentIndex + 1;
+      expiredForIndexRef.current = null;
       setCurrentIndex(nextIdx);
       const now = Date.now();
       setQuestionStartTime(now);
@@ -721,6 +838,7 @@ export default function App() {
       return;
     }
     if (currentIndex > 0) {
+      expiredForIndexRef.current = null;
       setCurrentIndex((i) => i - 1);
       const now = Date.now();
       setQuestionStartTime(now);
@@ -731,6 +849,9 @@ export default function App() {
 
   // Finish quiz & calculate summary
   const finishQuiz = () => {
+    if (isFinishingRef.current) return;
+    isFinishingRef.current = true;
+
     const totalDurationSeconds = Math.max(1, Math.floor((Date.now() - quizStartTime) / 1000));
     const totalQ = quizQuestions.length;
     let correct = 0;
@@ -871,6 +992,17 @@ export default function App() {
     setActiveView('results');
   };
 
+  // Keep finishQuizRef pointing to latest closure
+  finishQuizRef.current = finishQuiz;
+
+  const handleAdminOrSoloFinish = () => {
+    if (currentRoom && currentUser?.isHost) {
+      setRoomStatus('finished');
+      realtimeMultiplayerService.adminFinishExam();
+    }
+    finishQuiz();
+  };
+
   const currentQ = quizQuestions[currentIndex];
   const currentAns = answers[currentIndex];
 
@@ -887,7 +1019,7 @@ export default function App() {
         isQuizActive={activeView === 'quiz'}
         onExitQuiz={() => {
           if (confirm('Apakah Anda yakin ingin mengakhiri simulasi ini? Skor akan langsung dihitung.')) {
-            finishQuiz();
+            handleAdminOrSoloFinish();
           }
         }}
         onOpenSaveModal={() => setSaveModalOpen(true)}
@@ -895,8 +1027,13 @@ export default function App() {
         onLogout={() => {
           userService.logout();
           setAuthProfile(null);
+          setActiveView('home');
         }}
-        onOpenMonitor={() => setActiveView('monitor')}
+        onOpenMonitor={() => {
+          if (authProfile?.role === 'admin') {
+            setActiveView('monitor');
+          }
+        }}
         onlineUserCount={onlineUserCount}
         pendingApprovalCount={authProfile?.role === 'admin' ? pendingApprovalCount : 0}
       />
@@ -984,9 +1121,9 @@ export default function App() {
                   onToggleDoubtful={handleToggleDoubtful}
                   isFirst={currentIndex === 0}
                   isLast={currentIndex === quizQuestions.length - 1}
-                  onFinishQuiz={finishQuiz}
+                  onFinishQuiz={handleAdminOrSoloFinish}
                   isNextLocked={isNextQuestionLocked}
-                  lockReasonText={`Menunggu Teman (${peersAnsweredCount}/${totalPeersCount})`}
+                  lockReasonText={`Menunggu peserta menjawab: ${peersAnsweredCount}/${totalPeersCount} selesai`}
                   isMultiplayer={isMultiplayerActive}
                   isHost={currentUser ? currentUser.isHost : true}
                   peersAnsweredCount={peersAnsweredCount}
@@ -1004,8 +1141,9 @@ export default function App() {
                   onSelectQuestion={handleSelectQuestionIndex}
                   onToggleDoubtful={handleToggleDoubtful}
                   isCurrentDoubtful={currentAns?.isDoubtful || false}
-                  onFinishQuiz={finishQuiz}
+                  onFinishQuiz={handleAdminOrSoloFinish}
                   isMultiplayer={isMultiplayerActive}
+                  isHost={currentUser ? currentUser.isHost : true}
                   maxAccessibleIndex={isMultiplayerActive && isNextQuestionLocked ? currentIndex : quizQuestions.length - 1}
                 />
               </div>
@@ -1034,8 +1172,9 @@ export default function App() {
                       onSelectQuestion={handleSelectQuestionIndex}
                       onToggleDoubtful={handleToggleDoubtful}
                       isCurrentDoubtful={currentAns?.isDoubtful || false}
-                      onFinishQuiz={finishQuiz}
+                      onFinishQuiz={handleAdminOrSoloFinish}
                       isMultiplayer={isMultiplayerActive}
+                      isHost={currentUser ? currentUser.isHost : true}
                       maxAccessibleIndex={isMultiplayerActive && isNextQuestionLocked ? currentIndex : quizQuestions.length - 1}
                     />
                   </div>
@@ -1060,7 +1199,7 @@ export default function App() {
             realtimeTransport={realtimeTransport}
             connectionStatusText={connectionStatusText}
             initialJoinCode={urlRoomCode}
-            defaultUserName={authProfile?.name || ''}
+            defaultUserName={authProfile?.username || authProfile?.name || ''}
           />
         )}
 
@@ -1081,7 +1220,13 @@ export default function App() {
                 setActiveView('quiz');
               }
             }}
-            onNewQuiz={() => setActiveView('home')}
+            onNewQuiz={() => {
+              if (currentRoom) {
+                handleLeaveRoom();
+              } else {
+                setActiveView('home');
+              }
+            }}
             isMultiplayer={Boolean(currentRoom)}
             participants={participants}
             currentUser={currentUser}
@@ -1108,8 +1253,8 @@ export default function App() {
         {/* VIEW 7: QUICK CHEAT SHEET PASAL EMAS */}
         {activeView === 'cheatsheet' && <QuickCheatSheet />}
 
-        {/* VIEW 8: MONITOR PESERTA ONLINE & SELURUH RIWAYAT UJIAN */}
-        {activeView === 'monitor' && authProfile && (
+        {/* VIEW 8: PERSETUJUAN USER & MONITOR (KHUSUS ADMIN) */}
+        {activeView === 'monitor' && authProfile?.role === 'admin' && (
           <AdminMonitorView
             currentUser={authProfile}
             onClose={() => setActiveView('home')}

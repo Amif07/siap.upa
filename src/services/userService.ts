@@ -1,10 +1,47 @@
-import { UserProfile, UserQuizHistoryRecord, UserApprovalStatus } from '../types/auth';
+import {
+  UserProfile,
+  UserQuizHistoryRecord,
+  UserApprovalStatus,
+  AppUserRow,
+  StoredAuthSession,
+  UserRole,
+} from '../types/auth';
+import { getSupabaseClient, isSupabaseDatabaseConfigured } from './supabaseClient';
 
 const STORAGE_KEY_CURRENT_USER = 'advokatquiz_current_user_v1';
+const STORAGE_KEY_AUTH_SESSION = 'advokatquiz_auth_session_v1';
 const STORAGE_KEY_ALL_USERS = 'advokatquiz_all_users_v1';
 const STORAGE_KEY_HISTORY = 'advokatquiz_all_history_v1';
 
 export type AuthEventListener = (event: any) => void;
+
+export interface LoginOrRequestResult {
+  status: UserApprovalStatus | 'error';
+  user?: UserProfile;
+  message?: string;
+}
+
+function mapAppUserToProfile(row: AppUserRow, presenceSource?: UserProfile): UserProfile {
+  const cleanEmail = row.email.trim().toLowerCase();
+  const normalizedRole: UserRole = row.role === 'admin' ? 'admin' : 'user';
+  const username = row.username ?? null;
+  const createdMs = row.created_at ? new Date(row.created_at).getTime() : Date.now();
+
+  return {
+    id: presenceSource?.id || 'usr-' + btoa(cleanEmail).replace(/[^a-zA-Z0-9]/g, '').slice(0, 12),
+    email: cleanEmail,
+    username,
+    name: username || cleanEmail,
+    organization: presenceSource?.organization,
+    role: normalizedRole,
+    is_approved: Boolean(row.is_approved),
+    approvalStatus: row.is_approved ? 'approved' : 'pending',
+    createdAt: Number.isFinite(createdMs) ? createdMs : Date.now(),
+    lastActive: presenceSource?.lastActive || Date.now(),
+    isOnline: presenceSource?.isOnline || false,
+    currentActivity: presenceSource?.currentActivity || (row.is_approved ? 'Terdaftar' : 'Menunggu Persetujuan Admin'),
+  };
+}
 
 class UserService {
   private channel: BroadcastChannel | null = null;
@@ -24,7 +61,6 @@ class UserService {
     }
   }
 
-  // Real-time WebSocket connection to server at /ws for presence & instant approvals
   private initWebSocket() {
     if (typeof window === 'undefined') return;
 
@@ -40,7 +76,7 @@ class UserService {
           this.sendWsMessage({
             type: 'AUTH_IDENTIFY',
             email: currentUser.email,
-            name: currentUser.name,
+            name: currentUser.username || currentUser.name,
             currentActivity: currentUser.currentActivity || 'Di Beranda AdvokatQuiz',
           });
         }
@@ -52,6 +88,7 @@ class UserService {
           if (data.type === 'USER_APPROVED') {
             const current = this.getCurrentUser();
             if (current && current.email === data.email) {
+              current.is_approved = true;
               current.approvalStatus = 'approved';
               this.setCurrentUser(current);
             }
@@ -71,8 +108,8 @@ class UserService {
         }
       };
 
-      this.ws.onerror = (e) => {
-        // Silently handled: HTTP polling automatically handles presence and sync as fallback
+      this.ws.onerror = () => {
+        // Silently handled: HTTP polling & Supabase queries serve as fallback
       };
     } catch {
       // Offline fallback
@@ -83,7 +120,9 @@ class UserService {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
       try {
         this.ws.send(JSON.stringify(payload));
-      } catch {}
+      } catch {
+        // ignore
+      }
     }
   }
 
@@ -104,171 +143,363 @@ class UserService {
     }
   }
 
+  // Get stored minimal session { email, username, role }
+  public getStoredSession(): StoredAuthSession | null {
+    if (typeof window === 'undefined') return null;
+    const raw = localStorage.getItem(STORAGE_KEY_AUTH_SESSION);
+    if (!raw) return null;
+    try {
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.email) {
+        return {
+          email: String(parsed.email).trim().toLowerCase(),
+          username: parsed.username ?? null,
+          role: parsed.role === 'admin' ? 'admin' : 'user',
+        };
+      }
+    } catch {
+      // ignore
+    }
+    return null;
+  }
+
   // Get current logged-in user from localStorage
   public getCurrentUser(): UserProfile | null {
     if (typeof window === 'undefined') return null;
     const raw = localStorage.getItem(STORAGE_KEY_CURRENT_USER);
-    if (!raw) return null;
-    try {
-      return JSON.parse(raw);
-    } catch {
-      return null;
+    if (raw) {
+      try {
+        const parsed = JSON.parse(raw) as UserProfile;
+        if (parsed && parsed.email) {
+          return parsed;
+        }
+      } catch {
+        // fall through to minimal session
+      }
     }
+
+    const session = this.getStoredSession();
+    if (session) {
+      return {
+        id: 'usr-' + btoa(session.email).replace(/[^a-zA-Z0-9]/g, '').slice(0, 12),
+        email: session.email,
+        username: session.username,
+        name: session.username || session.email,
+        role: session.role,
+        is_approved: true,
+        approvalStatus: 'approved',
+        createdAt: Date.now(),
+        lastActive: Date.now(),
+        isOnline: true,
+        currentActivity: 'Di Beranda AdvokatQuiz',
+      };
+    }
+
+    return null;
   }
 
-  // Set current user in localStorage
+  // Save current logged-in user ({ email, username, role } + full profile) in localStorage
   public setCurrentUser(user: UserProfile | null): void {
     if (typeof window === 'undefined') return;
     if (user) {
+      const session: StoredAuthSession = {
+        email: user.email.trim().toLowerCase(),
+        username: user.username ?? (user.name && user.name !== user.email ? user.name : null),
+        role: user.role === 'admin' ? 'admin' : 'user',
+      };
+      localStorage.setItem(STORAGE_KEY_AUTH_SESSION, JSON.stringify(session));
       localStorage.setItem(STORAGE_KEY_CURRENT_USER, JSON.stringify(user));
       this.upsertUserDirectory(user);
     } else {
+      localStorage.removeItem(STORAGE_KEY_AUTH_SESSION);
       localStorage.removeItem(STORAGE_KEY_CURRENT_USER);
     }
   }
 
-  // Login or Request Access via Server
-  public async loginOrRequestAccess(
-    email: string,
-    nameOrEmpty?: string,
-    organization?: string
-  ): Promise<{ status: UserApprovalStatus; user: UserProfile; message?: string }> {
+  // Login or Request Access via Supabase `app_users` (primary) or Express backend `/api/auth/*` (fallback)
+  public async loginOrRequestAccess(email: string, username?: string): Promise<LoginOrRequestResult> {
     const cleanEmail = email.trim().toLowerCase();
+    const typedUsername = username?.trim() || '';
 
+    const supabase = isSupabaseDatabaseConfigured() ? getSupabaseClient() : null;
+    if (supabase) {
+      try {
+        const { data: existing, error: fetchError } = await supabase
+          .from('app_users')
+          .select('email, username, role, is_approved, created_at')
+          .eq('email', cleanEmail)
+          .maybeSingle();
+
+        if (fetchError) {
+          console.warn('[SUPABASE AUTH] Gagal memeriksa app_users:', fetchError);
+          return {
+            status: 'error',
+            message: `Gagal memeriksa database Supabase: ${fetchError.message}`,
+          };
+        }
+
+        // Case 1: Email belum ada di database -> simpan data baru dengan is_approved: false
+        if (!existing) {
+          if (!typedUsername) {
+            return {
+              status: 'error',
+              message: 'Silakan ketik username Anda terlebih dahulu.',
+            };
+          }
+
+          const { data: inserted, error: insertError } = await supabase
+            .from('app_users')
+            .insert({
+              email: cleanEmail,
+              username: typedUsername,
+              role: cleanEmail === 'amifaveiro9@gmail.com' ? 'admin' : 'user',
+              is_approved: cleanEmail === 'amifaveiro9@gmail.com',
+            })
+            .select('email, username, role, is_approved, created_at')
+            .single();
+
+          if (insertError) {
+            if (insertError.code === '23505') {
+              return {
+                status: 'error',
+                message: 'Username sudah digunakan oleh pengguna lain. Silakan ketik username yang berbeda.',
+              };
+            }
+            return {
+              status: 'error',
+              message: `Gagal menyimpan permintaan akses: ${insertError.message}`,
+            };
+          }
+
+          const user = mapAppUserToProfile(inserted as AppUserRow);
+          if (user.is_approved) {
+            this.setCurrentUser(user);
+            return { status: 'approved', user };
+          }
+
+          // Best-effort WS/local mirror notification
+          fetch('/api/auth/login-or-request', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: cleanEmail, username: typedUsername }),
+          }).catch(() => {});
+
+          return {
+            status: 'pending',
+            user,
+            message: 'Permintaan akses terkirim. Silakan tunggu persetujuan Admin.',
+          };
+        }
+
+        // Case 2: Email sudah ada tapi is_approved === false
+        const row = existing as AppUserRow;
+        if (!row.is_approved) {
+          const user = mapAppUserToProfile(row);
+          return {
+            status: 'pending',
+            user,
+            message: 'Permintaan akses terkirim. Silakan tunggu persetujuan Admin.',
+          };
+        }
+
+        // Case 3: Email sudah ada dan is_approved === true -> langsung izinkan masuk!
+        let activeRow = row;
+        if (typedUsername && typedUsername !== (row.username || '')) {
+          const { data: updated, error: updateError } = await supabase
+            .from('app_users')
+            .update({ username: typedUsername })
+            .eq('email', cleanEmail)
+            .select('email, username, role, is_approved, created_at')
+            .single();
+
+          if (updateError) {
+            if (updateError.code === '23505') {
+              return {
+                status: 'error',
+                message: 'Username sudah digunakan oleh pengguna lain. Silakan ketik username yang berbeda.',
+              };
+            }
+            return {
+              status: 'error',
+              message: `Gagal memperbarui username: ${updateError.message}`,
+            };
+          }
+          if (updated) {
+            activeRow = updated as AppUserRow;
+          }
+        }
+
+        const approvedUser = mapAppUserToProfile(activeRow);
+        approvedUser.isOnline = true;
+        approvedUser.currentActivity = 'Di Beranda AdvokatQuiz';
+        this.setCurrentUser(approvedUser);
+        this.sendWsMessage({
+          type: 'AUTH_IDENTIFY',
+          email: approvedUser.email,
+          name: approvedUser.username || approvedUser.email,
+          currentActivity: approvedUser.currentActivity,
+        });
+
+        return {
+          status: 'approved',
+          user: approvedUser,
+        };
+      } catch (err: any) {
+        return {
+          status: 'error',
+          message: err?.message || 'Terjadi kendala saat menghubungi Supabase.',
+        };
+      }
+    }
+
+    // Fallback: Local Express server (mirrors app_users rules identically)
     try {
       const res = await fetch('/api/auth/login-or-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: cleanEmail,
-          name: nameOrEmpty?.trim(),
-          organization: organization?.trim(),
+          username: typedUsername || undefined,
         }),
       });
 
-      if (res.ok) {
-        const data = await res.json();
-        const user: UserProfile = data.user;
-        const status: UserApprovalStatus = data.status || 'pending';
+      const data = await res.json().catch(() => ({}));
 
-        if (status === 'approved') {
-          this.setCurrentUser(user);
-          this.sendWsMessage({
-            type: 'AUTH_IDENTIFY',
-            email: user.email,
-            name: user.name,
-            currentActivity: user.currentActivity,
-          });
-        }
-
-        return { status, user, message: data.message };
+      if (!res.ok) {
+        return {
+          status: 'error',
+          message: data?.error || data?.message || 'Gagal memproses login.',
+        };
       }
-    } catch (err) {
-      console.warn('[AUTH] Server login request failed, falling back to local verification:', err);
-    }
 
-    // Local fallback if offline
-    return this.loginLocalFallback(nameOrEmpty || '', cleanEmail, organization);
+      const user: UserProfile = {
+        ...data.user,
+        username: data.user?.username ?? null,
+        name: data.user?.username || data.user?.name || cleanEmail,
+        is_approved: Boolean(data.user?.is_approved ?? data.status === 'approved'),
+      };
+      const status: UserApprovalStatus = data.status || 'pending';
+
+      if (status === 'approved') {
+        this.setCurrentUser(user);
+        this.sendWsMessage({
+          type: 'AUTH_IDENTIFY',
+          email: user.email,
+          name: user.username || user.name,
+          currentActivity: user.currentActivity,
+        });
+      }
+
+      return { status, user, message: data.message };
+    } catch {
+      return {
+        status: 'error',
+        message: 'Tidak dapat terhubung ke server maupun database Supabase.',
+      };
+    }
   }
 
-  // Synchronous local login fallback
-  public login(nameOrEmpty: string, email: string, organization?: string): UserProfile {
+  // Check Approval Status (for waiting screen polling)
+  public async checkApprovalStatus(
+    email: string
+  ): Promise<{ status: UserApprovalStatus | 'not_found'; user?: UserProfile }> {
     const cleanEmail = email.trim().toLowerCase();
-    const all = this.getAllUsers();
-    const existing = all.find((u) => u.email === cleanEmail);
+    const supabase = isSupabaseDatabaseConfigured() ? getSupabaseClient() : null;
 
-    let cleanName = nameOrEmpty?.trim();
-    if (!cleanName) {
-      if (existing?.name) {
-        cleanName = existing.name;
-      } else if (cleanEmail === 'ahmadmiftahulfauzi07@gmail.com' || cleanEmail === 'amifaveiro9@gmail.com') {
-        cleanName = 'Ahmad Miftahul Fauzi, S.H.';
-      } else {
-        const localPart = cleanEmail.split('@')[0] || 'Peserta';
-        const words = localPart
-          .replace(/[\._\-0-9]/g, ' ')
-          .trim()
-          .split(/\s+/)
-          .filter(Boolean)
-          .map((w) => w.charAt(0).toUpperCase() + w.slice(1));
-        cleanName = words.length > 0 ? `${words.join(' ')}, S.H.` : 'Calon Advokat, S.H.';
+    if (supabase) {
+      try {
+        const { data, error } = await supabase
+          .from('app_users')
+          .select('email, username, role, is_approved, created_at')
+          .eq('email', cleanEmail)
+          .maybeSingle();
+
+        if (!error) {
+          if (!data) {
+            return { status: 'not_found' };
+          }
+          const user = mapAppUserToProfile(data as AppUserRow);
+          if (user.is_approved) {
+            user.isOnline = true;
+            user.currentActivity = 'Di Beranda AdvokatQuiz';
+            this.setCurrentUser(user);
+            return { status: 'approved', user };
+          }
+          return { status: 'pending', user };
+        }
+      } catch {
+        // fallback below
       }
     }
 
-    const isAdmin =
-      cleanEmail === 'ahmadmiftahulfauzi07@gmail.com' ||
-      cleanEmail === 'amifaveiro9@gmail.com' ||
-      cleanEmail.includes('admin');
-
-    const user: UserProfile = {
-      id: existing?.id || ('usr-' + btoa(cleanEmail).replace(/[^a-zA-Z0-9]/g, '').slice(0, 12)),
-      name: cleanName,
-      email: cleanEmail,
-      organization: organization?.trim() || existing?.organization || (isAdmin ? 'Pengawas & Pengembang UPA' : 'PKPA PERADI 2026'),
-      role: isAdmin ? 'admin' : (existing?.role || 'peserta'),
-      approvalStatus: isAdmin ? 'approved' : (existing?.approvalStatus || 'approved'),
-      createdAt: existing?.createdAt || Date.now(),
-      lastActive: Date.now(),
-      isOnline: true,
-      currentActivity: 'Di Halaman Utama AdvokatQuiz',
-    };
-
-    this.setCurrentUser(user);
-
-    // Async sync with server in background
-    fetch('/api/auth/heartbeat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: cleanEmail,
-        name: cleanName,
-        currentActivity: user.currentActivity,
-      }),
-    }).catch(() => {});
-
-    return user;
-  }
-
-  private loginLocalFallback(nameOrEmpty: string, email: string, organization?: string) {
-    const user = this.login(nameOrEmpty, email, organization);
-    return {
-      status: user.approvalStatus || 'approved',
-      user,
-      message: 'Masuk melalui verifikasi lokal.',
-    };
-  }
-
-  // Check Approval Status (for waiting modal polling)
-  public async checkApprovalStatus(email: string): Promise<{ status: UserApprovalStatus | 'not_found'; user?: UserProfile }> {
     try {
-      const res = await fetch(`/api/auth/status?email=${encodeURIComponent(email)}`);
+      const res = await fetch(`/api/auth/status?email=${encodeURIComponent(cleanEmail)}`);
       if (res.ok) {
         const data = await res.json();
         if (data.status === 'approved' && data.user) {
-          this.setCurrentUser(data.user);
+          const user: UserProfile = {
+            ...data.user,
+            username: data.user.username ?? null,
+            name: data.user.username || data.user.name || cleanEmail,
+            is_approved: true,
+          };
+          this.setCurrentUser(user);
+          return { status: 'approved', user };
         }
         return { status: data.status, user: data.user };
       }
     } catch {
-      // Offline fallback
+      // ignore
     }
 
-    const user = this.getAllUsers().find((u) => u.email.toLowerCase() === email.toLowerCase());
-    return {
-      status: user?.approvalStatus || 'pending',
-      user,
-    };
+    return { status: 'pending' };
   }
 
-  // Admin Approve User (Teman bebas masuk kapan saja setelah ini)
+  // Admin Approve User (update is_approved = true)
   public async approveUser(email: string): Promise<{ success: boolean; user?: UserProfile; message?: string }> {
+    const cleanEmail = email.trim().toLowerCase();
     const currentAdmin = this.getCurrentUser();
+    const supabase = isSupabaseDatabaseConfigured() ? getSupabaseClient() : null;
+
+    if (supabase) {
+      try {
+        const { data, error } = await supabase
+          .from('app_users')
+          .update({ is_approved: true })
+          .eq('email', cleanEmail)
+          .select('email, username, role, is_approved, created_at')
+          .single();
+
+        if (error) {
+          return { success: false, message: error.message };
+        }
+
+        const approvedUser = mapAppUserToProfile(data as AppUserRow);
+        this.upsertUserDirectory(approvedUser);
+
+        // Best-effort server WS broadcast
+        fetch('/api/auth/approve', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: cleanEmail,
+            adminEmail: currentAdmin?.email,
+          }),
+        }).catch(() => {});
+
+        await this.fetchAllUsers();
+        return { success: true, user: approvedUser };
+      } catch (err: any) {
+        return { success: false, message: err?.message || 'Gagal menyetujui user.' };
+      }
+    }
+
     try {
       const res = await fetch('/api/auth/approve', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: email.trim().toLowerCase(),
+          email: cleanEmail,
           adminEmail: currentAdmin?.email,
         }),
       });
@@ -285,25 +516,43 @@ class UserService {
       console.warn('[AUTH] Approve API failed:', err);
     }
 
-    // Local fallback update
-    const all = this.getAllUsers();
-    const idx = all.findIndex((u) => u.email.toLowerCase() === email.toLowerCase());
-    if (idx >= 0) {
-      all[idx].approvalStatus = 'approved';
-      all[idx].approvedAt = Date.now();
-      all[idx].approvedBy = currentAdmin?.name || 'Ahmad Miftahul Fauzi, S.H.';
-      localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(all));
-    }
-    return { success: true, message: 'Disetujui secara lokal.' };
+    return { success: false, message: 'Gagal menyetujui user.' };
   }
 
-  // Admin Reject User
-  public async rejectUser(email: string): Promise<{ success: boolean; message?: string }> {
+  // Admin Delete / Reject User (DELETE row from app_users)
+  public async deleteUser(email: string): Promise<{ success: boolean; message?: string }> {
+    const cleanEmail = email.trim().toLowerCase();
+    const supabase = isSupabaseDatabaseConfigured() ? getSupabaseClient() : null;
+
+    if (supabase) {
+      try {
+        const { error } = await supabase.from('app_users').delete().eq('email', cleanEmail);
+        if (error) {
+          return { success: false, message: error.message };
+        }
+
+        // Remove from local directory cache
+        const filtered = this.getAllUsers().filter((u) => u.email.toLowerCase() !== cleanEmail);
+        localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(filtered));
+
+        fetch('/api/auth/reject', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: cleanEmail }),
+        }).catch(() => {});
+
+        await this.fetchAllUsers();
+        return { success: true };
+      } catch (err: any) {
+        return { success: false, message: err?.message || 'Gagal menghapus user.' };
+      }
+    }
+
     try {
       const res = await fetch('/api/auth/reject', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim().toLowerCase() }),
+        body: JSON.stringify({ email: cleanEmail }),
       });
 
       if (res.ok) {
@@ -311,33 +560,67 @@ class UserService {
         return { success: true };
       }
     } catch (err) {
-      console.warn('[AUTH] Reject API failed:', err);
+      console.warn('[AUTH] Delete/Reject API failed:', err);
     }
 
-    const all = this.getAllUsers();
-    const idx = all.findIndex((u) => u.email.toLowerCase() === email.toLowerCase());
-    if (idx >= 0) {
-      all[idx].approvalStatus = 'rejected';
-      localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(all));
-    }
-    return { success: true };
+    return { success: false, message: 'Gagal menghapus user.' };
   }
 
-  // Fetch all registered users & real-time presence from server
+  // Backward-compatible alias for deleteUser
+  public async rejectUser(email: string): Promise<{ success: boolean; message?: string }> {
+    return this.deleteUser(email);
+  }
+
+  // Fetch all registered users from Supabase app_users (primary) or server /api/auth/users (fallback)
   public async fetchAllUsers(): Promise<UserProfile[]> {
+    const supabase = isSupabaseDatabaseConfigured() ? getSupabaseClient() : null;
+
+    let presenceMap = new Map<string, UserProfile>();
     try {
       const res = await fetch('/api/auth/users');
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data.users)) {
-          const list: UserProfile[] = data.users;
-          localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(list));
-          return list;
+          for (const u of data.users as UserProfile[]) {
+            if (u?.email) {
+              presenceMap.set(u.email.toLowerCase(), u);
+            }
+          }
+          if (!supabase) {
+            const normalized = (data.users as UserProfile[]).map((u) => ({
+              ...u,
+              username: u.username ?? null,
+              name: u.username || u.name || u.email,
+              is_approved: typeof u.is_approved === 'boolean' ? u.is_approved : u.approvalStatus === 'approved',
+            }));
+            localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(normalized));
+            return normalized;
+          }
         }
       }
     } catch {
-      // Network failure
+      // Ignore network fallback failure
     }
+
+    if (supabase) {
+      try {
+        const { data, error } = await supabase
+          .from('app_users')
+          .select('email, username, role, is_approved, created_at')
+          .order('created_at', { ascending: false });
+
+        if (!error && Array.isArray(data)) {
+          const list = (data as AppUserRow[]).map((row) =>
+            mapAppUserToProfile(row, presenceMap.get(row.email.toLowerCase()))
+          );
+          localStorage.setItem(STORAGE_KEY_ALL_USERS, JSON.stringify(list));
+          return list;
+        }
+      } catch (err) {
+        console.warn('[SUPABASE] Gagal mengambil daftar app_users:', err);
+      }
+    }
+
     return this.getAllUsers();
   }
 
@@ -376,21 +659,19 @@ class UserService {
     localStorage.setItem(STORAGE_KEY_CURRENT_USER, JSON.stringify(user));
     this.upsertUserDirectory(user);
 
-    // Push via WebSocket for immediate real-time update
     this.sendWsMessage({
       type: 'AUTH_HEARTBEAT',
       email: user.email,
-      name: user.name,
+      name: user.username || user.name,
       currentActivity: activityText,
     });
 
-    // Also push via HTTP heartbeat
     fetch('/api/auth/heartbeat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email: user.email,
-        name: user.name,
+        name: user.username || user.name,
         currentActivity: activityText,
       }),
     }).catch(() => {});
@@ -400,7 +681,7 @@ class UserService {
     }
   }
 
-  // Logout
+  // Logout (clears localStorage session so user must re-login next time)
   public logout(): void {
     const currentUser = this.getCurrentUser();
     if (currentUser) {
@@ -419,10 +700,11 @@ class UserService {
         this.channel.postMessage({ type: 'USER_LOGOUT', userId: currentUser.id });
       }
     }
+    localStorage.removeItem(STORAGE_KEY_AUTH_SESSION);
     localStorage.removeItem(STORAGE_KEY_CURRENT_USER);
   }
 
-  // Upsert user in directory
+  // Upsert user in cached directory
   public upsertUserDirectory(user: UserProfile): void {
     const all = this.getAllUsers();
     const index = all.findIndex((u) => u.email.toLowerCase() === user.email.toLowerCase() || u.id === user.id);

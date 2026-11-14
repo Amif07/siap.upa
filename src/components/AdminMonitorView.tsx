@@ -32,7 +32,7 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
   currentUser,
   onClose,
 }) => {
-  const [activeTab, setActiveTab] = useState<'online' | 'approvals' | 'users' | 'history'>('online');
+  const [activeTab, setActiveTab] = useState<'online' | 'approvals' | 'users' | 'history'>('approvals');
   const [users, setUsers] = useState<UserProfile[]>([]);
   const [historyList, setHistoryList] = useState<UserQuizHistoryRecord[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -41,21 +41,23 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
   const [actionSuccessNotice, setActionSuccessNotice] = useState<string | null>(null);
   const [isProcessingEmail, setIsProcessingEmail] = useState<string | null>(null);
 
+  const isAdmin = currentUser.role === 'admin';
+
   const loadData = async () => {
+    if (!isAdmin) return;
     const remoteUsers = await userService.fetchAllUsers();
     setUsers(remoteUsers);
     setHistoryList(userService.getAllHistory());
   };
 
   useEffect(() => {
+    if (!isAdmin) return;
     loadData();
 
-    // Auto-refresh presence every 3 seconds for strict real-time accuracy
     const interval = setInterval(() => {
       loadData();
     }, 3000);
 
-    // Listen to instant WebSocket events (real-time presence and approval requests)
     const unsubscribe = userService.onAuthEvent((event) => {
       if (
         event.type === 'NEW_ACCESS_REQUEST' ||
@@ -71,11 +73,31 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
       clearInterval(interval);
       unsubscribe();
     };
-  }, []);
+  }, [isAdmin]);
+
+  if (!isAdmin) {
+    return (
+      <div className="max-w-lg mx-auto my-12 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 text-center space-y-4 shadow-sm">
+        <Shield className="w-10 h-10 text-rose-500 mx-auto" />
+        <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+          Akses Khusus Admin
+        </h2>
+        <p className="text-xs text-slate-500 dark:text-slate-400">
+          Halaman Persetujuan User & Monitor hanya dapat diakses oleh akun dengan role admin.
+        </p>
+        <button
+          onClick={onClose}
+          className="px-4 py-2 text-xs font-semibold rounded-xl bg-slate-900 dark:bg-amber-600 text-white cursor-pointer"
+        >
+          Kembali ke Beranda
+        </button>
+      </div>
+    );
+  }
 
   const onlineUsers = users.filter((u) => u.isOnline);
-  const pendingUsers = users.filter((u) => u.approvalStatus === 'pending');
-  const approvedUsers = users.filter((u) => u.approvalStatus === 'approved' || !u.approvalStatus);
+  const pendingUsers = users.filter((u) => u.is_approved === false || u.approvalStatus === 'pending');
+  const approvedUsers = users.filter((u) => u.is_approved === true || (u.is_approved === undefined && u.approvalStatus === 'approved'));
 
   const handleApprove = async (email: string) => {
     setIsProcessingEmail(email);
@@ -84,22 +106,25 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
     setIsProcessingEmail(null);
     if (res.success) {
       soundEffects.playSuccess();
-      setActionSuccessNotice(`Akun ${email} berhasil disetujui! Rekan Anda sekarang bebas masuk kapan saja.`);
-      setTimeout(() => setActionSuccessNotice(null), 6000);
+      setActionSuccessNotice(`Akun ${email} berhasil disetujui (is_approved = true).`);
+      setTimeout(() => setActionSuccessNotice(null), 5000);
       loadData();
+    } else {
+      setActionSuccessNotice(res.message || `Gagal menyetujui ${email}.`);
     }
   };
 
-  const handleReject = async (email: string) => {
-    if (!confirm(`Tolak izin akses untuk email ${email}?`)) return;
+  const handleDeleteUser = async (email: string) => {
     setIsProcessingEmail(email);
     soundEffects.playClick();
-    const res = await userService.rejectUser(email);
+    const res = await userService.deleteUser(email);
     setIsProcessingEmail(null);
     if (res.success) {
-      setActionSuccessNotice(`Permintaan akses ${email} telah ditolak.`);
+      setActionSuccessNotice(`Permintaan akses ${email} telah dihapus.`);
       setTimeout(() => setActionSuccessNotice(null), 5000);
       loadData();
+    } else {
+      setActionSuccessNotice(res.message || `Gagal menghapus ${email}.`);
     }
   };
 
@@ -229,7 +254,7 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
             }}
             className="px-4 py-2 text-xs font-bold rounded-xl bg-amber-600 hover:bg-amber-500 text-white shrink-0 transition-colors shadow-xs cursor-pointer"
           >
-            Buka Tab Konfirmasi ({pendingUsers.length})
+            Buka Persetujuan User ({pendingUsers.length})
           </button>
         </div>
       )}
@@ -363,7 +388,7 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
           }`}
         >
           <Shield className="w-3.5 h-3.5 text-amber-600" />
-          <span>Konfirmasi Akses</span>
+          <span>Persetujuan User</span>
           {pendingUsers.length > 0 && (
             <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-slate-950 font-bold text-[10px]">
               {pendingUsers.length}
@@ -510,30 +535,22 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
         </div>
       )}
 
-      {/* TAB 2: PENDING APPROVAL REQUESTS */}
+      {/* TAB 2: PERSETUJUAN USER (is_approved === false) */}
       {activeTab === 'approvals' && (
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
             <div>
               <h2 className="text-base sm:text-lg font-bold font-legal text-slate-900 dark:text-white flex items-center gap-2">
                 <Shield className="w-5 h-5 text-amber-600" />
-                <span>Permintaan Konfirmasi Masuk dari Teman</span>
+                <span>Persetujuan User</span>
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Semua orang yang baru pertama kali login dengan email harus disetujui di sini terlebih dahulu.
+                Daftar pengguna yang menunggu persetujuan Admin sebelum dapat masuk ke aplikasi.
               </p>
             </div>
             <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
-              {pendingUsers.length} Permintaan Tertunda
+              {pendingUsers.length} Menunggu Persetujuan
             </span>
-          </div>
-
-          {/* Guide Explainer Note */}
-          <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300 flex items-start gap-2.5">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-            <p className="leading-relaxed">
-              <strong>Aturan Masuk Mandiri:</strong> Begitu Anda menekan tombol <span className="font-bold text-emerald-700 dark:text-emerald-400">"Setujui Akses"</span>, rekan Anda di seberang sana akan otomatis masuk secara langsung. Di masa mendatang, teman Anda bisa bebas masuk kapan saja tanpa perlu konfirmasi ulang.
-            </p>
           </div>
 
           <div className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -541,32 +558,33 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
               <div className="py-12 text-center text-slate-500 text-xs space-y-2">
                 <CheckCircle2 className="w-8 h-8 text-emerald-500 mx-auto" />
                 <p className="font-semibold text-slate-700 dark:text-slate-300">
-                  Tidak ada permintaan baru yang tertunda.
+                  Tidak ada permintaan akses yang menunggu persetujuan.
                 </p>
                 <p className="text-[11px] text-slate-400">
-                  Semua rekan Anda yang telah mencoba login sudah Anda konfirmasi dan bisa masuk bebas kapan saja.
+                  Semua user baru yang mendaftar akan muncul di daftar ini.
                 </p>
               </div>
             ) : (
               pendingUsers.map((user) => {
                 const isProcessing = isProcessingEmail === user.email;
+                const displayUsername = user.username || '-';
 
                 return (
                   <div
-                    key={user.id}
+                    key={user.email}
                     className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-amber-50/40 dark:bg-amber-950/20 p-4 rounded-2xl border border-amber-200/80 dark:border-amber-900/40 mt-3"
                   >
                     <div className="flex items-start gap-3.5">
                       <div className="w-11 h-11 rounded-2xl bg-amber-600 text-white font-mono font-bold text-sm flex items-center justify-center shrink-0 shadow-xs">
-                        {user.name.slice(0, 2).toUpperCase()}
+                        {(user.username || user.email).slice(0, 2).toUpperCase()}
                       </div>
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
                           <span className="font-bold text-sm text-slate-900 dark:text-white">
-                            {user.name}
+                            {displayUsername}
                           </span>
                           <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-200 dark:bg-amber-900 text-amber-900 dark:text-amber-200 font-bold">
-                            Menunggu Persetujuan Anda
+                            Belum Disetujui
                           </span>
                         </div>
                         <div className="text-xs text-slate-600 dark:text-slate-400 font-mono flex items-center gap-1.5">
@@ -574,29 +592,29 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
                           <span className="font-semibold text-slate-800 dark:text-slate-200">{user.email}</span>
                         </div>
                         <span className="text-[11px] text-slate-400 block">
-                          Mengajukan: {new Date(user.createdAt).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} ({formatTimeAgo(user.createdAt)})
+                          Terdaftar: {new Date(user.createdAt).toLocaleString('id-ID')}
                         </span>
                       </div>
                     </div>
 
-                    {/* Action Approval Buttons */}
+                    {/* Action Buttons: Setujui & Hapus */}
                     <div className="flex items-center gap-2 shrink-0">
                       <button
                         onClick={() => handleApprove(user.email)}
                         disabled={isProcessing}
-                        className="px-4 py-2 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white flex items-center gap-1.5 shadow-sm transition-all cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                        className="px-4 py-2 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
                       >
                         <Check className="w-4 h-4" />
-                        <span>Setujui Akses (Bebaskan)</span>
+                        <span>Setujui</span>
                       </button>
 
                       <button
-                        onClick={() => handleReject(user.email)}
+                        onClick={() => handleDeleteUser(user.email)}
                         disabled={isProcessing}
-                        className="px-3 py-2 text-xs font-semibold rounded-xl bg-slate-200 hover:bg-rose-100 text-slate-700 hover:text-rose-700 dark:bg-slate-800 dark:hover:bg-rose-950/60 dark:text-slate-300 dark:hover:text-rose-300 transition-colors cursor-pointer"
+                        className="px-3.5 py-2 text-xs font-semibold rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 dark:bg-rose-950/40 dark:hover:bg-rose-900/60 dark:text-rose-300 border border-rose-200 dark:border-rose-800 flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-50"
                       >
                         <XCircle className="w-4 h-4" />
-                        <span>Tolak</span>
+                        <span>Hapus</span>
                       </button>
                     </div>
                   </div>
@@ -613,40 +631,41 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800">
             <div>
               <h2 className="text-base sm:text-lg font-bold font-legal text-slate-900 dark:text-white">
-                Daftar Rekan yang Telah Dikonfirmasi
+                Daftar User Disetujui
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Rekan-rekan dalam daftar ini telah Anda setujui dan bisa bebas masuk kapan saja tanpa perlu konfirmasi ulang.
+                Daftar akun dengan status disetujui yang dapat langsung masuk menggunakan email masing-masing.
               </p>
             </div>
             <span className="text-xs font-mono font-semibold text-slate-600 dark:text-slate-400">
-              {approvedUsers.length} Rekan Diizinkan
+              {approvedUsers.length} Akun
             </span>
           </div>
 
           <div className="divide-y divide-slate-100 dark:divide-slate-800">
             {approvedUsers.map((user) => {
-              const isMe = user.id === currentUser.id;
+              const isMe = user.email.toLowerCase() === currentUser.email.toLowerCase();
+              const isProcessing = isProcessingEmail === user.email;
 
               return (
-                <div key={user.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div key={user.email} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex items-start gap-3.5">
                     <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-slate-700 to-slate-900 text-white font-mono font-bold text-sm flex items-center justify-center shadow-xs">
-                      {user.name.slice(0, 2).toUpperCase()}
+                      {(user.username || user.email).slice(0, 2).toUpperCase()}
                     </div>
                     <div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         <span className="font-semibold text-sm text-slate-900 dark:text-white">
-                          {user.name}
+                          {user.username || user.email}
                         </span>
-                        {isMe && (
-                          <span className="text-[10px] px-1.5 py-0.2 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-medium">
-                            Anda (Admin)
+                        {user.role === 'admin' && (
+                          <span className="text-[10px] px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-bold">
+                            Admin{isMe ? ' (Anda)' : ''}
                           </span>
                         )}
                         <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 font-bold flex items-center gap-1">
                           <Check className="w-3 h-3 text-emerald-600" />
-                          <span>Terkonfirmasi Bebas Masuk</span>
+                          <span>Disetujui</span>
                         </span>
                       </div>
 
@@ -655,26 +674,33 @@ export const AdminMonitorView: React.FC<AdminMonitorViewProps> = ({
                           <Mail className="w-3 h-3" />
                           <span>{user.email}</span>
                         </span>
-                        <span aria-hidden="true">·</span>
-                        <span>{user.organization || 'PKPA PERADI 2026'}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="sm:text-right shrink-0">
-                    <span
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold ${
-                        user.isOnline
-                          ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
-                          : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
-                      }`}
-                    >
-                      <span className={`w-2 h-2 rounded-full ${user.isOnline ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'}`} />
-                      <span>{user.isOnline ? 'Sedang Online' : 'Offline'}</span>
-                    </span>
-                    <span className="text-[11px] text-slate-400 block mt-1">
-                      Terakhir aktif: {formatTimeAgo(user.lastActive)}
-                    </span>
+                  <div className="flex items-center gap-3 shrink-0">
+                    <div className="sm:text-right">
+                      <span
+                        className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold ${
+                          user.isOnline
+                            ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
+                            : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+                        }`}
+                      >
+                        <span className={`w-2 h-2 rounded-full ${user.isOnline ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'}`} />
+                        <span>{user.isOnline ? 'Online' : 'Offline'}</span>
+                      </span>
+                    </div>
+
+                    {user.role !== 'admin' && (
+                      <button
+                        onClick={() => handleDeleteUser(user.email)}
+                        disabled={isProcessing}
+                        className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 dark:bg-rose-950/40 dark:hover:bg-rose-900/60 dark:text-rose-300 border border-rose-200 dark:border-rose-800 transition-colors cursor-pointer disabled:opacity-50"
+                      >
+                        Hapus
+                      </button>
+                    )}
                   </div>
                 </div>
               );

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Database, ShieldCheck, X, Check, ExternalLink, HelpCircle, Server, RefreshCw } from 'lucide-react';
 import { realtimeMultiplayerService, SupabaseConfig, RealtimeTransportType } from '../services/realtimeMultiplayer';
+import { resetSupabaseClient } from '../services/supabaseClient';
 import { soundEffects } from '../utils/soundEffects';
 
 interface SupabaseConfigModalProps {
@@ -30,6 +31,7 @@ export const SupabaseConfigModal: React.FC<SupabaseConfigModalProps> = ({
       url: url.trim(),
       anonKey: anonKey.trim(),
     });
+    resetSupabaseClient();
     setSavedSuccess(true);
     setTimeout(() => {
       setSavedSuccess(false);
@@ -46,6 +48,7 @@ export const SupabaseConfigModal: React.FC<SupabaseConfigModalProps> = ({
     setUrl(defaults.url);
     setAnonKey(defaults.anonKey);
     realtimeMultiplayerService.saveSupabaseConfig(defaults);
+    resetSupabaseClient();
     setSavedSuccess(true);
     setTimeout(() => setSavedSuccess(false), 1200);
   };

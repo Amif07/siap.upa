@@ -1,12 +1,28 @@
-export type UserRole = 'admin' | 'peserta';
+export type UserRole = 'admin' | 'user' | 'peserta';
 export type UserApprovalStatus = 'approved' | 'pending' | 'rejected';
+
+export interface AppUserRow {
+  email: string;
+  username: string | null;
+  role: 'admin' | 'user' | string;
+  is_approved: boolean;
+  created_at: string;
+}
+
+export interface StoredAuthSession {
+  email: string;
+  username: string | null;
+  role: UserRole;
+}
 
 export interface UserProfile {
   id: string;
   name: string;
+  username?: string | null;
   email: string;
   organization?: string;
   role: UserRole;
+  is_approved?: boolean;
   approvalStatus?: UserApprovalStatus;
   approvedAt?: number;
   approvedBy?: string;

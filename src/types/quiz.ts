@@ -57,6 +57,7 @@ export interface Participant {
   avatarSeed: string;
   timeSpentSeconds: number;
   answeredIndices?: number[];
+  isOnline?: boolean;
 }
 
 export interface UserAnswerState {

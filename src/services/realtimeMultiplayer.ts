@@ -22,11 +22,12 @@ const DEFAULT_SUPABASE_URL = (import.meta as unknown as { env: Record<string, st
 const DEFAULT_SUPABASE_ANON_KEY = (import.meta as unknown as { env: Record<string, string> }).env?.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.demo_advokatquiz_realtime_key';
 
 export interface RealtimeEventPayload {
-  type: 'ROOM_JOIN' | 'ROOM_LEAVE' | 'START_EXAM' | 'SCORE_UPDATE' | 'CHAT_MESSAGE' | 'HOST_SYNC' | 'QUESTION_ANSWERED' | 'NEXT_QUESTION_SYNC' | 'ROOM_STATE' | 'ANSWER_UPDATE' | 'EXAM_STARTED';
+  type: 'ROOM_JOIN' | 'ROOM_LEAVE' | 'START_EXAM' | 'SCORE_UPDATE' | 'CHAT_MESSAGE' | 'HOST_SYNC' | 'QUESTION_ANSWERED' | 'NEXT_QUESTION_SYNC' | 'ROOM_STATE' | 'ANSWER_UPDATE' | 'EXAM_STARTED' | 'EXAM_FINISHED' | 'LEAVE_ROOM';
   roomCode: string;
   senderId: string;
   participant?: Participant;
   roomSettings?: RoomSettings;
+  roomStatus?: 'lobby' | 'in_progress' | 'finished';
   seed?: string;
   score?: number;
   answeredCount?: number;
@@ -50,19 +51,25 @@ export class RealtimeMultiplayerService {
   private supabaseChannel: RealtimeChannel | null = null;
   private peer: Peer | null = null;
   private peerConnections: Map<string, DataConnection> = new Map();
+  private peerParticipantIds: Map<string, string> = new Map();
   private hostConnection: DataConnection | null = null;
   private broadcastChannel: BroadcastChannel | null = null;
 
   private currentRoomCode: string | null = null;
   private currentParticipant: Participant | null = null;
   private currentRoomSettings: RoomSettings | null = null;
+  private currentRoomStatus: 'lobby' | 'in_progress' | 'finished' = 'lobby';
+  private currentQuestionIndex = 0;
   private currentLockedQuestions: UPAQuestion[] | null = null;
   private activeTransport: RealtimeTransportType = 'broadcast';
   private connectionStatus: 'disconnected' | 'connecting' | 'connected' | 'error' = 'disconnected';
+  private intentionalLeave = false;
+  private reconnectTimer: ReturnType<typeof setTimeout> | null = null;
 
   // Event Callbacks
   private onParticipantsChangeCb: ((participants: Participant[]) => void) | null = null;
   private onStartExamCb: ((settings: RoomSettings, seed: string, questions?: UPAQuestion[], currentQuestionIndex?: number, questionStartTime?: number, questionDuration?: number) => void) | null = null;
+  private onExamFinishedCb: ((participants?: Participant[], questions?: UPAQuestion[]) => void) | null = null;
   private onScoreUpdateCb: ((data: { participantId: string; score: number; answeredCount: number; isFinished: boolean; timeSpentSeconds: number }) => void) | null = null;
   private onQuestionAnsweredCb: ((data: { participantId: string; answeredIndex: number; answeredIndices: number[] }) => void) | null = null;
   private onNextQuestionSyncCb: ((targetIndex: number, questionStartTime?: number, questionDuration?: number) => void) | null = null;
@@ -155,6 +162,10 @@ export class RealtimeMultiplayerService {
     this.onStartExamCb = cb;
   }
 
+  public onExamFinished(cb: (participants?: Participant[], questions?: UPAQuestion[]) => void) {
+    this.onExamFinishedCb = cb;
+  }
+
   public onScoreUpdate(cb: (data: { participantId: string; score: number; answeredCount: number; isFinished: boolean; timeSpentSeconds: number }) => void) {
     this.onScoreUpdateCb = cb;
   }
@@ -234,6 +245,19 @@ export class RealtimeMultiplayerService {
           if (this.ws === socket) {
             this.ws = null;
           }
+          // Auto-reconnect if disconnected unexpectedly while still in an active room
+          if (!this.intentionalLeave && this.currentRoomCode && this.currentParticipant) {
+            const roomCfg = this.currentRoomSettings || roomSettings;
+            const userCfg = this.currentParticipant;
+            if (this.reconnectTimer) {
+              clearTimeout(this.reconnectTimer);
+            }
+            this.reconnectTimer = setTimeout(() => {
+              if (!this.intentionalLeave && this.currentRoomCode === roomCfg.code) {
+                this.connectNativeWebSocket(roomCfg, userCfg);
+              }
+            }, 1500);
+          }
         };
       } catch {
         resolve(false);
@@ -241,11 +265,24 @@ export class RealtimeMultiplayerService {
     });
   }
 
+  private adjustStartTimeForClockSkew(questionStartTime?: number, serverTime?: number): number | undefined {
+    if (!questionStartTime) return undefined;
+    if (!serverTime) return questionStartTime;
+    const skew = serverTime - Date.now();
+    return questionStartTime - skew;
+  }
+
   private handleNativeWebSocketMessage(data: any): void {
     switch (data.type) {
       case 'ROOM_SYNC': {
         if (data.roomSettings) {
           this.currentRoomSettings = data.roomSettings;
+        }
+        if (data.status) {
+          this.currentRoomStatus = data.status;
+        }
+        if (typeof data.currentQuestionIndex === 'number') {
+          this.currentQuestionIndex = data.currentQuestionIndex;
         }
         if (Array.isArray(data.participants)) {
           this.participantsMap.clear();
@@ -256,15 +293,23 @@ export class RealtimeMultiplayerService {
         }
         if (data.status === 'in_progress' && Array.isArray(data.questions)) {
           this.currentLockedQuestions = data.questions;
+          const adjustedStart = this.adjustStartTimeForClockSkew(data.questionStartTime, data.serverTime);
           if (this.onStartExamCb) {
             this.onStartExamCb(
               data.roomSettings || this.currentRoomSettings,
               data.roomCode,
               data.questions,
               data.currentQuestionIndex || 0,
-              data.questionStartTime,
+              adjustedStart,
               data.questionDuration || 60
             );
+          }
+        } else if (data.status === 'finished') {
+          if (Array.isArray(data.questions)) {
+            this.currentLockedQuestions = data.questions;
+          }
+          if (this.onExamFinishedCb) {
+            this.onExamFinishedCb(data.participants, data.questions);
           }
         }
         break;
@@ -282,6 +327,8 @@ export class RealtimeMultiplayerService {
       }
 
       case 'EXAM_STARTED': {
+        this.currentRoomStatus = 'in_progress';
+        this.currentQuestionIndex = data.currentQuestionIndex || 0;
         if (Array.isArray(data.questions)) {
           this.currentLockedQuestions = data.questions;
         }
@@ -292,13 +339,14 @@ export class RealtimeMultiplayerService {
           });
           this.notifyParticipants();
         }
+        const adjustedStart = this.adjustStartTimeForClockSkew(data.questionStartTime, data.serverTime);
         if (this.onStartExamCb) {
           this.onStartExamCb(
             data.roomSettings || this.currentRoomSettings,
             data.roomCode,
             data.questions,
             data.currentQuestionIndex || 0,
-            data.questionStartTime,
+            adjustedStart,
             data.questionDuration || 60
           );
         }
@@ -324,12 +372,29 @@ export class RealtimeMultiplayerService {
       }
 
       case 'NEXT_QUESTION_SYNC': {
+        this.currentQuestionIndex = data.targetIndex;
+        const adjustedStart = this.adjustStartTimeForClockSkew(data.questionStartTime, data.serverTime);
         if (this.onNextQuestionSyncCb) {
           this.onNextQuestionSyncCb(
             data.targetIndex,
-            data.questionStartTime,
+            adjustedStart,
             data.questionDuration || 60
           );
+        }
+        break;
+      }
+
+      case 'EXAM_FINISHED': {
+        this.currentRoomStatus = 'finished';
+        if (Array.isArray(data.participants)) {
+          this.participantsMap.clear();
+          data.participants.forEach((p: Participant) => {
+            this.participantsMap.set(p.id, p);
+          });
+          this.notifyParticipants();
+        }
+        if (this.onExamFinishedCb) {
+          this.onExamFinishedCb(data.participants);
         }
         break;
       }
@@ -349,16 +414,20 @@ export class RealtimeMultiplayerService {
   public async joinRoom(roomSettings: RoomSettings, participant: Participant): Promise<void> {
     this.leaveRoom(); // Clean previous room if any
 
+    this.intentionalLeave = false;
     this.currentRoomCode = roomSettings.code;
-    this.currentParticipant = participant;
+    this.currentRoomSettings = roomSettings;
+    this.currentRoomStatus = 'lobby';
+    this.currentQuestionIndex = 0;
+    this.currentParticipant = { ...participant, isOnline: true };
     this.participantsMap.clear();
-    this.participantsMap.set(participant.id, participant);
+    this.participantsMap.set(participant.id, this.currentParticipant);
     this.notifyParticipants();
 
     this.updateStatus('connecting', 'websocket', 'Menghubungkan ke Real-Time Server...');
 
     // 1. Try Native WebSocket Server on current host first (Immediate 100% synchronized state)
-    const wsOk = await this.connectNativeWebSocket(roomSettings, participant);
+    const wsOk = await this.connectNativeWebSocket(roomSettings, this.currentParticipant);
     if (wsOk) {
       return;
     }
@@ -537,6 +606,10 @@ export class RealtimeMultiplayerService {
         // Host receives connection from Guest
         const guestId = conn.peer;
         this.peerConnections.set(guestId, conn);
+        const metaPid = (conn.metadata as { participant?: Participant } | undefined)?.participant?.id;
+        if (metaPid) {
+          this.peerParticipantIds.set(guestId, metaPid);
+        }
 
         conn.on('open', () => {
           // Send current participants snapshot to new guest along with locked questions
@@ -547,11 +620,16 @@ export class RealtimeMultiplayerService {
             participantsSnapshot: Array.from(this.participantsMap.values()),
             questions: this.currentLockedQuestions || undefined,
             roomSettings: this.currentRoomSettings || undefined,
+            roomStatus: this.currentRoomStatus,
+            currentQuestionIndex: this.currentQuestionIndex,
           });
         });
 
         conn.on('data', (data: unknown) => {
           const payload = data as RealtimeEventPayload;
+          if (payload?.type === 'ROOM_JOIN' && payload.participant?.id) {
+            this.peerParticipantIds.set(guestId, payload.participant.id);
+          }
           this.handleIncomingPayload(payload);
 
           // Host relays to all other connected peers
@@ -566,6 +644,22 @@ export class RealtimeMultiplayerService {
 
         conn.on('close', () => {
           this.peerConnections.delete(guestId);
+          const pid = this.peerParticipantIds.get(guestId);
+          this.peerParticipantIds.delete(guestId);
+          if (pid && this.participantsMap.has(pid)) {
+            if (this.currentRoomStatus === 'lobby') {
+              this.participantsMap.delete(pid);
+            } else {
+              const existing = this.participantsMap.get(pid)!;
+              this.participantsMap.set(pid, { ...existing, isOnline: false });
+            }
+            this.notifyParticipants();
+            this.broadcast({
+              type: 'ROOM_LEAVE',
+              roomCode,
+              senderId: pid,
+            });
+          }
         });
       });
 
@@ -616,31 +710,57 @@ export class RealtimeMultiplayerService {
           }
           this.notifyParticipants();
         }
+        if (payload.roomStatus) {
+          this.currentRoomStatus = payload.roomStatus;
+        }
         if (payload.questions && payload.questions.length > 0) {
           this.currentLockedQuestions = payload.questions;
           if (payload.roomSettings) {
             this.currentRoomSettings = payload.roomSettings;
-            if (this.onStartExamCb) {
-              this.onStartExamCb(payload.roomSettings, payload.seed || payload.roomCode, payload.questions);
+            if (payload.roomStatus === 'finished' && this.onExamFinishedCb) {
+              this.onExamFinishedCb(payload.participantsSnapshot, payload.questions);
+            } else if (this.onStartExamCb) {
+              this.onStartExamCb(
+                payload.roomSettings,
+                payload.seed || payload.roomCode,
+                payload.questions,
+                payload.currentQuestionIndex || 0
+              );
             }
           }
+        } else if (payload.roomStatus === 'finished' && this.onExamFinishedCb) {
+          this.onExamFinishedCb(payload.participantsSnapshot);
         }
         break;
 
       case 'ROOM_LEAVE':
         if (payload.senderId && this.participantsMap.has(payload.senderId)) {
-          this.participantsMap.delete(payload.senderId);
+          if (this.currentRoomStatus === 'lobby') {
+            this.participantsMap.delete(payload.senderId);
+          } else {
+            const existing = this.participantsMap.get(payload.senderId)!;
+            this.participantsMap.set(payload.senderId, { ...existing, isOnline: false });
+          }
           this.notifyParticipants();
         }
         break;
 
       case 'START_EXAM':
+        this.currentRoomStatus = 'in_progress';
+        this.currentQuestionIndex = 0;
         if (payload.roomSettings && this.onStartExamCb) {
           if (payload.questions) {
             this.currentLockedQuestions = payload.questions;
           }
           this.currentRoomSettings = payload.roomSettings;
-          this.onStartExamCb(payload.roomSettings, payload.seed || payload.roomCode, payload.questions);
+          this.onStartExamCb(
+            payload.roomSettings,
+            payload.seed || payload.roomCode,
+            payload.questions,
+            0,
+            payload.questionStartTime,
+            payload.questionDuration
+          );
         }
         break;
 
@@ -699,8 +819,25 @@ export class RealtimeMultiplayerService {
 
       case 'NEXT_QUESTION_SYNC': {
         const target = payload.targetQuestionIndex !== undefined ? payload.targetQuestionIndex : (payload as any).targetIndex;
-        if (target !== undefined && this.onNextQuestionSyncCb) {
-          this.onNextQuestionSyncCb(target, payload.questionStartTime, payload.questionDuration);
+        if (target !== undefined) {
+          this.currentQuestionIndex = target;
+          if (this.onNextQuestionSyncCb) {
+            this.onNextQuestionSyncCb(target, payload.questionStartTime, payload.questionDuration);
+          }
+        }
+        break;
+      }
+
+      case 'EXAM_FINISHED': {
+        this.currentRoomStatus = 'finished';
+        if (Array.isArray(payload.participantsSnapshot)) {
+          payload.participantsSnapshot.forEach((p) => {
+            this.participantsMap.set(p.id, p);
+          });
+          this.notifyParticipants();
+        }
+        if (this.onExamFinishedCb) {
+          this.onExamFinishedCb(payload.participantsSnapshot);
         }
         break;
       }
@@ -779,6 +916,20 @@ export class RealtimeMultiplayerService {
     this.participantsMap.set(this.currentParticipant.id, { ...this.currentParticipant });
     this.notifyParticipants();
 
+    if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+      this.ws.send(
+        JSON.stringify({
+          type: 'SCORE_UPDATE',
+          roomCode: this.currentRoomCode,
+          participantId: this.currentParticipant.id,
+          score,
+          answeredCount,
+          isFinished,
+          timeSpentSeconds,
+        })
+      );
+    }
+
     this.broadcast({
       type: 'SCORE_UPDATE',
       roomCode: this.currentRoomCode,
@@ -834,6 +985,8 @@ export class RealtimeMultiplayerService {
 
     this.currentLockedQuestions = lockedQuestions || null;
     this.currentRoomSettings = roomSettings;
+    this.currentRoomStatus = 'in_progress';
+    this.currentQuestionIndex = 0;
 
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
       this.ws.send(
@@ -919,6 +1072,8 @@ export class RealtimeMultiplayerService {
    */
   public adminFinishExam(): void {
     if (!this.currentParticipant || !this.currentRoomCode) return;
+    this.currentRoomStatus = 'finished';
+
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
       this.ws.send(
         JSON.stringify({
@@ -927,6 +1082,14 @@ export class RealtimeMultiplayerService {
         })
       );
     }
+
+    this.broadcast({
+      type: 'EXAM_FINISHED',
+      roomCode: this.currentRoomCode,
+      senderId: this.currentParticipant.id,
+      roomStatus: 'finished',
+      participantsSnapshot: Array.from(this.participantsMap.values()),
+    });
   }
 
   /**
@@ -934,6 +1097,7 @@ export class RealtimeMultiplayerService {
    */
   public syncNextQuestion(targetIndex: number): void {
     if (!this.currentParticipant || !this.currentRoomCode) return;
+    this.currentQuestionIndex = targetIndex;
 
     this.broadcast({
       type: 'NEXT_QUESTION_SYNC',
@@ -957,7 +1121,27 @@ export class RealtimeMultiplayerService {
    * Leave Room and cleanup
    */
   public leaveRoom(): void {
+    this.intentionalLeave = true;
+    if (this.reconnectTimer) {
+      clearTimeout(this.reconnectTimer);
+      this.reconnectTimer = null;
+    }
+
     if (this.currentRoomCode && this.currentParticipant) {
+      if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+        try {
+          this.ws.send(
+            JSON.stringify({
+              type: 'LEAVE_ROOM',
+              roomCode: this.currentRoomCode,
+              participantId: this.currentParticipant.id,
+            })
+          );
+        } catch {
+          // ignore
+        }
+      }
+
       this.broadcast({
         type: 'ROOM_LEAVE',
         roomCode: this.currentRoomCode,
@@ -1001,6 +1185,7 @@ export class RealtimeMultiplayerService {
       }
     });
     this.peerConnections.clear();
+    this.peerParticipantIds.clear();
 
     if (this.peer) {
       try {
@@ -1013,6 +1198,8 @@ export class RealtimeMultiplayerService {
 
     this.currentRoomCode = null;
     this.currentParticipant = null;
+    this.currentRoomStatus = 'lobby';
+    this.currentQuestionIndex = 0;
     this.participantsMap.clear();
     this.updateStatus('disconnected', 'broadcast');
   }

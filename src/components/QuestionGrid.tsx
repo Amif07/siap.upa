@@ -13,6 +13,7 @@ interface QuestionGridProps {
   onFinishQuiz: () => void;
   maxAccessibleIndex?: number;
   isMultiplayer?: boolean;
+  isHost?: boolean;
 }
 
 export const QuestionGrid: React.FC<QuestionGridProps> = ({
@@ -25,6 +26,7 @@ export const QuestionGrid: React.FC<QuestionGridProps> = ({
   onFinishQuiz,
   maxAccessibleIndex,
   isMultiplayer = false,
+  isHost = true,
 }) => {
   const [filterMode, setFilterMode] = useState<'all' | 'unanswered' | 'doubtful'>('all');
   const [jumpInput, setJumpInput] = useState('');
@@ -199,14 +201,20 @@ export const QuestionGrid: React.FC<QuestionGridProps> = ({
           <span>{isCurrentDoubtful ? 'Hapus Tanda Ragu-Ragu' : 'Tandai Ragu-Ragu (Kuning)'}</span>
         </button>
 
-        {/* Submit Exam */}
-        <button
-          onClick={onFinishQuiz}
-          className="w-full py-2.5 px-3 text-xs font-semibold rounded-lg bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white transition-colors flex items-center justify-center gap-1.5 shadow-sm"
-        >
-          <CheckCircle2 className="w-4 h-4" />
-          <span>Selesaikan & Kumpulkan Ujian</span>
-        </button>
+        {/* Submit Exam (In multiplayer, only Host controls finishing the room exam) */}
+        {!isMultiplayer || isHost ? (
+          <button
+            onClick={onFinishQuiz}
+            className="w-full py-2.5 px-3 text-xs font-semibold rounded-lg bg-emerald-700 hover:bg-emerald-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white transition-colors flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+          >
+            <CheckCircle2 className="w-4 h-4" />
+            <span>{isMultiplayer ? 'Akhiri Ujian untuk Semua Peserta' : 'Selesaikan & Kumpulkan Ujian'}</span>
+          </button>
+        ) : (
+          <div className="w-full py-2.5 px-3 text-[11px] font-medium rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 text-amber-800 dark:text-amber-300 text-center">
+            Navigasi & penyelesaian ujian dikendalikan oleh Admin/Host
+          </div>
+        )}
       </div>
     </div>
   );

@@ -130,28 +130,30 @@ export const Header: React.FC<HeaderProps> = ({
             <span>Pasal-Pasal Kunci</span>
           </button>
 
-          <button
-            onClick={() => handleNavClick('monitor')}
-            className={`flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 hover:text-slate-900 dark:hover:text-white pb-0.5 ${
-              activeView === 'monitor'
-                ? 'text-amber-600 dark:text-amber-400 font-semibold border-b-2 border-amber-600 dark:border-amber-400'
-                : ''
-            }`}
-            title="Pantau Peserta Online & Seluruh Riwayat Ujian"
-          >
-            <Shield className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-            <span>Monitor & Riwayat</span>
-            {pendingApprovalCount > 0 ? (
-              <span className="flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold rounded-full bg-amber-500 text-slate-950 animate-pulse">
-                {pendingApprovalCount} Butuh Konfirmasi
-              </span>
-            ) : (
-              <span className="flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-bold rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                {onlineUserCount} Online
-              </span>
-            )}
-          </button>
+          {currentUser?.role === 'admin' && (
+            <button
+              onClick={() => handleNavClick('monitor')}
+              className={`flex items-center gap-1.5 transition-colors whitespace-nowrap shrink-0 hover:text-slate-900 dark:hover:text-white pb-0.5 ${
+                activeView === 'monitor'
+                  ? 'text-amber-600 dark:text-amber-400 font-semibold border-b-2 border-amber-600 dark:border-amber-400'
+                  : ''
+              }`}
+              title="Persetujuan User & Monitor Admin"
+            >
+              <Shield className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+              <span>Persetujuan User</span>
+              {pendingApprovalCount > 0 ? (
+                <span className="flex items-center gap-1 px-2 py-0.5 text-[10px] font-bold rounded-full bg-amber-500 text-slate-950 animate-pulse">
+                  {pendingApprovalCount} Pending
+                </span>
+              ) : (
+                <span className="flex items-center gap-1 px-1.5 py-0.5 text-[10px] font-bold rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  {onlineUserCount} Online
+                </span>
+              )}
+            </button>
+          )}
         </nav>
 
         {/* Zone 3: Primary Action & Utilities */}
@@ -205,43 +207,52 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden sm:inline">Simpan App</span>
           </button>
 
-          {/* User Profile Badge & Quick Action */}
+          {/* User Profile Badge & Logout */}
           {currentUser && (
             <div className="flex items-center gap-1.5 pl-2 border-l border-slate-200 dark:border-slate-800">
               <button
-                onClick={() => handleNavClick('monitor')}
-                className="flex items-center gap-2 p-1 sm:px-2 sm:py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left"
-                title={`Akun: ${currentUser.name} (${currentUser.email}) - Klik untuk buka Monitor`}
+                type="button"
+                onClick={() => {
+                  if (currentUser.role === 'admin') {
+                    handleNavClick('monitor');
+                  }
+                }}
+                className={`flex items-center gap-2 p-1 sm:px-2 sm:py-1 rounded-lg transition-colors text-left ${
+                  currentUser.role === 'admin'
+                    ? 'hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer'
+                    : 'cursor-default'
+                }`}
+                title={`${currentUser.username || currentUser.email} (${currentUser.email})`}
               >
                 <div className="relative">
                   <div className="w-7 h-7 rounded-full bg-slate-900 dark:bg-amber-600 text-white font-bold text-xs flex items-center justify-center">
-                    {currentUser.name.charAt(0).toUpperCase()}
+                    {(currentUser.username || currentUser.email).charAt(0).toUpperCase()}
                   </div>
                   <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-900" />
                 </div>
                 <div className="hidden lg:flex flex-col">
-                  <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 max-w-[100px] truncate leading-tight">
-                    {currentUser.name}
+                  <span className="text-xs font-semibold text-slate-800 dark:text-slate-200 max-w-[110px] truncate leading-tight">
+                    {currentUser.username || currentUser.email}
                   </span>
                   <span className="text-[10px] text-amber-600 dark:text-amber-400 font-medium leading-none">
-                    {currentUser.role === 'admin' ? 'Pengawas' : 'Peserta'}
+                    {currentUser.role === 'admin' ? 'Admin' : 'User'}
                   </span>
                 </div>
               </button>
 
               {onLogout && (
                 <button
+                  type="button"
                   onClick={() => {
                     soundEffects.playClick();
-                    if (confirm('Keluar dari sesi akun saat ini dan kembali ke halaman masuk?')) {
-                      onLogout();
-                    }
+                    onLogout();
                   }}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
-                  title="Ganti Akun / Keluar"
+                  className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium text-slate-500 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
+                  title="Logout"
                   aria-label="Logout"
                 >
                   <LogOut className="w-3.5 h-3.5" />
+                  <span className="hidden xl:inline">Logout</span>
                 </button>
               )}
             </div>
@@ -292,13 +303,21 @@ export const Header: React.FC<HeaderProps> = ({
         >
           Pasal
         </button>
-        <button
-          onClick={() => handleNavClick('monitor')}
-          className={`flex items-center gap-1 px-2 py-1 rounded ${activeView === 'monitor' ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 font-semibold' : 'text-slate-600 dark:text-slate-400'}`}
-        >
-          <span>Monitor</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-        </button>
+        {currentUser?.role === 'admin' && (
+          <button
+            onClick={() => handleNavClick('monitor')}
+            className={`flex items-center gap-1 px-2 py-1 rounded ${activeView === 'monitor' ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 font-semibold' : 'text-slate-600 dark:text-slate-400'}`}
+          >
+            <span>Persetujuan</span>
+            {pendingApprovalCount > 0 ? (
+              <span className="px-1 rounded-full bg-amber-500 text-slate-950 text-[10px] font-bold">
+                {pendingApprovalCount}
+              </span>
+            ) : (
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            )}
+          </button>
+        )}
       </div>
     </header>
   );

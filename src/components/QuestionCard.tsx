@@ -111,7 +111,11 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                 Mode Multiplayer Sinkron:
               </span>
               <span className="text-slate-500 dark:text-slate-400">
-                Layar dikendalikan Admin bersama seluruh peserta
+                {isHost
+                  ? isNextLocked
+                    ? 'Menunggu semua peserta aktif menjawab atau waktu habis'
+                    : 'Siap melanjutkan ke tahap berikutnya'
+                  : 'Layar dikendalikan Admin bersama seluruh peserta'}
               </span>
             </div>
             <div>
@@ -119,18 +123,25 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                 className={`inline-flex items-center gap-1.5 font-bold px-2.5 py-1 rounded-lg text-xs ${
                   peersAnsweredCount >= totalPeersCount
                     ? 'bg-emerald-100 dark:bg-emerald-950/70 text-emerald-900 dark:text-emerald-300 border border-emerald-300/60 dark:border-emerald-700/60'
+                    : secondsRemaining !== undefined && secondsRemaining <= 0
+                    ? 'bg-sky-100 dark:bg-sky-950/70 text-sky-900 dark:text-sky-300 border border-sky-300/60 dark:border-sky-700/60'
                     : 'bg-amber-100 dark:bg-amber-950/70 text-amber-900 dark:text-amber-300 border border-amber-300/60 dark:border-amber-700/60'
                 }`}
               >
                 {peersAnsweredCount >= totalPeersCount ? (
                   <>
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>Semua Selesai ({peersAnsweredCount}/{totalPeersCount})</span>
+                    <span>Semua peserta menjawab: {peersAnsweredCount}/{totalPeersCount} selesai</span>
+                  </>
+                ) : secondsRemaining !== undefined && secondsRemaining <= 0 ? (
+                  <>
+                    <Clock className="w-3.5 h-3.5 text-sky-600" />
+                    <span>Waktu habis · {peersAnsweredCount}/{totalPeersCount} selesai</span>
                   </>
                 ) : (
                   <>
                     <Clock className="w-3.5 h-3.5 text-amber-600 animate-spin" />
-                    <span>Progres Jawaban: {peersAnsweredCount}/{totalPeersCount} Peserta</span>
+                    <span>Menunggu peserta menjawab: {peersAnsweredCount}/{totalPeersCount} selesai</span>
                   </>
                 )}
               </span>
@@ -349,30 +360,76 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           {/* MULTIPLAYER MODE CONTROLS */}
           {isMultiplayer ? (
             isHost ? (
-              // HOST / ADMIN CONTROLS: Active button to move everyone to next question
+              // HOST / ADMIN CONTROLS: Locked until all active participants answer OR timer reaches 0
               !isLast ? (
                 <button
                   type="button"
+                  disabled={isNextLocked}
                   onClick={() => {
+                    if (isNextLocked) {
+                      soundEffects.playWrong();
+                      return;
+                    }
                     soundEffects.playClick();
                     onNext();
                   }}
-                  className="px-5 py-2.5 text-xs font-bold text-white bg-amber-600 hover:bg-amber-500 rounded-xl shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer ring-2 ring-amber-500/20"
+                  title={
+                    isNextLocked
+                      ? lockReasonText || `Menunggu peserta menjawab (${peersAnsweredCount}/${totalPeersCount})`
+                      : 'Lanjut ke soal berikutnya untuk seluruh peserta'
+                  }
+                  className={`px-5 py-2.5 text-xs font-bold rounded-xl transition-all flex items-center gap-2 ${
+                    isNextLocked
+                      ? 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-300 dark:border-slate-700 cursor-not-allowed opacity-75'
+                      : 'text-white bg-amber-600 hover:bg-amber-500 shadow-md hover:scale-[1.02] active:scale-[0.98] cursor-pointer ring-2 ring-amber-500/20'
+                  }`}
                 >
-                  <span>Lanjut ke Soal Berikutnya (Next Soal)</span>
-                  <ChevronRight className="w-4 h-4" />
+                  {isNextLocked ? (
+                    <>
+                      <Lock className="w-4 h-4" />
+                      <span>Next Soal Terkunci ({peersAnsweredCount}/{totalPeersCount} selesai)</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Lanjut ke Soal Berikutnya (Next Soal)</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               ) : (
                 <button
                   type="button"
+                  disabled={isNextLocked}
                   onClick={() => {
+                    if (isNextLocked) {
+                      soundEffects.playWrong();
+                      return;
+                    }
                     soundEffects.playClick();
-                    onFinishQuiz();
+                    onNext();
                   }}
-                  className="px-5 py-2.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer ring-2 ring-emerald-500/20"
+                  title={
+                    isNextLocked
+                      ? lockReasonText || `Menunggu peserta menjawab (${peersAnsweredCount}/${totalPeersCount})`
+                      : 'Selesaikan ujian dan tampilkan hasil akhir untuk seluruh peserta'
+                  }
+                  className={`px-5 py-2.5 text-xs font-bold rounded-xl transition-all flex items-center gap-2 ${
+                    isNextLocked
+                      ? 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-300 dark:border-slate-700 cursor-not-allowed opacity-75'
+                      : 'text-white bg-emerald-600 hover:bg-emerald-500 shadow-md hover:scale-[1.02] active:scale-[0.98] cursor-pointer ring-2 ring-emerald-500/20'
+                  }`}
                 >
-                  <Check className="w-4 h-4" />
-                  <span>Selesai & Evaluasi Seluruh Peserta</span>
+                  {isNextLocked ? (
+                    <>
+                      <Lock className="w-4 h-4" />
+                      <span>Selesai Ujian Terkunci ({peersAnsweredCount}/{totalPeersCount} selesai)</span>
+                    </>
+                  ) : (
+                    <>
+                      <Check className="w-4 h-4" />
+                      <span>Selesai Ujian & Evaluasi Seluruh Peserta</span>
+                    </>
+                  )}
                 </button>
               )
             ) : (
