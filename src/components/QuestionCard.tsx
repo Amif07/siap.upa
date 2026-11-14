@@ -81,10 +81,6 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               {question.category}
             </span>
             <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
-            <span>{question.topicTag}</span>
-            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
-            <span>Tingkat: {question.difficulty}</span>
-            <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
             <span className="font-mono tabular-nums font-semibold text-slate-800 dark:text-slate-200">
               Soal {index + 1} dari {totalQuestions}
             </span>
@@ -280,36 +276,69 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                   </div>
                 </div>
 
-                {/* Dasar Hukum Positif (Pasal, Ayat, UU/HIR/RBg/KUHAP/KUHP/KHI) */}
-                <div className="bg-white dark:bg-slate-900/90 p-4 rounded-xl border border-amber-300/80 dark:border-amber-700/50 shadow-2xs">
-                  <div className="flex items-center gap-2 text-xs font-bold text-amber-700 dark:text-amber-400 mb-1.5">
+                {/* Dasar Hukum Positif & Bunyi Pasal */}
+                <div className="bg-white dark:bg-slate-900/90 p-4 rounded-xl border border-amber-300/80 dark:border-amber-700/50 shadow-2xs space-y-2.5">
+                  <div className="flex items-center gap-2 text-xs font-bold text-amber-700 dark:text-amber-400">
                     <Scale className="w-4 h-4 shrink-0 text-amber-600" />
-                    <span>DASAR HUKUM POSITIF & BUNYI PASAL:</span>
+                    <span>DASAR HUKUM POSITIF &amp; BUNYI PASAL:</span>
                   </div>
                   <p className="text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-100 leading-relaxed font-legal">
                     {question.explanation.legalBasis}
                   </p>
+                  {question.explanation.statuteText ? (
+                    <blockquote className="pl-3.5 pr-3 py-2.5 border-l-3 border-amber-500/80 dark:border-amber-400/70 bg-amber-50/50 dark:bg-amber-950/25 rounded-r-lg text-xs sm:text-sm italic text-slate-700 dark:text-slate-200 leading-relaxed">
+                      "{question.explanation.statuteText.replace(/^["“]|["”]$/g, '')}"
+                    </blockquote>
+                  ) : (
+                    <blockquote className="pl-3.5 pr-3 py-2.5 border-l-3 border-amber-500/70 dark:border-amber-400/60 bg-amber-50/40 dark:bg-amber-950/20 rounded-r-lg text-xs sm:text-sm italic text-slate-700 dark:text-slate-200 leading-relaxed">
+                      Inti Ketentuan: {question.explanation.summary}
+                    </blockquote>
+                  )}
                 </div>
 
-                {/* Ringkasan Kaidah Hukum */}
-                <div>
-                  <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">
-                    Ringkasan Kaidah Hukum:
-                  </span>
-                  <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-                    {question.explanation.summary}
-                  </p>
-                </div>
+                {/* Ringkasan Kaidah Hukum (ditampilkan saat bunyi pasal terpisah tersedia agar tidak duplikat) */}
+                {question.explanation.statuteText && (
+                  <div>
+                    <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">
+                      Ringkasan Kaidah Hukum:
+                    </span>
+                    <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
+                      {question.explanation.summary}
+                    </p>
+                  </div>
+                )}
 
-                {/* Analisis Yuridis Mendalam */}
-                <div>
-                  <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">
-                    Analisis Yuridis Mendalam:
-                  </span>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    {question.explanation.analysis}
-                  </p>
-                </div>
+                {/* Analisis & Catatan Pembaruan (RUU KUHAP) atau Analisis Yuridis Mendalam */}
+                {question.explanation.ruuComparison || question.category === 'Hukum Acara Pidana' ? (
+                  <div className="bg-sky-50/80 dark:bg-sky-950/25 p-4 rounded-xl border border-sky-200/90 dark:border-sky-800/60 space-y-2.5">
+                    <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300">
+                      <BookOpen className="w-4 h-4 shrink-0 text-sky-600 dark:text-sky-400" />
+                      <span>ANALISIS &amp; CATATAN PEMBARUAN (RUU KUHAP)</span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
+                      {question.explanation.analysis}
+                    </p>
+                    {question.explanation.ruuComparison && (
+                      <div className="pt-2.5 border-t border-sky-200/70 dark:border-sky-800/50">
+                        <span className="text-[11px] font-bold text-sky-800 dark:text-sky-300 uppercase tracking-wider block mb-1">
+                          Perbandingan Pembaruan (RUU KUHAP):
+                        </span>
+                        <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                          {question.explanation.ruuComparison}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div>
+                    <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-1">
+                      Analisis Yuridis Mendalam:
+                    </span>
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {question.explanation.analysis}
+                    </p>
+                  </div>
+                )}
               </motion.div>
             )}
           </motion.div>

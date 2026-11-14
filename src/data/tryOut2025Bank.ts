@@ -5,30 +5,32 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 201,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Salah satu hak terdakwa dalam hukum acara pidana adalah mengajukan eksepsi, yang diajukan terhadap:",
+    "question": "Salah satu hak terdakwa dalam hukum acara pidana adalah mengajukan keberatan (eksepsi) terhadap...",
     "options": [
       {
         "key": "A",
-        "text": "Surat dakwaan jaksa kabur"
+        "text": "Surat dakwaan jaksa penuntut umum yang dianggap kabur atau tidak berwenang mengadili"
       },
       {
         "key": "B",
-        "text": "Surat tuntutan Jaksa"
+        "text": "Surat tuntutan pidana (requisitoir) jaksa penuntut umum"
       },
       {
         "key": "C",
-        "text": "Berita Acara Pemeriksaan di Kepolisian"
+        "text": "Berita Acara Pemeriksaan (BAP) di tingkat kepolisian"
       },
       {
         "key": "D",
-        "text": "Replik Jaksa"
+        "text": "Replik jaksa penuntut umum"
       }
     ],
     "correctAnswer": "A",
     "explanation": {
       "summary": "Eksepsi diajukan terhadap surat dakwaan penuntut umum yang batal demi hukum atau kabur.",
-      "legalBasis": "Pasal 156 ayat (1) KUHAP.",
-      "analysis": "Berdasarkan Pasal 156 ayat (1) KUHAP, terdakwa atau penasihat hukumnya dapat mengajukan keberatan (eksepsi) bahwa pengadilan tidak berwenang mengadili perkaranya atau dakwaan tidak dapat diterima atau surat dakwaan harus dibatalkan karena kabur (obscuur libel)."
+      "legalBasis": "Pasal 156 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Dalam hal terdakwa atau penasihat hukum mengajukan keberatan bahwa pengadilan tidak berwenang mengadili perkaranya atau dakwaan tidak dapat diterima atau surat dakwaan harus dibatalkan, maka setelah diberi kesempatan kepada penuntut umum untuk menyatakan pendapatnya, hakim mempertimbangkan keberatan tersebut untuk selanjutnya mengambil putusan.",
+      "analysis": "Pilihan A tepat karena eksepsi menurut Pasal 156 ayat (1) KUHAP hanya diajukan segera setelah pembacaan surat dakwaan mengenai kompetensi pengadilan, dakwaan tidak dapat diterima, atau dakwaan batal demi hukum (obscuur libel). Pilihan B (requisitoir) dan D (replik) ditanggapi melalui pledoi dan duplik, sedangkan pilihan C (BAP) diuji dalam pembuktian atau praperadilan.",
+      "ruuComparison": "Dalam RUU KUHAP, ruang lingkup keberatan (eksepsi) dan pengujian keabsahan penuntutan/surat dakwaan juga diperkuat sejak tahap pra-persidangan melalui Hakim Pemeriksa Pendahuluan sebelum perkara disidangkan pada pokok perkara."
     },
     "difficulty": "Mudah"
   },
@@ -36,7 +38,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 202,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Permohonan kasasi demi kepentingan hukum disampaikan oleh:",
+    "question": "Permohonan kasasi demi kepentingan hukum dalam perkara pidana disampaikan oleh...",
     "options": [
       {
         "key": "A",
@@ -58,8 +60,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Kasasi demi kepentingan hukum diajukan secara khusus oleh Jaksa Agung.",
-      "legalBasis": "Pasal 259 ayat (1) KUHAP.",
-      "analysis": "Pasal 259 ayat (1) KUHAP menentukan bahwa demi kepentingan hukum terhadap semua putusan yang telah memperoleh kekuatan hukum tetap dari pengadilan lain selain Mahkamah Agung, permohonan kasasi hanya dapat diajukan oleh Jaksa Agung kepada Mahkamah Agung."
+      "legalBasis": "Pasal 259 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Demi kepentingan hukum terhadap semua putusan yang telah memperoleh kekuatan hukum tetap dari pengadilan lain selain daripada Mahkamah Agung, dapat diajukan satu kali permohonan kasasi oleh Jaksa Agung.",
+      "analysis": "Pilihan C tepat karena kewenangan mengajukan kasasi demi kepentingan hukum bersifat eksklusif pada Jaksa Agung. Pilihan A (JPU biasa) dan D (Terdakwa) hanya berwenang mengajukan kasasi biasa (Pasal 244 KUHAP), sedangkan pilihan B (Majelis Hakim) adalah pemutus perkara, bukan pemohon upaya hukum.",
+      "ruuComparison": "RUU KUHAP tetap mempertahankan lembaga kasasi demi kepentingan hukum sebagai kewenangan eksklusif Jaksa Agung untuk menjaga kesatuan penerapan hukum, dengan penegasan bahwa putusan kasasi demi kepentingan hukum tidak boleh merugikan pihak yang berkepentingan (terpidana)."
     },
     "difficulty": "Sedang"
   },
@@ -89,8 +93,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Hak tersangka menghubungi penasihat hukum sejak penangkapan/penahanan diatur dalam Pasal 69 KUHAP.",
-      "legalBasis": "Pasal 69 KUHAP.",
-      "analysis": "Pasal 69 KUHAP secara tegas menyatakan bahwa setelah seorang tersangka ditangkap atau ditahan, ia berhak menghubungi penasihat hukumnya sesuai dengan ketentuan undang-undang ini."
+      "legalBasis": "Pasal 69 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Penasihat hukum berhak menghubungi tersangka sejak saat ditangkap atau ditahan pada semua tingkat pemeriksaan menurut tata cara yang ditentukan dalam undang-undang ini.",
+      "analysis": "Pilihan B tepat karena Pasal 69 KUHAP secara khusus menjamin hak penasihat hukum menghubungi tersangka sejak penangkapan atau penahanan. Pilihan A (Pasal 20) mengatur kewenangan penahanan, pilihan C (Pasal 197) mengatur isi surat putusan pemidanaan, dan pilihan D (Pasal 244) mengatur kasasi biasa.",
+      "ruuComparison": "RUU KUHAP memperluas jaminan Pasal 69 KUHAP dengan menegaskan bahwa pertemuan dan komunikasi antara tersangka/terdakwa dan penasihat hukum bersifat rahasia dan tidak boleh diawasi atau didengar oleh penyidik/petugas rutan kecuali terbukti disalahgunakan untuk tindak pidana."
     },
     "difficulty": "Mudah"
   },
@@ -98,7 +104,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 204,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Surat dakwaan yang dibuat oleh Jaksa Penuntut Umum harus memenuhi dua syarat, yaitu syarat formil dan materiil. Apabila syarat formil tidak terpenuhi, maka surat dakwaan tersebut:",
+    "question": "Surat dakwaan yang dibuat oleh Jaksa Penuntut Umum harus memenuhi syarat formil dan syarat materiil. Apabila syarat formil tidak terpenuhi, maka surat dakwaan tersebut...",
     "options": [
       {
         "key": "A",
@@ -120,8 +126,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Syarat formil surat dakwaan jika tidak terpenuhi mengakibatkan dakwaan dapat dibatalkan.",
-      "legalBasis": "Pasal 143 ayat (2) dan ayat (3) KUHAP.",
-      "analysis": "Ketentuan Pasal 143 ayat (3) KUHAP menyatakan surat dakwaan yang tidak memenuhi ketentuan Pasal 143 ayat (2) huruf b (syarat materiil) adalah batal demi hukum. Sedangkan kekurangan syarat formil (huruf a) berakibat surat dakwaan dapat dibatalkan (vernietigbaar) atau diminta perbaikan."
+      "legalBasis": "Pasal 143 ayat (2) dan ayat (3) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Surat dakwaan yang tidak memenuhi ketentuan sebagaimana dimaksud dalam ayat (2) huruf b batal demi hukum.",
+      "analysis": "Pilihan B tepat karena tidak terpenuhinya syarat formil (Pasal 143 ayat 2 huruf a: tanggal, tanda tangan, dan identitas lengkap terdakwa) mengakibatkan surat dakwaan dapat dibatalkan (vernietigbaar) atau diperintahkan untuk diperbaiki. Pilihan A (\"batal demi hukum\") merupakan akibat tidak terpenuhinya syarat materiil (huruf b), sedangkan pilihan C dan D bukan istilah yuridis sanksi KUHAP.",
+      "ruuComparison": "RUU KUHAP memperjelas mekanisme perbaikan surat dakwaan sebelum sidang pokok perkara dimulai serta memberikan kewenangan kepada Hakim Pemeriksa Pendahuluan untuk menilai kelayakan penuntutan agar dakwaan cacat formil tidak berlarut-larut di persidangan."
     },
     "difficulty": "Sedang"
   },
@@ -129,7 +137,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 205,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Surat dakwaan yang dibuat oleh Jaksa Penuntut Umum secara materiil wajib memuat:",
+    "question": "Surat dakwaan yang dibuat oleh Jaksa Penuntut Umum secara materiil wajib memuat...",
     "options": [
       {
         "key": "A",
@@ -151,8 +159,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "D",
     "explanation": {
       "summary": "Surat dakwaan wajib memuat tempat, waktu (tempus dan locus delicti), dan uraian cermat unsur delik.",
-      "legalBasis": "Pasal 143 ayat (2) KUHAP.",
-      "analysis": "Pasal 143 ayat (2) KUHAP mengharuskan surat dakwaan memuat identitas lengkap tersangka, uraian secara cermat, jelas, dan lengkap mengenai tindak pidana yang didakwakan dengan menyebut waktu dan tempat tindak pidana itu dilakukan."
+      "legalBasis": "Pasal 143 ayat (2) huruf b UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Penuntut umum membuat surat dakwaan yang diberi tanggal dan ditandatangani serta berisi: ... b. uraian secara cermat, jelas dan lengkap mengenai tindak pidana yang didakwakan dengan menyebutkan waktu dan tempat tindak pidana itu dilakukan.",
+      "analysis": "Pilihan D tepat karena syarat materiil surat dakwaan harus memuat tiga unsur kumulatif: uraian cermat/jelas/lengkap mengenai delik, waktu tindak pidana (tempus delicti), dan tempat tindak pidana (locus delicti). Pilihan A dan B tidak lengkap, sedangkan pilihan C adalah bagian dari tuntutan pidana (requisitoir), bukan surat dakwaan.",
+      "ruuComparison": "RUU KUHAP mempertahankan syarat materiil tempus, locus delicti, dan uraian cermat delik, sekaligus mewajibkan penuntut umum melampirkan daftar alat bukti secara transparan (discovery/disclosure) kepada terdakwa dan penasihat hukum sebelum persidangan."
     },
     "difficulty": "Mudah"
   },
@@ -160,7 +170,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 206,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Keterangan saksi adalah apa yang saksi nyatakan di sidang pengadilan mengenai hal:",
+    "question": "Keterangan saksi adalah apa yang saksi nyatakan di sidang pengadilan mengenai hal...",
     "options": [
       {
         "key": "A",
@@ -182,8 +192,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Keterangan saksi adalah hal yang saksi alami, lihat, atau dengar sendiri.",
-      "legalBasis": "Pasal 1 angka 27 jo. Pasal 185 ayat (1) KUHAP.",
-      "analysis": "Pasal 1 angka 27 KUHAP mendefinisikan keterangan saksi sebagai salah satu alat bukti dalam perkara pidana yang berupa keterangan dari saksi mengenai suatu peristiwa pidana yang ia dengar sendiri, ia lihat sendiri dan ia alami sendiri dengan menyebut alasan dari pengetahuannya itu."
+      "legalBasis": "Pasal 1 angka 27 jo. Pasal 185 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Keterangan saksi adalah salah satu alat bukti dalam perkara pidana yang berupa keterangan dari saksi mengenai suatu peristiwa pidana yang ia dengar sendiri, ia lihat sendiri dan ia alami sendiri dengan menyebut alasan dari pengetahuannya itu.",
+      "analysis": "Pilihan B tepat karena saksi harus menerangkan peristiwa pidana yang didengar, dilihat, atau dialami sendiri (bukan mendengar dari pihak lain). Pilihan A dan C keliru karena itu merupakan keterangan terdakwa, sedangkan pilihan D keliru karena penyidik bukan saksi atas peristiwa pidana kecuali dalam konteks saksi verbalisan.",
+      "ruuComparison": "RUU KUHAP mempertahankan larangan testimonium de auditu sebagai bukti langsung, namun memperluas penerimaan keterangan saksi yang diberikan secara elektronik/jarak jauh (telekonferensi) dalam kondisi tertentu serta pengakuan saksi ahli dan informasi elektronik secara eksplisit."
     },
     "difficulty": "Mudah"
   },
@@ -191,7 +203,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 207,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Undang-Undang yang mengatur Hukum Acara Pidana adalah:",
+    "question": "Undang-Undang yang mengatur Hukum Acara Pidana adalah...",
     "options": [
       {
         "key": "A",
@@ -213,8 +225,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Kitab Undang-Undang Hukum Acara Pidana (KUHAP) diundangkan dalam UU No. 8 Tahun 1981.",
-      "legalBasis": "Pasal 1 angka 1 jo. Pasal 284 ayat (1) dan Pasal 285 Undang-Undang No. 8 Tahun 1981 tentang KUHAP.",
-      "analysis": "KUHAP disahkan dan diundangkan pada tanggal 31 Desember 1981 sebagai Undang-Undang Republik Indonesia Nomor 8 Tahun 1981 tentang Hukum Acara Pidana."
+      "legalBasis": "Pasal 1 angka 1 jo. Pasal 284 ayat (1) dan Pasal 285 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Undang-undang ini disebut Kitab Undang-Undang Hukum Acara Pidana (KUHAP), yakni Undang-Undang Republik Indonesia Nomor 8 Tahun 1981 yang mulai berlaku pada tanggal diundangkan (31 Desember 1981).",
+      "analysis": "Pilihan C tepat karena KUHAP dikodifikasikan dalam UU No. 8 Tahun 1981. Pilihan A (UU No. 18 Tahun 1981), B (UU No. 15 Tahun 1991), dan D (UU No. 5 Tahun 1985) bukan nomor undang-undang yang mengatur KUHAP.",
+      "ruuComparison": "KUHAP (UU No. 8 Tahun 1981) telah berlaku lebih dari empat dekade sebagai \"karya agung\" pengganti HIR di bidang pidana; RUU KUHAP disusun untuk menggantikan UU No. 8 Tahun 1981 agar selaras dengan KUHP Nasional (UU No. 1 Tahun 2023), perkembangan teknologi digital, dan standar HAM internasional."
     },
     "difficulty": "Mudah"
   },
@@ -222,7 +236,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 208,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Yang dapat dijadikan alasan penangguhan penahanan, kecuali:",
+    "question": "Berikut ini merupakan syarat atau alasan penangguhan penahanan menurut KUHAP, kecuali...",
     "options": [
       {
         "key": "A",
@@ -244,8 +258,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "D",
     "explanation": {
       "summary": "Syarat penangguhan penahanan adalah tidak melarikan diri, tidak merusak barang bukti, dan tidak mengulangi delik.",
-      "legalBasis": "Pasal 31 ayat (1) KUHAP.",
-      "analysis": "Pasal 31 ayat (1) KUHAP mengatur jaminan penangguhan penahanan berupa jaminan orang atau uang dengan syarat tersangka tidak melarikan diri, tidak menghilangkan barang bukti, dan tidak mengulangi tindak pidana. Alasan \"permintaan keluarga\" bukan merupakan alasan hukum objektif yang diwajibkan KUHAP."
+      "legalBasis": "Pasal 31 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Atas permintaan tersangka atau terdakwa, penyidik atau penuntut umum atau hakim, sesuai dengan kewenangan masing-masing, dapat mengadakan penangguhan penahanan dengan atau tanpa jaminan uang atau jaminan orang, berdasarkan syarat yang ditentukan.",
+      "analysis": "Pilihan D tepat (merupakan pengecualian) karena permintaan keluarga bukanlah syarat substantif/hukum penangguhan penahanan; penangguhan mensyaratkan adanya jaminan (uang/orang) dan keyakinan bahwa tersangka tidak akan melakukan tiga hal pada pilihan A, B, dan C (tidak menghilangkan barang bukti, tidak melarikan diri, tidak mengulangi tindak pidana).",
+      "ruuComparison": "RUU KUHAP memperjelas mekanisme pengajuan penangguhan penahanan dengan mewajibkan pejabat yang berwenang memberikan jawaban tertulis dalam batas waktu tertentu serta membuka kontrol dari Hakim Pemeriksa Pendahuluan atas penolakan penangguhan penahanan."
     },
     "difficulty": "Sedang"
   },
@@ -253,7 +269,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 209,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "KUHAP menetapkan beberapa jenis penahanan, kecuali:",
+    "question": "KUHAP menetapkan beberapa jenis penahanan dalam proses peradilan pidana, kecuali...",
     "options": [
       {
         "key": "A",
@@ -275,8 +291,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Jenis penahanan menurut KUHAP hanya penahanan rutan, rumah, dan kota. Penahanan penjara bukan jenis penahanan.",
-      "legalBasis": "Pasal 22 ayat (1) KUHAP.",
-      "analysis": "Pasal 22 ayat (1) KUHAP mengatur limitatif jenis penahanan: a. Penahanan rumah tahanan negara (RUTAN); b. Penahanan rumah; c. Penahanan kota. Penjara merupakan tempat menjalani pidana pokok setelah vonis hakim, bukan tempat penahanan preventif proses peradilan."
+      "legalBasis": "Pasal 22 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Jenis penahanan dapat berupa: a. penahanan rumah tahanan negara; b. penahanan rumah; c. penahanan kota.",
+      "analysis": "Pilihan B tepat (merupakan pengecualian) karena \"penahanan penjara\" tidak dikenal dalam KUHAP; lembaga pemasyarakatan (penjara) adalah tempat terpidana menjalani hukuman setelah putusan berkekuatan hukum tetap. Pilihan A, C, dan D adalah tiga jenis penahanan sah menurut Pasal 22 ayat (1) KUHAP.",
+      "ruuComparison": "RUU KUHAP tetap mempertahankan tiga jenis penahanan (rutan, rumah, kota) dengan mendorong penahanan rutan sebagai upaya terakhir (ultimum remedium) serta mengoptimalkan pengawasan elektronik pada penahanan rumah dan kota."
     },
     "difficulty": "Mudah"
   },
@@ -284,7 +302,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 210,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Penyidik dapat menahan Tersangka tanpa perpanjangan paling lama:",
+    "question": "Penyidik dapat menahan Tersangka tanpa perpanjangan paling lama...",
     "options": [
       {
         "key": "A",
@@ -306,8 +324,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "A",
     "explanation": {
       "summary": "Masa penahanan oleh penyidik tanpa perpanjangan paling lama 20 hari.",
-      "legalBasis": "Pasal 24 ayat (1) KUHAP.",
-      "analysis": "Pasal 24 ayat (1) KUHAP menyatakan perintah penahanan yang diberikan oleh penyidik hanya berlaku paling lama 20 (dua puluh) hari. Jika diperlukan untuk kepentingan pemeriksaan yang belum selesai, dapat diperpanjang oleh penuntut umum paling lama 40 hari."
+      "legalBasis": "Pasal 24 ayat (1) dan ayat (2) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Perintah penahanan yang diberikan oleh penyidik sebagaimana dimaksud dalam Pasal 20, hanya berlaku paling lama dua puluh hari.",
+      "analysis": "Pilihan A tepat karena kewenangan penahanan awal oleh penyidik tanpa perpanjangan maksimal 20 hari (Pasal 24 ayat 1 KUHAP), dan baru dapat diperpanjang oleh penuntut umum paling lama 40 hari (total 60 hari). Pilihan B, C, dan D keliru karena 30/60/90 hari bukan batas penahanan awal penyidik.",
+      "ruuComparison": "RUU KUHAP memangkas durasi total penahanan pra-persidangan dan mengharuskan perpanjangan penahanan tertentu mendapat penetapan dari Hakim Pemeriksa Pendahuluan (tidak semata-mata secara administratif di antara penyidik dan penuntut umum) guna mencegah penahanan berkepanjangan."
     },
     "difficulty": "Mudah"
   },
@@ -337,8 +357,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Penangkapan dilakukan paling lama 1 hari (24 jam) untuk menentukan kelanjutan penahanan.",
-      "legalBasis": "Pasal 19 ayat (1) KUHAP.",
-      "analysis": "Pasal 19 ayat (1) KUHAP menegaskan: \"Penangkapan sebagaimana dimaksud dalam Pasal 17, dapat dilakukan untuk paling lama satu hari.\""
+      "legalBasis": "Pasal 19 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Penangkapan sebagaimana dimaksud dalam Pasal 17, dapat dilakukan untuk paling lama satu hari.",
+      "analysis": "Pilihan B tepat karena masa berlaku penangkapan oleh penyidik adalah paling lama 1 hari (1 x 24 jam). Sebelum 24 jam berakhir, penyidik harus menentukan apakah tersangka ditahan (jika memenuhi Pasal 21) atau dilepaskan. Pilihan A, C, dan D melampaui batas waktu Pasal 19 ayat (1) KUHAP.",
+      "ruuComparison": "Dalam RUU KUHAP, batas waktu penangkapan tetap 1 x 24 jam (dengan pengaturan khusus untuk tindak pidana tertentu/terorisme sesuai UU sektoral), disertai kewajiban menghadirkan tersangka di hadapan Hakim Pemeriksa Pendahuluan apabila penangkapan dilanjutkan dengan penahanan melewati tenggat waktu yang ditentukan."
     },
     "difficulty": "Mudah"
   },
@@ -346,7 +368,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 212,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Peran Penasihat Hukum dalam mendampingi Tersangka pada pemeriksaan penyidikan adalah:",
+    "question": "Peran Penasihat Hukum dalam mendampingi Tersangka pada pemeriksaan penyidikan adalah...",
     "options": [
       {
         "key": "A",
@@ -368,8 +390,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Penasihat hukum dalam pemeriksaan penyidikan berhak melihat dan mendengar jalannya pemeriksaan secara pasif.",
-      "legalBasis": "Pasal 115 ayat (1) KUHAP.",
-      "analysis": "Pasal 115 ayat (1) KUHAP menentukan bahwa dalam hal penyidik sedang melakukan pemeriksaan terhadap tersangka, penasihat hukum dapat mengikuti jalannya pemeriksaan dengan cara melihat serta mendengar pemeriksaan, guna menjamin hak-hak asasi tersangka tidak dilanggar tanpa mengintervensi substansi pertanyaan penyidik."
+      "legalBasis": "Pasal 115 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Dalam hal penyidik sedang melakukan pemeriksaan terhadap tersangka, penasihat hukum dapat mengikuti jalannya pemeriksaan dengan cara melihat serta mendengar pemeriksaan.",
+      "analysis": "Pilihan C tepat karena Pasal 115 ayat (1) KUHAP merumuskan peran pasif penasihat hukum di penyidikan (\"seeing and hearing\"). Pilihan A dan D keliru karena penasihat hukum tidak boleh mengintervensi pertanyaan atau menjawab menggantikan tersangka, dan pilihan B keliru karena advokat membela kepentingan hukum tersangka secara independen, bukan bekerja sama sebagai mitra penyidik.",
+      "ruuComparison": "RUU KUHAP melakukan pembaruan penting pada posisi advokat di tahap penyidikan: penasihat hukum tidak lagi hanya pasif melihat dan mendengar, tetapi berhak berbicara dan mengajukan keberatan apabila penyidik mengajukan pertanyaan yang bersifat menjerat atau menekan tersangka."
     },
     "difficulty": "Sedang"
   },
@@ -377,7 +401,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 213,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Penyidik telah selesai menyidik suatu perkara, selanjutnya berkas perkara diserahkan kepada:",
+    "question": "Penyidik telah selesai menyidik suatu perkara, selanjutnya berkas perkara diserahkan kepada...",
     "options": [
       {
         "key": "A",
@@ -399,8 +423,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Berkas perkara penyidikan yang telah selesai diserahkan kepada Penuntut Umum (Kejaksaan).",
-      "legalBasis": "Pasal 8 ayat (2) jo. Pasal 110 ayat (1) KUHAP.",
-      "analysis": "Pasal 110 ayat (1) KUHAP menentukan bahwa dalam hal penyidik telah selesai melakukan penyidikan, penyidik wajib segera menyerahkan berkas perkara itu kepada penuntut umum (Tahap I)."
+      "legalBasis": "Pasal 8 ayat (2) jo. Pasal 110 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Dalam hal penyidik telah selesai melakukan penyidikan, penyidik wajib segera menyerahkan berkas perkara itu kepada penuntut umum.",
+      "analysis": "Pilihan C tepat karena penyerahan berkas perkara tahap I dilakukan dari penyidik kepada Kejaksaan/Penuntut Umum untuk diteliti kelengkapan formil dan materiilnya. Pilihan A keliru karena pelimpahan ke PN merupakan wewenang penuntut umum setelah P-21 dan Tahap II, sedangkan pilihan B dan D tidak dikenal dalam alur KUHAP.",
+      "ruuComparison": "RUU KUHAP menata ulang mekanisme prapenuntutan (hubungan penyidik dan penuntut umum) dengan memberi batas waktu tegas bagi penuntut umum meneliti berkas dan melarang bolak-balik berkas lebih dari satu kali tanpa alasan hukum yang sah."
     },
     "difficulty": "Mudah"
   },
@@ -408,7 +434,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 214,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Berkas perkara yang dipelajari/diteliti oleh Penuntut Umum (PU) ternyata belum lengkap. Untuk itu, tindakan Penuntut Umum adalah:",
+    "question": "Berkas perkara yang dipelajari/diteliti oleh Penuntut Umum (PU) ternyata belum lengkap. Untuk itu, tindakan Penuntut Umum adalah...",
     "options": [
       {
         "key": "A",
@@ -430,8 +456,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Penuntut umum mengembalikan berkas perkara belum lengkap kepada penyidik disertai petunjuk (P-19).",
-      "legalBasis": "Pasal 110 ayat (2) jo. Pasal 138 ayat (2) KUHAP.",
-      "analysis": "Pasal 138 ayat (2) KUHAP menegaskan jika penuntut umum berpendapat hasil penyidikan belum lengkap, penuntut umum segera mengembalikan berkas perkara kepada penyidik disertai petunjuk untuk dilengkapi."
+      "legalBasis": "Pasal 110 ayat (2) jo. Pasal 138 ayat (2) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Dalam hal penuntut umum berpendapat bahwa hasil penyidikan tersebut ternyata masih kurang lengkap, penuntut umum segera mengembalikan berkas perkara itu kepada penyidik disertai petunjuk untuk dilengkapi.",
+      "analysis": "Pilihan C tepat karena apabila berkas hasil penyidikan belum lengkap, penuntut umum menerbitkan P-19 (pengembalian berkas perkara disertai petunjuk) kepada penyidik dalam waktu 14 hari. Pilihan A, B, dan D keliru karena berkas yang belum lengkap (belum P-21) tidak dapat didakwa atau dilimpahkan ke pengadilan.",
+      "ruuComparison": "RUU KUHAP membatasi pengembalian berkas perkara (P-19) agar tidak terjadi bolak-balik berkas tanpa akhir (ping-pong) antara penyidik dan jaksa, dengan mewajibkan penyidik dan jaksa melakukan gelar perkara bersama atau melibatkan Hakim Pemeriksa Pendahuluan jika terjadi perbedaan pendapat."
     },
     "difficulty": "Mudah"
   },
@@ -439,7 +467,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 215,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Dalam hal penyidikan sudah dianggap selesai, penyidik menyerahkan:",
+    "question": "Dalam hal penyidikan sudah dianggap selesai, penyidik menyerahkan...",
     "options": [
       {
         "key": "A",
@@ -462,7 +490,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Penyidik menyerahkan tanggung jawab atas tersangka dan barang bukti kepada penuntut umum (Tahap II).",
       "legalBasis": "Pasal 8 ayat (3) huruf b jo. Pasal 110 ayat (4) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "analysis": "Pasal 8 ayat (3) huruf b KUHAP menegaskan setelah penyidikan selesai (Tahap I dinyatakan lengkap/P-21), penyidik menyerahkan tanggung jawab atas tersangka dan barang bukti kepada penuntut umum (Tahap II)."
+      "statuteText": "Penyerahan tanggung jawab atas tersangka dan barang bukti dilakukan dalam hal penyidikan sudah dianggap selesai.",
+      "analysis": "Pilihan B tepat karena setelah berkas dinyatakan lengkap (P-21), penyidik melaksanakan Tahap II dengan menyerahkan tanggung jawab atas tersangka sekaligus barang bukti kepada Penuntut Umum. Pilihan A dan C hanya menyebut salah satu unsur saja, sedangkan pilihan D bukan prosedur Tahap II.",
+      "ruuComparison": "RUU KUHAP menyederhanakan dan mempertegas akuntabilitas Tahap II (serah terima tersangka dan barang bukti) disertai kewajiban verifikasi kondisi fisik tersangka dan keutuhan barang bukti oleh penuntut umum serta pencatatan dalam berita acara elektronik."
     },
     "difficulty": "Sedang"
   },
@@ -492,8 +522,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Pemeriksaan praperadilan diputus paling lambat 7 hari sejak pemeriksaan dimulai.",
-      "legalBasis": "Pasal 82 ayat (1) huruf c UU No. 8 Tahun 1981 (KUHAP).",
-      "analysis": "Pasal 82 ayat (1) huruf c KUHAP menegaskan: 'Dalam waktu tujuh hari hakim harus sudah menjatuhkan putusannya.' Pemeriksaan dilakukan secara cepat dengan hakim tunggal."
+      "legalBasis": "Pasal 82 ayat (1) huruf c UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Pemeriksaan praperadilan dipimpin oleh hakim tunggal yang ditunjuk oleh ketua pengadilan negeri; dalam waktu tujuh hari hakim harus sudah menjatuhkan putusannya.",
+      "analysis": "Pilihan B tepat karena Pasal 82 ayat (1) huruf c KUHAP menetapkan batas waktu paling lama 7 hari sejak penetapan hari sidang bagi hakim tunggal praperadilan untuk menjatuhkan putusan. Pilihan A (3 hari) adalah tenggang waktu penetapan hari sidang (huruf a), sedangkan C (14 hari) dan D (30 hari) bukan batas putusan praperadilan.",
+      "ruuComparison": "Dalam RUU KUHAP, praperadilan direformasi dan digantikan oleh lembaga Hakim Pemeriksa Pendahuluan (HPP) yang memiliki yurisdiksi lebih luas dan proaktif mengawasi seluruh upaya paksa, legalitas alat bukti, serta penghentian perkara sebelum masuk tahap penuntutan."
     },
     "difficulty": "Mudah"
   },
@@ -501,7 +533,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 217,
     "category": "Hukum Acara Pidana",
     "topicTag": "Alat Bukti Keterangan Ahli",
-    "question": "Sebagai pengganti atau pendukung visum et repertum dalam persidangan pidana, Majelis Hakim dapat mendengarkan keterangan yang diberikan oleh:",
+    "question": "Sebagai pengganti atau pendukung visum et repertum dalam persidangan pidana, Majelis Hakim dapat mendengarkan keterangan yang diberikan oleh...",
     "options": [
       {
         "key": "A",
@@ -523,8 +555,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "D",
     "explanation": {
       "summary": "Keterangan Ahli (dokter kehakiman/forensik) adalah alat bukti sah pengganti atau penjelas visum di persidangan.",
-      "legalBasis": "Pasal 184 ayat (1) huruf b jo. Pasal 186 UU No. 8 Tahun 1981 (KUHAP).",
-      "analysis": "Pasal 186 KUHAP mengatur: 'Keterangan ahli ialah apa yang seorang ahli nyatakan di sidang pengadilan.' Keterangan ahli kedokteran forensik bernilai pembuktian sah untuk memperjelas luka atau penyebab kematian korban."
+      "legalBasis": "Pasal 184 ayat (1) huruf b jo. Pasal 186 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Keterangan ahli ialah apa yang seorang ahli nyatakan di sidang pengadilan.",
+      "analysis": "Pilihan D tepat karena untuk menerangkan masalah teknis medis/forensik sebagai pengganti atau pelengkap visum et repertum (alat bukti surat), hakim mendengarkan keterangan ahli kedokteran kehakiman (Pasal 186 jo. Pasal 133 KUHAP). Pilihan A dan B merupakan saksi fakta, sedangkan pilihan C hanya alat bukti surat sepihak yang tidak menggantikan keahlian medis.",
+      "ruuComparison": "RUU KUHAP memperjelas kedudukan keterangan ahli (termasuk ahli forensik digital dan forensik medis) dan mempertegas mekanisme pemeriksaan ahli yang dihadirkan baik oleh penuntut umum maupun secara berimbang oleh penasihat hukum (equality of arms)."
     },
     "difficulty": "Sedang"
   },
@@ -532,7 +566,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 218,
     "category": "Hukum Acara Perdata",
     "topicTag": "Syarat Formal Permohonan Kasasi",
-    "question": "Permohonan kasasi perdata ke Mahkamah Agung harus dinyatakan tidak dapat diterima (Niet Ontvankelijke Verklaard) apabila:",
+    "question": "Permohonan kasasi perdata ke Mahkamah Agung harus dinyatakan tidak dapat diterima (Niet Ontvankelijke Verklaard) apabila...",
     "options": [
       {
         "key": "A",
@@ -563,7 +597,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 219,
     "category": "Hukum Acara Pidana",
     "topicTag": "Tahapan Sidang Pidana (Eksepsi)",
-    "question": "Menurut KUHAP, tahapan persidangan pidana setelah pembacaan surat dakwaan oleh Penuntut Umum adalah kesempatan bagi Terdakwa atau Penasihat Hukum untuk mengajukan:",
+    "question": "Menurut KUHAP, tahapan persidangan pidana setelah pembacaan surat dakwaan oleh Penuntut Umum adalah kesempatan bagi Terdakwa atau Penasihat Hukum untuk mengajukan...",
     "options": [
       {
         "key": "A",
@@ -585,8 +619,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Tahap persidangan setelah dakwaan adalah pengajuan Eksepsi (keberatan) oleh Terdakwa/Penasihat Hukum.",
-      "legalBasis": "Pasal 156 ayat (1) UU No. 8 Tahun 1981 (KUHAP).",
-      "analysis": "Pasal 156 ayat (1) KUHAP menyatakan: 'Dalam hal terdakwa atau penasihat hukum mengajukan keberatan bahwa pengadilan tidak berwenang mengadili perkaranya atau dakwaan tidak dapat diterima atau surat dakwaan harus dibatalkan, maka setelah diberi kesempatan kepada penuntut umum untuk menyatakan pendapatnya, hakim mempertimbangkan keberatan tersebut untuk selanjutnya mengambil putusan sela.'"
+      "legalBasis": "Pasal 156 ayat (1) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Dalam hal terdakwa atau penasihat hukum mengajukan keberatan bahwa pengadilan tidak berwenang mengadili perkaranya atau dakwaan tidak dapat diterima atau surat dakwaan harus dibatalkan, maka setelah diberi kesempatan kepada penuntut umum untuk menyatakan pendapatnya, hakim mempertimbangkan keberatan tersebut untuk selanjutnya mengambil putusan.",
+      "analysis": "Pilihan C tepat karena tepat setelah surat dakwaan dibacakan, terdakwa atau penasihat hukum berhak mengajukan eksepsi sebelum memasuki tahap pembuktian. Pilihan A (pledoi) dan B (requisitoir) diajukan setelah pemeriksaan pembuktian selesai, sedangkan pilihan D (duplik) adalah tanggapan atas replik penuntut umum.",
+      "ruuComparison": "RUU KUHAP mengefisienkan tahap persidangan dengan memindahkan sebagian pengujian formalitas dakwaan dan kompetensi ke tahap pra-persidangan melalui Hakim Pemeriksa Pendahuluan, sementara hak mengajukan eksepsi di persidangan tetap dijamin."
     },
     "difficulty": "Mudah"
   },
@@ -594,7 +630,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 220,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Dalam hal seorang Terdakwa terbukti bersalah telah melakukan perbuatan pidana, tetapi Terdakwa tidak mempunyai kemampuan untuk bertanggung jawab (misalnya sakit jiwa) maka putusan/vonis yang sesuai adalah:",
+    "question": "Dalam hal seorang Terdakwa terbukti bersalah telah melakukan perbuatan pidana, tetapi Terdakwa tidak mempunyai kemampuan untuk bertanggung jawab (misalnya sakit jiwa) maka putusan/vonis yang sesuai adalah...",
     "options": [
       {
         "key": "A",
@@ -616,8 +652,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Terdakwa yang tidak dapat dipertanggungjawabkan karena gangguan kejiwaan diputus lepas dari segala tuntutan hukum (onslag van alle rechtsvervolging).",
-      "legalBasis": "Pasal 44 KUHP jo. Pasal 191 ayat (2) KUHAP.",
-      "analysis": "Perbuatan pidana terbukti secara materiil, namun karena terdakwa tidak mampu bertanggung jawab akibat cacat kejiwaan dalam pertumbuhan atau terganggu karena penyakit (Pasal 44 KUHP), terdakwa tidak dapat dijatuhi pidana dan diputus lepas dari segala tuntutan hukum."
+      "legalBasis": "Pasal 44 ayat (1) KUHP (lama) jo. Pasal 38 UU No. 1 Tahun 2023 (KUHP Nasional) jo. Pasal 191 ayat (2) KUHAP.",
+      "statuteText": "Jika pengadilan berpendapat bahwa perbuatan yang didakwakan kepada terdakwa terbukti, tetapi perbuatan itu tidak merupakan suatu tindak pidana, maka terdakwa diputus lepas dari segala tuntutan hukum.",
+      "analysis": "Pilihan B tepat karena perbuatan pidana memang terbukti dilakukan oleh terdakwa, tetapi terdakwa tidak memiliki kemampuan bertanggung jawab (gangguan jiwa / alasan pemaaf Pasal 44 KUHP), sehingga diputus lepas dari segala tuntutan hukum (ontslag van alle rechtsvervolging). Pilihan A (bebas/vrijspraak) dijatuhkan jika perbuatan/kesalahan tidak terbukti, sedangkan C dan D merupakan pidana pokok.",
+      "ruuComparison": "Sinkron dengan KUHP Nasional (Pasal 38–39) dan RUU KUHAP, apabila terdakwa terbukti melakukan perbuatan namun mengalami disabilitas mental/psikotik akut, hakim menjatuhkan putusan lepas disertai perintah tindakan (maatregel) berupa perawatan di rumah sakit jiwa."
     },
     "difficulty": "Sedang"
   },
@@ -625,7 +663,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 221,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Pemberitahuan yang disampaikan oleh seorang karena hak dan kewajiban berdasarkan undang-undang kepada pejabat yang berwenang tentang telah atau sedang atau diduga akan terjadinya peristiwa pidana disebut:",
+    "question": "Pemberitahuan yang disampaikan oleh seorang karena hak dan kewajiban berdasarkan undang-undang kepada pejabat yang berwenang tentang telah atau sedang atau diduga akan terjadinya peristiwa pidana disebut...",
     "options": [
       {
         "key": "A",
@@ -648,7 +686,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Pemberitahuan karena hak atau kewajiban undang-undang tentang peristiwa pidana disebut Laporan.",
       "legalBasis": "Pasal 1 angka 24 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "analysis": "Pasal 1 angka 24 KUHAP merumuskan Laporan sebagai pemberitahuan yang disampaikan seseorang karena hak atau kewajiban berdasarkan UU kepada pejabat berwenang tentang terjadinya dugaan peristiwa pidana."
+      "statuteText": "Laporan adalah pemberitahuan yang disampaikan oleh seorang karena hak atau kewajiban berdasarkan undang-undang kepada pejabat yang berwenang tentang telah atau sedang atau diduga akan terjadinya peristiwa pidana.",
+      "analysis": "Pilihan A tepat karena sesuai persis dengan definisi Laporan pada Pasal 1 angka 24 KUHAP (dapat dilakukan siapa saja dan berlaku untuk delik biasa). Pilihan C (Pengaduan) hanya dapat diajukan pihak yang berhak/korban pada delik aduan (Pasal 1 angka 25), sedangkan pilihan B dan D merujuk pada alat bukti di persidangan.",
+      "ruuComparison": "RUU KUHAP mempertahankan pembedaan antara laporan (delik biasa) dan pengaduan (delik aduan), serta mewajibkan penyidik memberikan tanda bukti penerimaan laporan dan informasi perkembangan penanganan perkara secara berkala kepada pelapor."
     },
     "difficulty": "Sedang"
   },
@@ -656,7 +696,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 222,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Umumnya penangkapan harus disertai dengan surat perintah penangkapan, namun penangkapan dapat dilakukan tanpa surat perintah dalam hal:",
+    "question": "Pada prinsipnya, penangkapan harus disertai dengan surat perintah penangkapan, namun penangkapan dapat dilakukan tanpa surat perintah apabila...",
     "options": [
       {
         "key": "A",
@@ -664,7 +704,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "Jika tersangka tidak mau bekerja sama dengan penyidik"
+        "text": "Tersangka tidak bersikap kooperatif dengan penyidik"
       },
       {
         "key": "C",
@@ -679,7 +719,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Penangkapan tanpa surat perintah hanya sah dilakukan dalam hal tertangkap tangan.",
       "legalBasis": "Pasal 18 ayat (2) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "analysis": "Pasal 18 ayat (2) KUHAP secara tegas menentukan: \"Dalam hal tertangkap tangan penangkapan dilakukan tanpa surat perintah, dengan ketentuan bahwa penangkap harus segera menyerahkan tertangkap beserta barang bukti kepada penyidik.\""
+      "statuteText": "Dalam hal tertangkap tangan penangkapan dilakukan tanpa surat perintah, dengan ketentuan bahwa penangkap harus segera menyerahkan tertangkap beserta barang bukti yang ada kepada penyidik atau penyidik pembantu yang terdekat.",
+      "analysis": "Pilihan C tepat karena menurut Pasal 18 ayat (2) KUHAP, pengecualian penangkapan tanpa surat perintah hanya berlaku dalam keadaan tertangkap tangan (in flagrante delicto). Pilihan A merupakan syarat umum penangkapan dengan surat perintah (Pasal 17 KUHAP), pilihan B bukan dasar hukum penangkapan tanpa surat perintah, dan pilihan D merupakan syarat subjektif penahanan (Pasal 21 ayat 1 KUHAP), bukan alasan penangkapan tanpa surat perintah.",
+      "ruuComparison": "Pengecualian penangkapan tanpa surat perintah dalam hal tertangkap tangan tetap dipertahankan dalam RUU KUHAP, disertai kewajiban penyerahan segera kepada penyidik dan penguatan mekanisme pengawasan pasca-penangkapan oleh Hakim Pemeriksa Pendahuluan (HPP) guna menjamin akuntabilitas dan mencegah penyalahgunaan upaya paksa."
     },
     "difficulty": "Sedang"
   },
@@ -687,7 +729,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 223,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Di bawah ini terdapat beberapa alasan dilakukannya penahanan terhadap tersangka atau terdakwa, kecuali:",
+    "question": "Di bawah ini terdapat beberapa alasan dilakukannya penahanan terhadap tersangka atau terdakwa, kecuali...",
     "options": [
       {
         "key": "A",
@@ -709,8 +751,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Penahanan hanya dapat dikenakan pada tindak pidana yang diancam pidana penjara 5 tahun atau lebih, atau delik tertentu yang diatur dalam Pasal 21 ayat (4) huruf b KUHAP.",
-      "legalBasis": "Pasal 21 ayat (1) dan ayat (4) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "analysis": "Pasal 21 ayat (4) huruf a KUHAP mensyaratkan penahanan hanya terhadap tindak pidana yang diancam dengan pidana penjara 5 tahun atau lebih. Dengan demikian, ancaman pidana kurang dari 5 tahun bukanlah syarat objektif penahanan kecuali ditentukan secara khusus."
+      "legalBasis": "Pasal 21 ayat (1) dan ayat (4) huruf a UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Penahanan hanya dapat dikenakan terhadap tersangka atau terdakwa yang melakukan tindak pidana dan atau percobaan maupun pemberian bantuan dalam tindak pidana tersebut dalam hal: a. tindak pidana itu diancam dengan pidana penjara lima tahun atau lebih...",
+      "analysis": "Pilihan C tepat (merupakan pengecualian) karena syarat objektif penahanan menurut Pasal 21 ayat (4) huruf a KUHAP adalah tindak pidana yang diancam pidana penjara 5 tahun atau lebih (bukan kurang dari 5 tahun, kecuali pasal tertentu yang disebut limitatif di huruf b). Pilihan A, B, dan D adalah tiga syarat subjektif penahanan dalam Pasal 21 ayat (1) KUHAP.",
+      "ruuComparison": "RUU KUHAP memperketat syarat objektif dan subjektif penahanan dengan mewajibkan penyidik/penuntut umum membuktikan kekhawatiran melarikan diri atau merusak barang bukti secara konkret (bukan asumsi abstrak), serta memperluas kontrol Hakim Pemeriksa Pendahuluan atas penahanan."
     },
     "difficulty": "Sedang"
   },
@@ -718,7 +762,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 224,
     "category": "Hukum Acara Pidana",
     "topicTag": "Pemeriksaan Saksi (KUHAP)",
-    "question": "Jaksa Penuntut Umum dapat mengajukan saksi yang memberatkan, saksi ini disebut sebagai:",
+    "question": "Jaksa Penuntut Umum dapat mengajukan saksi yang memberatkan, saksi ini disebut sebagai...",
     "options": [
       {
         "key": "A",
@@ -740,8 +784,10 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "A",
     "explanation": {
       "summary": "Saksi yang memberatkan terdakwa yang diajukan oleh Penuntut Umum disebut saksi a charge.",
-      "legalBasis": "Pasal 160 ayat (1) huruf c UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "analysis": "Dalam hukum acara pidana, saksi a charge adalah saksi yang memberatkan yang diajukan penuntut umum, sedangkan saksi a de charge adalah saksi meringankan yang diajukan pihak terdakwa (Pasal 65 jo. Pasal 116 ayat 3 KUHAP)."
+      "legalBasis": "Pasal 160 ayat (1) huruf c jo. Pasal 65 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
+      "statuteText": "Dalam hal ada saksi baik yang menguntungkan maupun yang memberatkan terdakwa yang tercantum dalam surat pelimpahan perkara dan atau yang diminta oleh terdakwa atau penasihat hukum atau penuntut umum selama berlangsungnya sidang atau sebelum dijatuhkannya putusan, hakim ketua sidang wajib mendengar keterangan saksi tersebut.",
+      "analysis": "Pilihan A tepat karena saksi yang memberatkan terdakwa dan umumnya diajukan oleh Penuntut Umum disebut saksi a charge. Pilihan B (saksi a de charge) adalah saksi yang meringankan terdakwa, pilihan C (testimonium de auditu) adalah kesaksian mendengar dari orang lain, dan pilihan D (saksi mahkota) adalah sesama tersangka/terdakwa dalam perkara terpisah.",
+      "ruuComparison": "RUU KUHAP menjamin asas kesetaraan senjata (equality of arms) sehingga terdakwa dan penasihat hukum memiliki hak yang sama kuatnya untuk menghadirkan saksi a de charge dan ahli tandingan serta memeriksa silang (cross-examination) saksi a charge."
     },
     "difficulty": "Sedang"
   },
@@ -749,7 +795,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 225,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Yang dimaksud dengan istilah tertangkap tangan (ontdekking op heterdaad) menurut KUHAP adalah:",
+    "question": "Yang dimaksud dengan istilah tertangkap tangan (ontdekking op heterdaad) menurut KUHAP adalah...",
     "options": [
       {
         "key": "A",
@@ -772,7 +818,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Tertangkap tangan adalah tertangkap saat sedang melakukan atau segera beberapa saat sesudah melakukan tindak pidana.",
       "legalBasis": "Pasal 1 angka 19 UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "analysis": "Pasal 1 angka 19 KUHAP mendefinisikan tertangkap tangan mencakup: sedang melakukan tindak pidana, dengan segera sesudah dilakukan, atau sesaat sesudah diserukan oleh khalayak ramai."
+      "statuteText": "Tertangkap tangan adalah tertangkapnya seorang pada waktu sedang melakukan tindak pidana, atau dengan segera sesudah beberapa saat tindak pidana itu dilakukan, atau sesaat kemudian diserukan oleh khalayak ramai sebagai orang yang melakukannya, atau apabila sesaat kemudian padanya ditemukan benda yang diduga keras telah dipergunakan untuk melakukan tindak pidana itu yang menunjukkan bahwa ia adalah pelakunya atau turut melakukan atau membantu melakukan tindak pidana itu.",
+      "analysis": "Pilihan D tepat karena merangkum unsur-unsur otentik tertangkap tangan dalam Pasal 1 angka 19 KUHAP. Pilihan A keliru karena baru tahap rencana/niat, pilihan B keliru karena sudah berselang seminggu, dan pilihan C merujuk pada pemanggilan paksa/membawa tersangka (Pasal 112 ayat 2 KUHAP), bukan tertangkap tangan.",
+      "ruuComparison": "RUU KUHAP tetap mempertahankan definisi tertangkap tangan, namun mempertegas batas waktu \"segera sesudah\" dan mewajibkan berita acara penangkapan tertangkap tangan segera dilaporkan untuk pengawasan yudisial oleh Hakim Pemeriksa Pendahuluan."
     },
     "difficulty": "Sedang"
   },
@@ -780,7 +828,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 226,
     "category": "Hukum Acara Pidana",
     "topicTag": "Hukum Acara Pidana (KUHAP)",
-    "question": "Yang dimaksud dengan putusan lepas dari segala tuntutan hukum (ontslag van alle rechtsvervolging) adalah:",
+    "question": "Yang dimaksud dengan putusan lepas dari segala tuntutan hukum (ontslag van alle rechtsvervolging) adalah...",
     "options": [
       {
         "key": "A",
@@ -803,7 +851,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Putusan lepas dari segala tuntutan hukum (onslag van alle rechtsvervolging) dijatuhkan bila perbuatan terbukti namun bukan tindak pidana.",
       "legalBasis": "Pasal 191 ayat (2) UU No. 8 Tahun 1981 tentang Hukum Acara Pidana (KUHAP).",
-      "analysis": "Pasal 191 ayat (2) KUHAP menyatakan: \"Jika pengadilan berpendapat bahwa perbuatan yang didakwakan kepada terdakwa terbukti, tetapi perbuatan itu tidak merupakan suatu tindak pidana, maka terdakwa diputus lepas dari segala tuntutan hukum.\""
+      "statuteText": "Jika pengadilan berpendapat bahwa perbuatan yang didakwakan kepada terdakwa terbukti, tetapi perbuatan itu tidak merupakan suatu tindak pidana, maka terdakwa diputus lepas dari segala tuntutan hukum.",
+      "analysis": "Pilihan B tepat karena putusan lepas (ontslag van alle rechtsvervolging) dijatuhkan saat perbuatan terbukti secara fakta, namun bukan merupakan tindak pidana (misalnya sengketa keperdataan) atau ada alasan pemaaf/pembenar. Pilihan A adalah putusan bebas (vrijspraak, Pasal 191 ayat 1), pilihan C adalah putusan gugurnya penuntutan, dan pilihan D adalah putusan sela atas eksepsi dakwaan.",
+      "ruuComparison": "RUU KUHAP mempertahankan klasifikasi putusan akhir (pemidanaan, bebas, dan lepas dari segala tuntutan hukum) serta memperjelas hak terdakwa yang diputus bebas atau lepas untuk langsung memperoleh rehabilitasi dan ganti kerugian tanpa harus menunggu gugatan terpisah yang rumit."
     },
     "difficulty": "Mudah"
   },
@@ -811,7 +861,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 227,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Gugatan pada dasarnya diajukan pada Pengadilan Negeri di tempat tinggal Tergugat, sedangkan gugatan terhadap benda tidak bergerak diajukan pada:",
+    "question": "Gugatan pada dasarnya diajukan pada Pengadilan Negeri di tempat tinggal Tergugat, sedangkan gugatan terhadap benda tidak bergerak diajukan pada...",
     "options": [
       {
         "key": "A",
@@ -842,7 +892,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 228,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Gugatan dinyatakan gugur apabila:",
+    "question": "Gugatan dinyatakan gugur apabila...",
     "options": [
       {
         "key": "A",
@@ -873,7 +923,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 229,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Gugatan diputus verstek apabila:",
+    "question": "Gugatan diputus verstek apabila...",
     "options": [
       {
         "key": "A",
@@ -904,7 +954,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 230,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Campur tangan pihak ketiga dalam suatu perkara yang sedang berlangsung dan tidak memihak disebut:",
+    "question": "Campur tangan pihak ketiga dalam suatu perkara yang sedang berlangsung dan tidak memihak disebut...",
     "options": [
       {
         "key": "A",
@@ -935,7 +985,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 231,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Upaya hukum terhadap putusan verstek disebut:",
+    "question": "Upaya hukum terhadap putusan verstek disebut...",
     "options": [
       {
         "key": "A",
@@ -966,7 +1016,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 232,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Gugatan atas dasar adanya cacat tersembunyi adalah:",
+    "question": "Gugatan atas dasar adanya cacat tersembunyi adalah...",
     "options": [
       {
         "key": "A",
@@ -997,7 +1047,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 233,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Di dalam pemeriksaan perkara perdata yang dicari adalah kebenaran formil, yang artinya:",
+    "question": "Di dalam pemeriksaan perkara perdata yang dicari adalah kebenaran formil, yang artinya...",
     "options": [
       {
         "key": "A",
@@ -1028,7 +1078,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 234,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Eksepsi adalah bantahan:",
+    "question": "Eksepsi adalah bantahan...",
     "options": [
       {
         "key": "A",
@@ -1059,7 +1109,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 235,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Teori yang mengajarkan bahwa fundamentum petendi harus pula menjelaskan/menyebutkan peristiwa konkret yang menjadi sebab timbulnya peristiwa hukum yang menjadi alasan gugatan adalah:",
+    "question": "Teori yang mengajarkan bahwa fundamentum petendi harus pula menjelaskan/menyebutkan peristiwa konkret yang menjadi sebab timbulnya peristiwa hukum yang menjadi alasan gugatan adalah...",
     "options": [
       {
         "key": "A",
@@ -1090,7 +1140,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 236,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Eksepsi terhadap kewenangan mengadili diajukan bersama-sama dalam:",
+    "question": "Eksepsi terhadap kewenangan mengadili diajukan bersama-sama dalam...",
     "options": [
       {
         "key": "A",
@@ -1121,7 +1171,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 237,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Gugatan akan ditolak oleh hakim jika gugatan dalam keadaan:",
+    "question": "Gugatan akan ditolak oleh hakim jika gugatan dalam keadaan...",
     "options": [
       {
         "key": "A",
@@ -1152,7 +1202,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 238,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Putusan insidentil adalah:",
+    "question": "Putusan insidentil adalah...",
     "options": [
       {
         "key": "A",
@@ -1183,7 +1233,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 239,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Agenda acara pada hari sidang pertama dalam hukum acara perdata yang dihadiri oleh kedua belah pihak adalah:",
+    "question": "Agenda acara pada hari sidang pertama dalam hukum acara perdata yang dihadiri oleh kedua belah pihak adalah...",
     "options": [
       {
         "key": "A",
@@ -1237,6 +1287,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Gugatan rekonvensi (gugatan balik) wajib diajukan bersama-sama dengan jawaban Tergugat.",
       "legalBasis": "Pasal 132b ayat (1) HIR / Pasal 158 ayat (1) RBg.",
+      "statuteText": "Tergugat wajib mengajukan gugatan balasan (rekonvensi) bersama-sama dengan jawabannya baik dengan surat maupun dengan lisan.",
       "analysis": "Pasal 132b ayat (1) HIR mengatur secara imperatif: \"Tergugat wajib mengajukan gugatan balasan (rekonvensi) bersama-sama dengan jawabannya baik dengan surat maupun dengan lisan.\""
     },
     "difficulty": "Mudah"
@@ -1245,7 +1296,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 241,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "KUHPerdata mengatur hubungan hukum antara:",
+    "question": "KUHPerdata mengatur hubungan hukum antara...",
     "options": [
       {
         "key": "A",
@@ -1276,7 +1327,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 242,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Menurut hukum acara perdata, Tergugat adalah:",
+    "question": "Menurut hukum acara perdata, Tergugat adalah...",
     "options": [
       {
         "key": "A",
@@ -1307,7 +1358,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 243,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Eksepsi mengenai tidak berwenangnya Pengadilan Negeri untuk mengadili suatu perkara perdata berkaitan dengan wilayah pengadilan disebut:",
+    "question": "Eksepsi mengenai tidak berwenangnya Pengadilan Negeri untuk mengadili suatu perkara perdata berkaitan dengan wilayah pengadilan disebut...",
     "options": [
       {
         "key": "A",
@@ -1338,7 +1389,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 244,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Sita Revindicatoir (revindicatoir beslag) dapat dimintakan terhadap:",
+    "question": "Sita Revindicatoir (revindicatoir beslag) dapat dimintakan terhadap...",
     "options": [
       {
         "key": "A",
@@ -1369,7 +1420,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 245,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Dalam praktik sering dijumpai bahwa penyitaan telah dilakukan terhadap harta kekayaan milik pihak ketiga. Upaya hukum yang dapat dilakukan pihak ketiga untuk mempertahankan hak dan kepentingan tersebut adalah:",
+    "question": "Dalam praktik sering dijumpai bahwa penyitaan telah dilakukan terhadap harta kekayaan milik pihak ketiga. Upaya hukum yang dapat dilakukan pihak ketiga untuk mempertahankan hak dan kepentingan tersebut adalah...",
     "options": [
       {
         "key": "A",
@@ -1400,7 +1451,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 246,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Apabila Hakim memutus perkara perdata dan ternyata didapati bahwa surat kuasa Penggugat tidak sempurna, maka putusan perkara tersebut dapat dinyatakan:",
+    "question": "Apabila Hakim memutus perkara perdata dan ternyata didapati bahwa surat kuasa Penggugat tidak sempurna, maka putusan perkara tersebut dapat dinyatakan...",
     "options": [
       {
         "key": "A",
@@ -1431,7 +1482,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 247,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Untuk mewakili klien beracara di pengadilan disyaratkan menggunakan surat kuasa yang bersifat:",
+    "question": "Untuk mewakili klien beracara di pengadilan disyaratkan menggunakan surat kuasa yang bersifat...",
     "options": [
       {
         "key": "A",
@@ -1462,7 +1513,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 248,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Secara umum, Pasal 118 HIR menentukan asas “Actor Sequitor Forum Rei”, yang maksudnya adalah:",
+    "question": "Secara umum, Pasal 118 HIR menentukan asas “Actor Sequitor Forum Rei”, yang maksudnya adalah...",
     "options": [
       {
         "key": "A",
@@ -1493,7 +1544,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 249,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Unsur-unsur surat gugatan adalah:",
+    "question": "Unsur-unsur surat gugatan adalah...",
     "options": [
       {
         "key": "A",
@@ -1524,7 +1575,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 250,
     "category": "Hukum Acara Perdata",
     "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Sita jaminan (conservatoir beslag) dapat dimintakan terhadap:",
+    "question": "Sita jaminan (conservatoir beslag) dapat dimintakan terhadap...",
     "options": [
       {
         "key": "A",
@@ -1555,7 +1606,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 251,
     "category": "Hukum Acara Perdata",
     "topicTag": "Upaya Hukum Peninjauan Kembali",
-    "question": "Permohonan peninjauan kembali putusan perkara perdata dapat diajukan berdasarkan alasan:",
+    "question": "Permohonan peninjauan kembali putusan perkara perdata dapat diajukan berdasarkan alasan...",
     "options": [
       {
         "key": "A",
@@ -1586,7 +1637,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 252,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Saat ini ketentuan mengenai Advokat diatur dalam Undang-Undang Nomor:",
+    "question": "Saat ini ketentuan mengenai Advokat diatur dalam Undang-Undang Nomor...",
     "options": [
       {
         "key": "A",
@@ -1617,7 +1668,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 253,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika & Profesi Advokat Indonesia",
-    "question": "Di bawah ini adalah beberapa organisasi profesi Advokat yang terhimpun dalam PERADI, kecuali:",
+    "question": "Di bawah ini adalah beberapa organisasi profesi Advokat yang terhimpun dalam PERADI, kecuali...",
     "options": [
       {
         "key": "A",
@@ -1648,7 +1699,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 254,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Tugas seorang Advokat adalah memberikan jasa hukum, antara lain meliputi hal-hal di bawah ini, kecuali:",
+    "question": "Tugas seorang Advokat adalah memberikan jasa hukum, antara lain meliputi hal-hal di bawah ini, kecuali...",
     "options": [
       {
         "key": "A",
@@ -1679,7 +1730,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 255,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Induk Organisasi Advokat yang dibentuk oleh delapan organisasi profesi advokat untuk memenuhi syarat Undang-Undang Advokat adalah:",
+    "question": "Induk Organisasi Advokat yang dibentuk oleh delapan organisasi profesi advokat untuk memenuhi syarat Undang-Undang Advokat adalah...",
     "options": [
       {
         "key": "A",
@@ -1710,7 +1761,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 256,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Wilayah kerja Advokat sesuai dengan Pasal 5 ayat (2) UU No. 18 Tahun 2003 adalah:",
+    "question": "Wilayah kerja Advokat sesuai dengan Pasal 5 ayat (2) UU No. 18 Tahun 2003 adalah...",
     "options": [
       {
         "key": "A",
@@ -1733,6 +1784,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Wilayah kerja Advokat meliputi seluruh wilayah Negara Republik Indonesia.",
       "legalBasis": "Pasal 5 ayat (2) UU No. 18 Tahun 2003 tentang Advokat.",
+      "statuteText": "Wilayah kerja Advokat meliputi seluruh wilayah negara Republik Indonesia.",
       "analysis": "Pasal 5 ayat (2) UU Advokat menyatakan secara tegas: \"Wilayah kerja Advokat meliputi seluruh wilayah negara Republik Indonesia.\""
     },
     "difficulty": "Mudah"
@@ -1741,7 +1793,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 257,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Wadah Tunggal Organisasi Advokat",
-    "question": "Sebelum lahirnya organisasi Advokat yang dibentuk oleh delapan organisasi, maka delapan organisasi tersebut bersama-sama melakukan kegiatan verifikasi/herregistrasi advokat dengan menggunakan nama:",
+    "question": "Sebelum lahirnya organisasi Advokat yang dibentuk oleh delapan organisasi, maka delapan organisasi tersebut bersama-sama melakukan kegiatan verifikasi/herregistrasi advokat dengan menggunakan nama...",
     "options": [
       {
         "key": "A",
@@ -1772,7 +1824,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 258,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Istilah PERADI (Perhimpunan Advokat Indonesia) dapat dilihat dalam:",
+    "question": "Istilah PERADI (Perhimpunan Advokat Indonesia) dapat dilihat dalam...",
     "options": [
       {
         "key": "A",
@@ -1803,7 +1855,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 259,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Eksistensi seorang Advokat setelah keluarnya Undang-Undang Nomor 18 Tahun 2003 sudah diakui statusnya sebagai:",
+    "question": "Eksistensi seorang Advokat setelah keluarnya Undang-Undang Nomor 18 Tahun 2003 sudah diakui statusnya sebagai...",
     "options": [
       {
         "key": "A",
@@ -1826,6 +1878,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Advokat berstatus sebagai penegak hukum, bebas dan mandiri.",
       "legalBasis": "Pasal 5 ayat (1) UU No. 18 Tahun 2003 tentang Advokat.",
+      "statuteText": "Advokat berstatus sebagai penegak hukum, bebas dan mandiri yang dijamin oleh hukum dan peraturan perundang-undangan.",
       "analysis": "Pasal 5 ayat (1) UU Advokat: \"Advokat berstatus sebagai penegak hukum, bebas dan mandiri yang dijamin oleh hukum dan peraturan perundang-undangan.\""
     },
     "difficulty": "Sedang"
@@ -1834,7 +1887,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 260,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Beberapa pasal dari Undang-Undang Nomor 18 Tahun 2003 tentang Advokat telah dilakukan pengujian undang-undang (Judicial Review) ke Mahkamah Konstitusi dan telah diputus, antara lain:",
+    "question": "Beberapa pasal dari Undang-Undang Nomor 18 Tahun 2003 tentang Advokat telah dilakukan pengujian undang-undang (Judicial Review) ke Mahkamah Konstitusi dan telah diputus, antara lain...",
     "options": [
       {
         "key": "A",
@@ -1865,7 +1918,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 261,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Pengertian Advokat sebagaimana disebut dalam Undang-Undang No. 18 Tahun 2003 tentang Advokat adalah:",
+    "question": "Pengertian Advokat sebagaimana disebut dalam Undang-Undang No. 18 Tahun 2003 tentang Advokat adalah...",
     "options": [
       {
         "key": "A",
@@ -1888,6 +1941,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Pengertian advokat dirumuskan secara tegas dalam Pasal 1 angka 1 UU No. 18 Tahun 2003.",
       "legalBasis": "Pasal 1 angka 1 UU No. 18 Tahun 2003 tentang Advokat.",
+      "statuteText": "Advokat adalah orang yang berprofesi memberi jasa hukum, baik di dalam maupun di luar pengadilan yang memenuhi persyaratan berdasarkan ketentuan Undang-Undang ini.",
       "analysis": "Pasal 1 angka 1 UU Advokat merumuskan: \"Advokat adalah orang yang berprofesi memberi jasa hukum, baik di dalam maupun di luar pengadilan yang memenuhi persyaratan berdasarkan ketentuan Undang-Undang ini.\""
     },
     "difficulty": "Mudah"
@@ -1896,7 +1950,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 262,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Berdasarkan Pasal 28 ayat (3) UU Advokat, Pimpinan Organisasi Advokat tidak dapat dirangkap jabatan sebagai:",
+    "question": "Berdasarkan Pasal 28 ayat (3) UU Advokat, Pimpinan Organisasi Advokat tidak dapat dirangkap jabatan sebagai...",
     "options": [
       {
         "key": "A",
@@ -1919,6 +1973,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Pimpinan organisasi advokat dilarang merangkap jabatan sebagai pimpinan partai politik demi independensi profesi.",
       "legalBasis": "Pasal 28 ayat (3) UU No. 18 Tahun 2003 tentang Advokat.",
+      "statuteText": "Pimpinan Organisasi Advokat tidak dapat merangkap sebagai pimpinan partai politik, baik di tingkat pusat maupun di tingkat daerah.",
       "analysis": "Pasal 28 ayat (3) UU Advokat menegaskan: \"Pimpinan Organisasi Advokat tidak dapat merangkap sebagai pimpinan partai politik, baik di tingkat pusat maupun di tingkat daerah.\" Hal ini untuk menjaga integritas, netralitas, dan independensi organisasi advokat dari tarik-menarik kepentingan politik praktis."
     },
     "difficulty": "Sedang"
@@ -1927,7 +1982,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 263,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Dalam Undang-Undang Advokat diatur mengenai hak imunitas Advokat, yaitu:",
+    "question": "Dalam Undang-Undang Advokat diatur mengenai hak imunitas Advokat, yaitu...",
     "options": [
       {
         "key": "A",
@@ -1950,6 +2005,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Hak imunitas melindungi advokat dari tuntutan pidana atau perdata saat menjalankan profesi dengan itikad baik di dalam maupun di luar sidang pengadilan.",
       "legalBasis": "Pasal 16 UU No. 18 Tahun 2003 tentang Advokat jo. Putusan Mahkamah Konstitusi No. 26/PUU-XI/2013.",
+      "statuteText": "Advokat tidak dapat dituntut baik secara perdata maupun pidana dalam menjalankan tugas profesinya dengan itikad baik untuk kepentingan pembelaan klien di dalam maupun di luar sidang pengadilan.",
       "analysis": "Pasal 16 UU Advokat yang semula hanya melindungi advokat dalam sidang pengadilan, telah diperluas maknanya oleh Putusan Mahkamah Konstitusi No. 26/PUU-XI/2013 menjadi: \"Advokat tidak dapat dituntut baik secara perdata maupun pidana dalam menjalankan tugas profesinya dengan itikad baik untuk kepentingan pembelaan klien di dalam maupun di luar sidang pengadilan.\""
     },
     "difficulty": "Sedang"
@@ -1958,7 +2014,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 264,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Hakim, Jaksa, Kepolisian, dan Advokat sebagai penegak hukum selain diatur oleh Undang-Undang mempunyai fungsi masing-masing:",
+    "question": "Hakim, Jaksa, Kepolisian, dan Advokat sebagai penegak hukum selain diatur oleh Undang-Undang mempunyai fungsi masing-masing...",
     "options": [
       {
         "key": "A",
@@ -2020,7 +2076,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 266,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Honorarium Advokat",
-    "question": "Besarnya honorarium Advokat yang diterima dari kliennya ditentukan berdasarkan:",
+    "question": "Besarnya honorarium Advokat yang diterima dari kliennya ditentukan berdasarkan...",
     "options": [
       {
         "key": "A",
@@ -2082,7 +2138,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 268,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Hak Imunitas Advokat",
-    "question": "Pasal 16 UU Advokat jo. Putusan Mahkamah Konstitusi No. 26/PUU-XI/2013 mengatur ketentuan tentang Hak Imunitas bagi seorang Advokat dalam lingkup:",
+    "question": "Pasal 16 UU Advokat jo. Putusan Mahkamah Konstitusi No. 26/PUU-XI/2013 mengatur ketentuan tentang Hak Imunitas bagi seorang Advokat dalam lingkup...",
     "options": [
       {
         "key": "A",
@@ -2113,7 +2169,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 269,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Pengesahan Kode Etik Advokat Indonesia",
-    "question": "Kode Etik Advokat Indonesia (KEAI) ditetapkan dan disahkan di Jakarta pada tanggal:",
+    "question": "Kode Etik Advokat Indonesia (KEAI) ditetapkan dan disahkan di Jakarta pada tanggal...",
     "options": [
       {
         "key": "A",
@@ -2144,7 +2200,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 270,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Surat Tanpa Prasangka (Sans Prejudice)",
-    "question": "Surat korespondensi antar Advokat yang diberi tanda 'Sans Prejudice' (tanpa prasangka) maksud dan akibat hukumnya adalah:",
+    "question": "Surat korespondensi antar Advokat yang diberi tanda 'Sans Prejudice' (tanpa prasangka) maksud dan akibat hukumnya adalah...",
     "options": [
       {
         "key": "A",
@@ -2175,7 +2231,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 271,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Sifat Putusan Dewan Kehormatan Pusat",
-    "question": "Keputusan Majelis Dewan Kehormatan Pusat mengenai pelanggaran Kode Etik yang dilakukan seorang Advokat adalah bersifat:",
+    "question": "Keputusan Majelis Dewan Kehormatan Pusat mengenai pelanggaran Kode Etik yang dilakukan seorang Advokat adalah bersifat...",
     "options": [
       {
         "key": "A",
@@ -2206,7 +2262,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 272,
     "category": "Kode Etik Profesi Advokat",
     "topicTag": "Hubungan dengan Klien",
-    "question": "Langkah pertama yang etis dan tepat dilakukan oleh seorang Advokat ketika didatangi calon klien yang membawa berkas perkaranya adalah:",
+    "question": "Langkah pertama yang etis dan tepat dilakukan oleh seorang Advokat ketika didatangi calon klien yang membawa berkas perkaranya adalah...",
     "options": [
       {
         "key": "A",
@@ -2237,7 +2293,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 273,
     "category": "Hukum Acara PTUN",
     "topicTag": "Dasar Hukum Peradilan TUN",
-    "question": "Peradilan Tata Usaha Negara (PTUN) di Indonesia dibentuk dan diatur berdasarkan peraturan perundang-undangan:",
+    "question": "Peradilan Tata Usaha Negara (PTUN) di Indonesia dibentuk dan diatur berdasarkan peraturan perundang-undangan...",
     "options": [
       {
         "key": "A",
@@ -2268,7 +2324,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 274,
     "category": "Hukum Acara PTUN",
     "topicTag": "Kedudukan PTUN",
-    "question": "Pada hakikatnya Pengadilan Tata Usaha Negara (PTUN tingkat pertama) berkedudukan di:",
+    "question": "Pada hakikatnya Pengadilan Tata Usaha Negara (PTUN tingkat pertama) berkedudukan di...",
     "options": [
       {
         "key": "A",
@@ -2299,7 +2355,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 275,
     "category": "Hukum Acara PTUN",
     "topicTag": "Tenggang Waktu Gugatan TUN",
-    "question": "Tenggang waktu bagi seseorang atau badan hukum perdata untuk dapat mengajukan gugatan sengketa tata usaha negara ke PTUN adalah:",
+    "question": "Tenggang waktu bagi seseorang atau badan hukum perdata untuk dapat mengajukan gugatan sengketa tata usaha negara ke PTUN adalah...",
     "options": [
       {
         "key": "A",
@@ -2361,7 +2417,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 277,
     "category": "Hukum Acara PTUN",
     "topicTag": "Karakteristik Hukum Acara PTUN",
-    "question": "Hukum Acara Peradilan Tata Usaha Negara mengenal lembaga-lembaga hukum khas berikut ini, KECUALI:",
+    "question": "Hukum Acara Peradilan Tata Usaha Negara mengenal lembaga-lembaga hukum khas berikut ini, KECUALI...",
     "options": [
       {
         "key": "A",
@@ -2392,7 +2448,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 278,
     "category": "Hukum Acara PTUN",
     "topicTag": "Pemeriksaan Persiapan PTUN",
-    "question": "Dalam tahap Pemeriksaan Persiapan di PTUN (Pasal 63 UU No. 5 Tahun 1986), Hakim berwenang untuk:",
+    "question": "Dalam tahap Pemeriksaan Persiapan di PTUN (Pasal 63 UU No. 5 Tahun 1986), Hakim berwenang untuk...",
     "options": [
       {
         "key": "A",
@@ -2454,7 +2510,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 280,
     "category": "Hukum Acara PTUN",
     "topicTag": "Asas Praesumptio Iustae Causa",
-    "question": "Di dalam Hukum Administrasi Negara dan Hukum Acara PTUN dikenal asas 'Praesumptio Iustae Causa' (Presumption of Legality), yang artinya adalah:",
+    "question": "Di dalam Hukum Administrasi Negara dan Hukum Acara PTUN dikenal asas 'Praesumptio Iustae Causa' (Presumption of Legality), yang artinya adalah...",
     "options": [
       {
         "key": "A",
@@ -2485,7 +2541,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 281,
     "category": "Hukum Acara PTUN",
     "topicTag": "Alasan Gugatan TUN",
-    "question": "Berdasarkan Pasal 53 ayat (2) UU No. 9 Tahun 2004, alasan-alasan yang sah digunakan dalam mengajukan gugatan pembatalan Keputusan TUN adalah:",
+    "question": "Berdasarkan Pasal 53 ayat (2) UU No. 9 Tahun 2004, alasan-alasan yang sah digunakan dalam mengajukan gugatan pembatalan Keputusan TUN adalah...",
     "options": [
       {
         "key": "A",
@@ -2516,7 +2572,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 282,
     "category": "Hukum Acara PTUN",
     "topicTag": "Definisi Keputusan TUN (Beschikking)",
-    "question": "Berdasarkan Pasal 1 angka 9 UU No. 51 Tahun 2009, yang dimaksud dengan Keputusan Tata Usaha Negara (KTUN) adalah:",
+    "question": "Berdasarkan Pasal 1 angka 9 UU No. 51 Tahun 2009, yang dimaksud dengan Keputusan Tata Usaha Negara (KTUN) adalah...",
     "options": [
       {
         "key": "A",
@@ -2547,7 +2603,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 283,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Pemanggilan Pihak Gaib (KHI)",
-    "question": "Apabila pihak Tergugat/Termohon tidak diketahui tempat tinggalnya atau tidak jelas, atau tidak mempunyai tempat kediaman yang tetap (gaib), maka dalam perkara perceraian panggilan dilakukan dengan cara:",
+    "question": "Apabila pihak Tergugat/Termohon tidak diketahui tempat tinggalnya atau tidak jelas, atau tidak mempunyai tempat kediaman yang tetap (gaib), maka dalam perkara perceraian panggilan dilakukan dengan cara...",
     "options": [
       {
         "key": "A",
@@ -2578,7 +2634,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 284,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Putusnya Perkawinan (KHI)",
-    "question": "Berdasarkan Pasal 38 UU No. 1 Tahun 1974 jo. Pasal 113 Kompilasi Hukum Islam (KHI), suatu perkawinan dapat putus disebabkan karena:",
+    "question": "Berdasarkan Pasal 38 UU No. 1 Tahun 1974 jo. Pasal 113 Kompilasi Hukum Islam (KHI), suatu perkawinan dapat putus disebabkan karena...",
     "options": [
       {
         "key": "A",
@@ -2609,7 +2665,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 285,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Dasar Hukum Peradilan Agama",
-    "question": "Susunan, kekuasaan, dan hukum acara Peradilan Agama di Indonesia diatur dalam peraturan perundang-undangan:",
+    "question": "Susunan, kekuasaan, dan hukum acara Peradilan Agama di Indonesia diatur dalam peraturan perundang-undangan...",
     "options": [
       {
         "key": "A",
@@ -2640,7 +2696,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 286,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Kewenangan Absolut Peradilan Agama",
-    "question": "Di bawah ini adalah bidang-bidang sengketa antara orang-orang yang beragama Islam yang menjadi kewenangan absolut Pengadilan Agama, KECUALI:",
+    "question": "Di bawah ini adalah bidang-bidang sengketa antara orang-orang yang beragama Islam yang menjadi kewenangan absolut Pengadilan Agama, KECUALI...",
     "options": [
       {
         "key": "A",
@@ -2671,7 +2727,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 287,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Tenggang Waktu Ikrar Talak",
-    "question": "Dalam permohonan cerai talak yang telah berkekuatan hukum tetap (inkracht) dan telah ditetapkan sidang penyaksian ikrar talak, maka tenggang waktu yang diberikan kepada Pemohon (suami) untuk mengikrarkan talaknya sebelum izin ikrar gugur adalah:",
+    "question": "Dalam permohonan cerai talak yang telah berkekuatan hukum tetap (inkracht) dan telah ditetapkan sidang penyaksian ikrar talak, maka tenggang waktu yang diberikan kepada Pemohon (suami) untuk mengikrarkan talaknya sebelum izin ikrar gugur adalah...",
     "options": [
       {
         "key": "A",
@@ -2702,7 +2758,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 288,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Akibat Hukum Perceraian",
-    "question": "Dalam perkara Cerai Talak di Pengadilan Agama, suatu perceraian dianggap telah resmi terjadi beserta segala akibat-akibat hukumnya terhitung sejak:",
+    "question": "Dalam perkara Cerai Talak di Pengadilan Agama, suatu perceraian dianggap telah resmi terjadi beserta segala akibat-akibat hukumnya terhitung sejak...",
     "options": [
       {
         "key": "A",
@@ -2733,7 +2789,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 289,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Masa Iddah Karena Kematian (KHI)",
-    "question": "Waktu tunggu (masa iddah) bagi seorang janda apabila perkawinan putus karena suaminya meninggal dunia ditetapkan selama:",
+    "question": "Waktu tunggu (masa iddah) bagi seorang janda apabila perkawinan putus karena suaminya meninggal dunia ditetapkan selama...",
     "options": [
       {
         "key": "A",
@@ -2764,7 +2820,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 290,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Biaya Perkara Perkawinan",
-    "question": "Berdasarkan Pasal 89 ayat (1) UU No. 7 Tahun 1989 tentang Peradilan Agama, biaya perkara dalam bidang perkawinan dibebankan kepada:",
+    "question": "Berdasarkan Pasal 89 ayat (1) UU No. 7 Tahun 1989 tentang Peradilan Agama, biaya perkara dalam bidang perkawinan dibebankan kepada...",
     "options": [
       {
         "key": "A",
@@ -2795,7 +2851,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 291,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Klasifikasi Talak (KHI)",
-    "question": "Dalam Hukum Perkawinan Islam sebagaimana diatur dalam Kompilasi Hukum Islam (KHI), yang dimaksud dengan Talak Ba'in Kubraa adalah:",
+    "question": "Dalam Hukum Perkawinan Islam sebagaimana diatur dalam Kompilasi Hukum Islam (KHI), yang dimaksud dengan Talak Ba'in Kubraa adalah...",
     "options": [
       {
         "key": "A",
@@ -2826,7 +2882,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 292,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Taklik Talak (KHI)",
-    "question": "Perjanjian yang diucapkan calon mempelai pria setelah akad nikah yang dicantumkan dalam Akta Nikah berupa janji talak yang digantungkan kepada suatu keadaan tertentu yang mungkin terjadi di masa yang akan datang disebut:",
+    "question": "Perjanjian yang diucapkan calon mempelai pria setelah akad nikah yang dicantumkan dalam Akta Nikah berupa janji talak yang digantungkan kepada suatu keadaan tertentu yang mungkin terjadi di masa yang akan datang disebut...",
     "options": [
       {
         "key": "A",
@@ -2857,7 +2913,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 293,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Itsbat Nikah (KHI)",
-    "question": "Dalam hal perkawinan telah sah menurut rukun dan syarat hukum Islam namun tidak dapat dibuktikan dengan Akta Nikah, maka pihak yang berkepentingan dapat mengajukan permohonan ke Pengadilan Agama yaitu perkara:",
+    "question": "Dalam hal perkawinan telah sah menurut rukun dan syarat hukum Islam namun tidak dapat dibuktikan dengan Akta Nikah, maka pihak yang berkepentingan dapat mengajukan permohonan ke Pengadilan Agama yaitu perkara...",
     "options": [
       {
         "key": "A",
@@ -2888,7 +2944,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 294,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Alasan Pengajuan Itsbat Nikah",
-    "question": "Itsbat nikah yang dapat diajukan ke Pengadilan Agama menurut Pasal 7 ayat (3) KHI terbatas mengenai hal-hal berikut:",
+    "question": "Itsbat nikah yang dapat diajukan ke Pengadilan Agama menurut Pasal 7 ayat (3) KHI terbatas mengenai hal-hal berikut...",
     "options": [
       {
         "key": "A",
@@ -2919,7 +2975,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 295,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Prinsip Perceraian di Muka Sidang",
-    "question": "Jika upaya perdamaian dan mediasi terhadap pasangan suami istri tidak tercapai, maka menurut hukum positif Indonesia perceraian hanya dapat sah dilakukan di:",
+    "question": "Jika upaya perdamaian dan mediasi terhadap pasangan suami istri tidak tercapai, maka menurut hukum positif Indonesia perceraian hanya dapat sah dilakukan di...",
     "options": [
       {
         "key": "A",
@@ -2950,7 +3006,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 296,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Alasan Perceraian (PP 9/1975 dan KHI)",
-    "question": "Di bawah ini yang BUKAN merupakan alasan perceraian yang sah menurut Pasal 19 PP No. 9 Tahun 1975 jo. Pasal 116 Kompilasi Hukum Islam (KHI) adalah:",
+    "question": "Di bawah ini yang BUKAN merupakan alasan perceraian yang sah menurut Pasal 19 PP No. 9 Tahun 1975 jo. Pasal 116 Kompilasi Hukum Islam (KHI) adalah...",
     "options": [
       {
         "key": "A",
@@ -2981,7 +3037,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 297,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Putusnya Perkawinan Selama-lamanya (Li'an)",
-    "question": "Berdasarkan Pasal 125 jo. Pasal 162 Kompilasi Hukum Islam (KHI), peristiwa hukum yang menyebabkan putusnya perkawinan antara suami istri untuk selama-lamanya (tidak dapat rujuk atau menikah kembali selama-lamanya) disebut:",
+    "question": "Berdasarkan Pasal 125 jo. Pasal 162 Kompilasi Hukum Islam (KHI), peristiwa hukum yang menyebabkan putusnya perkawinan antara suami istri untuk selama-lamanya (tidak dapat rujuk atau menikah kembali selama-lamanya) disebut...",
     "options": [
       {
         "key": "A",
@@ -3012,7 +3068,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 298,
     "category": "Hukum Acara Peradilan Agama",
     "topicTag": "Kepala Putusan Peradilan Agama",
-    "question": "Berdasarkan Pasal 57 ayat (1) dan ayat (2) UU No. 7 Tahun 1989 tentang Peradilan Agama, setiap penetapan dan putusan Pengadilan Agama wajib dimulai dengan kalimat:",
+    "question": "Berdasarkan Pasal 57 ayat (1) dan ayat (2) UU No. 7 Tahun 1989 tentang Peradilan Agama, setiap penetapan dan putusan Pengadilan Agama wajib dimulai dengan kalimat...",
     "options": [
       {
         "key": "A",
@@ -3043,7 +3099,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 299,
     "category": "Hukum Acara PHI",
     "topicTag": "Penyelesaian Perselisihan Hubungan Industrial",
-    "question": "Undang-Undang Nomor 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial merupakan hukum formil dari:",
+    "question": "Undang-Undang Nomor 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial merupakan hukum formil dari...",
     "options": [
       {
         "key": "A",
@@ -3105,7 +3161,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 301,
     "category": "Hukum Acara PHI",
     "topicTag": "Penyelesaian Perselisihan Hubungan Industrial",
-    "question": "Perselisihan yang timbul karena tidak dipenuhinya hak akibat adanya perbedaan pelaksanaan atau penafsiran terhadap ketentuan perundang-undangan, perjanjian kerja, peraturan perusahaan, atau perjanjian kerja bersama disebut perselisihan:",
+    "question": "Perselisihan yang timbul karena tidak dipenuhinya hak akibat adanya perbedaan pelaksanaan atau penafsiran terhadap ketentuan perundang-undangan, perjanjian kerja, peraturan perusahaan, atau perjanjian kerja bersama disebut perselisihan...",
     "options": [
       {
         "key": "A",
@@ -3128,6 +3184,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Perselisihan yang timbul karena tidak dipenuhinya hak disebut perselisihan hak.",
       "legalBasis": "Pasal 1 angka 2 UU No. 2 Tahun 2004 tentang Penyelesaian Perselisihan Hubungan Industrial.",
+      "statuteText": "Perselisihan hak adalah perselisihan yang timbul karena tidak dipenuhinya hak, akibat adanya perbedaan pelaksanaan atau penafsiran terhadap ketentuan peraturan perundang-undangan, perjanjian kerja, peraturan perusahaan, atau perjanjian kerja bersama.",
       "analysis": "Pasal 1 angka 2 UU 2/2004: \"Perselisihan hak adalah perselisihan yang timbul karena tidak dipenuhinya hak, akibat adanya perbedaan pelaksanaan atau penafsiran terhadap ketentuan peraturan perundang-undangan, perjanjian kerja, peraturan perusahaan, atau perjanjian kerja bersama.\""
     },
     "difficulty": "Sedang"
@@ -3136,7 +3193,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 302,
     "category": "Hukum Acara PHI",
     "topicTag": "Penyelesaian Perselisihan Hubungan Industrial",
-    "question": "Sebelum berlakunya Undang-Undang Nomor 2 Tahun 2004, perkara yang menyangkut perselisihan perburuhan di perusahaan swasta diperiksa berdasarkan:",
+    "question": "Sebelum berlakunya Undang-Undang Nomor 2 Tahun 2004, perkara yang menyangkut perselisihan perburuhan di perusahaan swasta diperiksa berdasarkan...",
     "options": [
       {
         "key": "A",
@@ -3167,7 +3224,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 303,
     "category": "Hukum Acara PHI",
     "topicTag": "Penyelesaian Perselisihan Hubungan Industrial",
-    "question": "Setelah Pengadilan Hubungan Industrial terbentuk, terhadap perselisihan hubungan industrial atau PHK yang sedang ditangani P4P atau lembaga lain yang setingkat dan belum diputus, maka yang berwenang menyelesaikan adalah:",
+    "question": "Setelah Pengadilan Hubungan Industrial terbentuk, terhadap perselisihan hubungan industrial atau PHK yang sedang ditangani P4P atau lembaga lain yang setingkat dan belum diputus, maka yang berwenang menyelesaikan adalah...",
     "options": [
       {
         "key": "A",
@@ -3198,7 +3255,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 304,
     "category": "Hukum Acara PHI",
     "topicTag": "Penyelesaian Perselisihan Hubungan Industrial",
-    "question": "Perselisihan yang timbul karena tidak adanya kesesuaian pendapat mengenai pengakhiran hubungan kerja yang dilakukan oleh salah satu pihak disebut perselisihan:",
+    "question": "Perselisihan yang timbul karena tidak adanya kesesuaian pendapat mengenai pengakhiran hubungan kerja yang dilakukan oleh salah satu pihak disebut perselisihan...",
     "options": [
       {
         "key": "A",
@@ -3229,7 +3286,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 305,
     "category": "Hukum Acara PHI",
     "topicTag": "Penyelesaian Perselisihan Hubungan Industrial",
-    "question": "Pengadilan Hubungan Industrial sebagai hukum formil saat ini diatur dalam:",
+    "question": "Pengadilan Hubungan Industrial sebagai hukum formil saat ini diatur dalam...",
     "options": [
       {
         "key": "A",
@@ -3322,7 +3379,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 308,
     "category": "Hukum Acara PHI",
     "topicTag": "Penyelesaian Perselisihan Hubungan Industrial",
-    "question": "Penyelesaian perselisihan hak, kepentingan, PHK, atau perselisihan antar serikat pekerja/serikat buruh hanya dalam satu perusahaan melalui musyawarah yang ditengahi oleh pegawai instansi ketenagakerjaan disebut:",
+    "question": "Penyelesaian perselisihan hak, kepentingan, PHK, atau perselisihan antar serikat pekerja/serikat buruh hanya dalam satu perusahaan melalui musyawarah yang ditengahi oleh pegawai instansi ketenagakerjaan disebut...",
     "options": [
       {
         "key": "A",

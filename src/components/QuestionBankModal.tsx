@@ -403,8 +403,6 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
               <span aria-hidden="true">·</span>
               <span className="font-semibold text-amber-700 dark:text-amber-400">{q.category}</span>
               <span aria-hidden="true">·</span>
-              <span>{q.topicTag}</span>
-              <span aria-hidden="true">·</span>
               <span className="font-mono text-emerald-700 dark:text-emerald-400 font-bold">Kunci: {q.correctAnswer}</span>
             </div>
 
@@ -412,13 +410,26 @@ export const QuestionBankModal: React.FC<QuestionBankModalProps> = ({
               {q.question}
             </p>
 
-            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 text-xs">
-              <span className="font-mono font-semibold text-amber-700 dark:text-amber-400 block mb-0.5">
+            <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 text-xs space-y-2">
+              <span className="font-bold text-amber-700 dark:text-amber-400 block">
                 {q.explanation.legalBasis}
               </span>
-              <span className="text-slate-600 dark:text-slate-400">
+              {q.explanation.statuteText && (
+                <blockquote className="pl-3 py-1.5 border-l-2 border-amber-500/70 italic text-slate-700 dark:text-slate-300">
+                  "{q.explanation.statuteText.replace(/^["“]|["”]$/g, '')}"
+                </blockquote>
+              )}
+              <span className="text-slate-600 dark:text-slate-400 block">
                 {q.explanation.summary}
               </span>
+              {q.explanation.ruuComparison && (
+                <div className="pt-2 border-t border-slate-200 dark:border-slate-700/60 text-sky-800 dark:text-sky-300">
+                  <span className="font-bold block text-[11px] uppercase tracking-wider mb-0.5">
+                    Catatan RUU KUHAP:
+                  </span>
+                  <span className="text-slate-600 dark:text-slate-300">{q.explanation.ruuComparison}</span>
+                </div>
+              )}
             </div>
           </div>
         ))}

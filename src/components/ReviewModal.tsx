@@ -309,8 +309,6 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
                     <span className="text-amber-700 dark:text-amber-400 font-medium">
                       {q.category}
                     </span>
-                    <span aria-hidden="true">·</span>
-                    <span>{q.topicTag}</span>
                   </div>
 
                   {/* Status Indicator & Report Button */}
@@ -406,39 +404,69 @@ export const ReviewModal: React.FC<ReviewModalProps> = ({
                 </div>
 
                 {/* Detailed Legal Review Box */}
-                <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-3">
-                  {/* Concrete Statutory Legal Basis */}
-                  <div className="flex items-start gap-2.5">
-                    <Scale className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 block mb-0.5">
-                        Dasar Hukum Konkrit
+                <div className="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-3.5">
+                  {/* Concrete Statutory Legal Basis & Statute Text */}
+                  <div className="bg-white dark:bg-slate-900/90 p-4 rounded-xl border border-amber-300/80 dark:border-amber-700/50 space-y-2">
+                    <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+                      <Scale className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                      <span>DASAR HUKUM POSITIF &amp; BUNYI PASAL</span>
+                    </div>
+                    <p className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white leading-relaxed font-legal">
+                      {q.explanation.legalBasis}
+                    </p>
+                    {q.explanation.statuteText ? (
+                      <blockquote className="pl-3.5 pr-3 py-2 border-l-3 border-amber-500/80 dark:border-amber-400/70 bg-amber-50/50 dark:bg-amber-950/25 rounded-r-lg text-xs sm:text-sm italic text-slate-700 dark:text-slate-200 leading-relaxed">
+                        "{q.explanation.statuteText.replace(/^["“]|["”]$/g, '')}"
+                      </blockquote>
+                    ) : (
+                      <blockquote className="pl-3.5 pr-3 py-2 border-l-3 border-amber-500/70 dark:border-amber-400/60 bg-amber-50/40 dark:bg-amber-950/20 rounded-r-lg text-xs sm:text-sm italic text-slate-700 dark:text-slate-200 leading-relaxed">
+                        Inti Ketentuan: {q.explanation.summary}
+                      </blockquote>
+                    )}
+                  </div>
+
+                  {/* Legal Summary / Rationale (ditampilkan saat bunyi pasal terpisah tersedia agar tidak duplikat) */}
+                  {q.explanation.statuteText && (
+                    <div className="pt-1">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-0.5">
+                        Alasan Hukum Mengapa Benar
                       </span>
-                      <p className="text-xs sm:text-sm font-semibold font-mono text-slate-900 dark:text-white">
-                        {q.explanation.legalBasis}
+                      <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
+                        {q.explanation.summary}
                       </p>
                     </div>
-                  </div>
+                  )}
 
-                  {/* Legal Summary / Rationale */}
-                  <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-0.5">
-                      Alasan Hukum Mengapa Benar
-                    </span>
-                    <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
-                      {q.explanation.summary}
-                    </p>
-                  </div>
-
-                  {/* Comprehensive Juridical Analysis */}
-                  <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-0.5">
-                      Analisis Yuridis & Penerapan Kasus
-                    </span>
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {q.explanation.analysis}
-                    </p>
-                  </div>
+                  {/* Comprehensive Juridical Analysis & RUU KUHAP Comparison */}
+                  {q.explanation.ruuComparison || q.category === 'Hukum Acara Pidana' ? (
+                    <div className="p-4 rounded-xl bg-sky-50/80 dark:bg-sky-950/25 border border-sky-200/90 dark:border-sky-800/60 space-y-2">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300 block">
+                        ANALISIS &amp; CATATAN PEMBARUAN (RUU KUHAP)
+                      </span>
+                      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
+                        {q.explanation.analysis}
+                      </p>
+                      {q.explanation.ruuComparison && (
+                        <div className="pt-2 border-t border-sky-200/70 dark:border-sky-800/50">
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300 block mb-0.5">
+                            Perbandingan Pembaruan (RUU KUHAP):
+                          </span>
+                          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                            {q.explanation.ruuComparison}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="pt-2 border-t border-slate-200 dark:border-slate-700">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-0.5">
+                        Analisis Yuridis &amp; Penerapan Kasus
+                      </span>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        {q.explanation.analysis}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             );

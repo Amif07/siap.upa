@@ -18,7 +18,9 @@ export interface QuestionOption {
 export interface LegalExplanation {
   summary: string;
   legalBasis: string;
+  statuteText?: string;
   analysis: string;
+  ruuComparison?: string;
 }
 
 export interface UPAQuestion {
