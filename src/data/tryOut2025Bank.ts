@@ -450,7 +450,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Saksi Ahli / Keterangan Ahli Kedokteran Kehakiman"
+        "text": "Saksi ahli / keterangan ahli kedokteran kehakiman"
       }
     ],
     "correctAnswer": "D",
@@ -466,31 +466,32 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
   {
     "id": 218,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Syarat Formal Permohonan Kasasi",
-    "question": "Permohonan kasasi perdata ke Mahkamah Agung harus dinyatakan tidak dapat diterima (Niet Ontvankelijke Verklaard) apabila...",
+    "topicTag": "Tata Cara Permohonan Kasasi",
+    "question": "Berdasarkan Pasal 46 ayat (1) UU No. 14 Tahun 1985 sebagaimana diubah dengan UU No. 5 Tahun 2004 dan UU No. 3 Tahun 2009 tentang Mahkamah Agung, permohonan kasasi dalam perkara perdata harus disampaikan secara tertulis atau lisan melalui...",
     "options": [
       {
         "key": "A",
-        "text": "Diajukan pada hari ke-10 melalui kepaniteraan pengadilan tingkat pertama dengan disertai memori kasasi"
+        "text": "Panitera Pengadilan Negeri yang memutus perkara pada tingkat pertama"
       },
       {
         "key": "B",
-        "text": "Diajukan melalui Kepaniteraan Pengadilan Negeri yang memutus pada tingkat pertama sesuai tenggang waktu"
+        "text": "Langsung kepada Panitera Mahkamah Agung Republik Indonesia"
       },
       {
         "key": "C",
-        "text": "Memori kasasi diajukan oleh advokat yang telah memperoleh surat kuasa khusus baru untuk tingkat kasasi"
+        "text": "Panitera Pengadilan Tinggi yang memutus perkara pada tingkat banding"
       },
       {
         "key": "D",
-        "text": "Diajukan melewati tenggang waktu 14 hari, tidak disertai memori kasasi tepat waktu, atau dikirim langsung ke MA tanpa melalui kepaniteraan pengadilan tingkat pertama"
+        "text": "Kejaksaan Negeri tempat kedudukan hukum pemohon kasasi"
       }
     ],
-    "correctAnswer": "D",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Permohonan kasasi tidak dapat diterima bila lewat waktu 14 hari, tanpa memori kasasi, atau diajukan tidak melalui pengadilan tingkat pertama.",
-      "legalBasis": "Pasal 45A, 46, dan 47 UU No. 14 Tahun 1985 jo. UU No. 5 Tahun 2004 jo. UU No. 3 Tahun 2009 tentang Mahkamah Agung.",
-      "analysis": "Syarat formal kasasi adalah limitatif: permohonan diajukan dalam 14 hari melalui panitera pengadilan tingkat pertama, dan memori kasasi wajib disampaikan paling lambat 14 hari setelah permohonan kasasi didaftarkan. Pelanggaran atas syarat-syarat ini menyebabkan permohonan kasasi tidak dapat diterima."
+      "summary": "Permohonan kasasi perkara perdata wajib disampaikan secara tertulis atau lisan kepada Panitera Pengadilan Negeri yang memutus perkara tersebut pada tingkat pertama, bukan langsung ke Mahkamah Agung.",
+      "legalBasis": "Pasal 46 ayat (1) UU No. 14 Tahun 1985 sebagaimana diubah dengan UU No. 5 Tahun 2004 dan UU No. 3 Tahun 2009 tentang Mahkamah Agung.",
+      "statuteText": "Permohonan kasasi dalam perkara perdata disampaikan secara tertulis atau lisan oleh pemohon atau wakilnya yang khusus dikuasakan untuk itu, melalui panitera pengadilan tingkat pertama yang telah memutus perkaranya dalam tenggang waktu 14 (empat belas) hari sesudah putusan atau penetapan pengadilan yang dimaksudkan diberitahukan kepada pemohon.",
+      "analysis": "Pilihan A tepat karena Pasal 46 ayat (1) UU Mahkamah Agung mewajibkan pendaftaran permohonan kasasi melalui Panitera Pengadilan Negeri tingkat pertama agar pencatatan akta kasasi dan pemberkasan bundel A dan bundel B dapat dikirimkan secara resmi ke Mahkamah Agung. Pilihan B keliru karena permohonan kasasi yang dikirim langsung ke Mahkamah Agung tanpa melalui pengadilan tingkat pertama dinyatakan tidak dapat diterima (Niet Ontvankelijke Verklaard); Pilihan C keliru karena kepaniteraan Pengadilan Tinggi hanya menerima berkas pemeriksaan banding sebelum dikirim kembali, bukan tempat pendaftaran awal kasasi; dan Pilihan D keliru karena Kejaksaan Negeri tidak berwenang menerima pendaftaran upaya hukum kasasi perdata."
     },
     "difficulty": "Sedang"
   },
@@ -675,11 +676,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "C",
-        "text": "Saksi Testimonium de auditu"
+        "text": "Saksi testimonium de auditu"
       },
       {
         "key": "D",
-        "text": "Saksi Mahkota"
+        "text": "Saksi mahkota"
       }
     ],
     "correctAnswer": "A",
@@ -761,47 +762,48 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
   {
     "id": 228,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Gugatan dinyatakan gugur apabila...",
+    "topicTag": "Gugatan Gugur (Vervallen)",
+    "question": "Dalam pemeriksaan perkara perdata menurut Pasal 124 HIR / Pasal 148 RBg, gugatan dinyatakan gugur oleh hakim apabila pada hari sidang pertama yang telah ditentukan...",
     "options": [
       {
         "key": "A",
-        "text": "Para pihak tidak hadir"
+        "text": "Penggugat dan Tergugat sama-sama hadir untuk menjalani proses mediasi"
       },
       {
         "key": "B",
-        "text": "Tergugat tidak hadir"
+        "text": "Tergugat tidak hadir dan tidak menyuruh wakilnya yang sah meskipun telah dipanggil secara patut"
       },
       {
         "key": "C",
-        "text": "Penggugat tidak hadir"
+        "text": "Penggugat tidak hadir dan tidak menyuruh wakilnya yang sah meskipun telah dipanggil secara patut"
       },
       {
         "key": "D",
-        "text": "Penggugat dan Tergugat tidak hadir"
+        "text": "Salah satu saksi Penggugat berhalangan hadir karena alasan sakit"
       }
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Gugatan dinyatakan gugur apabila Penggugat tidak hadir pada hari sidang pertama setelah dipanggil patut.",
+      "summary": "Gugatan dinyatakan gugur apabila Penggugat tidak hadir dan tidak mewakilkan kuasanya pada hari sidang pertama setelah dipanggil secara resmi dan patut.",
       "legalBasis": "Pasal 124 HIR / Pasal 148 RBg.",
-      "analysis": "Pasal 124 HIR menentukan jika penggugat tidak datang pada hari sidang pertama meskipun telah dipanggil secara patut, maka surat gugatannya dinyatakan gugur dan penggugat dihukum membayar biaya perkara."
+      "statuteText": "Jika Penggugat tidak datang menghadap Pengadilan Negeri pada hari yang ditentukan itu, meskipun ia dipanggil dengan patut, atau tidak pula menyuruh orang lain menghadap mewakilinya, maka surat gugatannya dianggap gugur dan Penggugat dihukum membayar biaya perkara.",
+      "analysis": "Pilihan C tepat karena Pasal 124 HIR / Pasal 148 RBg mengatur bahwa ketidakhadiran Penggugat (atau kuasanya) pada hari sidang pertama meski telah dipanggil patut mengakibatkan gugatan dinyatakan gugur dan Penggugat dihukum membayar biaya perkara (namun ia masih dapat mengajukan gugatan baru setelah melunasi biaya). Pilihan A keliru karena kehadiran kedua belah pihak justru memulai agenda mediasi (Pasal 130 HIR); Pilihan B keliru karena ketidakhadiran Tergugat berakibat pemeriksaan tanpa hadirnya Tergugat atau putusan verstek (Pasal 125 HIR / Pasal 149 RBg); dan Pilihan D keliru karena saksi baru hadir pada tahap pembuktian, bukan hari sidang pertama."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 230,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Campur tangan pihak ketiga dalam suatu perkara yang sedang berlangsung dan tidak memihak disebut...",
+    "topicTag": "Intervensi Tussenkomst",
+    "question": "Campur tangan pihak ketiga secara sukarela dalam suatu perkara perdata yang sedang berlangsung untuk membela kepentingannya sendiri dengan melawan baik Penggugat maupun Tergugat sekaligus disebut...",
     "options": [
       {
         "key": "A",
-        "text": "Intervensi"
+        "text": "Voeging"
       },
       {
         "key": "B",
-        "text": "Voeging"
+        "text": "Vrijwaring"
       },
       {
         "key": "C",
@@ -809,26 +811,27 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Vrijwaring"
+        "text": "Derden verzet"
       }
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Tussenkomst adalah campur tangan pihak ketiga yang masuk membela haknya sendiri tanpa memihak.",
-      "legalBasis": "Pasal 279-282 Reglement op de Rechtsvordering (Rv) jo. Doktrin Hukum Acara Perdata.",
-      "analysis": "Tussenkomst adalah intervensi pihak ketiga yang berdiri sendiri untuk mempertahankan hak miliknya melawan Penggugat dan Tergugat sekaligus tanpa memihak salah satu."
+      "summary": "Tussenkomst adalah intervensi pihak ketiga yang masuk secara sukarela ke dalam perkara untuk mempertahankan kepentingannya sendiri tanpa memihak Penggugat maupun Tergugat.",
+      "legalBasis": "Pasal 279 sampai dengan Pasal 282 Reglement op de Rechtsvordering (Rv).",
+      "statuteText": "Barangsiapa mempunyai kepentingan dalam suatu perkara yang sedang berjalan antara pihak-pihak lain dapat menuntut untuk diizinkan menggabungkan diri atau menengahi (tussenkomst) dalam perkara tersebut.",
+      "analysis": "Pilihan C tepat karena tussenkomst (menengahi) merupakan bentuk intervensi di mana pihak ketiga berdiri sendiri melawan Penggugat dan Tergugat untuk memperjuangkan haknya atas objek sengketa. Pilihan A keliru karena voeging adalah keikutsertaan pihak ketiga yang bergabung mendukung salah satu pihak; Pilihan B keliru karena vrijwaring adalah penarikan pihak ketiga oleh salah satu pihak sebagai penanggung; dan Pilihan D keliru karena derden verzet diajukan terhadap sita atau pelaksanaan putusan, bukan masuk ke dalam pemeriksaan sengketa yang masih berjalan."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 232,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Gugatan atas dasar adanya cacat tersembunyi adalah...",
+    "topicTag": "Gugatan Cacat Tersembunyi (Actio Quanti Minoris)",
+    "question": "Dalam perjanjian jual beli menurut KUHPerdata, gugatan pembeli atas dasar adanya cacat tersembunyi pada barang yang dibeli dengan memilih menahan barang tersebut sambil menuntut pengurangan sebagian harga pembelian disebut...",
     "options": [
       {
         "key": "A",
-        "text": "Actio in personam"
+        "text": "Actio redhibitoria"
       },
       {
         "key": "B",
@@ -840,84 +843,87 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "D",
-        "text": "Actio des aveu"
+        "text": "Actio in personam"
       }
     ],
     "correctAnswer": "B",
     "explanation": {
-      "summary": "Gugatan atas cacat tersembunyi dapat berupa actio quanti minoris (tuntutan pengurangan harga) atau actio redhibitoria.",
-      "legalBasis": "Pasal 1504 sampai Pasal 1507 Kitab Undang-Undang Hukum Perdata (KUHPerdata).",
-      "analysis": "Pasal 1504 KUHPerdata mengatur kewajiban penjual menanggung cacat tersembunyi, di mana pembeli dapat memilih membatalkan pembelian atau menuntut pengurangan harga melalui actio quanti minoris (Pasal 1507 KUHPerdata)."
+      "summary": "Actio quanti minoris adalah hak gugat pembeli atas dasar cacat tersembunyi (Pasal 1507 KUHPerdata) untuk tetap menahan barang yang dibeli sambil menuntut pengembalian sebagian harga pembelian.",
+      "legalBasis": "Pasal 1504 dan Pasal 1507 Kitab Undang-Undang Hukum Perdata (KUHPerdata).",
+      "statuteText": "Dalam hal-hal sebagaimana dimaksud dalam Pasal 1504 dan Pasal 1506, pembeli dapat memilih antara mengembalikan barangnya sambil menuntut kembali uang harga pembelian, atau tetap memiliki barang itu sambil menuntut kembali sebagian dari uang harga pembeliannya sebagaimana ditentukan oleh hakim setelah mendengar para ahli.",
+      "analysis": "Pilihan B tepat karena Pasal 1507 KUHPerdata memberikan dua pilihan gugatan bagi pembeli akibat cacat tersembunyi pada barang, salah satunya mempertahankan barang sambil menuntut pengurangan/pengembalian sebagian harga (actio quanti minoris). Pilihan A keliru karena actio redhibitoria adalah pilihan gugatan untuk mengembalikan barang sekaligus menuntut pengembalian seluruh harga (pembatalan jual beli); Pilihan C keliru karena actio pauliana adalah gugatan kreditur untuk membatalkan perbuatan curang debitur (Pasal 1341 KUHPerdata); dan Pilihan D keliru karena actio in personam adalah penggolongan umum gugatan yang ditujukan terhadap orang tertentu berdasarkan perikatan."
     },
-    "difficulty": "Sedang"
+    "difficulty": "Sulit"
   },
   {
     "id": 233,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Di dalam pemeriksaan perkara perdata yang dicari adalah kebenaran formil, yang artinya...",
+    "topicTag": "Asas Kebenaran Formil",
+    "question": "Dalam pemeriksaan perkara perdata, hakim berpedoman pada pencarian kebenaran formil (formeel waarheid), yang berarti...",
     "options": [
       {
         "key": "A",
-        "text": "Kebenaran mutlak"
+        "text": "Kebenaran mutlak yang dicari sendiri oleh hakim secara aktif di luar dalil para pihak"
       },
       {
         "key": "B",
-        "text": "Kebenaran relatif"
+        "text": "Kebenaran yang bergantung sepenuhnya pada pengakuan terdakwa di penyidikan"
       },
       {
         "key": "C",
-        "text": "Kebenaran yang didasarkan pada bukti-bukti formil"
+        "text": "Kebenaran yang didasarkan pada dalil dan alat-alat bukti sah yang diajukan oleh para pihak di persidangan"
       },
       {
         "key": "D",
-        "text": "Kebenaran semu"
+        "text": "Kebenaran sementara yang baru berlaku setelah disetujui oleh jaksa penuntut umum"
       }
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Kebenaran formil adalah kebenaran yang bersandarkan pada alat bukti sah yang diajukan para pihak di persidangan.",
-      "legalBasis": "Pasal 163 jo. Pasal 164 HIR / Pasal 283 jo. Pasal 284 RBg jo. Pasal 1865 KUHPerdata.",
-      "analysis": "Hukum acara perdata mencari kebenaran formil (formeel waarheid), yaitu hakim terikat pada dalil dan bukti-bukti sah yang diajukan para pihak tanpa mencari kebenaran materiil di luar persidangan."
+      "summary": "Kebenaran formil dalam hukum acara perdata adalah kebenaran yang didasarkan pada fakta dan alat-alat bukti sah yang diajukan para pihak di persidangan.",
+      "legalBasis": "Pasal 163 dan Pasal 164 HIR / Pasal 283 dan Pasal 284 RBg jo. Pasal 1865 KUHPerdata.",
+      "statuteText": "Barangsiapa menyatakan mempunyai sesuatu hak atau mengemukakan suatu perbuatan untuk meneguhkan haknya itu, ataupun untuk membantah hak orang lain, maka orang itu harus membuktikan adanya hak itu atau adanya kejadian itu.",
+      "analysis": "Pilihan C tepat karena dalam hukum acara perdata hakim bersifat pasif terhadap ruang lingkup sengketa dan berpegang pada kebenaran formil berdasarkan bukti-bukti sah yang diajukan Penggugat dan Tergugat (misalnya akta otentik yang mengikat). Pilihan A keliru karena pencarian kebenaran materiil secara aktif merupakan karakter hukum acara pidana (KUHAP); Pilihan B keliru karena pengakuan terdakwa di penyidikan merupakan istilah hukum acara pidana; dan Pilihan D keliru karena jaksa penuntut umum bukan pihak dalam gugatan perdata biasa."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 234,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Eksepsi adalah bantahan...",
+    "topicTag": "Pengertian Eksepsi Perdata",
+    "question": "Dalam jawaban Tergugat menurut hukum acara perdata, yang dimaksud dengan eksepsi adalah tangkisan atau bantahan...",
     "options": [
       {
         "key": "A",
-        "text": "Terhadap pokok perkara"
+        "text": "Terhadap materi pokok perkara mengenai benar atau tidaknya dalil gugatan"
       },
       {
         "key": "B",
-        "text": "Terhadap gugatan yang tidak menyangkut pokok perkara"
+        "text": "Terhadap formalitas gugatan yang tidak menyangkut pokok perkara"
       },
       {
         "key": "C",
-        "text": "Bantahan terhadap putusan"
+        "text": "Terhadap amar putusan akhir yang diajukan ke Pengadilan Tinggi"
       },
       {
         "key": "D",
-        "text": "Bantahan terhadap penetapan"
+        "text": "Terhadap penetapan eksekusi yang telah berkekuatan hukum tetap"
       }
     ],
     "correctAnswer": "B",
     "explanation": {
-      "summary": "Eksepsi adalah bantahan yang ditujukan terhadap gugatan yang tidak menyangkut pokok perkara.",
+      "summary": "Eksepsi adalah tangkisan atau bantahan Tergugat yang ditujukan terhadap syarat-syarat formalitas gugatan tanpa langsung menyentuh materi pokok perkara.",
       "legalBasis": "Pasal 136 HIR / Pasal 162 RBg.",
-      "analysis": "Eksepsi merupakan tangkisan formal Tergugat mengenai formalitas gugatan (kompetensi, keabsahan kuasa, obscuur libel) yang tidak langsung membantah materi pokok perkara."
+      "statuteText": "Perlawanan yang hendak dikemukakan oleh pihak yang digugat (eksepsi), kecuali mengenai hakim tidak berkuasa, tidak boleh dikemukakan dan ditimbang satu-satu, tetapi harus diperiksa dan diputus bersama-sama dengan pokok perkara.",
+      "analysis": "Pilihan B tepat karena eksepsi ditujukan pada cacat formil atau syarat prosedural gugatan (seperti kompetensi pengadilan, surat kuasa tidak sah, error in persona, atau obscuur libel) tanpa membahas kebenaran substansi pokok perkara. Pilihan A keliru karena bantahan atas substansi gugatan disebut jawaban pokok perkara (verweer ten principale); Pilihan C keliru karena bantahan terhadap putusan akhir disebut upaya hukum banding/kasasi; dan Pilihan D keliru karena keberatan terhadap eksekusi diajukan melalui perlawanan eksekusi (verzet/derden verzet)."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 235,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Teori yang mengajarkan bahwa fundamentum petendi harus pula menjelaskan/menyebutkan peristiwa konkret yang menjadi sebab timbulnya peristiwa hukum yang menjadi alasan gugatan adalah...",
+    "topicTag": "Teori Posita Gugatan",
+    "question": "Teori hukum acara perdata yang mengajarkan bahwa fundamentum petendi (posita) harus menguraikan peristiwa konkret yang menjadi sebab timbulnya hubungan hukum dalam gugatan adalah...",
     "options": [
       {
         "key": "A",
@@ -938,56 +944,58 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Substantieringstheorie mewajibkan gugatan menyebut peristiwa konkret yang menjadi dasar timbulnya hubungan hukum.",
-      "legalBasis": "Pasal 8 angka 3 Reglement op de Rechtsvordering (Rv) jo. Putusan Mahkamah Agung RI No. 547 K/Sip/1972.",
-      "analysis": "Substantieringstheorie mewajibkan Penggugat menguraikan fakta konkret peristiwa hukum dalam posita, sedangkan individualiseringstheorie cukup menyebutkan hubungan hukumnya saja."
+      "summary": "Substantieringstheorie mewajibkan posita gugatan menjelaskan kejadian atau peristiwa konkret sejarah timbulnya hak yang menjadi dasar tuntutan.",
+      "legalBasis": "Pasal 8 ayat (3) Reglement op de Burgerlijke Rechtsvordering (Rv) jo. Yurisprudensi Mahkamah Agung RI No. 547 K/Sip/1972.",
+      "statuteText": "Surat gugatan harus memuat suatu kesimpulan yang jelas dan tertentu dengan uraian mengenai duduk perkara (middelen van de eis / fundamentum petendi) serta tuntutan yang dimohonkan.",
+      "analysis": "Pilihan A tepat karena substantieringstheorie mensyaratkan Penggugat menguraikan secara kronologis peristiwa konkret lahirnya hubungan hukum (misalnya asal-usul perolehan hak milik dalam gugatan revindikasi). Pilihan B keliru karena individualiseringstheorie cukup mencantumkan hubungan hukumnya saja tanpa merinci asal-usul peristiwa konkretnya; sedangkan Pilihan C dan D keliru karena bukan ajaran mengenai perumusan posita dalam surat gugatan."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 236,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Eksepsi terhadap kewenangan mengadili diajukan bersama-sama dalam...",
+    "topicTag": "Waktu Pengajuan Eksepsi Kompetensi Relatif",
+    "question": "Berdasarkan Pasal 125 ayat (2) jo. Pasal 133 HIR / Pasal 149 ayat (2) jo. Pasal 159 RBg, eksepsi mengenai ketidakwenangan mengadili secara relatif (kompetensi relatif) oleh Tergugat harus diajukan...",
     "options": [
       {
         "key": "A",
-        "text": "Pokok perkara"
+        "text": "Bersama-sama dalam jawaban pertama sebelum memasuki bantahan pokok perkara"
       },
       {
         "key": "B",
-        "text": "Jawaban"
+        "text": "Setelah tahap pemeriksaan alat bukti surat dan keterangan saksi selesai dilaksanakan"
       },
       {
         "key": "C",
-        "text": "Pembuktian"
+        "text": "Pada tahap penyampaian kesimpulan (konklusi) sebelum putusan akhir dibacakan"
       },
       {
         "key": "D",
-        "text": "Gugatan"
+        "text": "Kapan saja selama pemeriksaan perkara berlangsung atau secara ex officio oleh hakim"
       }
     ],
-    "correctAnswer": "B",
+    "correctAnswer": "A",
     "explanation": {
-      "summary": "Eksepsi kewenangan relatif wajib diajukan bersama-sama dalam jawaban pertama terhadap gugatan.",
-      "legalBasis": "Pasal 133 dan Pasal 134 HIR / Pasal 159 dan Pasal 160 RBg.",
-      "analysis": "Pasal 133 HIR menentukan eksepsi kompetensi relatif harus diajukan pada permulaan sidang dalam jawaban pertama sebelum Tergugat menjawab pokok perkara."
+      "summary": "Eksepsi kompetensi relatif bersifat tidak mutlak sehingga wajib diajukan Tergugat pada jawaban pertama sebelum menangkis pokok perkara; jika terlambat diajukan, hak eksepsi tersebut gugur.",
+      "legalBasis": "Pasal 125 ayat (2) dan Pasal 133 HIR / Pasal 149 ayat (2) dan Pasal 159 RBg.",
+      "statuteText": "Jika tergugat dipanggil menghadap Pengadilan Negeri yang menurut aturan Pasal 118 tidak usah menghadapinya, maka ia boleh menuntut supaya hakim menyatakan dirinya tidak berkuasa, asal saja tuntutan itu dimajukan dengan segera pada permulaan sidang pertama; tuntutan itu tidak akan diperhatikan lagi jika tergugat telah mengajukan sesuatu perlawanan lain.",
+      "analysis": "Pilihan A tepat karena Pasal 133 HIR / Pasal 159 RBg mensyaratkan eksepsi kompetensi relatif diajukan sejak permulaan pemeriksaan (bersama jawaban pertama sebelum membantah pokok perkara), sehingga jika Tergugat sudah menjawab pokok perkara tanpa mengajukan eksepsi ini maka Pengadilan Negeri menjadi berwenang mengadilinya. Pilihan B dan C keliru karena pengajuan eksepsi kompetensi relatif setelah memasuki pokok perkara, pembuktian, atau kesimpulan tidak dapat lagi diperhatikan hakim; dan Pilihan D keliru karena sifat dapat diajukan kapan saja dan wajib dinyatakan ex officio oleh hakim berlaku bagi eksepsi kompetensi absolut (Pasal 134 HIR / Pasal 160 RBg), bukan kompetensi relatif."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 237,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Gugatan akan ditolak oleh hakim jika gugatan dalam keadaan...",
+    "topicTag": "Putusan Gugatan Ditolak vs NO",
+    "question": "Gugatan perdata akan dinyatakan ditolak (ontzegd / afgewezen) oleh hakim apabila setelah pemeriksaan pokok perkara gugatan berada dalam keadaan...",
     "options": [
       {
         "key": "A",
-        "text": "Kabur"
+        "text": "Kurang pihak"
       },
       {
         "key": "B",
-        "text": "Kurang Pihak"
+        "text": "Kabur"
       },
       {
         "key": "C",
@@ -1000,48 +1008,50 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Gugatan ditolak apabila dalil gugatan tidak terbukti atau tidak berdasar hukum (afgewezen).",
-      "legalBasis": "Pasal 163 HIR / Pasal 283 RBg jo. Pasal 1865 KUHPerdata.",
-      "analysis": "Bila gugatan kabur atau kurang pihak, putusannya adalah tidak dapat diterima (NO). Gugatan ditolak (afgewezen) apabila telah diperiksa pokok perkaranya dan ternyata dalil penggugat tidak terbukti menurut hukum."
+      "summary": "Gugatan dinyatakan ditolak (ontzegd / afgewezen) apabila setelah pemeriksaan pokok perkara dalil penggugat tidak terbukti atau tidak berdasarkan hukum (onrechtmatig / ongegrond).",
+      "legalBasis": "Pasal 163 HIR / Pasal 283 RBg jo. Pasal 1865 KUHPerdata serta Pasal 125 ayat (1) HIR / Pasal 149 ayat (1) RBg.",
+      "statuteText": "Barangsiapa menyatakan mempunyai sesuatu hak wajib membuktikan hak tersebut; dan apabila gugatan dinilai tidak beralasan atau melawan hak (onrechtmatig of ongegrond), maka gugatan tersebut dinyatakan ditolak.",
+      "analysis": "Dalam hukum acara perdata, terdapat perbedaan mendasar antara gugatan ditolak (ontzegd) dan gugatan tidak dapat diterima (Niet Ontvankelijke Verklaard / NO). Gugatan ditolak (Pilihan C) dijatuhkan apabila pokok perkara telah diperiksa, namun dalil penggugat tidak terbukti atau tidak berdasarkan hukum (tidak beralasan/melawan hak). Sebaliknya, apabila gugatan mengandung cacat formil berupa kurang pihak/plurium litis consortium (Pilihan A), gugatan kabur/obscuur libel (Pilihan B), maupun telah lewat waktu/daluwarsa atau exceptio temporis (Pilihan D), hakim tidak memeriksa pokok perkara dan menjatuhkan putusan tidak dapat diterima (NO)."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 238,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Putusan insidentil adalah...",
+    "topicTag": "Putusan Sela / Insidentil",
+    "question": "Dalam hukum acara perdata berdasarkan Pasal 185 ayat (1) HIR / Pasal 196 ayat (1) RBg, yang dimaksud dengan putusan sela atau putusan insidentil adalah...",
     "options": [
       {
         "key": "A",
-        "text": "Putusan akhir"
+        "text": "Putusan akhir yang mengakhiri sengketa pada tingkat pertama"
       },
       {
         "key": "B",
-        "text": "Putusan yang mendahului putusan akhir"
+        "text": "Putusan yang dijatuhkan sebelum putusan akhir untuk memperlancar pemeriksaan perkara"
       },
       {
         "key": "C",
-        "text": "Putusan pokok perkara"
+        "text": "Putusan mengenai pokok perkara setelah tahap pembuktian selesai"
       },
       {
         "key": "D",
-        "text": "Putusan deklaratoir (deklaratif)"
+        "text": "Putusan deklaratoir yang hanya menerangkan status hukum objek sengketa"
       }
     ],
     "correctAnswer": "B",
     "explanation": {
-      "summary": "Putusan insidentil adalah putusan sela yang dijatuhkan hakim mendahului putusan akhir.",
+      "summary": "Putusan insidentil (putusan sela) adalah putusan bukan putusan akhir yang dijatuhkan mendahului putusan akhir untuk mengatur atau memperlancar jalannya pemeriksaan.",
       "legalBasis": "Pasal 185 ayat (1) HIR / Pasal 196 ayat (1) RBg.",
-      "analysis": "Pasal 185 ayat (1) HIR mengatur putusan sela/insidentil yang bukan putusan akhir dijatuhkan untuk memperlancar jalannya pemeriksaan perkara (seperti putusan sela eksepsi kompetensi atau sita jaminan)."
+      "statuteText": "Putusan yang bukan putusan akhir, walaupun harus diucapkan juga di muka persidangan, tidak dibuat masing-masing secara tersendiri, melainkan hanya dicatat dalam berita acara persidangan.",
+      "analysis": "Pilihan B tepat karena Pasal 185 ayat (1) HIR / Pasal 196 ayat (1) RBg mengatur putusan yang mendahului putusan akhir (seperti putusan preparatoir, interlokutoir, insidentil intervensi/eksepsi kompetensi, dan provisi) yang bandingnya hanya dapat diajukan bersama putusan akhir (kecuali terhadap putusan sela eksepsi kompetensi). Pilihan A dan C keliru karena keduanya menunjuk pada putusan akhir (eindvonnis) yang memutus pokok sengketa; dan Pilihan D keliru karena putusan deklaratoir dapat berupa putusan akhir yang menegaskan status hak."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 239,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Agenda acara pada hari sidang pertama dalam hukum acara perdata yang dihadiri oleh kedua belah pihak adalah...",
+    "topicTag": "Mediasi Pada Hari Sidang Pertama",
+    "question": "Agenda wajib pada hari sidang pertama perkara perdata di Pengadilan Negeri yang dihadiri oleh kedua belah pihak berdasarkan Pasal 130 HIR / Pasal 154 RBg jo. Pasal 17 PERMA No. 1 Tahun 2016 adalah...",
     "options": [
       {
         "key": "A",
@@ -1053,7 +1063,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "C",
-        "text": "Hakim menolak gugatan karena para pihak wajib berdamai di luar pengadilan lebih dahulu"
+        "text": "Hakim menolak gugatan karena para pihak belum berdamai di luar pengadilan"
       },
       {
         "key": "D",
@@ -1062,83 +1072,86 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "D",
     "explanation": {
-      "summary": "Sidang pertama perkara perdata yang dihadiri kedua belah pihak diwajibkan menempuh proses mediasi.",
-      "legalBasis": "Pasal 130 HIR / Pasal 154 RBg jo. Pasal 17 PERMA No. 1 Tahun 2016 tentang Prosedur Mediasi di Pengadilan.",
-      "analysis": "Pasal 17 PERMA 1/2016 mewajibkan majelis hakim pada hari sidang pertama menjelaskan prosedur mediasi dan mewajibkan para pihak menempuh mediasi sebelum pemeriksaan perkara dilanjutkan."
+      "summary": "Pada hari sidang pertama yang dihadiri kedua belah pihak, hakim wajib menjelaskan prosedur mediasi dan memerintahkan para pihak menempuh mediasi sebelum pemeriksaan pokok perkara dilanjutkan.",
+      "legalBasis": "Pasal 130 ayat (1) HIR / Pasal 154 ayat (1) RBg jo. Pasal 17 ayat (1) PERMA No. 1 Tahun 2016 tentang Prosedur Mediasi di Pengadilan.",
+      "statuteText": "Pada hari sidang yang telah ditentukan yang dihadiri oleh Para Pihak, Hakim Pemeriksa Perkara mewajibkan Para Pihak untuk menempuh Mediasi.",
+      "analysis": "Pilihan D tepat karena Pasal 130 HIR / Pasal 154 RBg jo. Pasal 17 PERMA No. 1 Tahun 2016 mewajibkan hakim mendorong perdamaian melalui mediasi pada hari sidang pertama sebelum masuk ke pembacaan gugatan dan jawab-jinawab; kelalaian menempuh mediasi berakibat putusan batal demi hukum (Pasal 3 ayat (1) PERMA 1/2016). Pilihan A dan B keliru karena langsung memutus atau membuktikan tanpa jawaban dan mediasi melanggar asas audi et alteram partem dan mediasi wajib; serta Pilihan C keliru karena kegagalan damai di luar sidang bukan alasan menolak gugatan."
     },
     "difficulty": "Mudah"
   },
   {
     "id": 241,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "KUHPerdata mengatur hubungan hukum antara...",
+    "topicTag": "Ruang Lingkup Hubungan Hukum KUHPerdata",
+    "question": "Sebagai kodifikasi hukum perdata materiil, Kitab Undang-Undang Hukum Perdata (KUHPerdata / Burgerlijk Wetboek) pada pokoknya mengatur hubungan hukum antara...",
     "options": [
       {
         "key": "A",
-        "text": "Privat-privat"
+        "text": "Subjek hukum privat dengan subjek hukum privat (orang perorangan atau badan hukum perdata)"
       },
       {
         "key": "B",
-        "text": "Privat-publik"
+        "text": "Negara dengan warga negara dalam pelaksanaan ketertiban umum dan penjatuhan pidana"
       },
       {
         "key": "C",
-        "text": "Publik-publik"
+        "text": "Pejabat tata usaha negara dengan warga negara mengenai keabsahan keputusan administratif"
       },
       {
         "key": "D",
-        "text": "Notaris-Jaksa"
+        "text": "Aparat penyidik kepolisian dengan penuntut umum dalam pemeriksaan perkara pidana"
       }
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "KUHPerdata mengatur hubungan hukum privat antar individu atau badan hukum perdata.",
-      "legalBasis": "Pasal 1 jo. Buku I sampai Buku IV Kitab Undang-Undang Hukum Perdata (Burgerlijk Wetboek).",
-      "analysis": "Hukum perdata substantif (KUHPerdata) mengatur hak dan kewajiban hubungan privat-privat antar sesama anggota masyarakat dan subjek hukum perdata."
+      "summary": "KUHPerdata merupakan hukum privat materiil yang mengatur hubungan keperdataan antar-subjek hukum privat (orang perorangan dan badan hukum perdata) dalam kedudukan yang sejajar.",
+      "legalBasis": "Buku I sampai dengan Buku IV Kitab Undang-Undang Hukum Perdata (Stb. 1847 No. 23) jo. Pasal 1313 dan Pasal 1338 KUHPerdata.",
+      "statuteText": "KUHPerdata mengatur mengenai orang dan hukum keluarga (Buku I), kebendaan dan waris (Buku II), perikatan dan perjanjian (Buku III), serta pembuktian dan daluwarsa (Buku IV) dalam hubungan keperdataan antar-pihak.",
+      "analysis": "Pilihan A tepat karena KUHPerdata termasuk ranah hukum privat yang mengatur hak dan kewajiban keperdataan antar-subjek hukum privat (privat–privat) secara sejajar. Pilihan B keliru karena hubungan negara dengan warga negara terkait pemidanaan diatur dalam hukum pidana publik (KUHP); Pilihan C keliru karena sengketa keputusan pejabat administratif masuk ranah Hukum Administrasi Negara dan Hukum Acara PTUN (UU No. 5 Tahun 1986); dan Pilihan D keliru karena hubungan penyidik dan penuntut umum dalam penyidikan dan penuntutan pidana diatur dalam Hukum Acara Pidana (KUHAP)."
     },
-    "difficulty": "Sedang"
+    "difficulty": "Mudah"
   },
   {
     "id": 242,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Menurut hukum acara perdata, Tergugat adalah...",
+    "topicTag": "Pengertian Yuridis Tergugat",
+    "question": "Dalam hukum acara perdata Indonesia, pihak yang ditarik sebagai Tergugat dalam suatu gugatan perdata (jurisdictio contentiosa) adalah...",
     "options": [
       {
         "key": "A",
-        "text": "Orang atau badan hukum yang menurut hukum diduga melakukan pelanggaran terhadap hak orang lain atau melakukan pelanggaran terhadap ketentuan undang-undang"
+        "text": "Orang atau badan hukum yang menurut dalil Penggugat diduga melanggar hak Penggugat atau melakukan perbuatan melawan hukum maupun wanprestasi"
       },
       {
         "key": "B",
-        "text": "Orang atau badan hukum yang menurut hukum diduga melakukan pelanggaran terhadap hak orang lain saja"
+        "text": "Pihak yang mengajukan permohonan penetapan sepihak ke pengadilan tanpa adanya sengketa dengan pihak lawan"
       },
       {
         "key": "C",
-        "text": "Orang atau badan hukum yang menurut hukum diduga melakukan pelanggaran terhadap ketentuan undang-undang saja"
+        "text": "Pejabat panitera pengadilan negeri yang bertugas mencatat pendaftaran perkara dan menaksir panjar biaya"
       },
       {
         "key": "D",
-        "text": "Orang atau badan hukum yang bertindak sebagai saksi fakta di persidangan"
+        "text": "Pihak ketiga yang didengar keterangannya di persidangan mengenai peristiwa yang dilihat, didengar, atau dialaminya sendiri"
       }
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Tergugat adalah subjek hukum yang ditarik ke pengadilan karena diduga melanggar hak orang lain atau ketentuan undang-undang.",
-      "legalBasis": "Pasal 118 ayat (1) HIR / Pasal 142 ayat (1) RBg jo. Doktrin Hukum Acara Perdata.",
-      "analysis": "Tergugat adalah pihak yang disengketakan dalam gugatan perdata karena adanya perbuatan melawan hukum atau ingkar janji (wanprestasi) yang merugikan penggugat."
+      "summary": "Tergugat adalah subjek hukum (orang perorangan atau badan hukum) yang ditarik ke muka pengadilan oleh Penggugat karena didalilkan melanggar hak Penggugat, melakukan wanprestasi, atau melakukan perbuatan melawan hukum.",
+      "legalBasis": "Pasal 118 ayat (1) HIR / Pasal 142 ayat (1) RBg jo. Pasal 1243 dan Pasal 1365 KUHPerdata.",
+      "statuteText": "Gugatan perdata yang pada tingkat pertama masuk kekuasaan Pengadilan Negeri diajukan terhadap tergugat di tempat kediaman atau tempat tinggalnya yang sebenarnya untuk memperoleh perlindungan hak keperdataan yang didalilkan dilanggar.",
+      "analysis": "Pilihan A tepat karena dalam perkara gugatan (contentiosa), Tergugat adalah subjek hukum privat (orang atau badan hukum, termasuk badan publik dalam kapasitas keperdataan) yang digugat karena dianggap melanggar hak Penggugat atau melanggar kewajiban hukum terhadap Penggugat. Pilihan B keliru karena pihak dalam perkara tanpa sengketa lawan disebut Pemohon (jurisdictio voluntaria); Pilihan C keliru karena pencatat pendaftaran perkara dan penaksir biaya adalah Panitera Pengadilan; dan Pilihan D keliru karena pihak yang menerangkan peristiwa yang dialami sendiri di persidangan adalah Saksi."
     },
-    "difficulty": "Sedang"
+    "difficulty": "Mudah"
   },
   {
     "id": 244,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Sita Revindicatoir (revindicatoir beslag) dapat dimintakan terhadap...",
+    "topicTag": "Sita Revindikasi (Revindicatoir Beslag)",
+    "question": "Berdasarkan Pasal 226 ayat (1) HIR / Pasal 260 ayat (1) RBg, sita revindikasi (revindicatoir beslag) hanya dapat dimohonkan oleh Penggugat terhadap...",
     "options": [
       {
         "key": "A",
-        "text": "Barang tidak bergerak milik pihak ketiga yang dikuasai Tergugat"
+        "text": "Barang tidak bergerak milik pihak ketiga yang dikuasai oleh Tergugat"
       },
       {
         "key": "B",
@@ -1146,119 +1159,91 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "C",
-        "text": "Barang bergerak milik Penggugat yang dikuasai oleh Tergugat"
+        "text": "Barang bergerak milik Penggugat yang berada dalam penguasaan Tergugat"
       },
       {
         "key": "D",
-        "text": "Barang bergerak milik pihak ketiga yang dikuasai Tergugat"
+        "text": "Barang bergerak milik pihak ketiga yang disewakan kepada Tergugat"
       }
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Sita revindikasi hanya dapat dimintakan atas barang bergerak milik Penggugat yang berada di tangan Tergugat.",
+      "summary": "Sita revindikasi (revindicatoir beslag) hanya dapat dimintakan atas barang bergerak milik Penggugat yang dikuasai secara tidak berhak oleh Tergugat.",
       "legalBasis": "Pasal 226 ayat (1) HIR / Pasal 260 ayat (1) RBg.",
-      "analysis": "Pasal 226 HIR secara limitatif mengatur bahwa sita revindikasi (revindicatoir beslag) hanya berlaku bagi penuntutan kembali barang bergerak milik penggugat."
+      "statuteText": "Orang yang mempunyai suatu barang yang tidak tetap, dapat meminta dengan surat atau dengan lisan kepada Ketua Pengadilan Negeri di daerah hukum tempat tinggal orang yang memegang barang itu, supaya barang itu disita.",
+      "analysis": "Pilihan C tepat karena Pasal 226 ayat (1) HIR / Pasal 260 ayat (1) RBg secara limitatif membatasi sita revindikasi hanya bagi pemilik barang bergerak (barang tidak tetap) yang menuntut pengembalian barangnya dari tangan Tergugat. Pilihan A dan B keliru karena sita revindikasi tidak berlaku untuk barang tidak bergerak (tanah/bangunan); sedangkan Pilihan D keliru karena pemohon sita revindikasi haruslah pemilik sah barang tersebut (Penggugat), bukan terhadap barang milik pihak ketiga."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 246,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Apabila Hakim memutus perkara perdata dan ternyata didapati bahwa surat kuasa Penggugat tidak sempurna, maka putusan perkara tersebut dapat dinyatakan...",
+    "topicTag": "Akibat Surat Kuasa Tidak Sempurna",
+    "question": "Apabila dalam pemeriksaan perkara perdata diketahui bahwa surat kuasa khusus Penggugat tidak memenuhi syarat formil (cacat formil), maka putusan yang dijatuhkan oleh majelis hakim menyatakan gugatan...",
     "options": [
       {
         "key": "A",
-        "text": "Ditolak"
+        "text": "Ditolak (ontzegd)"
       },
       {
         "key": "B",
-        "text": "Diterima"
+        "text": "Dikabulkan sebagian"
       },
       {
         "key": "C",
-        "text": "Tidak dapat diterima"
+        "text": "Tidak dapat diterima (Niet Ontvankelijke Verklaard)"
       },
       {
         "key": "D",
-        "text": "Batal demi hukum dan diperiksa ulang oleh pengadilan tingkat banding"
+        "text": "Dibatalkan oleh Panitera Pengadilan Negeri"
       }
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Surat kuasa khusus yang tidak sempurna atau cacat formil berakibat gugatan dinyatakan tidak dapat diterima (NO).",
-      "legalBasis": "Pasal 123 HIR jo. Surat Edaran Mahkamah Agung (SEMA) No. 1 Tahun 1971 dan SEMA No. 6 Tahun 1994.",
-      "analysis": "SEMA No. 1/1971 menegaskan bahwa surat kuasa khusus yang tidak menyebutkan secara spesifik pihak lawan, objek perkara, dan pengadilan berakibat gugatan dinilai cacat formil dan diputus tidak dapat diterima (Niet Ontvankelijke Verklaard)."
+      "summary": "Surat kuasa khusus yang tidak memenuhi syarat formil SEMA No. 6 Tahun 1994 menyebabkan kuasa tidak sah dan gugatan dinyatakan tidak dapat diterima (Niet Ontvankelijke Verklaard).",
+      "legalBasis": "Pasal 123 ayat (1) HIR / Pasal 147 ayat (1) RBg jo. SEMA No. 1 Tahun 1971 dan SEMA No. 6 Tahun 1994.",
+      "statuteText": "Surat kuasa khusus harus menyebut secara jelas dan spesifik surat kuasa untuk berperan di pengadilan, menyebut kompetensi relatif, identitas serta kedudukan para pihak, dan menyebut secara ringkas serta konkret pokok dan objek yang diperkarakan.",
+      "analysis": "Pilihan C tepat karena ketidaksempurnaan surat kuasa khusus (misalnya tidak menyebut objek sengketa atau pihak lawan secara spesifik) berakibat si penerima kuasa tidak memiliki legal standing beracara, sehingga gugatan mengandung cacat formil dan diputus tidak dapat diterima (NO). Pilihan A keliru karena gugatan ditolak (ontzegd) hanya dijatuhkan bila pokok perkara telah diperiksa dan dalilnya tidak terbukti; Pilihan B keliru karena hakim tidak boleh mengabulkan gugatan tanpa dasar kuasa sah; dan Pilihan D keliru karena panitera tidak berwenang membatalkan gugatan atau menjatuhkan putusan."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 248,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Secara umum, Pasal 118 HIR menentukan asas “Actor Sequitor Forum Rei”, yang maksudnya adalah...",
+    "topicTag": "Asas Actor Sequitur Forum Rei",
+    "question": "Secara umum, Pasal 118 ayat (1) HIR / Pasal 142 ayat (1) RBg menganut asas \"Actor Sequitur Forum Rei\", yang artinya gugatan perdata pada prinsipnya harus diajukan kepada Pengadilan Negeri yang daerah hukumnya meliputi...",
     "options": [
       {
         "key": "A",
-        "text": "Gugatan harus diajukan ke pengadilan yang yurisdiksinya melingkupi tempat tinggal Tergugat"
+        "text": "Tempat tinggal Tergugat"
       },
       {
         "key": "B",
-        "text": "Gugatan harus diajukan ke pengadilan yang yurisdiksinya melingkupi tempat tinggal Penggugat"
+        "text": "Tempat tinggal Penggugat"
       },
       {
         "key": "C",
-        "text": "Gugatan harus diajukan ke pengadilan yang yurisdiksinya melingkupi tempat tinggal saksi dan barang bukti"
+        "text": "Tempat tinggal seluruh saksi Penggugat"
       },
       {
         "key": "D",
-        "text": "Gugatan harus diajukan ke pengadilan yang yurisdiksinya melingkupi tempat tinggal Penggugat dan Turut Tergugat"
+        "text": "Tempat penandatanganan surat kuasa khusus"
       }
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Actor sequitur forum rei berarti gugatan diajukan ke Pengadilan Negeri tempat tinggal Tergugat.",
+      "summary": "Asas actor sequitur forum rei menetapkan bahwa gugatan perdata diajukan ke Pengadilan Negeri di tempat tinggal (domisili) Tergugat.",
       "legalBasis": "Pasal 118 ayat (1) HIR / Pasal 142 ayat (1) RBg.",
-      "analysis": "Asas dasar hukum acara perdata Indonesia menentukan bahwa pihak yang digugat berhak diadili di pengadilan tempat domisilinya (actor sequitur forum rei)."
-    },
-    "difficulty": "Sedang"
-  },
-  {
-    "id": 249,
-    "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Unsur-unsur surat gugatan adalah...",
-    "options": [
-      {
-        "key": "A",
-        "text": "Identitas para pihak, Fundamentum Petendi, dan Petitum"
-      },
-      {
-        "key": "B",
-        "text": "Identitas para pihak, gugatan dan tuntutan"
-      },
-      {
-        "key": "C",
-        "text": "Uraian tentang gugatan dan tuntutan"
-      },
-      {
-        "key": "D",
-        "text": "Uraian lengkap posita dan petitum tanpa identitas para pihak"
-      }
-    ],
-    "correctAnswer": "A",
-    "explanation": {
-      "summary": "Anatomi surat gugatan terdiri dari Identitas para pihak, Fundamentum Petendi (Posita), dan Petitum.",
-      "legalBasis": "Pasal 8 ayat (3) Rv (Reglement op de Burgerlijke Rechtsvordering) jo. Pasal 118 ayat (1) HIR / Pasal 142 ayat (1) RBg.",
-      "analysis": "Syarat isi surat gugatan meliputi: 1. Identitas para pihak; 2. Fundamentum petendi (uraian fakta peristiwa dan dasar hukum); 3. Petitum (tuntutan yang dimohonkan dikabulkan hakim)."
+      "statuteText": "Gugatan perdata yang pada tingkat pertama masuk kekuasaan Pengadilan Negeri, harus dimasukkan dengan surat permintaan yang ditandatangani oleh penggugat atau oleh wakilnya menurut Pasal 123, kepada Ketua Pengadilan Negeri di daerah hukum siapa tergugat bertempat diam atau jika tidak diketahui tempat diamnya, tempat tinggalnya yang sebenarnya.",
+      "analysis": "Pilihan A tepat karena asas actor sequitur forum rei melindungi Tergugat sebagai pihak yang ditarik ke muka pengadilan agar pembelaannya dilakukan di pengadilan tempat tinggalnya sendiri. Pilihan B keliru karena domisili Penggugat hanya menjadi pengecualian apabila tempat tinggal atau kediaman Tergugat sama sekali tidak diketahui (Pasal 118 ayat (3) HIR / Pasal 142 ayat (3) RBg); sedangkan Pilihan C dan D keliru karena domisili saksi maupun tempat penandatanganan kuasa tidak menentukan kompetensi relatif perdata."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 250,
     "category": "Hukum Acara Perdata",
-    "topicTag": "Hukum Acara Perdata (HIR/RBg)",
-    "question": "Sita jaminan (conservatoir beslag) dapat dimintakan terhadap...",
+    "topicTag": "Sita Jaminan (Conservatoir Beslag)",
+    "question": "Berdasarkan Pasal 227 ayat (1) HIR / Pasal 261 ayat (1) RBg, sita jaminan (conservatoir beslag) dapat dimohonkan terhadap...",
     "options": [
       {
         "key": "A",
@@ -1270,18 +1255,19 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "C",
-        "text": "Barang bergerak milik Penggugat yang dikuasai Tergugat"
+        "text": "Barang bergerak milik Penggugat yang dikuasai Tergugat saja"
       },
       {
         "key": "D",
-        "text": "Barang tidak bergerak milik Penggugat yang dikuasai Tergugat"
+        "text": "Barang milik pihak ketiga yang tidak tersangkut dalam perkara"
       }
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Sita jaminan (conservatoir beslag) diletakkan atas barang bergerak atau barang tidak bergerak milik Tergugat.",
+      "summary": "Sita jaminan (conservatoir beslag) diletakkan atas harta kekayaan milik Tergugat—baik barang bergerak maupun barang tidak bergerak—untuk menjamin pembayaran gugatan apabila Penggugat menang.",
       "legalBasis": "Pasal 227 ayat (1) HIR / Pasal 261 ayat (1) RBg.",
-      "analysis": "Pasal 227 ayat (1) HIR mengatur bahwa sita jaminan dimintakan terhadap barang bergerak maupun barang tidak bergerak kepunyaan Tergugat guna menjamin dipenuhinya tuntutan pembayaran ganti rugi penggugat."
+      "statuteText": "Jika ada persangkaan yang beralasan, bahwa seorang yang berutang, selagi belum dijatuhkan keputusan atasnya atau selagi putusan yang mengalahkannya belum dapat dijalankan, mencari akal akan menggelapkan atau melarikan barangnya baik yang tetap maupun yang tidak tetap, maka Ketua Pengadilan Negeri dapat memerintahkan supaya disita barang itu.",
+      "analysis": "Pilihan A tepat karena Pasal 227 ayat (1) HIR / Pasal 261 ayat (1) RBg mencakup baik barang tetap (tidak bergerak) maupun barang tidak tetap (bergerak) milik Tergugat agar tidak digelapkan atau dialihkan selama proses persidangan. Pilihan B dan C keliru karena sita atas barang bergerak milik Penggugat yang dikuasai Tergugat adalah sita revindikasi (Pasal 226 HIR / Pasal 260 RBg), bukan sita jaminan; dan Pilihan D keliru karena harta milik pihak ketiga yang tidak terkait perkara tidak dapat disita (atau dapat dilawan melalui derden verzet)."
     },
     "difficulty": "Sedang"
   },
@@ -1289,38 +1275,39 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 251,
     "category": "Hukum Acara Perdata",
     "topicTag": "Upaya Hukum Peninjauan Kembali",
-    "question": "Permohonan peninjauan kembali putusan perkara perdata dapat diajukan berdasarkan alasan...",
+    "question": "Berdasarkan Pasal 67 huruf b UU No. 14 Tahun 1985 sebagaimana diubah dengan UU No. 5 Tahun 2004 dan UU No. 3 Tahun 2009 tentang Mahkamah Agung, permohonan Peninjauan Kembali (PK) terhadap putusan perkara perdata yang telah berkekuatan hukum tetap dapat diajukan antara lain atas alasan...",
     "options": [
       {
         "key": "A",
-        "text": "Ditemukan surat-surat bukti yang bersifat menentukan"
+        "text": "Setelah perkara diputus ditemukan surat-surat bukti yang bersifat menentukan (novum) yang pada waktu perkara diperiksa tidak dapat ditemukan"
       },
       {
         "key": "B",
-        "text": "Melanggar hukum yang berlaku"
+        "text": "Hakim judex facti dinilai salah menerapkan atau melanggar hukum yang berlaku"
       },
       {
         "key": "C",
-        "text": "Tidak berwenang atau melampaui batas wewenang"
+        "text": "Pengadilan dinilai tidak berwenang atau melampaui batas wewenangnya"
       },
       {
         "key": "D",
-        "text": "Hakim tingkat pertama dinilai salah dalam menafsirkan keterangan saksi"
+        "text": "Hakim tingkat pertama dinilai keliru dalam menyimpulkan keterangan saksi di persidangan"
       }
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Alasan peninjauan kembali perkara perdata adalah ditemukannya bukti surat baru yang menentukan (novum).",
-      "legalBasis": "Pasal 67 huruf b UU No. 14 Tahun 1985 jo. UU No. 5 Tahun 2004 jo. UU No. 3 Tahun 2009 tentang Mahkamah Agung.",
-      "analysis": "Pasal 67 huruf b UU Mahkamah Agung mengatur permohonan PK dapat diajukan apabila setelah perkara diputus ditemukan surat-surat bukti yang bersifat menentukan yang pada waktu perkara diperiksa tidak dapat ditemukan."
+      "summary": "Salah satu alasan limitatif Peninjauan Kembali (PK) adalah ditemukannya surat-surat bukti baru yang bersifat menentukan (novum) berdasarkan Pasal 67 huruf b UU Mahkamah Agung.",
+      "legalBasis": "Pasal 67 huruf b UU No. 14 Tahun 1985 sebagaimana diubah dengan UU No. 5 Tahun 2004 dan UU No. 3 Tahun 2009 tentang Mahkamah Agung.",
+      "statuteText": "Permohonan peninjauan kembali putusan perkara perdata yang telah memperoleh kekuatan hukum tetap dapat diajukan hanya berdasarkan alasan-alasan: ... b. apabila setelah perkara diputus ditemukan surat-surat bukti yang bersifat menentukan yang pada waktu perkara diperiksa tidak dapat ditemukan.",
+      "analysis": "Pilihan A tepat karena penemuan novum berupa surat bukti yang menentukan (Pasal 67 huruf b UU MA) merupakan alasan klasik pengajuan Peninjauan Kembali atas putusan inkracht. Pilihan B dan C keliru karena salah menerapkan hukum maupun tidak berwenang/melampaui wewenang merupakan alasan upaya hukum biasa tingkat kasasi menurut Pasal 30 ayat (1) UU MA; sedangkan Pilihan D keliru karena penilaian keterangan saksi merupakan kewenangan judex facti di tingkat pertama dan banding, bukan alasan PK."
     },
     "difficulty": "Mudah"
   },
   {
     "id": 252,
     "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
-    "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Saat ini ketentuan mengenai Advokat diatur dalam Undang-Undang Nomor...",
+    "topicTag": "Dasar Hukum Profesi Advokat",
+    "question": "Ketentuan hukum positif utama yang mengatur profesi Advokat di Indonesia saat ini adalah...",
     "options": [
       {
         "key": "A",
@@ -1341,17 +1328,18 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "D",
     "explanation": {
-      "summary": "Profesi Advokat diatur dalam Undang-Undang No. 18 Tahun 2003.",
+      "summary": "Profesi Advokat di Indonesia diatur secara khusus dalam Undang-Undang Nomor 18 Tahun 2003 tentang Advokat yang diundangkan pada tanggal 5 April 2003.",
       "legalBasis": "Pasal 1 angka 1 jo. Pasal 36 Undang-Undang No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "UU No. 18 Tahun 2003 disahkan pada tanggal 5 April 2003 sebagai undang-undang yang mengatur profesi advokat di Indonesia."
+      "statuteText": "Undang-Undang ini mulai berlaku pada tanggal diundangkan (5 April 2003, Lembaran Negara Republik Indonesia Tahun 2003 Nomor 49).",
+      "analysis": "Pilihan D tepat karena UU No. 18 Tahun 2003 merupakan payung hukum tunggal yang mengatur profesi Advokat di Indonesia. Pilihan A (UU No. 8 Tahun 2002 tentang Pembentukan Kabupaten Kepulauan Talaud), Pilihan B (UU No. 8 Tahun 2003 tentang Pembentukan Kabupaten Mamasa), dan Pilihan C (UU No. 18 Tahun 2002 tentang Sistem Nasional Penelitian, Pengembangan, dan Penerapan IPTEK) bukan undang-undang tentang Advokat."
     },
-    "difficulty": "Sedang"
+    "difficulty": "Mudah"
   },
   {
     "id": 253,
     "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
-    "topicTag": "Etika & Profesi Advokat Indonesia",
-    "question": "Di bawah ini adalah beberapa organisasi profesi Advokat yang terhimpun dalam PERADI, kecuali...",
+    "topicTag": "Delapan Organisasi Pendiri Wadah Tunggal",
+    "question": "Di bawah ini adalah beberapa organisasi profesi Advokat yang terhimpun dalam Pasal 32 ayat (3) UU No. 18 Tahun 2003 untuk mendirikan wadah tunggal Organisasi Advokat (PERADI), kecuali...",
     "options": [
       {
         "key": "A",
@@ -1372,111 +1360,114 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "D",
     "explanation": {
-      "summary": "PERADIN bukan merupakan salah satu dari 8 organisasi advokat pendiri PERADI dalam Pasal 32 ayat (3) UU Advokat.",
-      "legalBasis": "Pasal 32 ayat (3) UU No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "Delapan organisasi advokat pendiri PERADI adalah IKADIN, AAI, IPHI, HAPI, SPI, AKHI, HKHPM, dan APSI. PERADIN tidak termasuk dalam 8 organisasi tersebut."
+      "summary": "Pasal 32 ayat (3) UU No. 18 Tahun 2003 hanya menyebut delapan organisasi advokat (IKADIN, AAI, IPHI, HAPI, SPI, AKHI, HKHPM, dan APSI), sehingga PERADIN tidak termasuk di dalamnya.",
+      "legalBasis": "Pasal 32 ayat (3) dan ayat (4) UU No. 18 Tahun 2003 tentang Advokat.",
+      "statuteText": "Untuk sementara tugas dan wewenang Organisasi Advokat sebagaimana dimaksud dalam Undang-Undang ini, dijalankan bersama oleh Ikatan Advokat Indonesia (IKADIN), Asosiasi Advokat Indonesia (AAI), Ikatan Penasihat Hukum Indonesia (IPHI), Himpunan Advokat dan Pengacara Indonesia (HAPI), Serikat Pengacara Indonesia (SPI), Asosiasi Konsultan Hukum Indonesia (AKHI), Himpunan Konsultan Hukum Pasar Modal (HKHPM), dan Asosiasi Pengacara Syariah Indonesia (APSI).",
+      "analysis": "Pilihan D tepat sebagai pengecualian karena PERADIN merupakan organisasi advokat bersejarah yang berdiri sejak 1964 dan tidak tercantum sebagai salah satu dari delapan organisasi dalam Pasal 32 ayat (3) UU No. 18 Tahun 2003. Pilihan A (AAI), Pilihan B (SPI), dan Pilihan C (IKADIN) seluruhnya secara eksplisit termasuk delapan organisasi advokat pendiri PERADI."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 254,
     "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
-    "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Tugas seorang Advokat adalah memberikan jasa hukum, antara lain meliputi hal-hal di bawah ini, kecuali...",
+    "topicTag": "Pengecualian Jasa Hukum Advokat",
+    "question": "Berdasarkan Pasal 1 angka 2 UU No. 18 Tahun 2003 tentang Advokat, tugas Advokat dalam memberikan jasa hukum meliputi hal-hal di bawah ini, kecuali...",
     "options": [
       {
         "key": "A",
-        "text": "Memberikan Konsultasi Hukum"
+        "text": "Memberikan konsultasi hukum"
       },
       {
         "key": "B",
-        "text": "Memberikan Bantuan Hukum"
+        "text": "Memberikan bantuan hukum"
       },
       {
         "key": "C",
-        "text": "Memberikan Pendidikan Hukum"
+        "text": "Menyelenggarakan pendidikan tinggi hukum formal"
       },
       {
         "key": "D",
-        "text": "Membela Kepentingan Hukum Klien"
+        "text": "Membela kepentingan hukum klien"
       }
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Memberikan pendidikan hukum formal bukan merupakan jasa hukum advokat dalam Pasal 1 angka 2 UU Advokat.",
+      "summary": "Menyelenggarakan pendidikan tinggi hukum formal bukan bagian dari definisi Jasa Hukum Advokat dalam Pasal 1 angka 2 UU No. 18 Tahun 2003.",
       "legalBasis": "Pasal 1 angka 2 UU No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "Jasa hukum advokat menurut UU adalah konsultasi hukum, bantuan hukum, menjalankan kuasa, mewakili, mendampingi, membela, dan tindakan hukum lain untuk klien. Menyelenggarakan pendidikan formal bukan kategori jasa hukum."
+      "statuteText": "Jasa Hukum adalah jasa yang diberikan Advokat berupa memberikan konsultasi hukum, bantuan hukum, menjalankan kuasa, mewakili, mendampingi, membela, dan melakukan tindakan hukum lain untuk kepentingan hukum klien.",
+      "analysis": "Pilihan C tepat sebagai pengecualian karena penyelenggaraan pendidikan tinggi hukum formal merupakan tugas perguruan tinggi berdasarkan sistem pendidikan nasional, bukan jasa hukum kepada Klien. Pilihan A (konsultasi hukum), Pilihan B (bantuan hukum), dan Pilihan D (membela kepentingan hukum klien) secara eksplisit tercantum dalam Pasal 1 angka 2 UU No. 18 Tahun 2003."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 256,
     "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
-    "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Wilayah kerja Advokat sesuai dengan Pasal 5 ayat (2) UU No. 18 Tahun 2003 adalah...",
+    "topicTag": "Wilayah Kerja Advokat",
+    "question": "Wilayah kerja Advokat untuk menjalankan profesinya sesuai dengan ketentuan Pasal 5 ayat (2) UU No. 18 Tahun 2003 meliputi...",
     "options": [
       {
         "key": "A",
-        "text": "Domisili Advokat tersebut"
+        "text": "Wilayah hukum Pengadilan Tinggi tempat Advokat bersumpah saja"
       },
       {
         "key": "B",
-        "text": "Domisili klien yang dibelanya"
+        "text": "Wilayah hukum Pengadilan Negeri sesuai domisili kliennya saja"
       },
       {
         "key": "C",
-        "text": "Domisili Advokat dan klien yang dibelanya"
+        "text": "Wilayah provinsi tempat kantor hukum Advokat terdaftar saja"
       },
       {
         "key": "D",
-        "text": "Seluruh wilayah Republik Indonesia"
+        "text": "Seluruh wilayah negara Republik Indonesia"
       }
     ],
     "correctAnswer": "D",
     "explanation": {
-      "summary": "Wilayah kerja Advokat meliputi seluruh wilayah Negara Republik Indonesia.",
+      "summary": "Wilayah kerja Advokat meliputi seluruh wilayah negara Republik Indonesia tanpa dibatasi domisili tempat penyumpahan maupun kantornya.",
       "legalBasis": "Pasal 5 ayat (2) UU No. 18 Tahun 2003 tentang Advokat.",
       "statuteText": "Wilayah kerja Advokat meliputi seluruh wilayah negara Republik Indonesia.",
-      "analysis": "Pasal 5 ayat (2) UU Advokat menyatakan secara tegas: \"Wilayah kerja Advokat meliputi seluruh wilayah negara Republik Indonesia.\""
+      "analysis": "Pilihan D tepat sesuai bunyi tegas Pasal 5 ayat (2) UU No. 18 Tahun 2003 bahwa wilayah kerja Advokat meliputi seluruh wilayah negara Republik Indonesia. Pilihan A, B, dan C keliru karena tidak ada lagi pembatasan yurisdiksi daerah (seperti aturan izin praktik daerah pada masa pra-UU Advokat) bagi Advokat yang telah diangkat dan disumpah."
     },
     "difficulty": "Mudah"
   },
   {
     "id": 257,
     "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
-    "topicTag": "Wadah Tunggal Organisasi Advokat",
-    "question": "Sebelum lahirnya organisasi Advokat yang dibentuk oleh delapan organisasi, maka delapan organisasi tersebut bersama-sama melakukan kegiatan verifikasi/herregistrasi advokat dengan menggunakan nama...",
+    "topicTag": "Komite Kerja Advokat Indonesia (KKAI)",
+    "question": "Sebelum terbentuknya PERADI sebagai wadah tunggal pada 21 Desember 2004, delapan organisasi advokat bersama-sama melakukan koordinasi penyusunan kode etik dan verifikasi/herregistrasi advokat dengan menggunakan nama...",
     "options": [
       {
         "key": "A",
-        "text": "IPHI (Ikatan Pengacara Hukum Indonesia)"
+        "text": "Ikatan Penasihat Hukum Indonesia (IPHI)"
       },
       {
         "key": "B",
-        "text": "AAI (Asosiasi Advokat Indonesia)"
+        "text": "Asosiasi Advokat Indonesia (AAI)"
       },
       {
         "key": "C",
-        "text": "FKAI (Forum Komunikasi Advokat Indonesia)"
+        "text": "Forum Komunikasi Advokat Indonesia (FKAI)"
       },
       {
         "key": "D",
-        "text": "KKAI (Komite Kerja Advokat Indonesia)"
+        "text": "Komite Kerja Advokat Indonesia (KKAI)"
       }
     ],
     "correctAnswer": "D",
     "explanation": {
-      "summary": "Sebelum lahirnya PERADI, 8 organisasi berhimpun dalam KKAI (Komite Kerja Advokat Indonesia).",
-      "legalBasis": "Pasal 32 ayat (3) dan (4) UU No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "KKAI dibentuk untuk koordinasi bersama dalam menyusun kode etik bersama tahun 2002 dan verifikasi keanggotaan advokat menjelang berdirinya wadah tunggal PERADI."
+      "summary": "Komite Kerja Advokat Indonesia (KKAI) adalah forum kerja sama organisasi advokat yang mengesahkan KEAI 2002 dan menjalankan verifikasi bersama sebelum berdirinya PERADI.",
+      "legalBasis": "Pasal 32 ayat (3) dan ayat (4) UU No. 18 Tahun 2003 tentang Advokat jo. Lembar Pengesahan KEAI 23 Mei 2002.",
+      "statuteText": "Untuk sementara tugas dan wewenang Organisasi Advokat sebagaimana dimaksud dalam Undang-Undang ini, dijalankan bersama oleh delapan organisasi advokat sampai terbentuknya Organisasi Advokat.",
+      "analysis": "Pilihan D tepat karena Komite Kerja Advokat Indonesia (KKAI) dibentuk sebagai wadah koordinasi gabungan organisasi advokat untuk menetapkan KEAI tanggal 23 Mei 2002 serta melakukan verifikasi dan herregistrasi advokat sebelum berdirinya PERADI. Pilihan A (IPHI) dan Pilihan B (AAI) adalah masing-masing organisasi anggota pendiri, bukan forum gabungan sementara; sedangkan Pilihan C (FKAI) bukan nama lembaga dalam proses transisi UU Advokat."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 260,
     "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
-    "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Beberapa pasal dari Undang-Undang Nomor 18 Tahun 2003 tentang Advokat telah dilakukan pengujian undang-undang (Judicial Review) ke Mahkamah Konstitusi dan telah diputus, antara lain...",
+    "topicTag": "Pengujian UU Advokat di Mahkamah Konstitusi",
+    "question": "Di antara ketentuan dalam UU No. 18 Tahun 2003 tentang Advokat yang diuji dan diputus dalam Putusan Mahkamah Konstitusi No. 006/PUU-II/2004 adalah...",
     "options": [
       {
         "key": "A",
@@ -1484,11 +1475,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "Pasal 12 tentang pengawasan dan Pasal 23 tentang Advokat Asing"
+        "text": "Pasal 12 tentang pengawasan dan Pasal 23 tentang advokat asing"
       },
       {
         "key": "C",
-        "text": "Pasal 32 tentang ketentuan peralihan"
+        "text": "Pasal 32 tentang ketentuan peralihan wadah tunggal"
       },
       {
         "key": "D",
@@ -1497,17 +1488,18 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Putusan Mahkamah Konstitusi No. 006/PUU-II/2004 membatalkan Pasal 31 tentang pemidanaan advokat tanpa izin dan menguji Pasal 12 UU Advokat.",
-      "legalBasis": "Putusan Mahkamah Konstitusi No. 006/PUU-II/2004 jo. Pasal 24C ayat (1) UUD 1945 jo. Pasal 12 dan Pasal 31 UU No. 18 Tahun 2003 tentang Advokat.",
-      "analysis": "Mahkamah Konstitusi melalui Putusan No. 006/PUU-II/2004 menyatakan Pasal 31 UU Advokat (ancaman pidana advokat tanpa izin) bertentangan dengan UUD 1945 dan tidak mempunyai kekuatan hukum mengikat karena membatasi hak konstitusional masyarakat untuk membela diri. MK juga memberikan pertimbangan terhadap Pasal 12 UU Advokat mengenai pengawasan organisasi advokat."
+      "summary": "Putusan Mahkamah Konstitusi No. 006/PUU-II/2004 menguji Pasal 12 serta menyatakan Pasal 31 UU No. 18 Tahun 2003 (pemidanaan orang non-advokat yang berpraktik) bertentangan dengan UUD 1945.",
+      "legalBasis": "Putusan Mahkamah Konstitusi No. 006/PUU-II/2004 jo. Pasal 24C ayat (1) UUD NRI Tahun 1945 jo. Pasal 12 dan Pasal 31 UU No. 18 Tahun 2003 tentang Advokat.",
+      "statuteText": "Menyatakan Pasal 31 Undang-Undang Nomor 18 Tahun 2003 tentang Advokat bertentangan dengan Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 dan tidak mempunyai kekuatan hukum mengikat.",
+      "analysis": "Pilihan A tepat karena dalam Putusan MK No. 006/PUU-II/2004, MK membatalkan Pasal 31 UU Advokat agar tidak menghambat masyarakat/paralegal dalam memberikan bantuan hukum nonkomersial, sekaligus menilai permohonan pengujian terhadap Pasal 12 tentang pengawasan. Pilihan B, C, dan D keliru karena Pasal 23, Pasal 19, Pasal 21 bukan objek pembatalan dalam Putusan MK No. 006/PUU-II/2004 (sedangkan Pasal 32 tentang wadah tunggal diuji pada perkara terpisah seperti 014/PUU-IV/2006)."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 261,
     "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
-    "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Pengertian Advokat sebagaimana disebut dalam Undang-Undang No. 18 Tahun 2003 tentang Advokat adalah...",
+    "topicTag": "Definisi Normatif Advokat",
+    "question": "Pengertian Advokat sebagaimana dirumuskan dalam Pasal 1 angka 1 UU No. 18 Tahun 2003 tentang Advokat adalah...",
     "options": [
       {
         "key": "A",
@@ -1515,86 +1507,87 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "Orang yang telah diangkat oleh Organisasi Advokat yang bertugas memberi jasa hukum, baik di dalam maupun di luar pengadilan yang memenuhi persyaratan berdasarkan ketentuan Undang-Undang"
+        "text": "Orang yang telah diangkat oleh Pengadilan Tinggi untuk memberi jasa hukum di dalam pengadilan saja"
       },
       {
         "key": "C",
-        "text": "Orang yang berprofesi memberi pelayanan hukum yang memenuhi persyaratan berdasarkan ketentuan Undang-Undang"
+        "text": "Orang yang berprofesi memberi pelayanan administrasi peradilan di bawah pengawasan Kejaksaan"
       },
       {
         "key": "D",
-        "text": "Orang yang bekerja sebagai asisten administrasi kantor hukum tanpa pengangkatan sebagai Advokat"
+        "text": "Orang yang bekerja sebagai asisten kantor hukum tanpa pengangkatan dan penyumpahan"
       }
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Pengertian advokat dirumuskan secara tegas dalam Pasal 1 angka 1 UU No. 18 Tahun 2003.",
+      "summary": "Pasal 1 angka 1 UU No. 18 Tahun 2003 mendefinisikan Advokat sebagai orang yang berprofesi memberi jasa hukum, baik di dalam maupun di luar pengadilan yang memenuhi persyaratan Undang-Undang ini.",
       "legalBasis": "Pasal 1 angka 1 UU No. 18 Tahun 2003 tentang Advokat.",
       "statuteText": "Advokat adalah orang yang berprofesi memberi jasa hukum, baik di dalam maupun di luar pengadilan yang memenuhi persyaratan berdasarkan ketentuan Undang-Undang ini.",
-      "analysis": "Pasal 1 angka 1 UU Advokat merumuskan: \"Advokat adalah orang yang berprofesi memberi jasa hukum, baik di dalam maupun di luar pengadilan yang memenuhi persyaratan berdasarkan ketentuan Undang-Undang ini.\""
+      "analysis": "Pilihan A tepat karena mengutip secara presisi definisi Advokat dalam Pasal 1 angka 1 UU No. 18 Tahun 2003. Pilihan B keliru karena pengangkatan dilakukan oleh Organisasi Advokat (bukan Pengadilan Tinggi) dan mencakup layanan luar pengadilan; Pilihan C keliru karena Advokat bebas dan mandiri, bukan di bawah Kejaksaan; dan Pilihan D keliru karena staf administrasi tanpa pengangkatan serta sumpah bukan Advokat."
     },
     "difficulty": "Mudah"
   },
   {
     "id": 262,
     "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
-    "topicTag": "Etika dan Profesi Advokat Indonesia",
+    "topicTag": "Larangan Rangkap Jabatan Pimpinan",
     "question": "Berdasarkan Pasal 28 ayat (3) UU No. 18 Tahun 2003 tentang Advokat, Pimpinan Organisasi Advokat tidak dapat merangkap jabatan sebagai...",
     "options": [
       {
         "key": "A",
-        "text": "Pimpinan Dewan Kehormatan"
+        "text": "Pimpinan firma hukum atau kantor advokat"
       },
       {
         "key": "B",
-        "text": "Pimpinan Partai Politik"
+        "text": "Pimpinan partai politik"
       },
       {
         "key": "C",
-        "text": "Pimpinan DPR/MPR"
+        "text": "Pengajar pada Pendidikan Khusus Profesi Advokat"
       },
       {
         "key": "D",
-        "text": "Pimpinan Organisasi Terlarang"
+        "text": "Ketua panitia pengabdian masyarakat hukum"
       }
     ],
     "correctAnswer": "B",
     "explanation": {
-      "summary": "Pimpinan organisasi advokat dilarang merangkap jabatan sebagai pimpinan partai politik demi independensi profesi.",
+      "summary": "Pimpinan Organisasi Advokat dilarang merangkap jabatan sebagai pimpinan partai politik, baik di tingkat pusat maupun di tingkat daerah.",
       "legalBasis": "Pasal 28 ayat (3) UU No. 18 Tahun 2003 tentang Advokat.",
       "statuteText": "Pimpinan Organisasi Advokat tidak dapat merangkap sebagai pimpinan partai politik, baik di tingkat pusat maupun di tingkat daerah.",
-      "analysis": "Pasal 28 ayat (3) UU Advokat menegaskan: \"Pimpinan Organisasi Advokat tidak dapat merangkap sebagai pimpinan partai politik, baik di tingkat pusat maupun di tingkat daerah.\" Hal ini untuk menjaga integritas, netralitas, dan independensi organisasi advokat dari tarik-menarik kepentingan politik praktis."
+      "analysis": "Pilihan B tepat sesuai bunyi eksplisit Pasal 28 ayat (3) UU No. 18 Tahun 2003 guna menjaga kemandirian dan netralitas Organisasi Advokat dari kepentingan politik praktis. Pilihan A, C, dan D keliru karena memimpin kantor advokat, mengajar PKPA, maupun mengoordinasi kegiatan pengabdian hukum tidak dilarang oleh Pasal 28 ayat (3) UU Advokat."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 264,
     "category": "Peran, Fungsi, dan Perkembangan Organisasi Advokat",
-    "topicTag": "Etika dan Profesi Advokat Indonesia",
-    "question": "Hakim, Jaksa, Kepolisian, dan Advokat sebagai penegak hukum selain diatur oleh Undang-Undang mempunyai fungsi masing-masing...",
+    "topicTag": "Fungsi Penegak Hukum dalam Sistem Peradilan",
+    "question": "Dalam sistem peradilan pidana dan peradilan umum di Indonesia, Hakim, Jaksa, Kepolisian, dan Advokat merupakan sesama penegak hukum yang memiliki fokus representasi peran masing-masing, yaitu...",
     "options": [
       {
         "key": "A",
-        "text": "Hakim mewakili kepentingan negara, Jaksa dan Kepolisian mewakili kepentingan Pemerintah, Advokat mewakili kepentingan masyarakat"
+        "text": "Hakim mewakili kepentingan kekuasaan kehakiman negara, Jaksa dan Kepolisian mewakili kepentingan pemerintah dalam penuntutan/penyidikan, sedangkan Advokat mewakili kepentingan hukum masyarakat atau klien"
       },
       {
         "key": "B",
-        "text": "Hakim mewakili kepentingan pemerintah, Jaksa dan Kepolisian mewakili kepentingan negara, Advokat mewakili kepentingan masyarakat"
+        "text": "Hakim mewakili kepentingan pemerintah daerah, Jaksa mewakili kepentingan tersangka, sedangkan Advokat mewakili kepentingan negara"
       },
       {
         "key": "C",
-        "text": "Hakim mewakili kepentingan negara, Jaksa, Kepolisian dan Advokat mewakili kepentingan masyarakat"
+        "text": "Hakim, Jaksa, dan Kepolisian seluruhnya mewakili kepentingan terdakwa, sedangkan Advokat mewakili kepentingan penuntutan umum"
       },
       {
         "key": "D",
-        "text": "Hakim, Jaksa, Kepolisian dan Advokat bersama-sama mewakili kepentingan penegakan hukum, keadilan, kemanfaatan dan kepastian hukum"
+        "text": "Advokat bertindak sebagai bawahan administratif dari Jaksa dan Kepolisian dalam tahap penyidikan"
       }
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Hakim mewakili kepentingan kekuasaan negara, Jaksa/Polisi mewakili penuntutan pemerintah, Advokat mewakili kepentingan masyarakat/klien.",
-      "legalBasis": "Pasal 5 ayat (1) Undang-Undang No. 18 Tahun 2003 tentang Advokat jo. Penjelasan Umum UU No. 18 Tahun 2003.",
-      "analysis": "Dalam doktrin peradilan yang adil (fair trial), hakim menegakkan keadilan atas nama negara, jaksa/polisi mewakili kepentingan umum dan pemerintah, sedangkan advokat mewakili kepentingan hukum masyarakat pencari keadilan."
+      "summary": "Dalam kerangka Catur Wangsa Penegak Hukum, Hakim memutus perkara atas nama negara, Kepolisian/Jaksa mewakili kepentingan umum dan pemerintah, sedangkan Advokat mewakili serta membela kepentingan hukum masyarakat/klien.",
+      "legalBasis": "Pasal 5 ayat (1) beserta Penjelasan Umum UU No. 18 Tahun 2003 tentang Advokat.",
+      "statuteText": "Advokat berstatus sebagai penegak hukum, bebas dan mandiri yang dijamin oleh hukum dan peraturan perundang-undangan.",
+      "analysis": "Pilihan A tepat sesuai doktrin pembagian fungsi Catur Wangsa penegak hukum dalam Penjelasan Umum dan Pasal 5 ayat (1) UU No. 18 Tahun 2003 untuk mewujudkan peradilan yang seimbang (due process of law). Pilihan B dan C keliru karena membalikkan peran penuntutan umum, kekuasaan kehakiman, dan pembelaan; sedangkan Pilihan D keliru karena Advokat berstatus bebas, mandiri, dan setara dengan penegak hukum lainnya."
     },
     "difficulty": "Sedang"
   },
@@ -1602,7 +1595,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 265,
     "category": "Kode Etik Advokat Indonesia (KEAI)",
     "topicTag": "Etika & Profesi Advokat Indonesia",
-    "question": "Profesi Advokat adalah profesi terhormat dan menjadi salah satu pilar dalam menegakkan supremasi hukum dan hak asasi manusia. Dikenal dengan istilah apakah “profesi terhormat” tersebut?",
+    "question": "Dalam Pembukaan, Pasal 3 huruf g, dan Pasal 8 huruf a Kode Etik Advokat Indonesia (KEAI) jo. Penjelasan Umum UU No. 18 Tahun 2003, kedudukan profesi Advokat sebagai profesi yang mulia dan terhormat dikenal dengan istilah...",
     "options": [
       {
         "key": "A",
@@ -1610,22 +1603,23 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "B",
-        "text": "Officium Juris"
+        "text": "Officium juris"
       },
       {
         "key": "C",
-        "text": "Officium Nobile"
+        "text": "Officium nobile"
       },
       {
         "key": "D",
-        "text": "Respected Profession"
+        "text": "Respected profession"
       }
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Profesi Advokat adalah officium nobile (profesi yang mulia dan terhormat).",
-      "legalBasis": "Penjelasan Umum Alinea ke-1 Undang-Undang No. 18 Tahun 2003 tentang Advokat jo. Pasal 3 huruf g KEAI 2002.",
-      "analysis": "Advokat sebagai profesi terhormat dan mulia (officium nobile) menjalankan fungsi penegakan hukum secara bebas dan mandiri serta terikat pada standar moral dan sumpah profesi."
+      "summary": "Profesi Advokat merupakan officium nobile (profesi yang mulia dan terhormat) yang mewajibkan pengembanannya menjunjung tinggi keadilan, kebenaran, dan moralitas profesi.",
+      "legalBasis": "Pasal 3 huruf g dan Pasal 8 huruf a Kode Etik Advokat Indonesia (KEAI) jo. Penjelasan Umum Alinea ke-1 UU No. 18 Tahun 2003 tentang Advokat.",
+      "statuteText": "Advokat harus senantiasa menjunjung tinggi profesi Advokat sebagai profesi terhormat (officium nobile). Profesi Advokat adalah profesi yang mulia dan terhormat (officium nobile), dan karenanya dalam menjalankan profesi selaku penegak hukum di pengadilan sejajar dengan Jaksa dan Hakim.",
+      "analysis": "Pilihan C tepat karena Pasal 3 huruf g, Pasal 8 huruf a, serta Pembukaan KEAI dan Penjelasan Umum UU No. 18 Tahun 2003 secara eksplisit menyebut profesi Advokat sebagai officium nobile. Pilihan A, B, dan D keliru karena istilah honour profession, officium juris, dan respected profession bukan terminologi yuridis-etis yang digunakan dalam KEAI maupun UU No. 18 Tahun 2003."
     },
     "difficulty": "Mudah"
   },
@@ -1633,30 +1627,31 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 270,
     "category": "Kode Etik Advokat Indonesia (KEAI)",
     "topicTag": "Surat Tanpa Prasangka (Sans Prejudice)",
-    "question": "Surat korespondensi antar Advokat yang diberi tanda 'Sans Prejudice' (tanpa prasangka) maksud dan akibat hukumnya adalah...",
+    "question": "Menurut Pasal 7 huruf a Kode Etik Advokat Indonesia (KEAI), akibat hukum dari surat korespondensi antar-teman sejawat Advokat yang diberi tanda \"Sans Prejudice\" (tanpa prasangka) adalah...",
     "options": [
       {
         "key": "A",
-        "text": "Surat tersebut dibuat tanpa adanya prasangka dan wajib dibacakan di sidang terbuka"
+        "text": "Surat tersebut dibuat sebagai pernyataan resmi yang wajib dibacakan dalam sidang terbuka"
       },
       {
         "key": "B",
-        "text": "Surat tersebut wajib diserahkan kepada penyidik kepolisian"
+        "text": "Surat tersebut wajib diserahkan kepada penyidik kepolisian apabila terjadi sengketa perdata"
       },
       {
         "key": "C",
-        "text": "Surat tersebut bersifat rahasia dan tidak dapat dijadikan atau diajukan sebagai alat bukti di muka persidangan pengadilan"
+        "text": "Surat tersebut tidak dapat ditunjukkan kepada hakim atau dijadikan alat bukti di muka pengadilan"
       },
       {
         "key": "D",
-        "text": "Surat tersebut harus ditunjukkan kepada majelis hakim yang memeriksa perkara"
+        "text": "Surat tersebut harus dilampirkan oleh kedua belah pihak sebagai bagian dari gugatan dan jawaban"
       }
     ],
     "correctAnswer": "C",
     "explanation": {
-      "summary": "Surat bertanda Sans Prejudice bersifat rahasia dan tidak dapat dijadikan alat bukti di muka pengadilan.",
+      "summary": "Surat antar-Advokat yang diberi tanda 'Sans Prejudice' dikecualikan dari surat yang boleh ditunjukkan kepada hakim sehingga tidak dapat dijadikan alat bukti di persidangan.",
       "legalBasis": "Pasal 7 huruf a Kode Etik Advokat Indonesia (KEAI).",
-      "analysis": "Pasal 7 huruf a KEAI menegaskan: 'Surat-surat yang dikirim oleh Advokat kepada teman sejawatnya dalam suatu perkara dapat ditunjukkan kepada hakim kecuali jika surat-surat tersebut bersangkutan dengan perkataan 'Sans Prejudice'.' Surat bertanda Sans Prejudice dibuat dalam rangka ikhtiar perdamaian sehingga dilindungi kerahasiaannya."
+      "statuteText": "Surat-surat yang dikirim oleh Advokat kepada teman sejawatnya dalam suatu perkara dapat ditunjukkan kepada hakim apabila dianggap perlu kecuali surat-surat yang bersangkutan dibuat dengan membubuhi catatan \"Sans Prejudice\".",
+      "analysis": "Pilihan C tepat karena Pasal 7 huruf a KEAI mengecualikan surat bertanda 'Sans Prejudice' dari surat yang boleh ditunjukkan kepada hakim guna melindungi keterbukaan negosiasi atau ikhtiar perdamaian antar-Advokat. Pilihan A dan D keliru karena surat tersebut justru dilarang ditunjukkan atau dilampirkan kepada hakim di persidangan; dan Pilihan B keliru karena surat korespondensi etis antar-Advokat tersebut tidak wajib diserahkan kepada penyidik."
     },
     "difficulty": "Sedang"
   },
@@ -1664,61 +1659,63 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 271,
     "category": "Kode Etik Advokat Indonesia (KEAI)",
     "topicTag": "Sifat Putusan Dewan Kehormatan Pusat",
-    "question": "Keputusan Majelis Dewan Kehormatan Pusat mengenai pelanggaran Kode Etik yang dilakukan seorang Advokat adalah bersifat...",
+    "question": "Berdasarkan Pasal 18 ayat (4) Kode Etik Advokat Indonesia (KEAI) jo. Pasal 27 ayat (5) UU No. 18 Tahun 2003, keputusan Majelis Dewan Kehormatan Pusat dalam pemeriksaan tingkat banding mengenai pelanggaran Kode Etik Advokat bersifat...",
     "options": [
       {
         "key": "A",
-        "text": "Final dan mengikat serta tidak dapat diajukan upaya banding lagi"
+        "text": "Final dan mengikat serta tidak dapat diajukan upaya banding atau diganggu gugat lagi"
       },
       {
         "key": "B",
-        "text": "Belum final dan dapat diajukan upaya banding ke Pengadilan Tinggi"
+        "text": "Belum final dan dapat diajukan upaya banding administratif ke Pengadilan Tinggi"
       },
       {
         "key": "C",
-        "text": "Dapat diajukan kasasi ke Mahkamah Agung"
+        "text": "Dapat dimohonkan upaya hukum kasasi kepada Mahkamah Agung"
       },
       {
         "key": "D",
-        "text": "Hanya bersifat rekomendasi kepada Kementerian Hukum"
+        "text": "Hanya berupa rekomendasi tidak mengikat kepada Menteri Hukum dan HAM"
       }
     ],
     "correctAnswer": "A",
     "explanation": {
-      "summary": "Putusan Dewan Kehormatan Pusat adalah tingkat terakhir, bersifat final dan mengikat.",
-      "legalBasis": "Pasal 27 ayat (5) UU No. 18 Tahun 2003 jo. Pasal 18 KEAI.",
-      "analysis": "Dewan Kehormatan Daerah memeriksa dan memutus pada tingkat pertama, sedangkan Dewan Kehormatan Pusat memutus pada tingkat banding/terakhir yang putusannya bersifat final dan mengikat tanpa upaya hukum peradilan umum lagi."
+      "summary": "Putusan Majelis Dewan Kehormatan Pusat pada tingkat banding merupakan putusan tingkat terakhir yang bersifat final dan mengikat.",
+      "legalBasis": "Pasal 18 ayat (4) Kode Etik Advokat Indonesia (KEAI) jo. Pasal 27 ayat (5) UU No. 18 Tahun 2003 tentang Advokat.",
+      "statuteText": "Keputusan Dewan Kehormatan Pusat adalah final dan mengikat yang tidak dapat diganggu gugat dalam forum manapun, termasuk dalam MUNAS.",
+      "analysis": "Pilihan A tepat karena Pasal 18 ayat (4) KEAI jo. Pasal 27 ayat (5) UU No. 18 Tahun 2003 menetapkan Dewan Kehormatan Pusat sebagai peradilan etik tingkat terakhir yang keputusannya final dan mengikat. Pilihan B dan C keliru karena yurisdiksi etik organisasi advokat tidak berada di bawah banding Pengadilan Tinggi maupun kasasi Mahkamah Agung; dan Pilihan D keliru karena putusan Dewan Kehormatan Pusat mengikat untuk dilaksanakan oleh Dewan Pimpinan Organisasi Advokat, bukan sekadar rekomendasi kepada Menteri Hukum dan HAM."
     },
     "difficulty": "Sedang"
   },
   {
     "id": 272,
     "category": "Kode Etik Advokat Indonesia (KEAI)",
-    "topicTag": "Hubungan dengan Klien",
-    "question": "Langkah pertama yang etis dan tepat dilakukan oleh seorang Advokat ketika didatangi calon klien yang membawa berkas perkaranya adalah...",
+    "topicTag": "Larangan Merebut Klien Rekan Sejawat",
+    "question": "Langkah pertama yang etis dan wajib dilakukan seorang Advokat ketika didatangi calon klien yang membawa berkas perkaranya berdasarkan Pasal 5 huruf d dan huruf e Kode Etik Advokat Indonesia (KEAI) adalah...",
     "options": [
       {
         "key": "A",
-        "text": "Langsung meminta uang jasa pembelaan (fee) sebelum mendengar duduk perkaranya"
+        "text": "Langsung meminta pembayaran uang jasa pembelaan sebelum mendengar duduk perkaranya"
       },
       {
         "key": "B",
-        "text": "Menanyakan dan memastikan apakah berkas perkara tersebut pernah atau sedang dikuasakan kepada advokat lain"
+        "text": "Menanyakan dan memastikan apakah perkara tersebut pernah atau sedang dikuasakan kepada Advokat lain"
       },
       {
         "key": "C",
-        "text": "Langsung mendaftarkan gugatan ke pengadilan hari itu juga"
+        "text": "Langsung mendaftarkan surat gugatan ke pengadilan pada hari yang sama tanpa verifikasi kuasa"
       },
       {
         "key": "D",
-        "text": "Memaksa klien menandatangani surat kuasa tanpa membaca isinya"
+        "text": "Meminta calon klien menandatangani surat kuasa baru tanpa menanyakan status kuasa sebelumnya"
       }
     ],
     "correctAnswer": "B",
     "explanation": {
-      "summary": "Advokat wajib memastikan apakah perkara tersebut masih dikuasakan kepada advokat lain demi etika sejawat.",
-      "legalBasis": "Pasal 5 huruf c dan d Kode Etik Advokat Indonesia (KEAI).",
-      "analysis": "Pasal 5 huruf c KEAI melarang advokat merebut klien dari teman sejawatnya. Jika perkara pernah ditangani advokat lain, calon klien wajib menunjukkan bukti pencabutan kuasa atau advokat baru wajib menghubungi rekan terdahulu."
+      "summary": "Advokat wajib memastikan apakah perkara calon klien pernah atau sedang dikuasakan kepada Advokat lain guna mencegah perebutan klien dan memastikan adanya bukti pencabutan kuasa sebelum menerima perkara.",
+      "legalBasis": "Pasal 5 huruf d dan huruf e Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Advokat tidak diperkenankan menarik atau merebut seorang klien dari teman sejawat. Apabila klien hendak mengganti Advokat, maka Advokat yang baru hanya dapat menerima perkara itu setelah menerima bukti pencabutan pemberian kuasa kepada Advokat semula dan berkewajiban mengingatkan klien untuk memenuhi kewajibannya apabila masih ada terhadap Advokat semula.",
+      "analysis": "Pilihan B tepat karena memastikan status kuasa sebelumnya mencegah pelanggaran larangan merebut klien (Pasal 5 huruf d) sekaligus memastikan pemenuhan syarat pencabutan kuasa dan kewajiban terhadap Advokat semula (Pasal 5 huruf e). Pilihan A keliru karena menagih honorarium sebelum menelaah posisi etik dan dasar hukum perkara bertentangan dengan prinsip Pasal 4 huruf d dan g KEAI; sedangkan Pilihan C dan D keliru karena langsung mendaftarkan gugatan atau menandatangani kuasa baru tanpa memeriksa status kuasa terdahulu berisiko melanggar Pasal 5 huruf d dan e KEAI."
     },
     "difficulty": "Sedang"
   },
@@ -2048,11 +2045,11 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
       },
       {
         "key": "C",
-        "text": "Atas Putusan Pengadilan saja"
+        "text": "Atas putusan pengadilan saja"
       },
       {
         "key": "D",
-        "text": "Kematian, perceraian, dan atas putusan Pengadilan"
+        "text": "Kematian, perceraian, dan atas putusan pengadilan"
       }
     ],
     "correctAnswer": "D",
