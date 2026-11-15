@@ -1605,7 +1605,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Advokat bersifat bebas dan mandiri, tidak dipengaruhi siapapun, dan wajib memperjuangkan hak asasi manusia.",
       "legalBasis": "Pasal 3 huruf c Kode Etik Advokat Indonesia (KEAI).",
-      "statuteText": "Advokat adalah bebas dan mandiri yang tidak dipengaruhi oleh siapapun dan wajib memperjuangkan hak-hak azasi manusia dalam Negara Hukum Indonesia.",
+      "statuteText": "Advokat dalam menjalankan profesinya adalah bebas dan mandiri serta tidak dipengaruhi oleh siapapun dan wajib memperjuangkan hak-hak azasi manusia dalam Negara Hukum Indonesia.",
       "analysis": "Opsi bebas dan mandiri serta tidak dipengaruhi oleh siapapun tepat karena mengutip langsung norma Pasal 3 huruf c KEAI mengenai kemandirian Advokat dalam memperjuangkan hak asasi manusia. Opsi tergantung pada persetujuan penyidik/kejaksaan maupun tunduk secara hierarkis di bawah pimpinan pengadilan negeri keliru karena Advokat adalah penegak hukum yang sejajar dan independen; sedangkan opsi pembatasan hanya pada perkara perdata tanpa melibatkan negara keliru karena perjuangan HAM justru mencakup perkara pidana, tata usaha negara, maupun konstitusi."
     },
     "difficulty": "Mudah"
@@ -1669,7 +1669,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "explanation": {
       "summary": "Advokat yang menduduki jabatan Negara dilarang berpraktik dan namanya tidak boleh dicantumkan atau dipergunakan dalam perkara yang sedang berjalan.",
       "legalBasis": "Pasal 3 huruf i Kode Etik Advokat Indonesia (KEAI) jo. Pasal 20 ayat (3) UU No. 18 Tahun 2003 tentang Advokat.",
-      "statuteText": "Seorang Advokat yang kemudian diangkat untuk menduduki suatu jabatan Negara (Eksekutif, Legislatif dan Yudikatif) tidak dibenarkan untuk berpraktek sebagai Advokat dan tidak diperkenankan namanya dicantumkan atau dipergunakan oleh siapapun atau oleh kantor manapun dalam suatu perkara yang sedang berjalan, dan selama ia menduduki jabatan tersebut ia tidak dapat berpraktek sebagai Advokat.",
+      "statuteText": "Seorang Advokat yang kemudian diangkat untuk menduduki suatu jabatan Negara (Eksekutif, Legislatif dan judikatif) tidak dibenarkan untuk berpraktek sebagai Advokat dan tidak diperkenankan namanya dicantumkan atau dipergunakan oleh siapapun atau oleh kantor manapun dalam suatu perkara yang sedang diproses/berjalan selama ia menduduki jabatan tersebut.",
       "analysis": "Opsi tidak dibenarkan berpraktik sebagai Advokat dan namanya tidak diperkenankan dicantumkan atau digunakan oleh siapapun dalam perkara berjalan tepat karena Pasal 3 huruf i KEAI menutup baik praktik langsung maupun penggunaan nama Advokat oleh kantor manapun selama yang bersangkutan menjabat jabatan negara (eksekutif, legislatif, maupun yudikatif). Opsi tetap boleh beracara tanpa honorarium maupun mencantumkan nama sebagai penasihat keliru karena larangan berlaku menyeluruh; dan opsi larangan hanya di wilayah domisili keliru karena larangan berlaku di seluruh yurisdiksi selama menjabat."
     },
     "difficulty": "Sedang"
@@ -2158,7 +2158,7 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "id": 973,
     "category": "Kode Etik Advokat Indonesia (KEAI)",
     "topicTag": "Tenggang Waktu Banding Putusan Dewan Kehormatan (KEAI)",
-    "question": "Berdasarkan Pasal 17 ayat (2) Kode Etik Advokat Indonesia (KEAI), apabila Pengadu atau Teradu merasa tidak puas terhadap keputusan Majelis Dewan Kehormatan Cabang/Daerah, permohonan banding ke Dewan Kehormatan Pusat harus diajukan dalam tenggang waktu...",
+    "question": "Berdasarkan Pasal 18 ayat (2) Kode Etik Advokat Indonesia (KEAI), apabila Pengadu atau Teradu merasa tidak puas terhadap keputusan Majelis Dewan Kehormatan Cabang/Daerah, permohonan banding ke Dewan Kehormatan Pusat harus diajukan dalam tenggang waktu...",
     "options": [
       {
         "key": "A",
@@ -2180,9 +2180,9 @@ export const TOAZ_PERADI_BANK: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Permohonan banding atas keputusan Dewan Kehormatan Cabang/Daerah ke Dewan Kehormatan Pusat diajukan dalam waktu 21 hari sejak salinan keputusan diterima.",
-      "legalBasis": "Pasal 17 ayat (2) Kode Etik Advokat Indonesia (KEAI).",
-      "statuteText": "Permohonan banding beserta memori bandingnya yang sifatnya wajib, harus disampaikan melalui Dewan Kehormatan Cabang/Daerah dalam waktu 21 (dua puluh satu) hari sejak tanggal yang bersangkutan menerima salinan keputusan.",
-      "analysis": "Opsi 21 (dua puluh satu) hari sejak tanggal yang bersangkutan menerima salinan keputusan tepat sesuai tenggang waktu disertai kewajiban menyertakan memori banding menurut Pasal 17 ayat (2) KEAI. Opsi 7 hari sejak keputusan diucapkan, 14 hari sejak pemeriksaan selesai, maupun 30 hari sejak pendaftaran pengaduan keliru karena tidak diatur dalam Pasal 17 ayat (2) KEAI (berbeda pula dengan tenggang waktu banding perdata 14 hari dalam UU No. 20 Tahun 1947 / RBg)."
+      "legalBasis": "Pasal 18 ayat (2) Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Pengajuan permohonan banding beserta Memori Banding yang sifatnya wajib, harus disampaikan melalui Dewan Kehormatan Cabang/Daerah dalam waktu 21 (dua puluh satu) hari sejak tanggal yang bersangkutan menerima salinan keputusan.",
+      "analysis": "Opsi 21 (dua puluh satu) hari sejak tanggal yang bersangkutan menerima salinan keputusan tepat sesuai tenggang waktu disertai kewajiban menyertakan memori banding menurut Pasal 18 ayat (2) KEAI. Opsi 7 hari sejak keputusan diucapkan, 14 hari sejak pemeriksaan selesai, maupun 30 hari sejak pendaftaran pengaduan keliru karena tidak diatur dalam Pasal 18 ayat (2) KEAI (berbeda pula dengan tenggang waktu banding perdata 14 hari dalam UU No. 20 Tahun 1947 / RBg)."
     },
     "difficulty": "Sedang"
   }

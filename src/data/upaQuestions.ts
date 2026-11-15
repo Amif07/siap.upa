@@ -516,7 +516,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     "explanation": {
       "summary": "Sanksi pemberhentian sementara untuk waktu tertentu wajib diikuti larangan menjalankan profesi Advokat secara penuh, baik di dalam maupun di luar pengadilan.",
       "legalBasis": "Pasal 16 ayat (3) Kode Etik Advokat Indonesia (KEAI) jo. Pasal 7 ayat (1) huruf c UU No. 18 Tahun 2003 tentang Advokat.",
-      "statuteText": "Pemberian sanksi pemberhentian sementara untuk waktu tertentu harus diikuti dengan larangan untuk menjalankan profesi advokat di luar maupun di muka pengadilan.",
+      "statuteText": "Pemberian sanksi pemberhentian sementara untuk waktu tertentu harus diikuti larangan untuk menjalankan profesi advokat diluar maupun dimuka pengadilan.",
       "analysis": "Tidak dapat menjalankan profesinya baik di dalam maupun di luar sidang adalah jawaban yang tepat karena Pasal 16 ayat (3) KEAI secara tegas melarang Advokat yang sedang menjalani masa skorsing untuk berpraktik baik di muka pengadilan (litigasi) maupun di luar pengadilan (nonlitigasi). Opsi yang membolehkan berpraktik di luar sidang atau hanya memberikan konsultasi hukum keliru karena sanksi skorsing juga menutup kewenangan jasa hukum di luar sidang termasuk konsultasi hukum; sedangkan opsi tetap dapat berpraktik di dalam maupun di luar sidang keliru karena bertentangan langsung dengan sifat pembekuan sementara izin praktik profesi."
     },
     "difficulty": "Sedang"
@@ -547,9 +547,9 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     "correctAnswer": "C",
     "explanation": {
       "summary": "Apabila Teradu telah dipanggil sampai 2 (dua) kali tidak hadir tanpa alasan yang sah, sidang Dewan Kehormatan diteruskan tanpa hadirnya Teradu (in absentia).",
-      "legalBasis": "Pasal 13 ayat (9) Kode Etik Advokat Indonesia (KEAI).",
-      "statuteText": "Apabila Teradu telah dipanggil sampai 2 (dua) kali tidak datang tanpa alasan yang sah, pemeriksaan diteruskan tanpa hadirnya Teradu, dan Dewan Kehormatan berwenang untuk memberikan keputusan di luar hadirnya yang Teradu, yang mempunyai kekuatan hukum yang sama seperti keputusan biasa.",
-      "analysis": "Diteruskan tanpa kehadiran Teradu adalah jawaban yang tepat karena Pasal 13 ayat (9) KEAI menetapkan bahwa setelah dua kali pemanggilan patut tidak dihadiri Teradu tanpa alasan sah, pemeriksaan dilanjutkan tanpa hadirnya Teradu agar proses etik tidak terhambat. Opsi menghentikan sementara atau menunda untuk panggilan ketiga kalinya keliru karena penundaan maksimal 14 hari hanya dilakukan pada ketidakhadiran sidang pertama (Pasal 13 ayat (8)), bukan memanggil ketiga kalinya atau menunggu Pengadu menghadirkan Teradu; sedangkan opsi menutup pengaduan sebagai tidak dapat diteruskan keliru karena konsekuensi gugur berlaku apabila Pengadu sendiri yang mangkir, bukan Teradu."
+      "legalBasis": "Pasal 13 ayat (9) huruf c Kode Etik Advokat Indonesia (KEAI).",
+      "statuteText": "Apabila teradu telah dipanggil sampai 2 (dua) kali tidak datang tanpa alasan yang sah, pemeriksaan diteruskan tanpa hadirnya teradu.",
+      "analysis": "Berdasarkan Pasal 13 ayat (9) huruf c Kode Etik Advokat Indonesia (KEAI), apabila Teradu telah dipanggil sampai 2 (dua) kali tidak datang tanpa alasan yang sah, pemeriksaan diteruskan tanpa hadirnya Teradu (in absentia), dan berdasarkan Pasal 13 ayat (9) huruf d KEAI Dewan Kehormatan berwenang menjatuhkan keputusan di luar hadirnya Teradu yang berkekuatan hukum sama seperti keputusan biasa. Opsi mengenai penundaan atau pemanggilan ketiga kalinya secara paksa keliru karena penundaan sidang paling lambat 14 hari hanya dilakukan pada ketidakhadiran panggilan pertama (Pasal 13 ayat (9) huruf a KEAI) dan Dewan Kehormatan tidak memiliki kewenangan upaya paksa; sedangkan opsi mengenai pengaduan dinyatakan gugur/tidak dapat diteruskan hanya berlaku apabila pihak Pengadu sendiri yang tidak hadir setelah dipanggil 2 kali tanpa alasan sah (Pasal 13 ayat (9) huruf b KEAI)."
     },
     "difficulty": "Sedang"
   },
@@ -557,7 +557,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     "id": 24,
     "category": "Kode Etik Advokat Indonesia (KEAI)",
     "topicTag": "Mantan Hakim Menjadi Advokat",
-    "question": "Berdasarkan Pasal 7 huruf h Kode Etik Advokat Indonesia (KEAI), apakah mantan Hakim atau Panitera dibenarkan beralih profesi menjadi Advokat dan beracara di pengadilan?",
+    "question": "Berdasarkan Pasal 8 huruf h Kode Etik Advokat Indonesia (KEAI), apakah mantan Hakim atau Panitera dibenarkan beralih profesi menjadi Advokat dan beracara di pengadilan?",
     "options": [
       {
         "key": "A",
@@ -579,9 +579,9 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     "correctAnswer": "D",
     "explanation": {
       "summary": "Mantan Hakim atau Panitera dibenarkan menjadi Advokat, namun selama 3 (tiga) tahun sejak berhenti dilarang menangani perkara yang diperiksa di pengadilan tempatnya terakhir bekerja.",
-      "legalBasis": "Pasal 7 huruf h Kode Etik Advokat Indonesia (KEAI).",
+      "legalBasis": "Pasal 8 huruf h Kode Etik Advokat Indonesia (KEAI).",
       "statuteText": "Advokat yang sebelumnya pernah menjabat sebagai Hakim atau Panitera dari suatu lembaga peradilan, tidak dibenarkan untuk memegang atau menangani perkara yang diperiksa pengadilan tempatnya terakhir bekerja selama 3 (tiga) tahun semenjak ia berhenti dari pengadilan tersebut.",
-      "analysis": "Dapat beralih profesi dengan pembatasan 3 tahun tidak menangani perkara di pengadilan tempatnya terakhir bekerja adalah jawaban yang tepat karena Pasal 7 huruf h KEAI menetapkan masa tunggu (cooling-off period) 3 tahun pada pengadilan terakhirnya bertugas guna mencegah konflik kepentingan dan penyalahgunaan pengaruh. Opsi tidak dapat dibenarkan atau dilarang secara permanen keliru karena KEAI tidak melarang mantan Hakim/Panitera menjadi Advokat secara permanen; sedangkan opsi langsung beracara tanpa pembatasan waktu apa pun keliru karena tetap ada larangan selama 3 tahun di pengadilan tempat terakhirnya bekerja."
+      "analysis": "Dapat beralih profesi dengan pembatasan 3 tahun tidak menangani perkara di pengadilan tempatnya terakhir bekerja adalah jawaban yang tepat karena Pasal 8 huruf h KEAI menetapkan masa tunggu (cooling-off period) 3 tahun pada pengadilan terakhirnya bertugas guna mencegah konflik kepentingan dan penyalahgunaan pengaruh. Opsi tidak dapat dibenarkan atau dilarang secara permanen keliru karena KEAI tidak melarang mantan Hakim/Panitera menjadi Advokat secara permanen; sedangkan opsi langsung beracara tanpa pembatasan waktu apa pun keliru karena tetap ada larangan selama 3 tahun di pengadilan tempat terakhirnya bekerja."
     },
     "difficulty": "Sedang"
   },
@@ -611,9 +611,9 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Pengadu dan Teradu wajib hadir secara pribadi dan tidak dapat menguasakan kehadirannya kepada orang lain, namun masing-masing dapat didampingi oleh penasihat.",
-      "legalBasis": "Pasal 13 ayat (7) Kode Etik Advokat Indonesia (KEAI).",
+      "legalBasis": "Pasal 13 ayat (7) huruf a Kode Etik Advokat Indonesia (KEAI).",
       "statuteText": "Pengadu dan yang teradu harus hadir secara pribadi dan tidak dapat menguasakan kepada orang lain, yang jika dikehendaki masing-masing dapat didampingi oleh penasehat.",
-      "analysis": "Harus hadir secara pribadi dan tidak dapat menguasakan kepada orang lain (dengan hak didampingi penasihat) adalah jawaban yang tepat karena Pasal 13 ayat (7) KEAI menegaskan sifat pemeriksaan kode etik yang personal. Opsi yang menyebut dapat diwakili oleh penasihat keliru karena kata 'diwakili' berarti penasihat menggantikan kehadiran pihak, padahal yang dibolehkan hanya 'didampingi'; sedangkan opsi tidak perlu hadir secara pribadi karena dapat memberikan kuasa kepada Advokat atau orang lain keliru karena KEAI melarang tegas pemberian kuasa untuk menggantikan kehadiran pribadi para pihak."
+      "analysis": "Harus hadir secara pribadi dan tidak dapat menguasakan kepada orang lain (dengan hak didampingi penasihat) adalah jawaban yang tepat karena Pasal 13 ayat (7) huruf a KEAI menegaskan sifat pemeriksaan kode etik yang personal. Opsi yang menyebut dapat diwakili oleh penasihat keliru karena kata 'diwakili' berarti penasihat menggantikan kehadiran pihak, padahal yang dibolehkan hanya 'didampingi'; sedangkan opsi tidak perlu hadir secara pribadi karena dapat memberikan kuasa kepada Advokat atau orang lain keliru karena KEAI melarang tegas pemberian kuasa untuk menggantikan kehadiran pribadi para pihak."
     },
     "difficulty": "Sedang"
   },
@@ -644,7 +644,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     "explanation": {
       "summary": "Pembelaan terhadap teman sejawat yang didakwa dalam perkara pidana bersifat wajib apabila diminta oleh yang bersangkutan atau ditunjuk oleh organisasi profesi.",
       "legalBasis": "Pasal 3 huruf e Kode Etik Advokat Indonesia (KEAI).",
-      "statuteText": "Advokat wajib memberikan bantuan dan pembelaan hukum kepada teman sejawatnya yang sedang didakwa dalam suatu perkara pidana, baik atas permintaannya ataupun karena penunjukan organisasi profesi.",
+      "statuteText": "Advokat wajib memberikan bantuan dan pembelaan hukum kepada teman sejawat yang diduga atau didakwa dalam suatu perkara pidana atas permintaannya atau karena penunjukan organisasi profesi.",
       "analysis": "Wajib apabila diminta oleh Advokat yang didakwa atau jika ditunjuk oleh organisasi profesi adalah jawaban yang tepat sesuai rumusan Pasal 3 huruf e KEAI tentang solidaritas profesi. Opsi bersifat fakultatif sepanjang sanggup membayar honorarium keliru karena kewajiban etik ini tidak digantungkan pada syarat komersial; opsi dilarang karena mencemarkan nama baik organisasi keliru karena melanggar asas praduga tak bersalah dan hak pembelaan hukum; dan opsi wajib secara otomatis tanpa permintaan atau penunjukan keliru karena pemberian bantuan hukum tetap mensyaratkan permintaan dari Advokat yang didakwa atau penunjukan organisasi profesi."
     },
     "difficulty": "Sedang"
@@ -813,7 +813,7 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     "id": 33,
     "category": "Kode Etik Advokat Indonesia (KEAI)",
     "topicTag": "Sifat Putusan Dewan Kehormatan Daerah",
-    "question": "Berdasarkan Pasal 17 ayat (1) Kode Etik Advokat Indonesia (KEAI), keputusan Majelis Dewan Kehormatan Cabang/Daerah dalam pemeriksaan tingkat pertama mengenai dugaan pelanggaran Kode Etik Advokat bersifat...",
+    "question": "Berdasarkan Pasal 18 ayat (1) Kode Etik Advokat Indonesia (KEAI), keputusan Majelis Dewan Kehormatan Cabang/Daerah dalam pemeriksaan tingkat pertama mengenai dugaan pelanggaran Kode Etik Advokat bersifat...",
     "options": [
       {
         "key": "A",
@@ -835,9 +835,9 @@ export const OFFICIAL_TRYOUT_QUESTIONS: UPAQuestion[] = [
     "correctAnswer": "B",
     "explanation": {
       "summary": "Putusan Dewan Kehormatan Cabang/Daerah sebagai peradilan etik tingkat pertama belum bersifat final karena Pengadu maupun Teradu berhak mengajukan banding ke Dewan Kehormatan Pusat.",
-      "legalBasis": "Pasal 17 ayat (1) dan Pasal 18 ayat (1) Kode Etik Advokat Indonesia (KEAI) jo. Pasal 27 ayat (4) UU No. 18 Tahun 2003 tentang Advokat.",
-      "statuteText": "Apabila pengadu atau yang teradu tidak puas dengan keputusan Dewan Kehormatan Cabang/Daerah, ia berhak mengajukan permohonan banding atas keputusan tersebut kepada Dewan Kehormatan Pusat.",
-      "analysis": "Belum final dan dapat diajukan upaya banding ke Dewan Kehormatan Pusat adalah jawaban yang tepat karena Pasal 17 ayat (1) KEAI jo. Pasal 27 ayat (4) UU No. 18 Tahun 2003 membuka upaya hukum banding apabila salah satu pihak tidak puas atas putusan tingkat pertama. Opsi yang menyatakan final atau berkekuatan hukum tetap seketika keliru karena sifat final dan mengikat baru melekat pada putusan Dewan Kehormatan Pusat (Pasal 18 ayat (4) KEAI); dan opsi kasasi ke Mahkamah Agung keliru karena penegakan etik profesi merupakan yurisdiksi internal Dewan Kehormatan Organisasi Advokat, bukan lingkungan peradilan umum di bawah Mahkamah Agung."
+      "legalBasis": "Pasal 18 ayat (1) dan Pasal 19 ayat (3) Kode Etik Advokat Indonesia (KEAI) jo. Pasal 27 ayat (4) UU No. 18 Tahun 2003 tentang Advokat.",
+      "statuteText": "Apabila pengadu atau teradu tidak puas dengan keputusan Dewan Kehormatan Cabang/Daerah, ia berhak mengajukan permohonan banding atas keputusan tersebut kepada Dewan Kehormatan Pusat.",
+      "analysis": "Belum final dan dapat diajukan upaya banding ke Dewan Kehormatan Pusat adalah jawaban yang tepat karena Pasal 18 ayat (1) KEAI jo. Pasal 27 ayat (4) UU No. 18 Tahun 2003 membuka upaya hukum banding apabila salah satu pihak tidak puas atas putusan tingkat pertama. Opsi yang menyatakan final atau berkekuatan hukum tetap seketika keliru karena sifat final dan mengikat baru melekat pada putusan Dewan Kehormatan Pusat (Pasal 19 ayat (3) KEAI); dan opsi kasasi ke Mahkamah Agung keliru karena penegakan etik profesi merupakan yurisdiksi internal Dewan Kehormatan Organisasi Advokat, bukan lingkungan peradilan umum di bawah Mahkamah Agung."
     },
     "difficulty": "Sedang"
   },

@@ -1659,7 +1659,7 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "id": 271,
     "category": "Kode Etik Advokat Indonesia (KEAI)",
     "topicTag": "Sifat Putusan Dewan Kehormatan Pusat",
-    "question": "Berdasarkan Pasal 18 ayat (4) Kode Etik Advokat Indonesia (KEAI) jo. Pasal 27 ayat (5) UU No. 18 Tahun 2003, keputusan Majelis Dewan Kehormatan Pusat dalam pemeriksaan tingkat banding mengenai pelanggaran Kode Etik Advokat bersifat...",
+    "question": "Berdasarkan Pasal 19 ayat (3) Kode Etik Advokat Indonesia (KEAI) jo. Pasal 27 ayat (5) UU No. 18 Tahun 2003, keputusan Majelis Dewan Kehormatan Pusat dalam pemeriksaan tingkat banding mengenai pelanggaran Kode Etik Advokat bersifat...",
     "options": [
       {
         "key": "A",
@@ -1681,9 +1681,9 @@ export const TRYOUT_2025_BANK: UPAQuestion[] = [
     "correctAnswer": "A",
     "explanation": {
       "summary": "Putusan Majelis Dewan Kehormatan Pusat pada tingkat banding merupakan putusan tingkat terakhir yang bersifat final dan mengikat.",
-      "legalBasis": "Pasal 18 ayat (4) Kode Etik Advokat Indonesia (KEAI) jo. Pasal 27 ayat (5) UU No. 18 Tahun 2003 tentang Advokat.",
+      "legalBasis": "Pasal 19 ayat (3) Kode Etik Advokat Indonesia (KEAI) jo. Pasal 27 ayat (5) UU No. 18 Tahun 2003 tentang Advokat.",
       "statuteText": "Keputusan Dewan Kehormatan Pusat adalah final dan mengikat yang tidak dapat diganggu gugat dalam forum manapun, termasuk dalam MUNAS.",
-      "analysis": "Opsi final dan mengikat serta tidak dapat diajukan upaya banding atau diganggu gugat lagi tepat karena Pasal 18 ayat (4) KEAI jo. Pasal 27 ayat (5) UU No. 18 Tahun 2003 menetapkan Dewan Kehormatan Pusat sebagai peradilan etik tingkat terakhir yang keputusannya final dan mengikat. Opsi banding ke Pengadilan Tinggi maupun kasasi ke Mahkamah Agung keliru karena yurisdiksi etik organisasi advokat tidak berada di bawah upaya hukum peradilan umum atau MA; dan opsi sekadar rekomendasi tidak mengikat kepada Menteri Hukum dan HAM keliru karena putusan Dewan Kehormatan Pusat mengikat untuk dilaksanakan oleh Dewan Pimpinan Organisasi Advokat."
+      "analysis": "Opsi final dan mengikat serta tidak dapat diajukan upaya banding atau diganggu gugat lagi tepat karena Pasal 19 ayat (3) KEAI jo. Pasal 27 ayat (5) UU No. 18 Tahun 2003 menetapkan Dewan Kehormatan Pusat sebagai peradilan etik tingkat terakhir yang keputusannya final dan mengikat. Opsi banding ke Pengadilan Tinggi maupun kasasi ke Mahkamah Agung keliru karena yurisdiksi etik organisasi advokat tidak berada di bawah upaya hukum peradilan umum atau MA; dan opsi sekadar rekomendasi tidak mengikat kepada Menteri Hukum dan HAM keliru karena putusan Dewan Kehormatan Pusat mengikat untuk dilaksanakan oleh Dewan Pimpinan Organisasi Advokat."
     },
     "difficulty": "Sedang"
   },
